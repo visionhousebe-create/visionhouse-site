@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de cookies — Vision House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0c0340;--navy2:#092969;--white:#fff;--off:#F4F6FB;--lightb:#EBF0FA;--muted:#5A6A96;--border:rgba(12,3,64,0.1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;background:var(--off);color:var(--navy);font-size:16px;line-height:1.7}
+h1,h2,h3{font-family:'Montserrat',sans-serif;color:var(--navy)}
+h1{font-size:2.4rem;font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.3rem;font-weight:700;margin-top:40px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--lightb)}
+h3{font-size:.95rem;font-weight:700;margin-top:18px;margin-bottom:6px;color:var(--navy2)}
+p{color:var(--muted);line-height:1.8;margin-bottom:12px}
+a{color:var(--navy2);text-decoration:none;border-bottom:1px solid rgba(9,41,105,.2);transition:color .2s}
+a:hover{color:var(--navy)}
+strong{color:var(--navy)}
+ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+ul li{display:flex;gap:10px;font-size:.9rem;color:var(--muted)}
+ul li::before{content:'·';color:var(--navy2);font-weight:700;flex-shrink:0}
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;box-shadow:0 2px 16px rgba(12,3,64,.06)}
+.nav-logo{display:flex;align-items:center;text-decoration:none;border:none}
+.nav-logo img{height:38px}
+.nav-back{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:600;color:var(--navy2);text-decoration:none;border:none;transition:color .2s}
+.nav-back:hover{color:var(--navy)}
+.nav-back::before{content:'← '}
+.page-wrap{max-width:800px;margin:0 auto;padding:60px 40px 100px}
+.page-hero{background:var(--navy);border-radius:16px;padding:48px;margin-bottom:48px}
+.page-hero .tag{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.page-hero .tag::before{content:'';display:block;width:16px;height:2px;background:rgba(255,255,255,.3)}
+.page-hero h1{color:#fff}
+.page-hero p{color:rgba(255,255,255,.6);margin-top:12px}
+.card{background:var(--white);border-radius:12px;padding:32px;margin-bottom:4px;border:1px solid var(--border)}
+.cookie-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:16px}
+.cookie-table th{background:var(--navy);color:#fff;padding:11px 14px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.cookie-table th:first-child{border-radius:8px 0 0 0}
+.cookie-table th:last-child{border-radius:0 8px 0 0}
+.cookie-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top}
+.cookie-table tr:last-child td{border-bottom:none}
+.cookie-table tr:hover td{background:var(--off)}
+.cookie-table td:first-child{font-weight:600;color:var(--navy);white-space:nowrap}
+.badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.72rem;font-weight:700;font-family:'Montserrat',sans-serif;letter-spacing:.04em}
+.badge-req{background:rgba(12,3,64,.08);color:var(--navy)}
+.badge-ana{background:rgba(9,41,105,.1);color:var(--navy2)}
+.badge-mkt{background:rgba(200,90,42,.1);color:#a04020}
+.highlight{background:var(--lightb);border-radius:8px;padding:16px 20px;margin:16px 0;font-size:.9rem;color:var(--navy2);border-left:3px solid var(--navy2)}
+.consent-box{background:var(--navy);border-radius:12px;padding:28px 32px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.consent-box p{color:rgba(255,255,255,.7);font-size:.9rem;margin:0;max-width:480px}
+.consent-box a{background:#fff;color:var(--navy);padding:10px 24px;border-radius:6px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.82rem;text-decoration:none;border:none;white-space:nowrap;transition:background .2s}
+.consent-box a:hover{background:var(--off)}
+.footer-note{margin-top:48px;padding:24px;background:var(--white);border-radius:12px;border:1px solid var(--border);font-size:.82rem;color:var(--muted);line-height:1.7;text-align:center}
+@media(max-width:600px){.page-wrap{padding:32px 20px 80px}nav{padding:12px 20px}.page-hero{padding:32px 24px}.card{padding:24px}.consent-box{flex-direction:column;gap:16px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="Vision House.html" class="nav-logo"><img src="logo.png" alt="Vision House"></a>
+  <a href="Vision House.html" class="nav-back">Retour au site</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="tag">Navigation et traceurs</div>
+    <h1>Politique de cookies</h1>
+    <p>Cette page vous explique ce que sont les cookies, lesquels nous utilisons et comment vous pouvez gérer vos préférences à tout moment.</p>
+  </div>
+
+  <div class="card">
+    <h2>Qu'est-ce qu'un cookie ?</h2>
+    <p>Un cookie est un petit fichier texte déposé sur votre appareil (ordinateur, téléphone, tablette) lorsque vous visitez un site web. Il permet au site de mémoriser des informations sur votre visite : langue préférée, pages consultées, sessions actives, etc.</p>
+    <p>Les cookies ne contiennent pas de virus et ne peuvent pas exécuter de code sur votre ordinateur. Ils sont utilisés pour améliorer votre expérience de navigation et nous permettre de comprendre comment notre site est utilisé.</p>
+    <div class="highlight">Conformément à la loi belge du 13 juin 2005 relative aux communications électroniques et au RGPD, les cookies non strictement nécessaires ne sont déposés qu'après votre consentement explicite.</div>
+  </div>
+
+  <div class="card">
+    <h2>Les cookies que nous utilisons</h2>
+
+    <h3>1. Cookies strictement nécessaires</h3>
+    <p>Ces cookies sont indispensables au bon fonctionnement du site. Ils ne peuvent pas être désactivés.</p>
+    <table class="cookie-table">
+      <tr>
+        <th>Nom</th>
+        <th>Finalité</th>
+        <th>Durée</th>
+        <th>Type</th>
+      </tr>
+      <tr>
+        <td>session_id</td>
+        <td>Maintien de votre session de navigation</td>
+        <td>Session</td>
+        <td><span class="badge badge-req">Nécessaire</span></td>
+      </tr>
+      <tr>
+        <td>cookie_consent</td>
+        <td>Mémorisation de vos préférences en matière de cookies</td>
+        <td>12 mois</td>
+        <td><span class="badge badge-req">Nécessaire</span></td>
+      </tr>
+    </table>
+
+    <h3 style="margin-top:28px">2. Cookies analytiques</h3>
+    <p>Ces cookies nous permettent de comprendre comment les visiteurs utilisent notre site (pages visitées, durée, provenance). Ils sont anonymisés et ne permettent pas de vous identifier personnellement.</p>
+    <table class="cookie-table">
+      <tr>
+        <th>Nom</th>
+        <th>Finalité</th>
+        <th>Durée</th>
+        <th>Type</th>
+      </tr>
+      <tr>
+        <td>_ga</td>
+        <td>Identification des sessions (Google Analytics)</td>
+        <td>2 ans</td>
+        <td><span class="badge badge-ana">Analytique</span></td>
+      </tr>
+      <tr>
+        <td>_ga_*</td>
+        <td>Maintien de l'état de la session Analytics</td>
+        <td>2 ans</td>
+        <td><span class="badge badge-ana">Analytique</span></td>
+      </tr>
+      <tr>
+        <td>_gid</td>
+        <td>Distinction des utilisateurs (Google Analytics)</td>
+        <td>24 heures</td>
+        <td><span class="badge badge-ana">Analytique</span></td>
+      </tr>
+    </table>
+
+    <h3 style="margin-top:28px">3. Cookies marketing</h3>
+    <p>Ces cookies sont utilisés pour diffuser des publicités pertinentes sur d'autres sites (remarketing) et mesurer l'efficacité de nos campagnes publicitaires.</p>
+    <table class="cookie-table">
+      <tr>
+        <th>Nom</th>
+        <th>Finalité</th>
+        <th>Durée</th>
+        <th>Type</th>
+      </tr>
+      <tr>
+        <td>_fbp</td>
+        <td>Suivi des conversions Facebook / Meta Ads</td>
+        <td>3 mois</td>
+        <td><span class="badge badge-mkt">Marketing</span></td>
+      </tr>
+      <tr>
+        <td>_fbc</td>
+        <td>Attribution des clics sur les publicités Meta</td>
+        <td>2 ans</td>
+        <td><span class="badge badge-mkt">Marketing</span></td>
+      </tr>
+      <tr>
+        <td>IDE</td>
+        <td>Publicité ciblée Google (DoubleClick)</td>
+        <td>13 mois</td>
+        <td><span class="badge badge-mkt">Marketing</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Cookies tiers</h2>
+    <p>Certains services intégrés à notre site peuvent déposer leurs propres cookies. Nous n'avons pas de contrôle direct sur ces cookies. Voici les principaux services concernés :</p>
+    <ul>
+      <li><strong>Google Analytics</strong> — Analyse de la fréquentation. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politique de confidentialité Google</a></li>
+      <li><strong>Meta (Facebook)</strong> — Mesure des campagnes publicitaires. <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Politique de confidentialité Meta</a></li>
+      <li><strong>Google Ads</strong> — Suivi des conversions publicitaires. <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Politique publicitaire Google</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Gérer vos préférences</h2>
+    <p>Vous pouvez à tout moment modifier vos préférences en matière de cookies via les méthodes suivantes :</p>
+
+    <h3>Via votre navigateur</h3>
+    <p>La plupart des navigateurs vous permettent de refuser ou de supprimer les cookies. Voici comment procéder :</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a> — Paramètres &gt; Confidentialité et sécurité &gt; Cookies</li>
+      <li><a href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies" target="_blank" rel="noopener">Mozilla Firefox</a> — Paramètres &gt; Vie privée et sécurité</li>
+      <li><a href="https://support.apple.com/fr-be/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a> — Préférences &gt; Confidentialité</li>
+      <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge/supprimer-les-cookies-dans-microsoft-edge-63947406" target="_blank" rel="noopener">Microsoft Edge</a> — Paramètres &gt; Confidentialité, recherche et services</li>
+    </ul>
+    <p>Attention : désactiver certains cookies peut affecter le bon fonctionnement du site.</p>
+
+    <h3>Opt-out des outils tiers</h3>
+    <ul>
+      <li>Google Analytics : <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Extension de désactivation Google Analytics</a></li>
+      <li>Meta : <a href="https://www.facebook.com/settings/?tab=ads" target="_blank" rel="noopener">Préférences publicitaires Facebook</a></li>
+      <li>Google Ads : <a href="https://adssettings.google.com" target="_blank" rel="noopener">Paramètres des annonces Google</a></li>
+      <li>Toutes les plateformes : <a href="https://www.youronlinechoices.eu" target="_blank" rel="noopener">Your Online Choices (EDAA)</a></li>
+    </ul>
+  </div>
+
+  <div class="consent-box">
+    <p>Vous souhaitez modifier vos préférences de cookies pour notre site ?</p>
+    <a href="Vision House.html">Gérer mes préférences</a>
+  </div>
+
+  <div class="card" style="margin-top:4px">
+    <h2>Durée de conservation</h2>
+    <ul>
+      <li>Cookies de session : supprimés à la fermeture de votre navigateur</li>
+      <li>Cookies persistants : conservés selon la durée indiquée dans le tableau ci-dessus</li>
+      <li>Vous pouvez supprimer les cookies à tout moment depuis les paramètres de votre navigateur</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Mises à jour</h2>
+    <p>Cette politique de cookies peut être modifiée à tout moment pour refléter les changements apportés aux cookies utilisés ou à la législation applicable. Nous vous invitons à consulter régulièrement cette page. La date de dernière mise à jour est indiquée ci-dessous.</p>
+  </div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Pour toute question relative à notre utilisation des cookies :</p>
+    <ul>
+      <li>Par email : <a href="mailto:hello@visionhouse.be">hello@visionhouse.be</a></li>
+      <li>Par courrier : Emkay Partners SRL · Avenue des Gerfauts 10, Boîte 34 · 1170 Watermael-Boitsfort</li>
+    </ul>
+  </div>
+
+  <div class="footer-note">
+    Dernière mise à jour : juillet 2025 · <a href="Vision House.html">Retour au site</a> · <a href="Mentions Légales.html">Mentions légales</a> · <a href="Politique de Confidentialité.html">Confidentialité</a>
+  </div>
+</div>
+</body>
+</html>
