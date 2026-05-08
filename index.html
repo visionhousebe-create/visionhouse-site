@@ -957,10 +957,21 @@ function toggleFaq(btn){
 }
 
 /* FORM */
-function handleSubmit(e){
+async function handleSubmit(e){
   e.preventDefault();
-  document.getElementById('diag-form').style.display='none';
-  document.getElementById('form-success').style.display='block';
+  const btn=document.getElementById('form-submit-btn');
+  btn.textContent='Envoi en cours…';
+  btn.disabled=true;
+  const res=await fetch('https://formspree.io/f/mrejayba',{
+    method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}
+  });
+  if(res.ok){
+    document.getElementById('diag-form').style.display='none';
+    document.getElementById('form-success').style.display='block';
+  } else {
+    btn.textContent='Erreur — réessayez';
+    btn.disabled=false;
+  }
 }
 
 /* CTAs */
