@@ -751,14 +751,14 @@ footer{background:#080720;padding:72px 0 0}
           <h3>Obtenir mon diagnostic</h3>
           <p class="form-box-sub">Aucune carte de crédit. Aucune obligation.</p>
           <form id="diag-form" onsubmit="handleSubmit(event)">
-            <div class="frow">
-              <div class="fg"><label>Prénom *</label><input type="text" placeholder="Prénom" required></div>
-              <div class="fg"><label>Nom *</label><input type="text" placeholder="Nom" required></div>
-            </div>
-            <div class="fg"><label>Email *</label><input type="email" placeholder="vous@entreprise.com" required></div>
-            <div class="fg">
-              <label>Secteur *</label>
-              <select required>
+  <div class="frow">
+    <div class="fg"><label>Prénom *</label><input type="text" name="prenom" placeholder="Prénom" required></div>
+    <div class="fg"><label>Nom *</label><input type="text" name="nom" placeholder="Nom" required></div>
+  </div>
+  <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="vous@entreprise.com" required></div>
+  <div class="fg">
+    <label>Secteur *</label>
+    <select name="secteur" required>
                 <option value="" disabled selected>Sélectionnez votre secteur</option>
                 <option>Immobilier</option><option>Promotion immobilière</option>
                 <option>HoReCa / Restaurant</option><option>Commerce de détail</option>
