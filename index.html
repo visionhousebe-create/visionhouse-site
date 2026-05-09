@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://visionhouse.be/">
 <meta property="og:title" content="Vision House — Agence Communication Bruxelles | Immobilier & PME">
 <meta property="og:description" content="Agence de communication à Bruxelles pour l'immobilier et les PME. Community management, vidéo, Meta Ads & Google Ads. Gagnez en visibilité sans sacrifier votre temps.">
-<meta property="og:image" content="https://visionhouse.be/logo.png">
+<meta property="og:image" content="https://visionhouse.be/logo-header.png">
 <meta property="og:locale" content="fr_BE">
 <meta property="og:site_name" content="Vision House">
 
@@ -32,7 +32,7 @@
   "name": "Vision House",
   "description": "Agence de communication digitale à Bruxelles pour l'immobilier et les PME. Community management, création vidéo, Meta Ads et Google Ads.",
   "url": "https://visionhouse.be",
-  "logo": "https://visionhouse.be/logo.png",
+  "logo": "https://visionhouse.be/logo-header.png",
   "telephone": "+32451095650",
   "email": "hello@visionhouse.be",
   "address": {
@@ -109,18 +109,18 @@ nav.scrolled .nav-logo img{height:46px}
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:160px;background:var(--white);position:relative;overflow:hidden;text-align:center}
 #hero .container{display:flex;flex-direction:column;align-items:center}
 .hero-deco{position:absolute;right:-150px;top:50%;transform:translateY(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,var(--lightb) 0%,transparent 65%);pointer-events:none}
-.hero-invisible{font-family:'Lato',sans-serif;font-size:.9rem;font-weight:700;color:var(--muted);letter-spacing:.02em;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;opacity:0;animation:fadeUp .5s .1s forwards}
+.hero-invisible{font-family:'Lato',sans-serif;font-size:.9rem;font-weight:700;color:var(--muted);letter-spacing:.02em;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;opacity:1}
 .hero-invisible::before{content:'●';color:var(--navy);font-size:.55rem}
-.hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--navy2);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:8px;opacity:0;animation:fadeUp .5s .18s forwards}
+.hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--navy2);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:8px;opacity:1}
 .hero-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--navy2)}
-.hero-h1-wrap{opacity:0;animation:fadeUp .6s .28s forwards}
+.hero-h1-wrap{opacity:1}
 #hero h1{max-width:860px;margin:0 auto}
 #hero h1 .sector-line{color:var(--navy2);font-style:italic;display:inline-block;min-width:280px}
-.hero-urgency{max-width:620px;margin:22px auto 0;font-size:1.05rem;line-height:1.8;opacity:0;animation:fadeUp .6s .42s forwards;text-align:center}
+.hero-urgency{max-width:620px;margin:22px auto 0;font-size:1.05rem;line-height:1.8;opacity:1;text-align:center}
 .hero-urgency strong{color:var(--navy);font-weight:700}
-.hero-actions{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:36px;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .56s forwards}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:36px;flex-wrap:wrap;opacity:1}
 .hero-sub-note{font-size:.82rem;color:var(--muted);font-family:'Montserrat',sans-serif;font-weight:500}
-.hero-stats{display:flex;justify-content:center;gap:40px;margin-top:64px;padding-top:44px;border-top:1px solid var(--border);flex-wrap:nowrap;opacity:0;animation:fadeUp .6s .7s forwards;width:100%;max-width:960px}
+.hero-stats{display:flex;justify-content:center;gap:40px;margin-top:64px;padding-top:44px;border-top:1px solid var(--border);flex-wrap:nowrap;opacity:1;width:100%;max-width:960px}
 .hero-stat{display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center;flex:1;min-width:0}
 .hero-stat-n{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:var(--navy);line-height:1;white-space:nowrap}
 .hero-stat-n sup{font-size:1rem;vertical-align:super}
@@ -332,7 +332,7 @@ nav.scrolled .nav-logo img{height:46px}
 /* FOOTER */
 footer{background:#080720;padding:72px 0 0}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
-.footer-logo img{height:54px;filter:brightness(0) invert(1) !important;margin-bottom:16px;display:block;opacity:1}
+.footer-logo img{height:54px;filter:none;mix-blend-mode:screen;margin-bottom:16px;display:block;opacity:1}
 .footer-tagline{font-size:.86rem;color:rgba(255,255,255,.33);line-height:1.65;max-width:260px;margin-bottom:24px}
 .footer-social{display:flex;gap:12px;margin-top:4px}
 .footer-social a{width:38px;height:38px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;transition:all .2s;text-decoration:none}
@@ -353,7 +353,8 @@ footer{background:#080720;padding:72px 0 0}
 
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}
+.reveal.pre-anim{opacity:0;transform:translateY(28px)}
 .reveal.visible{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
@@ -538,23 +539,6 @@ footer{background:#080720;padding:72px 0 0}
 ══════════════════════════════════════════ */
 @media(max-width:900px){
 
-  /* ── FIX ANIMATIONS iOS/Safari ── */
-  .hero-invisible,
-  .hero-eyebrow,
-  .hero-h1-wrap,
-  .hero-urgency,
-  .hero-actions,
-  .hero-stats{
-    opacity:1!important;
-    transform:none!important;
-    animation:none!important;
-  }
-  .reveal{
-    opacity:1!important;
-    transform:none!important;
-    transition:none!important;
-  }
-
   /* ── NAV HAMBURGER ── */
   nav{padding:12px 20px;flex-direction:row;justify-content:space-between;align-items:center;gap:0}
   nav.scrolled{padding:10px 20px}
@@ -728,7 +712,7 @@ footer{background:#080720;padding:72px 0 0}
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo"><img src="logo.png" alt="Vision House agence communication Bruxelles"></a>
+  <a href="#hero" class="nav-logo"><img src="logo-header.png" alt="Vision House agence communication Bruxelles"></a>
   <ul class="nav-links nav-row" id="nav-links">
     <li><a href="#services" onclick="closeNav()">Offres</a></li>
     <li><a href="#methode-section" onclick="closeNav()">Méthode 4D</a></li>
@@ -1427,7 +1411,7 @@ footer{background:#080720;padding:72px 0 0}
   <div class="container">
     <div class="footer-grid" style="grid-template-columns:2fr 1fr">
       <div>
-        <div class="footer-logo"><img src="logo.png" alt="Vision House agence communication Bruxelles"></div>
+        <div class="footer-logo"><img src="logo-footer.png" alt="Vision House agence communication Bruxelles"></div>
         <p class="footer-tagline">Les associés de votre communication. On produit ce qui a de l'impact — pas ce qui remplit un calendrier.</p>
         <div class="footer-social">
           <!-- Instagram -->
@@ -1647,6 +1631,7 @@ mq.addEventListener('change',handleMQ);
 handleMQ(mq);
 
 /* NAV SCROLL */
+window.addEventListener('scroll',()=>{
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
 },{passive:true});
 
@@ -1681,8 +1666,23 @@ window.addEventListener('scroll',updateD4Scroll,{passive:true});
 setTimeout(()=>setD4Step(0),400);
 
 /* REVEAL */
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+/* REVEAL — safe animation */
+// Add pre-anim only after page load to avoid flash
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.reveal').forEach(el=>{
+    el.classList.add('pre-anim');
+  });
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.remove('pre-anim');
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
 
 /* FAQ */
 function toggleFaq(btn){
