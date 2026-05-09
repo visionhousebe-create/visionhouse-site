@@ -538,6 +538,23 @@ footer{background:#080720;padding:72px 0 0}
 ══════════════════════════════════════════ */
 @media(max-width:900px){
 
+  /* ── FIX ANIMATIONS iOS/Safari ── */
+  .hero-invisible,
+  .hero-eyebrow,
+  .hero-h1-wrap,
+  .hero-urgency,
+  .hero-actions,
+  .hero-stats{
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+  }
+  .reveal{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+
   /* ── NAV HAMBURGER ── */
   nav{padding:12px 20px;flex-direction:row;justify-content:space-between;align-items:center;gap:0}
   nav.scrolled{padding:10px 20px}
@@ -566,14 +583,6 @@ footer{background:#080720;padding:72px 0 0}
   }
   .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);background:#fff}
   .nav-hamburger.open span:nth-child(2){opacity:0}
-  .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:#fff}
-  .nav-close-btn{
-    position:absolute;top:20px;right:20px;
-    background:none;border:none;cursor:pointer;color:#fff;
-    font-size:1.4rem;line-height:1;display:flex;align-items:center;justify-content:center;
-    width:36px;height:36px;
-  }
-
   /* ── LAYOUT ── */
   section{padding:60px 0}
   .container,.container-sm{padding:0 20px}
