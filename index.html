@@ -412,15 +412,61 @@ footer{background:#080720;padding:72px 0 0}
   border-radius:15px;
 }
 .carousel-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Overlay play central — visible seulement en pause */
 .carousel-play{
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
   background:rgba(12,3,64,.22);
-  transition:background .2s;
+  transition:opacity .2s;
   cursor:pointer;
+  z-index:2;
 }
-.carousel-play:hover{background:rgba(12,3,64,.4)}
+.carousel-play:hover{background:rgba(12,3,64,.38)}
 .carousel-play.hidden{opacity:0;pointer-events:none}
+
+/* Barre de contrôles en bas */
+.carousel-controls{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;
+  background:linear-gradient(to top, rgba(12,3,64,.85) 0%, transparent 100%);
+  opacity:0;transition:opacity .25s;
+  z-index:3;
+}
+.carousel-video-wrap:hover .carousel-controls,
+.carousel-video-wrap.playing .carousel-controls{opacity:1}
+.ctrl-btn{
+  background:none;border:none;cursor:pointer;padding:3px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;flex-shrink:0;transition:opacity .15s;
+}
+.ctrl-btn:hover{opacity:.75}
+.ctrl-btn svg{display:block}
+.ctrl-progress{
+  flex:1;height:3px;background:rgba(255,255,255,.25);
+  border-radius:2px;cursor:pointer;position:relative;overflow:hidden;
+}
+.ctrl-progress-fill{
+  height:100%;background:#fff;border-radius:2px;
+  width:0%;transition:width .2s linear;pointer-events:none;
+}
+.ctrl-volume{
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
+}
+.ctrl-volume-slider{
+  -webkit-appearance:none;appearance:none;
+  width:60px;height:3px;background:rgba(255,255,255,.25);
+  border-radius:2px;outline:none;cursor:pointer;
+}
+.ctrl-volume-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:12px;height:12px;
+  border-radius:50%;background:#fff;cursor:pointer;
+}
+.ctrl-volume-slider::-moz-range-thumb{
+  width:12px;height:12px;border-radius:50%;
+  background:#fff;cursor:pointer;border:none;
+}
 /* NAV */
 .carousel-card-cta{
   background:var(--navy);
@@ -815,37 +861,85 @@ footer{background:#080720;padding:72px 0 0}
     <div class="carousel-track" id="carousel-track">
 
       <div class="carousel-card">
-        <div class="carousel-video-wrap">
-          <video src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778300076/Captions_1DFA5B_1_vj7dvw.mp4" poster="video-thumb-1.jpg" playsinline preload="none" loop muted></video>
-          <div class="carousel-play" onclick="toggleCarouselVideo(this)">
-            <svg viewBox="0 0 24 24" fill="none" width="32" height="32"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>
+        <div class="carousel-video-wrap" id="vwrap-1">
+          <video id="vid-1" src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778300076/Captions_1DFA5B_1_vj7dvw.mp4" playsinline preload="auto" muted></video>
+          <div class="carousel-play" id="vplay-1" onclick="vcPlay(1)">
+            <svg viewBox="0 0 24 24" fill="none" width="52" height="52"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,.18)"/><polygon points="10,8 18,12 10,16" fill="white"/></svg>
+          </div>
+          <div class="carousel-controls">
+            <button class="ctrl-btn" onclick="vcPlay(1)">
+              <svg id="vicon-1" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <div class="ctrl-progress" onclick="vcSeek(event,1)"><div class="ctrl-progress-fill" id="vprog-1"></div></div>
+            <div class="ctrl-volume">
+              <button class="ctrl-btn" onclick="vcMute(1)">
+                <svg id="vmute-1" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </button>
+              <input class="ctrl-volume-slider" id="vvol-1" type="range" min="0" max="1" step="0.05" value="1" oninput="vcVolume(event,1)">
+            </div>
           </div>
         </div>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-video-wrap">
-         <video src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778300127/Captions_17433A_lwthjn.mp4" poster="video-thumb-2.jpg" playsinline preload="none" loop muted></video>
-          <div class="carousel-play" onclick="toggleCarouselVideo(this)">
-            <svg viewBox="0 0 24 24" fill="none" width="32" height="32"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>
+        <div class="carousel-video-wrap" id="vwrap-2">
+          <video id="vid-2" src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778300127/Captions_17433A_lwthjn.mp4" playsinline preload="auto" muted></video>
+          <div class="carousel-play" id="vplay-2" onclick="vcPlay(2)">
+            <svg viewBox="0 0 24 24" fill="none" width="52" height="52"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,.18)"/><polygon points="10,8 18,12 10,16" fill="white"/></svg>
+          </div>
+          <div class="carousel-controls">
+            <button class="ctrl-btn" onclick="vcPlay(2)">
+              <svg id="vicon-2" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <div class="ctrl-progress" onclick="vcSeek(event,2)"><div class="ctrl-progress-fill" id="vprog-2"></div></div>
+            <div class="ctrl-volume">
+              <button class="ctrl-btn" onclick="vcMute(2)">
+                <svg id="vmute-2" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </button>
+              <input class="ctrl-volume-slider" id="vvol-2" type="range" min="0" max="1" step="0.05" value="1" oninput="vcVolume(event,2)">
+            </div>
           </div>
         </div>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-video-wrap">
-          <video src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778300153/e612a211-c0e9-4891-8b8d-d354da278855_obl0ne.mp4" poster="video-thumb-3.jpg" playsinline preload="none" loop muted></video>
-          <div class="carousel-play" onclick="toggleCarouselVideo(this)">
-            <svg viewBox="0 0 24 24" fill="none" width="32" height="32"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>
+        <div class="carousel-video-wrap" id="vwrap-3">
+          <video id="vid-3" src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778300153/e612a211-c0e9-4891-8b8d-d354da278855_obl0ne.mp4" playsinline preload="auto" muted></video>
+          <div class="carousel-play" id="vplay-3" onclick="vcPlay(3)">
+            <svg viewBox="0 0 24 24" fill="none" width="52" height="52"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,.18)"/><polygon points="10,8 18,12 10,16" fill="white"/></svg>
+          </div>
+          <div class="carousel-controls">
+            <button class="ctrl-btn" onclick="vcPlay(3)">
+              <svg id="vicon-3" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <div class="ctrl-progress" onclick="vcSeek(event,3)"><div class="ctrl-progress-fill" id="vprog-3"></div></div>
+            <div class="ctrl-volume">
+              <button class="ctrl-btn" onclick="vcMute(3)">
+                <svg id="vmute-3" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </button>
+              <input class="ctrl-volume-slider" id="vvol-3" type="range" min="0" max="1" step="0.05" value="1" oninput="vcVolume(event,3)">
+            </div>
           </div>
         </div>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-video-wrap">
-          <video src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778300130/Captions_78639F_aw3ivk.mp4" poster="video-thumb-4.jpg" playsinline preload="none" loop muted></video>
-          <div class="carousel-play" onclick="toggleCarouselVideo(this)">
-            <svg viewBox="0 0 24 24" fill="none" width="32" height="32"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>
+        <div class="carousel-video-wrap" id="vwrap-4">
+          <video id="vid-4" src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778300130/Captions_78639F_aw3ivk.mp4" playsinline preload="auto" muted></video>
+          <div class="carousel-play" id="vplay-4" onclick="vcPlay(4)">
+            <svg viewBox="0 0 24 24" fill="none" width="52" height="52"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,.18)"/><polygon points="10,8 18,12 10,16" fill="white"/></svg>
+          </div>
+          <div class="carousel-controls">
+            <button class="ctrl-btn" onclick="vcPlay(4)">
+              <svg id="vicon-4" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <div class="ctrl-progress" onclick="vcSeek(event,4)"><div class="ctrl-progress-fill" id="vprog-4"></div></div>
+            <div class="ctrl-volume">
+              <button class="ctrl-btn" onclick="vcMute(4)">
+                <svg id="vmute-4" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </button>
+              <input class="ctrl-volume-slider" id="vvol-4" type="range" min="0" max="1" step="0.05" value="1" oninput="vcVolume(event,4)">
+            </div>
           </div>
         </div>
       </div>
@@ -1285,22 +1379,83 @@ const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{"cta":0}/*EDITMODE-END*/;
   goTo(0);
 })();
 
-/* VIDEO PLAY IN CAROUSEL */
-function toggleCarouselVideo(btn){
-  const wrap=btn.parentElement;
-  const video=wrap.querySelector('video');
-  if(video.paused){
-    // pause all others first
-    document.querySelectorAll('.carousel-video-wrap video').forEach(v=>{if(v!==video){v.pause();v.parentElement.querySelector('.carousel-play').classList.remove('hidden');}});
-    video.muted=false;
-    video.play();
-    btn.classList.add('hidden');
-    video.addEventListener('ended',()=>btn.classList.remove('hidden'),{once:true});
+/* VIDEO CONTROLS */
+const PAUSE_ICON='<line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/>';
+const PLAY_ICON='<polygon points="5,3 19,12 5,21"/>';
+const MUTE_ICON='<polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+const VOL_ICON='<polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+
+function vcPlay(n){
+  const v=document.getElementById('vid-'+n);
+  const play=document.getElementById('vplay-'+n);
+  const wrap=document.getElementById('vwrap-'+n);
+  const icon=document.getElementById('vicon-'+n);
+  if(v.paused){
+    // Pause all others
+    [1,2,3,4].forEach(i=>{
+      if(i!==n){
+        const ov=document.getElementById('vid-'+i);
+        if(ov&&!ov.paused){
+          ov.pause();
+          document.getElementById('vplay-'+i).classList.remove('hidden');
+          document.getElementById('vwrap-'+i).classList.remove('playing');
+          document.getElementById('vicon-'+i).innerHTML=PLAY_ICON;
+        }
+      }
+    });
+    v.muted=false;
+    v.play();
+    play.classList.add('hidden');
+    wrap.classList.add('playing');
+    icon.innerHTML=PAUSE_ICON;
   } else {
-    video.pause();
-    btn.classList.remove('hidden');
+    v.pause();
+    play.classList.remove('hidden');
+    wrap.classList.remove('playing');
+    icon.innerHTML=PLAY_ICON;
   }
 }
+
+function vcMute(n){
+  const v=document.getElementById('vid-'+n);
+  const icon=document.getElementById('vmute-'+n);
+  const slider=document.getElementById('vvol-'+n);
+  v.muted=!v.muted;
+  icon.innerHTML=v.muted?MUTE_ICON:VOL_ICON;
+  if(v.muted) slider.value=0; else slider.value=v.volume||1;
+}
+
+function vcVolume(e,n){
+  const v=document.getElementById('vid-'+n);
+  const icon=document.getElementById('vmute-'+n);
+  v.volume=e.target.value;
+  v.muted=e.target.value==0;
+  icon.innerHTML=v.muted?MUTE_ICON:VOL_ICON;
+}
+
+function vcSeek(e,n){
+  const v=document.getElementById('vid-'+n);
+  const bar=e.currentTarget;
+  const ratio=e.offsetX/bar.offsetWidth;
+  v.currentTime=ratio*v.duration;
+}
+
+// Progress bar update
+[1,2,3,4].forEach(n=>{
+  const v=document.getElementById('vid-'+n);
+  if(!v) return;
+  v.addEventListener('timeupdate',()=>{
+    const p=document.getElementById('vprog-'+n);
+    if(p&&v.duration) p.style.width=(v.currentTime/v.duration*100)+'%';
+  });
+  v.addEventListener('ended',()=>{
+    document.getElementById('vplay-'+n).classList.remove('hidden');
+    document.getElementById('vwrap-'+n).classList.remove('playing');
+    document.getElementById('vicon-'+n).innerHTML=PLAY_ICON;
+    const p=document.getElementById('vprog-'+n);
+    if(p) p.style.width='0%';
+  });
+});
 
 /* NAV */
 window.addEventListener('scroll',()=>{
