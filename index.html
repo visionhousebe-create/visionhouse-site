@@ -3,7 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vision House — Agence Communication · Immobilier & PME · Bruxelles</title>
+<title>Vision House — Agence Communication Bruxelles | Immobilier & PME</title>
+<meta name="description" content="Vision House, agence de communication à Bruxelles spécialisée immobilier et PME. Community management, création vidéo, Meta Ads et Google Ads. Gagnez en visibilité, générez des clients — sans sacrifier votre temps.">
+<meta name="keywords" content="agence communication bruxelles, community management bruxelles, agence marketing pme bruxelles, agence communication immobilier belgique, google ads bruxelles, meta ads belgique, création vidéo bruxelles, réseaux sociaux entreprise bruxelles, visibilité digitale pme, génération leads bruxelles, community manager bruxelles, stratégie communication entreprise belgique">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Vision House — Emkay Partners SRL">
+<link rel="canonical" href="https://visionhouse.be/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://visionhouse.be/">
+<meta property="og:title" content="Vision House — Agence Communication Bruxelles | Immobilier & PME">
+<meta property="og:description" content="Agence de communication à Bruxelles pour l'immobilier et les PME. Community management, vidéo, Meta Ads & Google Ads. Gagnez en visibilité sans sacrifier votre temps.">
+<meta property="og:image" content="https://visionhouse.be/logo.png">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:site_name" content="Vision House">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vision House — Agence Communication Bruxelles | Immobilier & PME">
+<meta name="twitter:description" content="Community management, vidéo & publicité pour l'immobilier et les PME à Bruxelles. Gagnez en visibilité sans sacrifier votre temps.">
+
+<!-- Schema.org LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Vision House",
+  "description": "Agence de communication digitale à Bruxelles pour l'immobilier et les PME. Community management, création vidéo, Meta Ads et Google Ads.",
+  "url": "https://visionhouse.be",
+  "logo": "https://visionhouse.be/logo.png",
+  "telephone": "+32451095650",
+  "email": "hello@visionhouse.be",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenue des Gerfauts 10, Boîte 34",
+    "addressLocality": "Watermael-Boitsfort",
+    "postalCode": "1170",
+    "addressCountry": "BE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.8021,
+    "longitude": 4.4117
+  },
+  "areaServed": ["Bruxelles", "Belgique"],
+  "serviceType": ["Community Management", "Création Vidéo", "Meta Ads", "Google Ads", "Communication Immobilier"],
+  "sameAs": [
+    "https://www.instagram.com/visionhouse.be/",
+    "https://www.linkedin.com/company/visionhouse-be/"
+  ],
+  "priceRange": "€€",
+  "openingHours": "Mo-Fr 09:00-18:00"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Montserrat+Arabic:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 <style>
@@ -55,24 +109,14 @@ nav.scrolled .nav-logo img{height:46px}
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:160px;background:var(--white);position:relative;overflow:hidden;text-align:center}
 #hero .container{display:flex;flex-direction:column;align-items:center}
 .hero-deco{position:absolute;right:-150px;top:50%;transform:translateY(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,var(--lightb) 0%,transparent 65%);pointer-events:none}
-.hero-invisible{
-  font-family:'Lato',sans-serif;font-size:.9rem;font-weight:700;
-  color:var(--muted);letter-spacing:.02em;margin-bottom:8px;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  opacity:0;animation:fadeUp .5s .1s forwards;
-}
+.hero-invisible{font-family:'Lato',sans-serif;font-size:.9rem;font-weight:700;color:var(--muted);letter-spacing:.02em;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;opacity:0;animation:fadeUp .5s .1s forwards}
 .hero-invisible::before{content:'●';color:var(--navy);font-size:.55rem}
-.hero-eyebrow{
-  font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--navy2);
-  margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:8px;
-  opacity:0;animation:fadeUp .5s .18s forwards;
-}
+.hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--navy2);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:8px;opacity:0;animation:fadeUp .5s .18s forwards}
 .hero-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--navy2)}
 .hero-h1-wrap{opacity:0;animation:fadeUp .6s .28s forwards}
 #hero h1{max-width:860px;margin:0 auto}
 #hero h1 .sector-line{color:var(--navy2);font-style:italic;display:inline-block;min-width:280px}
-.hero-urgency{max-width:600px;margin:22px auto 0;font-size:1.05rem;line-height:1.8;opacity:0;animation:fadeUp .6s .42s forwards;text-align:center}
+.hero-urgency{max-width:620px;margin:22px auto 0;font-size:1.05rem;line-height:1.8;opacity:0;animation:fadeUp .6s .42s forwards;text-align:center}
 .hero-urgency strong{color:var(--navy);font-weight:700}
 .hero-actions{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:36px;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .56s forwards}
 .hero-sub-note{font-size:.82rem;color:var(--muted);font-family:'Montserrat',sans-serif;font-weight:500}
@@ -82,14 +126,14 @@ nav.scrolled .nav-logo img{height:46px}
 .hero-stat-n sup{font-size:1.2rem;vertical-align:super}
 .hero-stat-l{font-size:.78rem;color:var(--muted);font-family:'Montserrat',sans-serif;font-weight:500}
 
-/* MARQUEE — KEYWORDS */
+/* MARQUEE */
 .marquee-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;padding:15px 0;background:var(--off)}
 .marquee-inner{display:flex;gap:52px;white-space:nowrap;animation:marquee 32s linear infinite}
 .marquee-inner span{font-family:'Montserrat',sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);flex-shrink:0}
 .marquee-inner span b{color:var(--navy);font-weight:700}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── IMPACT SECTION (NEW) ── */
+/* IMPACT */
 #impact{background:var(--navy);padding:80px 0}
 .impact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .impact-quote{font-family:'Montserrat',sans-serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:#fff;line-height:1.25;letter-spacing:-.02em}
@@ -100,7 +144,7 @@ nav.scrolled .nav-logo img{height:46px}
 .impact-point-text strong{display:block;font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;font-size:.9rem;margin-bottom:4px}
 .impact-point-text p{color:rgba(255,255,255,.5);font-size:.84rem;line-height:1.6;margin:0}
 
-/* SERVICES — 2 offres */
+/* SERVICES */
 #services{background:var(--off)}
 .services-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;max-width:900px}
 .service-card{background:var(--white);border-radius:16px;padding:44px 36px 40px;border:1px solid var(--border);display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;position:relative}
@@ -125,11 +169,11 @@ nav.scrolled .nav-logo img{height:46px}
 .service-price-note{font-size:.76rem;color:var(--muted);margin-bottom:20px;line-height:1.5}
 .service-card.featured .service-price-note{color:rgba(255,255,255,.35)}
 .service-card .btn-navy,.service-card.featured .btn-white{text-align:center;width:100%;display:block}
-.pub-transparency{margin-top:28px;padding:20px 24px;background:var(--lightb);border-radius:var(--r);border:1px solid var(--border)}
+.pub-transparency{margin-top:24px;padding:20px 24px;background:var(--lightb);border-radius:var(--r);border:1px solid var(--border);max-width:900px}
 .pub-transparency p{font-size:.8rem;line-height:1.65;color:var(--muted)}
 .pub-transparency strong{color:var(--navy)}
 
-/* ── 4D STICKY SCROLL ── */
+/* 4D */
 #methode-section{background:var(--white)}
 .methode-intro-wrap{padding:100px 0 60px;background:var(--white)}
 .methode-intro-wrap .method-intro{text-align:center;max-width:600px;margin:0 auto}
@@ -145,10 +189,7 @@ nav.scrolled .nav-logo img{height:46px}
 .d4-center-label small{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Montserrat',sans-serif;font-weight:600;margin-top:4px;display:block}
 .arc-track{fill:none;stroke:rgba(12,3,64,.06);stroke-width:20}
 .arc-fill{fill:none;stroke-width:20;stroke-linecap:round;stroke-dasharray:190;stroke-dashoffset:190;transition:stroke-dashoffset .7s cubic-bezier(.4,0,.2,1),stroke .4s}
-.arc-fill.d1{stroke:var(--navy)}
-.arc-fill.d2{stroke:var(--navy2)}
-.arc-fill.d3{stroke:#1a4899}
-.arc-fill.d4{stroke:#2a5cb8}
+.arc-fill.d1{stroke:var(--navy)}.arc-fill.d2{stroke:var(--navy2)}.arc-fill.d3{stroke:#1a4899}.arc-fill.d4{stroke:#2a5cb8}
 .arc-fill.drawn{stroke-dashoffset:0}
 .arc-node{fill:var(--white);stroke:rgba(12,3,64,.12);stroke-width:2;transition:fill .3s,stroke .3s,r .3s}
 .arc-node.active{fill:var(--navy);stroke:var(--navy)}
@@ -169,6 +210,27 @@ nav.scrolled .nav-logo img{height:46px}
 .d4-dot.active{background:var(--navy);transform:scale(1.4)}
 .d4-scroll-hint{font-size:.78rem;color:var(--muted);font-family:'Montserrat',sans-serif;font-weight:500;margin-left:16px;opacity:.6}
 
+/* À PROPOS */
+#apropos{background:var(--white);padding:100px 0}
+.apropos-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.apropos-img-wrap{position:relative}
+.apropos-img-block{width:100%;aspect-ratio:4/5;background:linear-gradient(135deg,var(--lightb) 0%,var(--off) 100%);border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.apropos-img-block img{width:100%;height:100%;object-fit:cover}
+.apropos-img-placeholder{font-family:'Montserrat',sans-serif;font-size:4rem;font-weight:900;color:rgba(12,3,64,.08)}
+.apropos-badge{position:absolute;bottom:-20px;right:-20px;background:var(--navy);color:#fff;border-radius:12px;padding:16px 20px;text-align:center;box-shadow:0 12px 40px rgba(12,3,64,.2)}
+.apropos-badge-n{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:900;color:#fff;line-height:1}
+.apropos-badge-l{font-size:.7rem;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:3px}
+.apropos-content{}
+.apropos-story{margin-top:0}
+.apropos-story p{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:18px}
+.apropos-story p:last-child{margin-bottom:0}
+.apropos-story strong{color:var(--navy)}
+.apropos-values{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+.apropos-value{display:flex;gap:14px;align-items:flex-start}
+.apropos-value-dot{width:8px;height:8px;border-radius:50%;background:var(--navy2);flex-shrink:0;margin-top:8px}
+.apropos-value-text strong{display:block;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);font-size:.88rem;margin-bottom:2px}
+.apropos-value-text p{font-size:.82rem;color:var(--muted);line-height:1.55;margin:0}
+
 /* COMPARISON */
 #comparaison{background:var(--off)}
 .compare-wrapper{margin-top:52px;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
@@ -188,7 +250,7 @@ nav.scrolled .nav-logo img{height:46px}
 .compare-cta p{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);font-size:1.1rem}
 
 /* AVIS */
-#avis{background:var(--off);position:relative}
+#avis{background:var(--off)}
 .avis-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;max-width:980px;margin-left:auto;margin-right:auto}
 .avis-card{background:var(--white);border-radius:16px;padding:36px 32px;border:1px solid var(--border);position:relative;display:flex;flex-direction:column;gap:18px;transition:box-shadow .25s,transform .25s}
 .avis-card:hover{box-shadow:0 16px 56px rgba(12,3,64,.1);transform:translateY(-4px)}
@@ -197,10 +259,10 @@ nav.scrolled .nav-logo img{height:46px}
 .avis-text{font-size:1rem;line-height:1.7;color:var(--navy);font-style:italic;flex:1;font-family:'Lato',sans-serif;font-weight:400}
 .avis-author{display:flex;align-items:center;gap:14px;padding-top:14px;border-top:1px solid var(--border)}
 .avis-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.86rem;flex-shrink:0;letter-spacing:.04em}
-.avis-meta{display:flex;flex-direction:column;line-height:1.3}
 .avis-meta strong{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);font-size:.96rem}
-.avis-meta span{font-size:.78rem;color:var(--navy2);font-family:'Montserrat',sans-serif;font-weight:500;letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+.avis-meta span{font-size:.78rem;color:var(--navy2);font-family:'Montserrat',sans-serif;font-weight:500;letter-spacing:.04em;text-transform:uppercase;margin-top:2px;display:block}
 
+/* EQUIPE */
 #equipe{background:var(--white)}
 .team-bubbles{display:flex;justify-content:center;gap:60px;margin-top:64px;flex-wrap:wrap}
 .team-bubble{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:200px;text-align:center}
@@ -269,14 +331,19 @@ nav.scrolled .nav-logo img{height:46px}
 
 /* FOOTER */
 footer{background:#080720;padding:72px 0 0}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:64px;margin-bottom:56px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
 .footer-logo img{height:54px;filter:brightness(0) invert(1);margin-bottom:16px;display:block}
-.footer-tagline{font-size:.86rem;color:rgba(255,255,255,.33);line-height:1.65;max-width:280px}
+.footer-tagline{font-size:.86rem;color:rgba(255,255,255,.33);line-height:1.65;max-width:260px;margin-bottom:24px}
+.footer-social{display:flex;gap:12px;margin-top:4px}
+.footer-social a{width:38px;height:38px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;transition:all .2s;text-decoration:none}
+.footer-social a:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
+.footer-social svg{width:18px;height:18px;fill:rgba(255,255,255,.55);transition:fill .2s}
+.footer-social a:hover svg{fill:#fff}
 .footer-col h4{font-family:'Montserrat',sans-serif;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.28);font-weight:700;margin-bottom:18px}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .footer-col ul li a{color:rgba(255,255,255,.42);text-decoration:none;font-size:.86rem;transition:color .2s}
 .footer-col ul li a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding:24px 0;display:flex;justify-content:space-between;font-size:.76rem;color:rgba(255,255,255,.22)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding:24px 0;display:flex;justify-content:space-between;font-size:.76rem;color:rgba(255,255,255,.22);flex-wrap:wrap;gap:12px}
 .footer-bottom a{color:rgba(255,255,255,.32);text-decoration:none;transition:color .2s}
 .footer-bottom a:hover{color:rgba(255,255,255,.65)}
 .footer-legal{background:rgba(0,0,0,.3);border-top:1px solid rgba(255,255,255,.04);padding:20px 40px;text-align:center}
@@ -302,17 +369,22 @@ footer{background:#080720;padding:72px 0 0}
 .tw-btn.active{border-color:var(--navy);color:var(--navy);background:var(--lightb);font-weight:700}
 .tw-div{height:1px;background:var(--border);margin:14px 0}
 
+/* RS CHIPS */
+.rs-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.rs-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:6px 14px;color:rgba(255,255,255,.65);font-size:.8rem;cursor:pointer;transition:all .2s;user-select:none}
+.rs-chip:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.rs-chip input{display:none}
+.rs-chip.checked{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.5);color:#fff;font-weight:600}
+
 /* MOBILE */
 @media(max-width:900px){
   .nav-links{display:none}
-  nav{grid-template-columns:1fr auto 1fr}
-  .nav-logo img{height:48px}
-  nav.scrolled .nav-logo img{height:40px}
   section{padding:64px 0}
   .container,.container-sm{padding:0 22px}
   h1{font-size:clamp(2rem,7vw,3rem)}
   h2{font-size:clamp(1.6rem,5.5vw,2.2rem)}
-  .services-grid,.footer-grid,.contact-grid{grid-template-columns:1fr;gap:16px}
+  .services-grid,.contact-grid,.apropos-inner{grid-template-columns:1fr;gap:32px}
+  .footer-grid{grid-template-columns:1fr!important;gap:32px}
   .avis-grid{grid-template-columns:1fr;gap:16px}
   .compare-header,.compare-row{grid-template-columns:1fr 1fr}
   .cc.aspect,.chc.aspect{display:none}
@@ -341,6 +413,7 @@ footer{background:#080720;padding:72px 0 0}
   .form-submit{font-size:.88rem;padding:14px}
   .marquee-benefit{padding:14px 24px;font-size:.7rem}
   .impact-inner{grid-template-columns:1fr;gap:40px}
+  .apropos-badge{bottom:-12px;right:12px}
 }
 @media(min-width:901px) and (max-width:1100px){
   .container,.container-sm{padding:0 32px}
@@ -348,6 +421,7 @@ footer{background:#080720;padding:72px 0 0}
   .d4-svg-wrap{width:280px;height:280px}
   .services-grid{gap:14px}
   .service-card{padding:32px 26px}
+  .footer-grid{grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px}
 }
 </style>
 </head>
@@ -355,19 +429,19 @@ footer{background:#080720;padding:72px 0 0}
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo"><img src="logo.png" alt="Vision House"></a>
+  <a href="#hero" class="nav-logo"><img src="logo.png" alt="Vision House agence communication Bruxelles"></a>
   <ul class="nav-links nav-row">
     <li><a href="#services">Offres</a></li>
     <li><a href="#methode-section">Méthode 4D</a></li>
+    <li><a href="#apropos">À propos</a></li>
     <li><a href="#avis">Avis</a></li>
-    <li><a href="#equipe">Équipe</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact" class="nav-cta">Diagnostic offert</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" aria-label="Agence communication Bruxelles immobilier et PME">
   <div class="hero-deco"></div>
   <div class="container">
     <p class="hero-invisible">Votre expertise mérite une image à sa hauteur.</p>
@@ -380,36 +454,34 @@ footer{background:#080720;padding:72px 0 0}
       <strong>On construit une présence qui génère de la confiance — et des clients.</strong>
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-navy btn-arrow" id="hero-cta-btn">Obtenir mon diagnostic gratuit</a>
-      <span class="hero-sub-note">30 minutes · Sans engagement</span>
+      <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="btn btn-navy btn-arrow" id="hero-cta-btn">Réserver mon appel offert</a>
+      <span class="hero-sub-note">30 minutes · Sans engagement · Bruxelles</span>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-n">2<sup>×</sup></div><div class="hero-stat-l">Visibilité en 60 jours</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">1 an</div><div class="hero-stat-l">de R&amp;D terrain avec des pros</div></div>
       <div class="hero-stat"><div class="hero-stat-n">48h</div><div class="hero-stat-l">Pour démarrer votre stratégie</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">0</div><div class="hero-stat-l">Commission sur votre budget pub</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">0</div><div class="hero-stat-l">Engagement imposé</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">0%</div><div class="hero-stat-l">Commission sur votre budget pub</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">0</div><div class="hero-stat-l">Engagement de durée imposé</div></div>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE 1 — KEYWORDS -->
-<div class="marquee-strip">
+<!-- MARQUEE 1 -->
+<div class="marquee-strip" aria-hidden="true">
   <div class="marquee-inner">
-    <span>Réseaux sociaux</span><span>·</span><span><b>Google Ads</b></span><span>·</span>
-    <span>Facebook Ads</span><span>·</span><span><b>Mandats immobiliers</b></span><span>·</span>
-    <span>Génération de leads</span><span>·</span><span><b>Création vidéo</b></span><span>·</span>
-    <span>Community management</span><span>·</span><span><b>Bruxelles</b></span><span>·</span>
-    <span>PME</span><span>·</span><span><b>Stratégie digitale</b></span><span>·</span>
-    <span>Réseaux sociaux</span><span>·</span><span><b>Google Ads</b></span><span>·</span>
-    <span>Facebook Ads</span><span>·</span><span><b>Mandats immobiliers</b></span><span>·</span>
-    <span>Génération de leads</span><span>·</span><span><b>Création vidéo</b></span><span>·</span>
-    <span>Community management</span><span>·</span><span><b>Bruxelles</b></span><span>·</span>
-    <span>Immobilier</span><span>·</span><span><b>Stratégie digitale</b></span><span>·</span>
+    <span>Community management</span><span>·</span><span><b>Google Ads Bruxelles</b></span><span>·</span>
+    <span>Meta Ads PME</span><span>·</span><span><b>Génération de leads</b></span><span>·</span>
+    <span>Visibilité locale Belgique</span><span>·</span><span><b>Création vidéo &amp; Reels</b></span><span>·</span>
+    <span>Réseaux sociaux entreprise</span><span>·</span><span><b>Stratégie digitale Bruxelles</b></span><span>·</span>
+    <span>Community management</span><span>·</span><span><b>Google Ads Bruxelles</b></span><span>·</span>
+    <span>Meta Ads PME</span><span>·</span><span><b>Génération de leads</b></span><span>·</span>
+    <span>Visibilité locale Belgique</span><span>·</span><span><b>Création vidéo &amp; Reels</b></span><span>·</span>
+    <span>Réseaux sociaux entreprise</span><span>·</span><span><b>Stratégie digitale Bruxelles</b></span><span>·</span>
   </div>
 </div>
 
-<!-- IMPACT SECTION (NEW) -->
-<section id="impact">
+<!-- IMPACT -->
+<section id="impact" aria-label="Notre philosophie de communication">
   <div class="container">
     <div class="impact-inner">
       <div class="reveal">
@@ -418,24 +490,30 @@ footer{background:#080720;padding:72px 0 0}
       </div>
       <div class="impact-right reveal d2">
         <div class="impact-point">
-          <div class="impact-point-icon">🎯</div>
+          <div class="impact-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
           <div class="impact-point-text">
             <strong>Stratégie avant volume</strong>
             <p>Un contenu qui parle à la bonne personne au bon moment vaut dix posts génériques. On commence toujours par comprendre avant de produire.</p>
           </div>
         </div>
         <div class="impact-point">
-          <div class="impact-point-icon">🎬</div>
+          <div class="impact-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
           <div class="impact-point-text">
             <strong>La vidéo, incontournable</strong>
             <p>En 2026, la vidéo n'est plus optionnelle — c'est ce qui fait la différence entre être présent et être remarqué. C'est pourquoi nous la recommandons à tous nos clients.</p>
           </div>
         </div>
         <div class="impact-point">
-          <div class="impact-point-icon">🤝</div>
+          <div class="impact-point-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
           <div class="impact-point-text">
             <strong>Un interlocuteur. Toujours le même.</strong>
-            <p>Pas de ticket support. Pas de roulette d'account managers mais un fondateur qui connaît votre dossier par cœur.</p>
+            <p>Pas de ticket support. Pas de roulette d'account managers. Un fondateur qui connaît votre dossier par cœur.</p>
           </div>
         </div>
       </div>
@@ -443,24 +521,20 @@ footer{background:#080720;padding:72px 0 0}
   </div>
 </section>
 
-<!-- SERVICES — 2 OFFRES -->
-<section id="services">
+<!-- SERVICES -->
+<section id="services" aria-label="Offres community management et publicité Bruxelles">
   <div class="container">
     <div class="reveal">
       <div class="label">Nos offres</div>
       <h2>Deux niveaux.<br>Une seule direction.</h2>
-      <p style="margin-top:12px;max-width:560px;font-size:1rem;line-height:1.75;">Nous proposons deux formules claires, conçues pour l'immobilier et les PME bruxelloises. La seconde est celle que nous recommandons — parce que sans vidéo, la visibilité a un plafond.</p>
+      <p style="margin-top:12px;max-width:600px;font-size:1rem;line-height:1.75;">Deux formules claires, conçues pour l'immobilier et les PME bruxelloises. La seconde est celle que nous recommandons — parce que sans vidéo, la visibilité a un plafond.</p>
     </div>
     <div class="services-grid">
-
-      <!-- OFFRE 1 -->
       <div class="service-card reveal d1">
-        <div class="service-icon">📡</div>
-        <div class="service-title">Présence &amp; Acquisition</div>
-        <p class="service-hook">Votre communication gérée de A à Z. Vous validez en quelques clics. On s'occupe du reste.</p>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3 class="service-title">Visibilité & Acquisition</h3>
+        <p class="service-hook">Votre présence digitale construite de A à Z. Publicité ciblée, contenu impactant, résultats mesurables. Vous validez en quelques clics, on s'occupe du reste.</p>
         <ul class="service-features">
-          <li>Community management complet</li>
-          <li>Stratégie éditoriale mensuelle</li>
           <li>Création de contenus photo &amp; texte</li>
           <li>Gestion Meta Ads &amp; Google Ads</li>
           <li>Optimisation hebdomadaire des campagnes</li>
@@ -468,18 +542,18 @@ footer{background:#080720;padding:72px 0 0}
           <li>Rapport mensuel en langage clair</li>
         </ul>
         <div class="service-price">900 €<span>/mois</span></div>
-        <div class="service-price-note">Sans engagement de durée imposée</div>
-        <a href="#contact" class="btn btn-navy btn-sm btn-arrow">Réserver un appel gratuit</a>
+        <div class="service-price-note">Sans engagement de durée · Budget pub géré par vous</div>
+        <a href="#contact" class="btn btn-navy btn-sm btn-arrow">Réserver un appel</a>
       </div>
-
-      <!-- OFFRE 2 — RECOMMANDÉE -->
       <div class="service-card featured reveal d2">
         <div class="service-badge">Recommandé</div>
-        <div class="service-icon">🎬</div>
-        <div class="service-title">Présence &amp; Impact</div>
-        <p class="service-hook">Tout ce qui est dans l'offre Fondation, plus la création vidéo, le levier le plus puissant pour être remarqué dans votre zone.</p>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+        <h3 class="service-title">Visibilité & Impact</h3>
+        <p class="service-hook">Tout ce qui est dans Visibilité &amp; Acquisition, plus une stratégie éditoriale mensuelle complète et la création vidéo — le levier le plus puissant pour être remarqué dans votre zone.</p>
         <ul class="service-features">
-          <li>Tout ce qui est inclus dans Présence &amp; Acquisition</li>
+          <li>Tout ce qui est inclus dans Visibilité &amp; Acquisition</li>
+          <li>Stratégie éditoriale mensuelle</li>
+          <li>Community management complet</li>
           <li>Création vidéo &amp; Reels incluse</li>
           <li>Scripts préparés à l'avance</li>
           <li>Montage, sous-titres, habillage visuel</li>
@@ -488,31 +562,27 @@ footer{background:#080720;padding:72px 0 0}
           <li>Analyse de performance mensuelle</li>
         </ul>
         <div class="service-price">1 500 €<span>/mois</span></div>
-        <div class="service-price-note">Sans engagement de durée imposée</div>
-        <a href="#contact" class="btn btn-white btn-sm btn-arrow">Réserver un appel gratuit</a>
+        <div class="service-price-note">Sans engagement de durée · Budget pub géré par vous</div>
+        <a href="#contact" class="btn btn-white btn-sm btn-arrow">Réserver un appel</a>
       </div>
-
     </div>
-
-    <!-- TRANSPARENCE BUDGET PUB -->
-    <div class="pub-transparency reveal" style="margin-top:24px;max-width:900px">
-      <p><strong>Transparence sur le budget publicitaire : </strong> Le budget Meta Ads et Google Ads est entièrement entre vos mains. Vous décidez du montant selon vos ambitions (nous recommandons 200 à 500 €/mois pour démarrer). Vision House gère les campagnes et l'optimisation. <strong>Nous ne prélevons aucune commission sur votre budget pub</strong> : notre seul intérêt est que vos annonces performent.</p>
+    <div class="pub-transparency reveal">
+      <p><strong>Transparence totale sur le budget publicitaire —</strong> Votre budget Meta Ads et Google Ads vous appartient entièrement. Vous décidez du montant selon vos ambitions (nous recommandons 200 à 500 €/mois pour démarrer). <strong>Vision House gère les campagnes sans aucune commission prélevée</strong> : notre seul objectif est que vos annonces performent et génèrent de vrais clients.</p>
     </div>
   </div>
 </section>
 
-<!-- METHOD 4D — STICKY SCROLL -->
-<div id="methode-section">
+<!-- MÉTHODE 4D -->
+<div id="methode-section" aria-label="Méthode 4D Vision House">
   <div class="methode-intro-wrap">
     <div class="container">
       <div class="method-intro reveal">
-        <div class="label" style="justify-content:center">Processus</div>
+        <div class="label" style="justify-content:center">Notre processus</div>
         <h2>La Méthode 4D™</h2>
         <p>Un cadre structuré qui transforme votre invisibilité en croissance mesurable. Faites défiler pour découvrir chaque étape.</p>
       </div>
     </div>
   </div>
-
   <div id="d4-scroll-container">
     <div id="d4-sticky">
       <div class="container">
@@ -535,10 +605,7 @@ footer{background:#080720;padding:72px 0 0}
                 <text id="nl4" class="arc-label" x="50" y="175" text-anchor="middle">D4</text>
                 <circle cx="170" cy="170" r="82" fill="var(--white)" stroke="rgba(12,3,64,.05)" stroke-width="1"/>
               </svg>
-              <div class="d4-center-label">
-                <span>4D™</span>
-                <small>Méthode</small>
-              </div>
+              <div class="d4-center-label"><span>4D™</span><small>Méthode</small></div>
             </div>
           </div>
           <div class="d4-right" id="d4-right">
@@ -553,10 +620,8 @@ footer{background:#080720;padding:72px 0 0}
                 <li>Identification des opportunités concrètes</li>
               </ul>
               <div class="d4-progress">
-                <div class="d4-dot active" id="dot1"></div>
-                <div class="d4-dot" id="dot2"></div>
-                <div class="d4-dot" id="dot3"></div>
-                <div class="d4-dot" id="dot4"></div>
+                <div class="d4-dot active" id="dot1"></div><div class="d4-dot" id="dot2"></div>
+                <div class="d4-dot" id="dot3"></div><div class="d4-dot" id="dot4"></div>
                 <span class="d4-scroll-hint">Continuez à défiler</span>
               </div>
             </div>
@@ -571,27 +636,23 @@ footer{background:#080720;padding:72px 0 0}
                 <li>Plan validé avant toute action</li>
               </ul>
               <div class="d4-progress">
-                <div class="d4-dot" id="dot1b"></div>
-                <div class="d4-dot active" id="dot2b"></div>
-                <div class="d4-dot" id="dot3b"></div>
-                <div class="d4-dot" id="dot4b"></div>
+                <div class="d4-dot" id="dot1b"></div><div class="d4-dot active" id="dot2b"></div>
+                <div class="d4-dot" id="dot3b"></div><div class="d4-dot" id="dot4b"></div>
               </div>
             </div>
             <div class="d4-panel" id="panel3">
               <div class="d4-panel-tag">Étape 3 sur 4</div>
               <span class="d4-panel-bigletter">D3</span>
               <h3>Déploiement</h3>
-              <p>On exécute. Proprement. Vite. Contenus, campagnes, vidéos, visuels. Tout est cohérent et calibré pour votre audience cible.</p>
+              <p>On exécute. Proprement. Vite. Contenus vidéo, visuels, campagnes Meta Ads et Google Ads. Tout est cohérent et calibré pour votre audience cible.</p>
               <ul>
                 <li>Création de contenus vidéo et photo</li>
                 <li>Lancement des campagnes publicitaires</li>
                 <li>Activation complète des réseaux sociaux</li>
               </ul>
               <div class="d4-progress">
-                <div class="d4-dot" id="dot1c"></div>
-                <div class="d4-dot" id="dot2c"></div>
-                <div class="d4-dot active" id="dot3c"></div>
-                <div class="d4-dot" id="dot4c"></div>
+                <div class="d4-dot" id="dot1c"></div><div class="d4-dot" id="dot2c"></div>
+                <div class="d4-dot active" id="dot3c"></div><div class="d4-dot" id="dot4c"></div>
               </div>
             </div>
             <div class="d4-panel" id="panel4">
@@ -605,10 +666,8 @@ footer{background:#080720;padding:72px 0 0}
                 <li>Rapports mensuels clairs et actionnables</li>
               </ul>
               <div class="d4-progress">
-                <div class="d4-dot" id="dot1d"></div>
-                <div class="d4-dot" id="dot2d"></div>
-                <div class="d4-dot" id="dot3d"></div>
-                <div class="d4-dot active" id="dot4d"></div>
+                <div class="d4-dot" id="dot1d"></div><div class="d4-dot" id="dot2d"></div>
+                <div class="d4-dot" id="dot3d"></div><div class="d4-dot active" id="dot4d"></div>
                 <a href="#contact" class="btn btn-navy btn-sm btn-arrow" style="margin-left:16px;padding:8px 20px;font-size:.82rem">Commencer</a>
               </div>
             </div>
@@ -619,8 +678,35 @@ footer{background:#080720;padding:72px 0 0}
   </div>
 </div>
 
+<!-- À PROPOS -->
+<section id="apropos" aria-label="À propos de Vision House agence communication Bruxelles">
+  <div class="container">
+    <div class="apropos-inner">
+      <div class="apropos-img-wrap reveal">
+        <div class="apropos-img-block">
+          <img src="team-joseph.png" alt="Équipe Vision House agence communication Bruxelles" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="apropos-img-placeholder" style="display:none">VH</div>
+        </div>
+        <div class="apropos-badge">
+          <div class="apropos-badge-n">1 an</div>
+          <div class="apropos-badge-l">d'immersion terrain</div>
+        </div>
+      </div>
+      <div class="apropos-content reveal d2">
+        <div class="label">Notre histoire</div>
+        <h2>Nés du terrain.<br>Forgés par l'expérience.</h2>
+        <div class="apropos-story">
+          <p>Pendant un an, nous avons travaillé aux côtés d'agents immobiliers pour comprendre leur réalité : la pression des résultats, la concurrence locale, et le manque de temps pour construire une vraie présence digitale.</p>
+          <p>Après de nombreuses tentatives et ajustements sur le terrain, nous avons combiné <strong>la formule qui fonctionne vraiment</strong> — une communication qui génère de la visibilité, de la confiance et des clients concrets.</p>
+          <p>Aujourd'hui, Vision House accompagne l'immobilier et les PME bruxelloises avec une seule conviction : <strong>votre expertise mérite une image à sa hauteur.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- COMPARISON -->
-<section id="comparaison">
+<section id="comparaison" aria-label="Vision House vs autres agences communication Bruxelles">
   <div class="container">
     <div class="reveal">
       <div class="label">Comparaison</div>
@@ -630,52 +716,52 @@ footer{background:#080720;padding:72px 0 0}
     <div class="compare-wrapper reveal" style="margin-top:48px">
       <div class="compare-header">
         <div class="chc aspect">Aspect</div>
-        <div class="chc bad">✗ L'agence classique</div>
+        <div class="chc bad">✗ Agence classique</div>
         <div class="chc good">✓ Vision House</div>
       </div>
       <div class="compare-row">
         <div class="cc aspect">Contenu</div>
-        <div class="cc bad">X posts/mois garantis contractuellement</div>
-        <div class="cc good">Ce qui a de l'impact et pas ce qui remplit un quota</div>
+        <div class="cc bad">X posts/mois contractuels, contenu générique</div>
+        <div class="cc good">Ce qui génère des mandats — pas ce qui remplit un quota</div>
       </div>
       <div class="compare-row">
-        <div class="cc aspect">Connaissance secteur</div>
-        <div class="cc bad">Contenu générique applicable à n'importe qui</div>
-        <div class="cc good">Spécialisé immobilier &amp; PME bruxelloises</div>
+        <div class="cc aspect">Expertise secteur</div>
+        <div class="cc bad">Agence généraliste sans connaissance immobilier</div>
+        <div class="cc good">Spécialiste immobilier &amp; PME bruxelloises</div>
       </div>
       <div class="compare-row">
         <div class="cc aspect">Budget pub</div>
-        <div class="cc bad">Commission prélevée sur votre budget</div>
-        <div class="cc good">Zéro commission avec un budget qui vous appartient</div>
+        <div class="cc bad">Commission prélevée sur votre budget pub</div>
+        <div class="cc good">Zéro commission — votre budget vous appartient</div>
       </div>
       <div class="compare-row">
         <div class="cc aspect">Interlocuteur</div>
-        <div class="cc bad">Changement d'account manager régulier</div>
+        <div class="cc bad">Account manager qui change régulièrement</div>
         <div class="cc good">Un fondateur dédié. Toujours le même.</div>
       </div>
       <div class="compare-row">
         <div class="cc aspect">Vidéo</div>
-        <div class="cc bad">Option payante ou absente</div>
+        <div class="cc bad">Option payante ou absente de l'offre</div>
         <div class="cc good">Incluse et centrale dans l'offre recommandée</div>
       </div>
       <div class="compare-row">
         <div class="cc aspect">Votre temps</div>
-        <div class="cc bad">Briefs hebdomadaires, réunions, validations multiples</div>
+        <div class="cc bad">Briefs hebdomadaires et réunions multiples</div>
         <div class="cc good">Un brief de 20 minutes par mois. Pas plus.</div>
       </div>
       <div class="compare-cta">
         <p>Prêt à faire la différence ?</p>
-        <a href="#contact" class="btn btn-navy btn-arrow" id="compare-cta-btn">Obtenir mon diagnostic gratuit</a>
+        <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="btn btn-navy btn-arrow" id="compare-cta-btn">Réserver mon appel offert</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- AVIS -->
-<section id="avis">
+<section id="avis" aria-label="Avis clients Vision House">
   <div class="container">
     <div class="reveal" style="text-align:center">
-      <div class="label" style="justify-content:center">Ils nous ont fait confiance</div>
+      <div class="label" style="justify-content:center">Ils nous font confiance</div>
       <h2>Ce qu'ils en disent.</h2>
       <p style="margin-top:12px;max-width:540px;margin-left:auto;margin-right:auto">Des entrepreneurs et dirigeants qui ont vu leur communication changer de dimension.</p>
     </div>
@@ -685,10 +771,7 @@ footer{background:#080720;padding:72px 0 0}
         <p class="avis-text">"L'équipe est de très bon conseil. À l'écoute et disponible."</p>
         <div class="avis-author">
           <div class="avis-avatar">SA</div>
-          <div class="avis-meta">
-            <strong>Sapia Adeline</strong>
-            <span>Immobilier</span>
-          </div>
+          <div class="avis-meta"><strong>Sapia Adeline</strong><span>Immobilier</span></div>
         </div>
       </div>
       <div class="avis-card reveal d2">
@@ -696,10 +779,7 @@ footer{background:#080720;padding:72px 0 0}
         <p class="avis-text">"Franchement, super expérience. J'ai particulièrement apprécié la qualité des conseils, toujours pertinents et orientés solutions. On sent l'envie d'apporter une vraie valeur. Ça fait plaisir de travailler avec quelqu'un d'aussi impliqué !"</p>
         <div class="avis-author">
           <div class="avis-avatar">NA</div>
-          <div class="avis-meta">
-            <strong>Nizar Anis</strong>
-            <span>Software</span>
-          </div>
+          <div class="avis-meta"><strong>Nizar Anis</strong><span>Software</span></div>
         </div>
       </div>
     </div>
@@ -707,7 +787,7 @@ footer{background:#080720;padding:72px 0 0}
 </section>
 
 <!-- EQUIPE -->
-<section id="equipe">
+<section id="equipe" aria-label="Équipe Vision House Bruxelles">
   <div class="container">
     <div class="reveal" style="text-align:center">
       <div class="label" style="justify-content:center">L'équipe</div>
@@ -716,25 +796,19 @@ footer{background:#080720;padding:72px 0 0}
     </div>
     <div class="team-bubbles">
       <div class="team-bubble reveal d1">
-        <div class="team-bubble-ring">
-          <div class="team-bubble-inner"><img src="team-remy.png" alt="Rémy"></div>
-        </div>
+        <div class="team-bubble-ring"><div class="team-bubble-inner"><img src="team-remy.png" alt="Rémy Vision House créatif communication immobilier"></div></div>
         <div class="team-bubble-name">Rémy</div>
         <div class="team-bubble-role">Le créatif sans limites</div>
         <p class="team-bubble-quote">"On peut être créatif et atteindre ses objectifs. Se fixer des limites en créa, c'est déjà renoncer."</p>
       </div>
       <div class="team-bubble reveal d2">
-        <div class="team-bubble-ring">
-          <div class="team-bubble-inner"><img src="team-joseph.png" alt="Joseph"></div>
-        </div>
+        <div class="team-bubble-ring"><div class="team-bubble-inner"><img src="team-joseph.png" alt="Joseph Vision House stratège communication immobilier Bruxelles"></div></div>
         <div class="team-bubble-name">Joseph</div>
         <div class="team-bubble-role">L'architecte de votre communication</div>
         <p class="team-bubble-quote">"Je veux que chaque entrepreneur ait les outils et la clarté pour construire ce qu'il a en tête."</p>
       </div>
       <div class="team-bubble reveal d3">
-        <div class="team-bubble-ring">
-          <div class="team-bubble-inner"><img src="team-emmerich.png" alt="Emmerich"></div>
-        </div>
+        <div class="team-bubble-ring"><div class="team-bubble-inner"><img src="team-emmerich.png" alt="Emmerich Vision House stratège croissance immobilier"></div></div>
         <div class="team-bubble-name">Emmerich</div>
         <div class="team-bubble-role">Le stratège de votre croissance</div>
         <p class="team-bubble-quote">"Je veux apporter une vraie valeur à ceux qui travaillent avec nous. Et que ça se mesure."</p>
@@ -748,38 +822,38 @@ footer{background:#080720;padding:72px 0 0}
 </section>
 
 <!-- FAQ -->
-<section id="faq">
+<section id="faq" aria-label="Questions fréquentes agence communication Bruxelles">
   <div class="container-sm">
     <div class="reveal">
       <div class="label">Questions fréquentes</div>
       <h2>Ce qu'on nous demande souvent.</h2>
     </div>
     <div class="faq-list reveal">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels sont vos tarifs ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Nous proposons deux offres mensuelles sans engagement imposé. <strong>Présence &amp; Acquisition à 900 €/mois</strong> : community management, stratégie éditoriale, gestion Meta Ads et Google Ads. <strong>Présence &amp; Impact à 1 500 €/mois</strong> (recommandé) : tout ce qui précède, plus la création vidéo et Reels incluse. Le budget publicitaire (Meta/Google) est géré par vous séparément — nous ne prélevons aucune commission dessus.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Le budget publicitaire est-il inclus dans le forfait ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Non — et c'est volontaire. Votre budget Meta Ads et Google Ads reste entièrement entre vos mains. Vous décidez du montant selon vos objectifs (nous recommandons entre 200 et 500 €/mois pour commencer efficacement). Vision House gère les campagnes, le ciblage et l'optimisation. Nous ne percevons aucune commission sur ce budget : notre seul intérêt est que vos annonces performent le mieux possible.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je fournir du contenu ou des photos ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Non. On prend en charge la création complète : textes, visuels, vidéos. Si vous avez déjà des ressources, on les intègre. Sinon, on les crée pour vous. Pour la vidéo, nous préparons les scripts à l'avance — vous filmez ce que vous voulez, quand vous voulez. Nous montons, sous-titrons et publions.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Pourquoi recommandez-vous l'offre avec vidéo ? <span class="faq-icon">+</span></button><div class="faq-a"><p>La vidéo est aujourd'hui le format le plus performant sur tous les réseaux — Instagram, LinkedIn, Facebook. Elle crée de la proximité, de la confiance, et de la visibilité organique que le contenu statique ne peut plus atteindre seul. Sans vidéo, votre présence a un plafond. Avec elle, vous vous différenciez immédiatement de la concurrence dans votre zone.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Suis-je bien accompagné au quotidien ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Oui. Vous avez un interlocuteur direct — un fondateur, pas un ticket de support. On répond vite, on anticipe vos questions et on vous tient informé à chaque étape. Un brief mensuel de 20 minutes suffit pour maintenir le cap.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il s'engager sur une longue durée ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Nos contrats sont mensuels et renouvelables. Pas d'engagement annuel imposé. Si après 60 jours vous estimez que Vision House ne vous apporte pas la valeur attendue, vous pouvez partir sans pénalité et sans friction. Nos clients restent parce que les résultats sont là, pas parce qu'ils y sont obligés.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels résultats puis-je attendre ? <span class="faq-icon">+</span></button><div class="faq-a"><p>On fixe des objectifs clairs lors du diagnostic. Les premiers signaux arrivent entre la 3e et la 6e semaine. Les résultats mesurables (leads, mandats, visibilité locale) se consolident à partir du 2e mois. On ne vous vend pas un miracle : on construit quelque chose qui dure.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels sont vos délais de démarrage ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Stratégie et profils optimisés dès la première semaine. Premier contenu publié en semaine 3. Campagnes publicitaires lancées sous 48h après validation. On ne perd pas de temps.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Avec quel type d'entreprises travaillez-vous ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Principalement des agents immobiliers, agences immobilières, promoteurs et PME locales à Bruxelles et en Belgique. On sélectionne nos clients pour garantir un accompagnement de qualité — nous n'acceptons pas plus de clients que nous ne pouvons bien servir.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels sont vos tarifs ? <span class="faq-icon">+</span></button><div class="faq-a"><p><strong>Visibilité &amp; Acquisition à 900 €/mois</strong> : community management, stratégie éditoriale, gestion Meta Ads et Google Ads. <strong>Visibilité &amp; Impact à 1 500 €/mois</strong> (recommandé) : tout ce qui précède, plus la création vidéo et Reels. Sans engagement de durée imposée. Le budget publicitaire est géré par vous séparément — nous ne prélevons aucune commission.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Le budget publicitaire est-il inclus dans le forfait ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Non — et c'est volontaire. Votre budget Meta Ads et Google Ads reste entièrement entre vos mains. Vous décidez du montant selon vos objectifs (nous recommandons entre 200 et 500 €/mois pour commencer efficacement). Vision House gère les campagnes et l'optimisation. <strong>Nous ne percevons aucune commission sur votre budget pub.</strong></p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je fournir du contenu ou des photos ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Non. On prend en charge la création complète : textes, visuels, vidéos. Pour la vidéo, nous préparons les scripts à l'avance — vous filmez ce que vous voulez, quand vous voulez. Nous montons, sous-titrons et publions. Votre seule obligation : valider le contenu en quelques clics.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Pourquoi recommandez-vous l'offre avec vidéo ? <span class="faq-icon">+</span></button><div class="faq-a"><p>La vidéo génère aujourd'hui beaucoup plus d'engagement que le contenu statique sur Instagram et LinkedIn. Elle crée de la proximité, renforce la confiance et génère des clients bien plus facilement qu'une publication photo. Sans vidéo, votre visibilité a un plafond que la concurrence franchit déjà.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Suis-je bien accompagné au quotidien ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Oui. Un fondateur dédié, pas un ticket support. On répond vite, on anticipe vos questions. Un brief mensuel de 20 minutes suffit — le reste est géré par nous.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il s'engager sur une longue durée ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Nos contrats sont mensuels et renouvelables. Pas d'engagement annuel imposé. Si après 60 jours vous estimez que Vision House ne vous apporte pas la valeur attendue, vous partez sans pénalité. Nos clients restent parce que les résultats sont là, pas parce qu'ils y sont obligés.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels résultats puis-je attendre ? <span class="faq-icon">+</span></button><div class="faq-a"><p>On fixe des objectifs clairs lors du diagnostic. Les premiers signaux arrivent entre la 3e et la 6e semaine. Les résultats mesurables se consolident à partir du 2e mois. On ne vous vend pas un miracle : on construit quelque chose qui dure.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels sont vos délais de démarrage ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Stratégie et profils optimisés dès la première semaine. Premier contenu publié en semaine 3. Campagnes publicitaires lancées sous 48h après validation.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Avec quel type d'entreprises travaillez-vous ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Principalement des agents immobiliers, agences immobilières et PME locales à Bruxelles et en Belgique. On sélectionne nos clients pour garantir un accompagnement de qualité — nous n'acceptons pas plus de clients que nous ne pouvons bien servir.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Pouvez-vous travailler avec mon équipe interne ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Absolument. On s'intègre à votre organisation existante, que vous ayez un community manager, un graphiste ou rien du tout. On part toujours de votre situation réelle.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Comment mesurez-vous le succès ? <span class="faq-icon">+</span></button><div class="faq-a"><p>En chiffres concrets : leads générés, mandats obtenus, croissance d'audience qualifiée, coût par acquisition. Pas de métriques de vanité — uniquement des chiffres qui parlent à votre business.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Comment mesurez-vous le succès ? <span class="faq-icon">+</span></button><div class="faq-a"><p>En chiffres concrets : leads générés, clients obtenus, croissance d'audience qualifiée, coût par acquisition. Pas de métriques de vanité — uniquement des chiffres qui parlent à votre business.</p></div></div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" aria-label="Réserver un appel stratégique Vision House Bruxelles">
   <div class="container">
     <div class="contact-grid">
       <div class="contact-copy reveal">
-        <div class="label">Diagnostic Gratuit</div>
+        <div class="label">Appel Stratégique</div>
         <h2>30 minutes pour comprendre votre situation.</h2>
         <p>On identifie les actions prioritaires. Sans pression, sans engagement. Juste des recommandations honnêtes adaptées à votre réalité.</p>
         <ul class="contact-reassurance">
-          <li>Diagnostic 100% gratuit</li>
+          <li>Appel 100% offert</li>
           <li>Résultats envoyés dans les 24h</li>
           <li>Aucune relance commerciale agressive</li>
           <li>Disponible par visio ou en personne à Bruxelles</li>
@@ -787,35 +861,100 @@ footer{background:#080720;padding:72px 0 0}
         <div class="contact-info">
           <a href="mailto:hello@visionhouse.be"><span>📧</span> hello@visionhouse.be</a>
           <a href="tel:+32451095650"><span>📱</span> +32 451 09 56 50</a>
+          <a href="https://wa.me/32451095650" target="_blank" rel="noopener"><span>💬</span> WhatsApp direct</a>
           <a href="#"><span>📍</span> Avenue des Gerfauts 10, Boîte 34 · 1170 Watermael-Boitsfort</a>
         </div>
       </div>
       <div class="reveal d2">
         <div class="form-box">
-          <h3>Obtenir mon diagnostic</h3>
+          <h3>Réserver mon appel offert</h3>
           <p class="form-box-sub">Aucune carte de crédit. Aucune obligation.</p>
           <form id="diag-form" onsubmit="handleSubmit(event)">
+            <!-- NOM + PRÉNOM -->
             <div class="frow">
-              <div class="fg"><label>Prénom *</label><input type="text" name="prenom" placeholder="Prénom" required></div>
-              <div class="fg"><label>Nom *</label><input type="text" name="nom" placeholder="Nom" required></div>
+              <div class="fg"><label>Prénom *</label><input type="text" name="prenom" placeholder="Prénom" required autocomplete="given-name"></div>
+              <div class="fg"><label>Nom *</label><input type="text" name="nom" placeholder="Nom" required autocomplete="family-name"></div>
             </div>
-            <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="vous@entreprise.com" required></div>
+            <!-- EMAIL + TÉLÉPHONE -->
+            <div class="frow">
+              <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="vous@entreprise.com" required autocomplete="email"></div>
+              <div class="fg"><label>Téléphone *</label><input type="tel" name="telephone" placeholder="+32 400 00 00 00" required autocomplete="tel"></div>
+            </div>
+            <!-- SECTEUR -->
             <div class="fg">
               <label>Secteur *</label>
-              <select name="secteur" required>
+              <select name="secteur" id="secteur-select" required onchange="toggleAutreSecteur(this)">
                 <option value="" disabled selected>Sélectionnez votre secteur</option>
-                <option>Immobilier</option><option>Promotion immobilière</option>
-                <option>HoReCa / Restaurant</option><option>Commerce de détail</option>
-                <option>Services aux entreprises</option><option>BTP / Rénovation</option>
-                <option>Artisanat</option><option>Coaching / Formation</option>
-                <option>Beauté / Bien-être / Santé</option><option>Autre</option>
+                <option>Immobilier</option>
+                <option>Promotion immobilière</option>
+                <option>HoReCa / Restaurant</option>
+                <option>Commerce de détail</option>
+                <option>Services aux entreprises</option>
+                <option>BTP / Rénovation</option>
+                <option>Artisanat</option>
+                <option>Coaching / Formation</option>
+                <option>Beauté / Bien-être / Santé</option>
+                <option value="autre">Autre</option>
               </select>
             </div>
-            <div class="fg">
-              <label>Votre défi principal (optionnel)</label>
-              <textarea placeholder="Décrivez brièvement votre plus grand défi en matière de communication…"></textarea>
+            <div class="fg" id="autre-secteur-wrap" style="display:none;margin-top:-8px">
+              <label>Précisez votre secteur</label>
+              <input type="text" name="secteur_autre" placeholder="Ex : architecture, événementiel…">
             </div>
-            <button type="submit" class="form-submit" id="form-submit-btn">Obtenir mon diagnostic gratuit</button>
+            <!-- RÉSEAUX SOCIAUX -->
+            <div class="fg">
+              <label>Sur quels canaux êtes-vous présent (ou souhaitez l'être) ?</label>
+              <div class="rs-grid" id="rs-grid">
+                <label class="rs-chip"><input type="checkbox" name="canaux" value="Instagram"> Instagram</label>
+                <label class="rs-chip"><input type="checkbox" name="canaux" value="TikTok"> TikTok</label>
+                <label class="rs-chip"><input type="checkbox" name="canaux" value="Facebook"> Facebook</label>
+                <label class="rs-chip"><input type="checkbox" name="canaux" value="LinkedIn"> LinkedIn</label>
+                <label class="rs-chip"><input type="checkbox" name="canaux" value="Meta Ads"> Meta Ads</label>
+                <label class="rs-chip"><input type="checkbox" name="canaux" value="Google Ads"> Google Ads</label>
+              </div>
+            </div>
+            <!-- LIEN / USERNAME RÉSEAUX -->
+            <div class="fg">
+              <label>Lien ou nom d'utilisateur de votre page (optionnel)</label>
+              <input type="text" name="profil_rs" placeholder="Ex : @monagence ou https://instagram.com/…">
+            </div>
+            <!-- Q1 : PROBLÈME PRINCIPAL -->
+            <div class="fg">
+              <label>Quel est votre principal défi en communication ? *</label>
+              <select name="defi_principal" required>
+                <option value="" disabled selected>Choisissez une réponse</option>
+                <option>Je manque de visibilité — personne ne me trouve en ligne</option>
+                <option>Je publie mais ça ne génère pas de clients</option>
+                <option>Je n'ai pas le temps de gérer ma communication</option>
+                <option>Mon image ne reflète pas la qualité de ce que je fais</option>
+                <option>Je ne sais pas par où commencer</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <!-- Q2 : BUDGET PUB -->
+            <div class="fg">
+              <label>Avez-vous déjà un budget publicitaire mensuel ? *</label>
+              <select name="budget_pub" required>
+                <option value="" disabled selected>Choisissez une réponse</option>
+                <option>Non, pas encore</option>
+                <option>Moins de 200 €/mois</option>
+                <option>Entre 200 et 500 €/mois</option>
+                <option>Plus de 500 €/mois</option>
+                <option>Je ne sais pas encore</option>
+              </select>
+            </div>
+            <!-- Q3 : URGENCE -->
+            <div class="fg">
+              <label>Dans quel délai souhaitez-vous démarrer ? *</label>
+              <select name="delai" required>
+                <option value="" disabled selected>Choisissez une réponse</option>
+                <option>Dès que possible</option>
+                <option>Dans les 2 à 4 semaines</option>
+                <option>Dans 1 à 2 mois</option>
+                <option>Je suis encore en phase de réflexion</option>
+              </select>
+            </div>
+            <button type="submit" class="form-submit" id="form-submit-btn">Réserver mon appel offert →</button>
             <p class="form-note">Aucune carte de crédit. Aucune obligation. Premier appel sans vente.</p>
           </form>
           <div id="form-success">
@@ -829,16 +968,16 @@ footer{background:#080720;padding:72px 0 0}
   </div>
 </section>
 
-<!-- MARQUEE 2 — BENEFITS -->
-<div class="marquee-strip-2">
+<!-- MARQUEE 2 -->
+<div class="marquee-strip-2" aria-hidden="true">
   <div class="marquee-inner-2">
-    <span class="marquee-benefit"><b>Plus de mandats</b>&nbsp;·&nbsp;Plus de visibilité</span>
+    <span class="marquee-benefit"><b>Plus de clients</b>&nbsp;·&nbsp;Plus de visibilité</span>
     <span class="marquee-benefit"><b>Impact avant volume</b>&nbsp;·&nbsp;Toujours</span>
     <span class="marquee-benefit">Une stratégie&nbsp;<b>qui travaille pour vous</b></span>
     <span class="marquee-benefit"><b>Zéro commission</b>&nbsp;·&nbsp;sur votre budget pub</span>
     <span class="marquee-benefit">Un interlocuteur&nbsp;·&nbsp;<b>toujours le même</b></span>
     <span class="marquee-benefit"><b>Votre image</b>&nbsp;·&nbsp;Enfin à votre niveau</span>
-    <span class="marquee-benefit"><b>Plus de mandats</b>&nbsp;·&nbsp;Plus de visibilité</span>
+    <span class="marquee-benefit"><b>Plus de clients</b>&nbsp;·&nbsp;Plus de visibilité</span>
     <span class="marquee-benefit"><b>Impact avant volume</b>&nbsp;·&nbsp;Toujours</span>
     <span class="marquee-benefit">Une stratégie&nbsp;<b>qui travaille pour vous</b></span>
     <span class="marquee-benefit"><b>Zéro commission</b>&nbsp;·&nbsp;sur votre budget pub</span>
@@ -852,50 +991,62 @@ footer{background:#080720;padding:72px 0 0}
   <div class="container">
     <div class="label">Sans engagement · 30 minutes · Gratuit</div>
     <h2>Si vous ne faites rien, vos concurrents avancent.</h2>
-    <a href="#contact" class="btn btn-white btn-arrow" id="final-cta-btn">Obtenir mon diagnostic gratuit</a>
+    <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="btn btn-white btn-arrow" id="final-cta-btn">Réserver mon appel offert</a>
   </div>
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer aria-label="Vision House agence communication Bruxelles">
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-grid" style="grid-template-columns:2fr 1fr">
       <div>
-        <div class="footer-logo"><img src="logo.png" alt="Vision House"></div>
-        <p class="footer-tagline">Les associés de votre communication. On produit ce qui a de l'impact et pas ce qui remplit un calendrier.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Offres</h4>
-        <ul>
-          <li><a href="#services">Présence &amp; Acquisition à 900 €/mois</a></li>
-          <li><a href="#services">Présence &amp; Impact à 1 500 €/mois</a></li>
-          <li><a href="#contact">Diagnostic gratuit</a></li>
-        </ul>
+        <div class="footer-logo"><img src="logo.png" alt="Vision House agence communication Bruxelles"></div>
+        <p class="footer-tagline">Les associés de votre communication. On produit ce qui a de l'impact — pas ce qui remplit un calendrier.</p>
+        <div class="footer-social">
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/visionhouse.be/" target="_blank" rel="noopener" aria-label="Vision House sur Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/company/visionhouse-be/" target="_blank" rel="noopener" aria-label="Vision House sur LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/32451095650" target="_blank" rel="noopener" aria-label="Contacter Vision House sur WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </a>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
           <li><a href="mailto:hello@visionhouse.be">hello@visionhouse.be</a></li>
           <li><a href="tel:+32451095650">+32 451 09 56 50</a></li>
-          <li><a href="https://wa.me/32451095650" target="_blank">WhatsApp</a></li>
+          <li><a href="https://wa.me/32451095650" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/visionhouse.be/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/visionhouse-be/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener">Réserver un appel</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom container" style="padding-left:0;padding-right:0">
       <span>© 2026 Vision House · Bruxelles</span>
       <span>
-        <a href="/mentions-legales.html">Mentions légales</a>
-        &nbsp;·&nbsp;
-        <a href="/politique-confidentialite.html">Confidentialité</a>
-        &nbsp;·&nbsp;
+        <a href="/mentions-legales.html">Mentions légales</a>&nbsp;·&nbsp;
+        <a href="/politique-confidentialite.html">Confidentialité</a>&nbsp;·&nbsp;
         <a href="/politique-cookies.html">Cookies</a>
       </span>
     </div>
   </div>
   <div class="footer-legal">
     <p>
-      Vision House est une marque de <a href="https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?ondernemingsnummer=1024829348" target="_blank" rel="noopener">Emkay Partners SRL</a> · BCE 1024.829.348 · Assujettie à la TVA · Avenue des Gerfauts 10, Boîte 34 · 1170 Watermael-Boitsfort, Belgique
-      <br>
+      Vision House est une marque de <a href="https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?ondernemingsnummer=1024829348" target="_blank" rel="noopener">Emkay Partners SRL</a> · BCE 1024.829.348 · Assujettie à la TVA · Avenue des Gerfauts 10, Boîte 34 · 1170 Watermael-Boitsfort, Belgique<br>
       Administrateur : Joseph Khan · Activités : 73.110 Agence de publicité · 70.200 Conseil en gestion
     </p>
   </div>
@@ -907,62 +1058,53 @@ footer{background:#080720;padding:72px 0 0}
   <div class="tw-group">
     <div class="tw-label">CTA principal</div>
     <div class="tw-opts">
-      <button class="tw-btn active" onclick="setCta(0,this)">Obtenir mon diagnostic gratuit</button>
+      <button class="tw-btn active" onclick="setCta(0,this)">Réserver mon appel offert</button>
       <button class="tw-btn" onclick="setCta(1,this)">Je veux plus de clients</button>
-      <button class="tw-btn" onclick="setCta(2,this)">Réserver 30 minutes gratuites</button>
+      <button class="tw-btn" onclick="setCta(2,this)">Réserver 30 minutes offertes</button>
     </div>
   </div>
 </div>
 
 <script>
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"cta":0}/*EDITMODE-END*/;
+const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{"cta":0}/*EDITMODE-END*/;
 
-/* NAV SCROLL */
+/* NAV */
 window.addEventListener('scroll',()=>{
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
 },{passive:true});
 
-/* SECTOR TEXT — static for clarity */
+/* HERO SECTOR ROTATION */
 const sEl=document.getElementById('sector-display');
-const sectors=["Enfin à votre niveau.","Qui génère confiance.","Qui travaille pour vous.","Reconnue dans votre zone."];
+const sectors=["Enfin à votre niveau.","Qui génère des mandats.","Reconnue dans votre zone.","Qui travaille pour vous."];
 let sIdx=0;
 sEl.style.transition='opacity .35s ease,transform .35s ease';
 function animateSector(){
   sEl.style.opacity='0';sEl.style.transform='translateY(10px)';
   setTimeout(()=>{sIdx=(sIdx+1)%sectors.length;sEl.textContent=sectors[sIdx];sEl.style.opacity='1';sEl.style.transform='none'},300);
 }
-setInterval(animateSector,3000);
+setInterval(animateSector,3200);
 
-/* 4D STICKY SCROLL */
-const arcIds=['arc1','arc2','arc3','arc4'];
-const nodeIds=['node1','node2','node3','node4'];
-const nlIds=['nl1','nl2','nl3','nl4'];
-const panelIds=['panel1','panel2','panel3','panel4'];
+/* 4D SCROLL */
+const arcIds=['arc1','arc2','arc3','arc4'],nodeIds=['node1','node2','node3','node4'],nlIds=['nl1','nl2','nl3','nl4'],panelIds=['panel1','panel2','panel3','panel4'];
 let currentD4Step=0;
 function setD4Step(n){
-  if(n===currentD4Step) return;
-  currentD4Step=n;
+  if(n===currentD4Step)return;currentD4Step=n;
   panelIds.forEach((id,i)=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',i===n)});
   arcIds.forEach((id,i)=>{const el=document.getElementById(id);if(el)el.classList.toggle('drawn',i<=n)});
   nodeIds.forEach((id,i)=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',i<=n)});
   nlIds.forEach((id,i)=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',i<=n)});
 }
 function updateD4Scroll(){
-  const container=document.getElementById('d4-scroll-container');
-  if(!container) return;
-  const rect=container.getBoundingClientRect();
-  const scrollable=container.offsetHeight-window.innerHeight;
-  if(scrollable<=0) return;
-  const progress=Math.max(0,Math.min(1,-rect.top/scrollable));
-  setD4Step(Math.min(3,Math.floor(progress*4)));
+  const c=document.getElementById('d4-scroll-container');if(!c)return;
+  const rect=c.getBoundingClientRect(),scrollable=c.offsetHeight-window.innerHeight;
+  if(scrollable<=0)return;
+  setD4Step(Math.min(3,Math.floor(Math.max(0,Math.min(1,-rect.top/scrollable))*4)));
 }
 window.addEventListener('scroll',updateD4Scroll,{passive:true});
 setTimeout(()=>setD4Step(0),400);
 
 /* REVEAL */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:0.1});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 /* FAQ */
@@ -972,22 +1114,38 @@ function toggleFaq(btn){
   if(!open){btn.classList.add('open');a.classList.add('open');}
 }
 
-/* FORM */
+/* RS CHIP TOGGLE */
+document.querySelectorAll('.rs-chip').forEach(chip=>{
+  const cb=chip.querySelector('input[type="checkbox"]');
+  chip.addEventListener('click',function(e){
+    e.preventDefault();
+    cb.checked=!cb.checked;
+    chip.classList.toggle('checked',cb.checked);
+  });
+});
+
+/* AUTRE SECTEUR */
+function toggleAutreSecteur(sel){
+  document.getElementById('autre-secteur-wrap').style.display=sel.value==='autre'?'block':'none';
+}
+
+/* FORM — redirect to Crococlick */
 async function handleSubmit(e){
   e.preventDefault();
   const btn=document.getElementById('form-submit-btn');
-  btn.textContent='Envoi en cours…';btn.disabled=true;
-  const res=await fetch('https://formspree.io/f/mrejayba',{
+  btn.textContent='Un instant…';btn.disabled=true;
+  // Send to Formspree in background (non-blocking)
+  fetch('https://formspree.io/f/mrejayba',{
     method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}
-  });
-  if(res.ok){
-    document.getElementById('diag-form').style.display='none';
-    document.getElementById('form-success').style.display='block';
-  } else {btn.textContent='Erreur — réessayez';btn.disabled=false;}
+  }).catch(()=>{});
+  // Redirect to Crococlick calendar
+  setTimeout(()=>{
+    window.location.href='https://link.crococlick.com/widget/bookings/joseph-khan';
+  },400);
 }
 
 /* CTAs */
-const ctas=["Obtenir mon diagnostic gratuit","Je veux plus de clients","Réserver 30 minutes gratuites"];
+const ctas=["Réserver mon appel offert","Je veux plus de clients","Réserver 30 minutes offertes"];
 const ctaIds=['hero-cta-btn','final-cta-btn','form-submit-btn','compare-cta-btn'];
 function setCta(i,btn){
   ctaIds.forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=ctas[i]});
@@ -995,15 +1153,12 @@ function setCta(i,btn){
   btn.classList.add('active');
   window.parent.postMessage({type:'__edit_mode_set_keys',edits:{cta:i}},'*');
 }
-(function(){
-  const t=ctas[TWEAK_DEFAULTS.cta||0];
-  ctaIds.forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=t});
-})();
+(function(){const t=ctas[TWEAK_DEFAULTS.cta||0];ctaIds.forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=t})})();
 
 /* TWEAKS PANEL */
 window.addEventListener('message',e=>{
-  if(e.data?.type==='__activate_edit_mode') document.getElementById('tweaks-panel').classList.add('show');
-  if(e.data?.type==='__deactivate_edit_mode') document.getElementById('tweaks-panel').classList.remove('show');
+  if(e.data?.type==='__activate_edit_mode')document.getElementById('tweaks-panel').classList.add('show');
+  if(e.data?.type==='__deactivate_edit_mode')document.getElementById('tweaks-panel').classList.remove('show');
 });
 window.parent.postMessage({type:'__edit_mode_available'},'*');
 </script>
