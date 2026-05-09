@@ -357,7 +357,8 @@ footer{background:#080720;padding:72px 0 0}
 .reveal.visible{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* TWEAKS */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:1000}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all .25s}
 #tweaks-panel{display:none;position:fixed;bottom:24px;right:24px;z-index:200;background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;width:300px;box-shadow:0 20px 60px rgba(12,3,64,.15);font-family:'Montserrat',sans-serif}
 #tweaks-panel.show{display:block}
 .tw-title{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy2);font-weight:700;margin-bottom:18px}
@@ -516,52 +517,201 @@ footer{background:#080720;padding:72px 0 0}
 .carousel-dot.active{background:var(--navy);width:20px;border-radius:3px}
 
 /* MOBILE */
-@media(max-width:900px){
-  .nav-links{display:none}
-  section{padding:64px 0}
-  .container,.container-sm{padding:0 22px}
-  h1{font-size:clamp(2rem,7vw,3rem)}
-  h2{font-size:clamp(1.6rem,5.5vw,2.2rem)}
-  .video-grid{grid-template-columns:1fr;gap:16px}
-  .footer-grid{grid-template-columns:1fr!important;gap:32px}
-  .avis-grid{grid-template-columns:1fr;gap:16px}
-  .compare-header,.compare-row{grid-template-columns:1fr 1fr}
-  .cc.aspect,.chc.aspect{display:none}
-  .frow{grid-template-columns:1fr}
-  .form-box{padding:24px}
-  nav{padding:12px 18px}
-  .team-bubbles{gap:36px}
-  .team-bubble{max-width:none;width:100%;max-width:340px}
-  .team-bubble-ring{width:130px;height:130px}
-  .footer-legal{padding:18px 22px}
-  .hero-stats{flex-wrap:wrap;gap:24px}
-  .hero-stat{flex:1 1 40%;min-width:120px}
-  .hero-stat-n{font-size:1.6rem}
-  #d4-scroll-container{height:auto}
-  #d4-sticky{position:relative;height:auto;padding:48px 0}
-  .d4-layout{grid-template-columns:1fr;gap:32px}
-  .d4-svg-wrap{width:200px;height:200px;margin:0 auto}
-  .d4-right{height:auto}
-  .d4-panel{position:relative;opacity:1;transform:none;display:none}
-  .d4-panel.active{display:block;position:relative}
-  .d4-panel-bigletter{font-size:3.4rem}
-  .methode-intro-wrap{padding:56px 0 32px}
-  .hero-actions{flex-direction:column;align-items:center;gap:12px}
-  .hero-actions .btn{width:100%;text-align:center}
-  .compare-cta{flex-direction:column;align-items:flex-start}
-  .compare-cta .btn{width:100%;text-align:center}
-  .form-submit{font-size:.88rem;padding:14px}
-  .marquee-benefit{padding:14px 24px;font-size:.7rem}
-  .impact-inner{grid-template-columns:1fr;gap:40px}
-  .apropos-badge{bottom:-12px;right:12px}
-}
+/* ══════════════════════════════════════════
+   RESPONSIVE — TABLET 901–1100px
+══════════════════════════════════════════ */
 @media(min-width:901px) and (max-width:1100px){
   .container,.container-sm{padding:0 32px}
   .d4-layout{gap:48px}
   .d4-svg-wrap{width:280px;height:280px}
   .services-grid{gap:14px}
   .service-card{padding:32px 26px}
-  .footer-grid{grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px}
+  .footer-grid{grid-template-columns:1.5fr 1fr;gap:32px}
+  .apropos-inner{gap:60px}
+  .contact-grid{gap:48px}
+  .impact-inner{gap:48px}
+  .hero-stats{gap:32px}
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE ≤ 900px
+══════════════════════════════════════════ */
+@media(max-width:900px){
+
+  /* ── NAV HAMBURGER ── */
+  nav{padding:12px 20px;flex-direction:row;justify-content:space-between;align-items:center;gap:0}
+  nav.scrolled{padding:10px 20px}
+  .nav-logo img{height:44px}
+  nav.scrolled .nav-logo img{height:36px}
+  .nav-links{
+    display:none;
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    background:rgba(12,3,64,.97);
+    flex-direction:column;
+    align-items:center;justify-content:center;
+    gap:28px;z-index:999;
+    list-style:none;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{color:#fff;font-size:1.1rem;letter-spacing:.06em}
+  .nav-links .nav-cta{background:rgba(255,255,255,.12)!important;color:#fff!important;padding:12px 28px;border-radius:8px}
+  .nav-hamburger{
+    display:flex;flex-direction:column;gap:5px;cursor:pointer;
+    background:none;border:none;padding:6px;z-index:1000;
+  }
+  .nav-hamburger span{
+    display:block;width:22px;height:2px;
+    background:var(--navy);border-radius:2px;
+    transition:all .25s;
+  }
+  .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);background:#fff}
+  .nav-hamburger.open span:nth-child(2){opacity:0}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:#fff}
+  .nav-close-btn{
+    position:absolute;top:20px;right:20px;
+    background:none;border:none;cursor:pointer;color:#fff;
+    font-size:1.4rem;line-height:1;display:flex;align-items:center;justify-content:center;
+    width:36px;height:36px;
+  }
+
+  /* ── LAYOUT ── */
+  section{padding:60px 0}
+  .container,.container-sm{padding:0 20px}
+  h1{font-size:clamp(1.9rem,8vw,2.8rem);letter-spacing:-.02em}
+  h2{font-size:clamp(1.5rem,6vw,2rem)}
+  h3{font-size:1.1rem}
+
+  /* ── HERO ── */
+  #hero{padding-top:120px;min-height:auto;padding-bottom:60px}
+  .hero-deco{display:none}
+  .hero-urgency{font-size:.95rem;max-width:100%}
+  .hero-actions{flex-direction:column;align-items:center;gap:12px}
+  .hero-actions .btn{width:100%;text-align:center}
+  .hero-sub-note{font-size:.78rem}
+  .hero-stats{
+    flex-wrap:wrap;gap:0;
+    margin-top:40px;padding-top:32px;
+    display:grid;grid-template-columns:1fr 1fr;
+  }
+  .hero-stat{
+    padding:16px 12px;
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+  .hero-stat:nth-child(2n){border-right:none}
+  .hero-stat:nth-child(3),.hero-stat:nth-child(4){border-bottom:none}
+  .hero-stat-n{font-size:1.6rem}
+  .hero-stat-l{font-size:.7rem}
+
+  /* ── MARQUEE ── */
+  .marquee-benefit{padding:12px 20px;font-size:.68rem}
+  .marquee-inner span{font-size:.68rem}
+
+  /* ── IMPACT ── */
+  #impact{padding:60px 0}
+  .impact-inner{grid-template-columns:1fr;gap:36px}
+  .impact-quote{font-size:1.5rem;text-align:center}
+  .impact-right{gap:20px}
+  .impact-point-icon{width:32px;height:32px;flex-shrink:0}
+
+  /* ── OFFRES ── */
+  #services{padding:60px 0}
+  .services-grid{grid-template-columns:1fr;gap:16px;max-width:100%}
+  .service-card{padding:32px 24px}
+  .service-badge{left:24px}
+  .pub-transparency{max-width:100%}
+
+  /* ── 4D ── */
+  #d4-scroll-container{height:auto}
+  #d4-sticky{position:relative;height:auto;padding:40px 0}
+  .methode-intro-wrap{padding:56px 0 28px}
+  .d4-layout{grid-template-columns:1fr;gap:28px}
+  .d4-svg-wrap{width:180px;height:180px;margin:0 auto}
+  .d4-center-label span{font-size:1.8rem}
+  .d4-right{height:auto;overflow:visible}
+  .d4-panel{position:relative;opacity:1;transform:none;display:none}
+  .d4-panel.active{display:block}
+  .d4-panel-bigletter{font-size:3rem}
+  .d4-panel h3{font-size:1.5rem}
+  .d4-panel p{font-size:.88rem}
+  .d4-progress{flex-wrap:wrap;gap:8px}
+  .d4-scroll-hint{font-size:.72rem;margin-left:8px}
+
+  /* ── CARROUSEL VIDÉO ── */
+  #realisations{padding:60px 0}
+  #realisations .container{margin-bottom:36px}
+  .carousel-track{
+    padding:0 20px;
+    gap:14px;
+  }
+  .carousel-card{flex:0 0 220px}
+  .ctrl-volume-slider{width:44px}
+  .carousel-nav{margin-top:24px}
+
+  /* ── À PROPOS ── */
+  #apropos{padding:60px 0}
+  .apropos-inner{grid-template-columns:1fr;gap:48px}
+  .apropos-img-wrap{max-width:320px;margin:0 auto}
+  .apropos-badge{bottom:-16px;right:8px;padding:12px 16px}
+  .apropos-badge-n{font-size:1.4rem}
+  .apropos-story p{font-size:.92rem}
+
+  /* ── COMPARAISON ── */
+  #comparaison{padding:60px 0}
+  .compare-header,.compare-row{grid-template-columns:1fr 1fr}
+  .cc.aspect,.chc.aspect{display:none}
+  .compare-cta{flex-direction:column;align-items:flex-start;gap:16px}
+  .compare-cta .btn{width:100%;text-align:center}
+
+  /* ── AVIS ── */
+  #avis{padding:60px 0}
+  .avis-grid{grid-template-columns:1fr;gap:16px;max-width:100%}
+  .avis-card{padding:28px 24px}
+
+  /* ── ÉQUIPE ── */
+  #equipe{padding:60px 0}
+  .team-bubbles{gap:32px;flex-direction:column;align-items:center}
+  .team-bubble{max-width:280px;width:100%}
+  .team-bubble-ring{width:120px;height:120px}
+  .team-note{padding:28px 20px;margin-top:40px}
+
+  /* ── FAQ ── */
+  #faq{padding:60px 0}
+  .faq-q{padding:16px 20px;font-size:.85rem}
+  .faq-a{padding:0 20px}
+  .faq-a.open{padding:0 20px 20px}
+
+  /* ── CONTACT ── */
+  #contact{padding:60px 0}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .form-box{padding:28px 20px}
+  .frow{grid-template-columns:1fr}
+  .form-submit{font-size:.88rem;padding:14px}
+  .rs-grid{gap:6px}
+  .rs-chip{font-size:.75rem;padding:5px 12px}
+
+  /* ── CTA BAND ── */
+  .cta-band{padding:60px 0}
+  .cta-band h2{font-size:1.5rem;margin-bottom:20px}
+
+  /* ── FOOTER ── */
+  .footer-grid{grid-template-columns:1fr!important;gap:36px}
+  .footer-legal{padding:16px 20px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;padding:20px 20px}
+  footer{padding:56px 0 0}
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE ≤ 400px
+══════════════════════════════════════════ */
+@media(max-width:400px){
+  h1{font-size:1.75rem}
+  h2{font-size:1.35rem}
+  .hero-stat-n{font-size:1.4rem}
+  .carousel-card{flex:0 0 200px}
+  .service-card{padding:24px 18px}
+  .form-box{padding:20px 16px}
+  .btn{padding:13px 22px;font-size:.88rem}
 }
 </style>
 </head>
@@ -570,15 +720,18 @@ footer{background:#080720;padding:72px 0 0}
 <!-- NAV -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo"><img src="logo.png" alt="Vision House agence communication Bruxelles"></a>
-  <ul class="nav-links nav-row">
-    <li><a href="#services">Offres</a></li>
-    <li><a href="#methode-section">Méthode 4D</a></li>
-    <li><a href="#realisations">Réalisations</a></li>
-    <li><a href="#apropos">À propos</a></li>
-    <li><a href="#avis">Avis</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta">Diagnostic offert</a></li>
+  <ul class="nav-links nav-row" id="nav-links">
+    <li><a href="#services" onclick="closeNav()">Offres</a></li>
+    <li><a href="#methode-section" onclick="closeNav()">Méthode 4D</a></li>
+    <li><a href="#realisations" onclick="closeNav()">Réalisations</a></li>
+    <li><a href="#apropos" onclick="closeNav()">À propos</a></li>
+    <li><a href="#avis" onclick="closeNav()">Avis</a></li>
+    <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="closeNav()">Diagnostic offert</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1457,8 +1610,34 @@ function vcSeek(e,n){
   });
 });
 
-/* NAV */
-window.addEventListener('scroll',()=>{
+/* HAMBURGER NAV */
+function toggleNav(){
+  const links=document.getElementById('nav-links');
+  const btn=document.getElementById('nav-hamburger');
+  const open=links.classList.toggle('open');
+  btn.classList.toggle('open',open);
+  btn.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeNav(){
+  const links=document.getElementById('nav-links');
+  const btn=document.getElementById('nav-hamburger');
+  links.classList.remove('open');
+  btn.classList.remove('open');
+  btn.setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+// Hide hamburger on desktop
+const mq=window.matchMedia('(min-width:901px)');
+function handleMQ(e){
+  const hb=document.getElementById('nav-hamburger');
+  if(hb) hb.style.display=e.matches?'none':'flex';
+  if(e.matches) closeNav();
+}
+mq.addEventListener('change',handleMQ);
+handleMQ(mq);
+
+/* NAV SCROLL */
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
 },{passive:true});
 
