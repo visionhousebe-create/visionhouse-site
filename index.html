@@ -83,7 +83,7 @@ section{padding:100px 0}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:all .3s;background:rgba(255,255,255,.85);backdrop-filter:blur(8px)}
 nav.scrolled{background:rgba(255,255,255,.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);box-shadow:0 4px 28px rgba(12,3,64,.08);padding:10px 40px;gap:6px}
 .nav-logo{display:block}
-.nav-logo img{height:64px;display:block;transition:height .3s}
+.nav-logo img{height:64px;display:block;transition:height .3s;mix-blend-mode:multiply}
 nav.scrolled .nav-logo img{height:46px}
 .nav-row{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
 .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
@@ -745,10 +745,10 @@ footer{background:#080720;padding:72px 0 0}
       <span class="hero-sub-note">30 minutes · Sans engagement · Bruxelles</span>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-n">+50</div><div class="hero-stat-l">Leads générés en 6 mois</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">48h</div><div class="hero-stat-l">Pour démarrer votre stratégie</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">0%</div><div class="hero-stat-l">Commission sur votre budget pub</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">0</div><div class="hero-stat-l">Engagement de durée imposé</div></div>
+      <div class="hero-stat"><div class="hero-stat-n" data-count="50" data-prefix="+" data-delay="0">0</div><div class="hero-stat-l">Leads générés en 6 mois</div></div>
+      <div class="hero-stat"><div class="hero-stat-n" data-count="48" data-suffix="h" data-delay="150">0</div><div class="hero-stat-l">Pour démarrer votre stratégie</div></div>
+      <div class="hero-stat"><div class="hero-stat-n" data-count="5" data-suffix="/5" data-delay="300">0</div><div class="hero-stat-l">Note moyenne de nos clients</div></div>
+      <div class="hero-stat"><div class="hero-stat-n" data-count="6" data-suffix=" mois" data-delay="450">0</div><div class="hero-stat-l">Engagement de durée minimum</div></div>
     </div>
   </div>
 </section>
@@ -1602,6 +1602,48 @@ function vcSeek(e,n){
     if(p) p.style.width='0%';
   });
 });
+
+/* COUNTER ANIMATION */
+function animateCounter(el){
+  const target=parseInt(el.dataset.count);
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  const duration=1800;
+  const steps=60;
+  const increment=target/steps;
+  let current=0;
+  let step=0;
+  // Easing: ease-out
+  const ease=(t)=>1-Math.pow(1-t,3);
+  const timer=setInterval(()=>{
+    step++;
+    const progress=ease(step/steps);
+    current=Math.round(progress*target);
+    el.textContent=prefix+current+suffix;
+    if(step>=steps){
+      el.textContent=prefix+target+suffix;
+      clearInterval(timer);
+    }
+  },duration/steps);
+}
+// Trigger counters when hero-stats enters viewport
+(function(){
+  const stats=document.querySelector('.hero-stats');
+  if(!stats) return;
+  let triggered=false;
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting&&!triggered){
+        triggered=true;
+        stats.querySelectorAll('[data-count]').forEach(el=>{
+          setTimeout(()=>animateCounter(el),parseInt(el.dataset.delay||0));
+        });
+        observer.disconnect();
+      }
+    });
+  },{threshold:0.3});
+  observer.observe(stats);
+})();
 
 /* HAMBURGER NAV */
 function toggleNav(){
