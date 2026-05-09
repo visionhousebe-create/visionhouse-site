@@ -403,6 +403,8 @@ footer{background:#080720;padding:72px 0 0}
   border:1px solid var(--border);
   background:var(--white);
   transition:transform .25s,box-shadow .25s;
+  display:flex;
+  flex-direction:column;
 }
 .carousel-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(12,3,64,.1)}
 .carousel-video-wrap{
@@ -517,6 +519,59 @@ footer{background:#080720;padding:72px 0 0}
 }
 .carousel-dot.active{background:var(--navy);width:20px;border-radius:3px}
 
+/* FOMO SECTION */
+#fomo{background:var(--navy);padding:100px 0;overflow:hidden;position:relative}
+#fomo::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.03) 0%,transparent 70%);pointer-events:none}
+.fomo-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.fomo-left{}
+.fomo-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);font-family:'Montserrat',sans-serif;margin-bottom:20px}
+.fomo-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:20px}
+.fomo-title em{font-style:italic;color:#6b9fff}
+.fomo-body{font-size:.95rem;color:rgba(255,255,255,.5);line-height:1.8;max-width:420px}
+.fomo-right{display:flex;flex-direction:column;gap:1px}
+.fomo-stat{
+  padding:24px 28px;
+  background:rgba(255,255,255,.04);
+  border-left:3px solid transparent;
+  transition:all .3s;
+  position:relative;
+}
+.fomo-stat:hover{background:rgba(255,255,255,.07);border-left-color:#6b9fff}
+.fomo-stat-num{
+  font-family:'Montserrat',sans-serif;
+  font-size:2rem;font-weight:900;
+  color:#fff;line-height:1;margin-bottom:6px;
+}
+.fomo-stat-num span{color:#6b9fff}
+.fomo-stat-text{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.55}
+.fomo-stat-source{font-size:.68rem;color:rgba(255,255,255,.2);margin-top:4px;font-style:italic}
+.fomo-cta-wrap{margin-top:36px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.fomo-urgency{font-size:.82rem;color:rgba(255,255,255,.35);font-family:'Montserrat',sans-serif;font-weight:500}
+
+/* VIDEO CONTEXT LABEL */
+.carousel-card{position:relative}
+.video-context{
+  padding:14px 16px;
+  background:var(--white);
+  border-top:1px solid var(--border);
+}
+.video-context-tags{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  margin-bottom:5px;
+}
+.video-context-tag{
+  font-family:'Montserrat',sans-serif;
+  font-size:.62rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--navy2);
+  background:var(--lightb);
+  padding:3px 8px;border-radius:4px;
+}
+.video-context-result{
+  font-size:.8rem;font-weight:500;
+  color:var(--navy);line-height:1.4;
+}
+
 /* MOBILE */
 /* ══════════════════════════════════════════
    RESPONSIVE — TABLET 901–1100px
@@ -538,6 +593,14 @@ footer{background:#080720;padding:72px 0 0}
    RESPONSIVE — MOBILE ≤ 900px
 ══════════════════════════════════════════ */
 @media(max-width:900px){
+
+  #fomo{padding:60px 0}
+  .fomo-inner{grid-template-columns:1fr;gap:40px}
+  .fomo-title{font-size:1.6rem}
+  .fomo-stat{padding:18px 20px}
+  .fomo-stat-num{font-size:1.5rem}
+  .fomo-cta-wrap{flex-direction:column;align-items:flex-start;gap:12px}
+  .fomo-cta-wrap .btn{width:100%;text-align:center}
 
   /* ── NAV HAMBURGER ── */
   nav{padding:12px 20px;flex-direction:row;justify-content:space-between;align-items:center;gap:0}
@@ -745,10 +808,10 @@ footer{background:#080720;padding:72px 0 0}
       <span class="hero-sub-note">30 minutes · Sans engagement · Bruxelles</span>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-n" data-count="50" data-prefix="+" data-delay="0">0</div><div class="hero-stat-l">Leads générés en 6 mois</div></div>
-      <div class="hero-stat"><div class="hero-stat-n" data-count="48" data-suffix="h" data-delay="150">0</div><div class="hero-stat-l">Pour démarrer votre stratégie</div></div>
-      <div class="hero-stat"><div class="hero-stat-n" data-count="5" data-suffix="/5" data-delay="300">0</div><div class="hero-stat-l">Note moyenne de nos clients</div></div>
-      <div class="hero-stat"><div class="hero-stat-n" data-count="6" data-suffix=" mois" data-delay="450">0</div><div class="hero-stat-l">Engagement de durée minimum</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">+20</div><div class="hero-stat-l">Leads qualifiés en 3 mois</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">48h</div><div class="hero-stat-l">Pour démarrer votre stratégie</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">5/5</div><div class="hero-stat-l">Note moyenne de nos clients</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">0</div><div class="hero-stat-l">Engagement de durée imposé</div></div>
     </div>
   </div>
 </section>
@@ -980,12 +1043,13 @@ footer{background:#080720;padding:72px 0 0}
         </div>
       </div>
       <div class="apropos-content reveal d2">
-        <div class="label">Notre histoire</div>
-        <h2>Nés du terrain.<br>Forgés par l'expérience.</h2>
+        <div class="label">Pourquoi Vision House existe</div>
+        <h2>Pas pour parler de nous.<br><em style="font-style:italic;color:var(--navy2)">Pour vous faire gagner des clients.</em></h2>
         <div class="apropos-story">
-          <p>Pendant un an, nous avons travaillé aux côtés d'agents immobiliers pour comprendre leur réalité : la pression des résultats, la concurrence locale, et le manque de temps pour construire une vraie présence digitale.</p>
-          <p>Après de nombreuses tentatives et ajustements sur le terrain, nous avons combiné <strong>la formule qui fonctionne vraiment</strong> — une communication qui génère de la visibilité, de la confiance et des clients concrets.</p>
-          <p>Aujourd'hui, Vision House accompagne l'immobilier et les PME bruxelloises avec une seule conviction : <strong>votre expertise mérite une image à sa hauteur.</strong></p>
+          <p>Vous êtes bon dans votre métier. Vous le savez. Mais chaque semaine, des concurrents moins compétents que vous décrochent des mandats, des contrats, des clients — simplement parce qu'ils sont visibles et que vous ne l'êtes pas encore.</p>
+          <p>Pendant 2 ans, on a passé du temps sur le terrain avec des agents immobiliers et des dirigeants de PME bruxelloises. Pas pour leur vendre des services — pour comprendre <strong>ce qui bloquait vraiment</strong> : le temps qui manque, l'image qui ne reflète pas la réalité, les prospects qui regardent ailleurs.</p>
+          <p>On a testé, ajusté, recommencé. Jusqu'à trouver <strong>la combinaison qui génère des résultats concrets</strong> — pas des likes, pas des impressions. Des appels entrants. Des mandats. Des clients qui disent "je vous ai trouvé sur Instagram".</p>
+          <p><strong>Vision House ne travaille pas pour être vu. Il travaille pour que vous le soyez.</strong></p>
         </div>
       </div>
     </div>
@@ -1025,6 +1089,13 @@ footer{background:#080720;padding:72px 0 0}
             </div>
           </div>
         </div>
+        <div class="video-context">
+          <div class="video-context-tags">
+            <span class="video-context-tag">Immobilier</span>
+            <span class="video-context-tag">Bruxelles</span>
+          </div>
+          <div class="video-context-result">Contenu vidéo de marque · Campagne Meta Ads active</div>
+        </div>
       </div>
 
       <div class="carousel-card">
@@ -1045,6 +1116,13 @@ footer{background:#080720;padding:72px 0 0}
               <input class="ctrl-volume-slider" id="vvol-2" type="range" min="0" max="1" step="0.05" value="1" oninput="vcVolume(event,2)">
             </div>
           </div>
+        </div>
+        <div class="video-context">
+          <div class="video-context-tags">
+            <span class="video-context-tag">PME</span>
+            <span class="video-context-tag">Belgique</span>
+          </div>
+          <div class="video-context-result">Stratégie éditoriale · Présence Instagram & LinkedIn</div>
         </div>
       </div>
 
@@ -1067,6 +1145,13 @@ footer{background:#080720;padding:72px 0 0}
             </div>
           </div>
         </div>
+        <div class="video-context">
+          <div class="video-context-tags">
+            <span class="video-context-tag">Immobilier</span>
+            <span class="video-context-tag">Bruxelles</span>
+          </div>
+          <div class="video-context-result">Reels & contenu court · Visibilité locale organique</div>
+        </div>
       </div>
 
       <div class="carousel-card">
@@ -1087,6 +1172,13 @@ footer{background:#080720;padding:72px 0 0}
               <input class="ctrl-volume-slider" id="vvol-4" type="range" min="0" max="1" step="0.05" value="1" oninput="vcVolume(event,4)">
             </div>
           </div>
+        </div>
+        <div class="video-context">
+          <div class="video-context-tags">
+            <span class="video-context-tag">PME</span>
+            <span class="video-context-tag">Belgique</span>
+          </div>
+          <div class="video-context-result">Personal branding · Google Ads & Meta Ads ciblés</div>
         </div>
       </div>
 
@@ -1163,6 +1255,45 @@ footer{background:#080720;padding:72px 0 0}
       <div class="compare-cta">
         <p>Prêt à faire la différence ?</p>
         <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="btn btn-navy btn-arrow" id="compare-cta-btn">Réserver mon appel offert</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION FOMO -->
+<section id="fomo" aria-label="Coût de l'inaction — statistiques digitales Belgique">
+  <div class="container">
+    <div class="fomo-inner">
+      <div class="fomo-left reveal">
+        <div class="fomo-label">La réalité du marché belge en 2026</div>
+        <h2 class="fomo-title">Pendant que vous<br>lisez ceci,<br><em>vos concurrents avancent.</em></h2>
+        <p class="fomo-body">Ce ne sont pas des promesses Vision House. Ce sont des données de marché vérifiées sur le comportement digital des Belges et des professionnels de l'immobilier. Chaque semaine sans présence digitale cohérente est une semaine offerte à la concurrence.</p>
+        <div class="fomo-cta-wrap">
+          <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="btn btn-white">Réserver mon appel offert →</a>
+          <span class="fomo-urgency">30 minutes · Sans engagement</span>
+        </div>
+      </div>
+      <div class="fomo-right reveal d2">
+        <div class="fomo-stat">
+          <div class="fomo-stat-num"><span>4 sur 5</span></div>
+          <div class="fomo-stat-text">entreprises belges utilisent les réseaux sociaux. Vos concurrents y sont déjà. La question n'est plus si vous devez y être — mais comment vous y démarquer.</div>
+          <div class="fomo-stat-source">Source : Statbel, Enquête TIC dans les entreprises 2025</div>
+        </div>
+        <div class="fomo-stat">
+          <div class="fomo-stat-num"><span>79,3%</span></div>
+          <div class="fomo-stat-text">des entreprises belges utilisent les médias sociaux — mais la majorité sans stratégie ni contenu vidéo. Être présent ne suffit plus. Ce qui convertit, c'est une présence construite pour générer des clients.</div>
+          <div class="fomo-stat-source">Source : SPF Économie, Baromètre de la société de l'information</div>
+        </div>
+        <div class="fomo-stat">
+          <div class="fomo-stat-num"><span>3,5×</span></div>
+          <div class="fomo-stat-text">plus de demandes générées par un contenu vidéo par rapport à un contenu statique. En 2026, la vidéo n'est plus un avantage concurrentiel — c'est le minimum pour exister dans votre zone.</div>
+          <div class="fomo-stat-source">Source : 8upmedia.com, Guide marketing digital immobilier Belgique 2026</div>
+        </div>
+        <div class="fomo-stat">
+          <div class="fomo-stat-num"><span>20%</span></div>
+          <div class="fomo-stat-text">des ventes immobilières belges proviennent directement des réseaux sociaux — pour les agents qui les utilisent bien. Les autres comptent encore sur le bouche-à-oreille.</div>
+          <div class="fomo-stat-source">Source : L'Echo / Batibouw.com, agents immobiliers belges</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1602,48 +1733,6 @@ function vcSeek(e,n){
     if(p) p.style.width='0%';
   });
 });
-
-/* COUNTER ANIMATION */
-function animateCounter(el){
-  const target=parseInt(el.dataset.count);
-  const prefix=el.dataset.prefix||'';
-  const suffix=el.dataset.suffix||'';
-  const duration=1800;
-  const steps=60;
-  const increment=target/steps;
-  let current=0;
-  let step=0;
-  // Easing: ease-out
-  const ease=(t)=>1-Math.pow(1-t,3);
-  const timer=setInterval(()=>{
-    step++;
-    const progress=ease(step/steps);
-    current=Math.round(progress*target);
-    el.textContent=prefix+current+suffix;
-    if(step>=steps){
-      el.textContent=prefix+target+suffix;
-      clearInterval(timer);
-    }
-  },duration/steps);
-}
-// Trigger counters when hero-stats enters viewport
-(function(){
-  const stats=document.querySelector('.hero-stats');
-  if(!stats) return;
-  let triggered=false;
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting&&!triggered){
-        triggered=true;
-        stats.querySelectorAll('[data-count]').forEach(el=>{
-          setTimeout(()=>animateCounter(el),parseInt(el.dataset.delay||0));
-        });
-        observer.disconnect();
-      }
-    });
-  },{threshold:0.3});
-  observer.observe(stats);
-})();
 
 /* HAMBURGER NAV */
 function toggleNav(){
