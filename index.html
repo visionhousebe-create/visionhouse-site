@@ -556,26 +556,34 @@ footer{background:#080720;padding:72px 0 0}
 /* VIDEO CONTEXT LABEL */
 .carousel-card{position:relative}
 .video-context{
-  padding:14px 16px;
+  padding:10px 14px;
   background:var(--white);
   border-top:1px solid var(--border);
 }
 .video-context-tags{
-  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
-  margin-bottom:5px;
+  display:flex;align-items:center;gap:4px;flex-wrap:nowrap;
+  margin-bottom:5px;overflow:hidden;
 }
 .video-context-tag{
   font-family:'Montserrat',sans-serif;
-  font-size:.62rem;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
+  font-size:.58rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
   color:var(--navy2);
   background:var(--lightb);
-  padding:3px 8px;border-radius:4px;
+  padding:2px 7px;border-radius:4px;
+  white-space:nowrap;
 }
 .video-context-result{
-  font-size:.8rem;font-weight:500;
+  font-size:.75rem;font-weight:500;
   color:var(--navy);line-height:1.4;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
 }
+.video-context-result .before{color:var(--muted);font-weight:400}
+.video-context-result .arrow{color:var(--navy2);font-weight:700;margin:0 3px}
+.video-context-result .after{color:var(--navy);font-weight:700}
 
 /* MOBILE */
 /* ══════════════════════════════════════════
@@ -859,7 +867,7 @@ footer{background:#080720;padding:72px 0 0}
           </div>
           <div class="impact-point-text">
             <strong>La vidéo, incontournable</strong>
-            <p>En 2026, la vidéo n'est plus optionnelle, c'est ce qui fait la différence entre être présent et être remarqué. C'est pourquoi nous la recommandons à tous nos clients.</p>
+            <p>En 2026, la vidéo n'est plus optionnelle. C'est ce qui fait la différence entre être présent et être remarqué. C'est pourquoi nous la recommandons à tous nos clients.</p>
           </div>
         </div>
         <div class="impact-point">
@@ -882,7 +890,7 @@ footer{background:#080720;padding:72px 0 0}
     <div class="reveal">
       <div class="label">Nos offres</div>
       <h2>Deux niveaux.<br>Une seule direction.</h2>
-      <p style="margin-top:12px;max-width:600px;font-size:1rem;line-height:1.75;">Deux formules claires, conçues pour l'immobilier et les PME bruxelloises. La seconde est celle que nous recommandons parce que sans vidéo, la visibilité a un plafond.</p>
+      <p style="margin-top:12px;max-width:600px;font-size:1rem;line-height:1.75;">Deux formules claires, conçues pour l'immobilier et les PME bruxelloises. La seconde est celle que nous recommandons : sans vidéo, la visibilité a un plafond.</p>
     </div>
     <div class="services-grid">
       <div class="service-card reveal d1">
@@ -897,14 +905,14 @@ footer{background:#080720;padding:72px 0 0}
           <li>Rapport mensuel en langage clair</li>
         </ul>
         <div class="service-price">900 €<span>/mois</span></div>
-        <div class="service-price-note">Sans engagement de durée · Budget pub géré par vous</div>
+        <div class="service-price-note">Engagement minimum 6 mois · Budget pub géré par vous</div>
         <a href="#contact" class="btn btn-navy btn-sm btn-arrow">Réserver un appel</a>
       </div>
       <div class="service-card featured reveal d2">
         <div class="service-badge">Recommandé</div>
         <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
         <h3 class="service-title">Visibilité & Impact</h3>
-        <p class="service-hook">Tout ce qui est dans Visibilité &amp; Acquisition, plus une stratégie éditoriale mensuelle complète et la création vidéo c'est le levier le plus puissant pour être remarqué dans votre zone.</p>
+        <p class="service-hook">Tout ce qui est dans Visibilité &amp; Acquisition, plus une stratégie éditoriale mensuelle complète et la création vidéo. Nous filmons, montons, sous-titrons et publions. Vous n'avez rien à faire.</p>
         <ul class="service-features">
           <li>Tout ce qui est inclus dans Visibilité &amp; Acquisition</li>
           <li>Stratégie éditoriale mensuelle</li>
@@ -917,12 +925,12 @@ footer{background:#080720;padding:72px 0 0}
           <li>Analyse de performance mensuelle</li>
         </ul>
         <div class="service-price">1 500 €<span>/mois</span></div>
-        <div class="service-price-note">Sans engagement de durée · Budget pub géré par vous</div>
+        <div class="service-price-note">Engagement minimum 6 mois · Budget pub géré par vous</div>
         <a href="#contact" class="btn btn-white btn-sm btn-arrow">Réserver un appel</a>
       </div>
     </div>
     <div class="pub-transparency reveal">
-      <p><strong>Transparence totale sur le budget publicitaire —</strong> Votre budget Meta Ads et Google Ads vous appartient entièrement. Vous décidez du montant selon vos ambitions (nous recommandons 200 à 500 €/mois pour démarrer). <strong>Vision House gère les campagnes sans aucune commission prélevée</strong> : notre seul objectif est que vos annonces performent et génèrent de vrais clients.</p>
+      <p><strong>Transparence totale sur le budget publicitaire :</strong> Votre budget Meta Ads et Google Ads vous appartient entièrement. Vous décidez du montant selon vos ambitions (nous recommandons 200 à 500 €/mois pour démarrer). <strong>Vision House gère les campagnes sans aucune commission prélevée.</strong> Notre seul objectif est que vos annonces performent et génèrent de vrais clients.</p>
     </div>
   </div>
 </section>
@@ -1051,9 +1059,9 @@ footer{background:#080720;padding:72px 0 0}
         <div class="label">Pourquoi Vision House existe</div>
         <h2>Pas pour parler de nous.<br><em style="font-style:italic;color:var(--navy2)">Pour vous faire gagner des clients.</em></h2>
         <div class="apropos-story">
-          <p>Vous êtes bon dans votre métier. Vous le savez. Mais chaque semaine, des concurrents moins compétents que vous décrochent des mandats, des contrats, des clients mais simplement parce qu'ils sont visibles et que vous ne l'êtes pas encore.</p>
-          <p>Pendant 2 ans, on a passé du temps sur le terrain avec des pro de l'immobiliers et des dirigeants de PME bruxelloises. Pas pour leur vendre des services mais pour comprendre <strong>ce qui bloquait vraiment</strong> : le temps qui manque, l'image qui ne reflète pas la réalité, les prospects qui regardent ailleurs.</p>
-          <p>On a testé, ajusté, recommencé. Jusqu'à trouver <strong>la combinaison qui génère des résultats concrets</strong> Ce ne sont pas des likes, pas des impressions. Des appels entrants. Des mandats. Des clients qui disent "je vous ai trouvé sur Instagram".</p>
+          <p>Vous êtes bon dans votre métier. Vous le savez. Mais chaque semaine, des concurrents moins compétents que vous décrochent des mandats, des contrats, des clients. Simplement parce qu'ils sont visibles et que vous ne l'êtes pas encore.</p>
+          <p>Pendant 2 ans, on a passé du temps sur le terrain avec des agents immobiliers et des dirigeants de PME bruxelloises. Pas pour leur vendre des services. Pour comprendre <strong>ce qui bloquait vraiment</strong> : le temps qui manque, l'image qui ne reflète pas la réalité, les prospects qui regardent ailleurs.</p>
+          <p>On a testé, ajusté, recommencé. Jusqu'à trouver <strong>la combinaison qui génère des résultats concrets</strong>. Pas des likes, pas des impressions. Des appels entrants. Des mandats. Des clients qui disent "je vous ai trouvé sur Instagram".</p>
           <p><strong>Vision House ne travaille pas pour être vu. Il travaille pour que vous le soyez.</strong></p>
         </div>
       </div>
@@ -1096,10 +1104,10 @@ footer{background:#080720;padding:72px 0 0}
         </div>
         <div class="video-context">
           <div class="video-context-tags">
-            <span class="video-context-tag">Immobilier</span>
-            <span class="video-context-tag">Bruxelles</span>
+            <span class="video-context-tag">Centre d'affaires</span>
+            <span class="video-context-tag">Belgique</span>
           </div>
-          <div class="video-context-result">Contenu vidéo de marque · Campagne Meta Ads active</div>
+          <div class="video-context-result"><span class="before">En cours</span><span class="arrow">·</span><span class="after">audience en construction</span></div>
         </div>
       </div>
 
@@ -1124,10 +1132,10 @@ footer{background:#080720;padding:72px 0 0}
         </div>
         <div class="video-context">
           <div class="video-context-tags">
-            <span class="video-context-tag">PME</span>
-            <span class="video-context-tag">Belgique</span>
+            <span class="video-context-tag">Agent indépendant</span>
+            <span class="video-context-tag">Bruxelles</span>
           </div>
-          <div class="video-context-result">Stratégie éditoriale · Présence Instagram & TikTok</div>
+          <div class="video-context-result"><span class="before">Inconnu</span><span class="arrow">→</span><span class="after">expert reconnu dans son secteur</span></div>
         </div>
       </div>
 
@@ -1155,7 +1163,7 @@ footer{background:#080720;padding:72px 0 0}
             <span class="video-context-tag">Immobilier</span>
             <span class="video-context-tag">Bruxelles</span>
           </div>
-          <div class="video-context-result">Reels & contenu court · Visibilité locale organique</div>
+          <div class="video-context-result"><span class="before">Présence faible</span><span class="arrow">→</span><span class="after">mandats entrants via réseaux</span></div>
         </div>
       </div>
 
@@ -1180,10 +1188,10 @@ footer{background:#080720;padding:72px 0 0}
         </div>
         <div class="video-context">
           <div class="video-context-tags">
-            <span class="video-context-tag">PME</span>
-            <span class="video-context-tag">Belgique</span>
+            <span class="video-context-tag">Immobilier</span>
+            <span class="video-context-tag">Bruxelles</span>
           </div>
-          <div class="video-context-result">Personal branding · Google Ads & Meta Ads ciblés</div>
+          <div class="video-context-result"><span class="before">Dispersé</span><span class="arrow">→</span><span class="after">référence locale incontournable</span></div>
         </div>
       </div>
 
@@ -1194,7 +1202,7 @@ footer{background:#080720;padding:72px 0 0}
             <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
           </div>
           <p class="carousel-cta-text">Votre contenu mérite d'être vu.</p>
-          <p class="carousel-cta-sub">Community management, vidéo et publicité. On s'occupe de tout.</p>
+          <p class="carousel-cta-sub">Community management, vidéo et publicité — on s'occupe de tout.</p>
           <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="btn btn-white btn-sm">Réserver mon appel →</a>
         </div>
       </div>
@@ -1230,7 +1238,7 @@ footer{background:#080720;padding:72px 0 0}
       <div class="compare-row">
         <div class="cc aspect">Contenu</div>
         <div class="cc bad">X posts/mois contractuels, contenu générique</div>
-        <div class="cc good">Ce qui génère des mandats et pas ce qui remplit un quota</div>
+        <div class="cc good">Ce qui génère des mandats — pas ce qui remplit un quota</div>
       </div>
       <div class="compare-row">
         <div class="cc aspect">Expertise secteur</div>
@@ -1240,7 +1248,7 @@ footer{background:#080720;padding:72px 0 0}
       <div class="compare-row">
         <div class="cc aspect">Budget pub</div>
         <div class="cc bad">Commission prélevée sur votre budget pub</div>
-        <div class="cc good">Zéro commission et votre budget vous appartient</div>
+        <div class="cc good">Zéro commission. Votre budget vous appartient</div>
       </div>
       <div class="compare-row">
         <div class="cc aspect">Interlocuteur</div>
@@ -1281,22 +1289,22 @@ footer{background:#080720;padding:72px 0 0}
       <div class="fomo-right reveal d2">
         <div class="fomo-stat">
           <div class="fomo-stat-num"><span>4 sur 5</span></div>
-          <div class="fomo-stat-text">entreprises belges utilisent les réseaux sociaux. Vos concurrents y sont déjà. La question n'est plus si vous devez y être mais comment vous y démarquer.</div>
+          <div class="fomo-stat-text">entreprises belges utilisent les réseaux sociaux. Vos concurrents y sont déjà. La question n'est plus si vous devez y être : mais comment vous y démarquer.</div>
           <div class="fomo-stat-source">Source : Statbel, Enquête TIC dans les entreprises 2025</div>
         </div>
         <div class="fomo-stat">
           <div class="fomo-stat-num"><span>79,3%</span></div>
-          <div class="fomo-stat-text">des entreprises belges utilisent les médias sociaux mais la majorité sans stratégie ni contenu vidéo. Être présent ne suffit plus. Ce qui convertit, c'est une présence construite pour générer des clients.</div>
+          <div class="fomo-stat-text">des entreprises belges utilisent les médias sociaux. Mais la majorité sans stratégie ni contenu vidéo. Être présent ne suffit plus. Ce qui convertit, c'est une présence construite pour générer des clients.</div>
           <div class="fomo-stat-source">Source : SPF Économie, Baromètre de la société de l'information</div>
         </div>
         <div class="fomo-stat">
           <div class="fomo-stat-num"><span>3,5×</span></div>
-          <div class="fomo-stat-text">plus de demandes générées par un contenu vidéo par rapport à un contenu statique. En 2026, la vidéo n'est plus un avantage concurrentiel, c'est le minimum pour exister dans votre zone.</div>
+          <div class="fomo-stat-text">plus de demandes générées par un contenu vidéo par rapport à un contenu statique. En 2026, la vidéo n'est plus un avantage concurrentiel. C'est le minimum pour exister dans votre zone.</div>
           <div class="fomo-stat-source">Source : 8upmedia.com, Guide marketing digital immobilier Belgique 2026</div>
         </div>
         <div class="fomo-stat">
           <div class="fomo-stat-num"><span>20%</span></div>
-          <div class="fomo-stat-text">des ventes immobilières belges proviennent directement des réseaux sociaux et pour les agents qui les utilisent bien. Les autres comptent encore sur le bouche-à-oreille.</div>
+          <div class="fomo-stat-text">des ventes immobilières belges proviennent directement des réseaux sociaux. Pour les agents qui les utilisent bien. Les autres comptent encore sur le bouche-à-oreille.</div>
           <div class="fomo-stat-source">Source : L'Echo / Batibouw.com, agents immobiliers belges</div>
         </div>
       </div>
@@ -1376,17 +1384,17 @@ footer{background:#080720;padding:72px 0 0}
       <h2>Ce qu'on nous demande souvent.</h2>
     </div>
     <div class="faq-list reveal">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels sont vos tarifs ? <span class="faq-icon">+</span></button><div class="faq-a"><p><strong>Visibilité &amp; Acquisition à 900 €/mois</strong> : community management, stratégie éditoriale, gestion Meta Ads et Google Ads. <strong>Visibilité &amp; Impact à 1 500 €/mois</strong> (recommandé) : tout ce qui précède, plus la création vidéo et Reels. Sans engagement de durée imposée. Le budget publicitaire est géré par vous séparément — nous ne prélevons aucune commission.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Le budget publicitaire est-il inclus dans le forfait ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Non — et c'est volontaire. Votre budget Meta Ads et Google Ads reste entièrement entre vos mains. Vous décidez du montant selon vos objectifs (nous recommandons entre 200 et 500 €/mois pour commencer efficacement). Vision House gère les campagnes et l'optimisation. <strong>Nous ne percevons aucune commission sur votre budget pub.</strong></p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je fournir du contenu ou des photos ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Non. On prend en charge la création complète : textes, visuels, vidéos. Pour la vidéo, nous préparons les scripts à l'avance — vous filmez ce que vous voulez, quand vous voulez. Nous montons, sous-titrons et publions. Votre seule obligation : valider le contenu en quelques clics.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Pourquoi recommandez-vous l'offre avec vidéo ? <span class="faq-icon">+</span></button><div class="faq-a"><p>La vidéo génère aujourd'hui beaucoup plus d'engagement que le contenu statique sur Instagram et LinkedIn. Elle crée de la proximité, renforce la confiance et génère des clients bien plus facilement qu'une publication photo. Sans vidéo, votre visibilité a un plafond que la concurrence franchit déjà.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Suis-je bien accompagné au quotidien ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Oui. Un fondateur dédié, pas un ticket support. On répond vite, on anticipe vos questions. Un brief mensuel de 20 minutes suffit — le reste est géré par nous.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Faut-il s'engager sur une longue durée ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Nos contrats sont mensuels et renouvelables. Pas d'engagement annuel imposé. Si après 60 jours vous estimez que Vision House ne vous apporte pas la valeur attendue, vous partez sans pénalité. Nos clients restent parce que les résultats sont là, pas parce qu'ils y sont obligés.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels sont vos tarifs ? <span class="faq-icon">+</span></button><div class="faq-a"><p><strong>Visibilité &amp; Acquisition à 900 €/mois</strong> : community management sur TikTok, Instagram et Facebook, stratégie éditoriale, gestion Meta Ads et Google Ads. <strong>Visibilité &amp; Impact à 1 500 €/mois</strong> (recommandé) : tout ce qui précède, plus la création vidéo et Reels complète prise en charge par Vision House. L'engagement minimum est de 6 mois. Le budget publicitaire est géré par vous séparément. Nous ne prélevons aucune commission.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Le budget publicitaire est-il inclus dans le forfait ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Non, et c'est volontaire. Votre budget Meta Ads et Google Ads reste entièrement entre vos mains. Vous décidez du montant selon vos objectifs (nous recommandons entre 200 et 500 €/mois pour commencer efficacement). Vision House gère les campagnes et l'optimisation. <strong>Nous ne percevons aucune commission sur votre budget pub.</strong></p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dois-je filmer ou fournir du contenu ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Non. Vision House prend en charge la création complète de A à Z : nous venons filmer, nous montons, nous sous-titrons et nous publions. Vous n'avez rien à faire côté production. Votre seule obligation : valider le contenu en quelques clics avant publication.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Sur quels réseaux sociaux travaillez-vous ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Nous travaillons principalement sur <strong>TikTok, Instagram et Facebook</strong> — les trois plateformes les plus efficaces pour générer de la visibilité locale et des leads qualifiés en Belgique. Selon votre secteur et vos objectifs, nous pouvons également activer LinkedIn et Google Ads pour amplifier les résultats.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Pourquoi recommandez-vous l'offre avec vidéo ? <span class="faq-icon">+</span></button><div class="faq-a"><p>La vidéo génère aujourd'hui beaucoup plus d'engagement que le contenu statique sur TikTok, Instagram et Facebook. Elle crée de la proximité, renforce la confiance et génère des clients bien plus facilement qu'une publication photo. Sans vidéo, votre visibilité a un plafond que la concurrence franchit déjà.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Suis-je bien accompagné au quotidien ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Oui. Un fondateur dédié, pas un ticket support. On répond vite, on anticipe vos questions. Un brief mensuel de 20 minutes suffit. Le reste est géré par nous.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quelle est la durée d'engagement ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Nos contrats ont une durée minimale de <strong>6 mois</strong>, non résiliable. Ce délai est nécessaire pour construire une présence digitale solide et voir des résultats concrets. Une communication efficace se construit sur la durée : les premiers signaux arrivent entre la 3e et la 6e semaine, les résultats se consolident à partir du 2e mois. À l'issue des 6 mois, le contrat se renouvelle chaque mois.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels résultats puis-je attendre ? <span class="faq-icon">+</span></button><div class="faq-a"><p>On fixe des objectifs clairs lors du diagnostic. Les premiers signaux arrivent entre la 3e et la 6e semaine. Les résultats mesurables se consolident à partir du 2e mois. On ne vous vend pas un miracle : on construit quelque chose qui dure.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quels sont vos délais de démarrage ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Stratégie et profils optimisés dès la première semaine. Premier contenu publié en semaine 3. Campagnes publicitaires lancées sous 48h après validation.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Avec quel type d'entreprises travaillez-vous ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Principalement des agents immobiliers, agences immobilières et PME locales à Bruxelles et en Belgique. On sélectionne nos clients pour garantir un accompagnement de qualité — nous n'acceptons pas plus de clients que nous ne pouvons bien servir.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Pouvez-vous travailler avec mon équipe interne ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Absolument. On s'intègre à votre organisation existante, que vous ayez un community manager, un graphiste ou rien du tout. On part toujours de votre situation réelle.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Comment mesurez-vous le succès ? <span class="faq-icon">+</span></button><div class="faq-a"><p>En chiffres concrets : leads générés, clients obtenus, croissance d'audience qualifiée, coût par acquisition. Pas de métriques de vanité — uniquement des chiffres qui parlent à votre business.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Avec quel type d'entreprises travaillez-vous ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Principalement des agents immobiliers, agences immobilières et PME locales à Bruxelles et en Belgique. On sélectionne nos clients pour garantir un accompagnement de qualité. Nous ne prenons pas plus de clients que nous ne pouvons bien servir.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Comment mesurez-vous le succès ? <span class="faq-icon">+</span></button><div class="faq-a"><p>En chiffres concrets : leads générés, clients obtenus, croissance d'audience qualifiée, coût par acquisition. Pas de métriques de vanité. Uniquement des chiffres qui parlent à votre business.</p></div></div>
     </div>
   </div>
 </section>
@@ -1470,7 +1478,7 @@ footer{background:#080720;padding:72px 0 0}
               <label>Quel est votre principal défi en communication ? *</label>
               <select name="defi_principal" required>
                 <option value="" disabled selected>Choisissez une réponse</option>
-                <option>Je manque de visibilité et personne ne me trouve en ligne</option>
+                <option>Je manque de visibilité — personne ne me trouve en ligne</option>
                 <option>Je publie mais ça ne génère pas de clients</option>
                 <option>Je n'ai pas le temps de gérer ma communication</option>
                 <option>Mon image ne reflète pas la qualité de ce que je fais</option>
@@ -1536,7 +1544,7 @@ footer{background:#080720;padding:72px 0 0}
 <!-- CTA BAND -->
 <div class="cta-band">
   <div class="container">
-    <div class="label">Sans engagement · 30 minutes · Gratuit</div>
+    <div class="label">Appel offert · 30 minutes · Bruxelles</div>
     <h2>Si vous ne faites rien, vos concurrents avancent.</h2>
     <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="btn btn-white btn-arrow" id="final-cta-btn">Réserver mon appel offert</a>
   </div>
