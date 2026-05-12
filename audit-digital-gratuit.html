@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Diagnostic Digital Gratuit · Vision House · Bruxelles</title>
+<meta name="description" content="Évaluez votre présence digitale en 3 minutes. Recevez un rapport personnalisé et 2 priorités concrètes pour générer plus de clients en ligne. Gratuit et sans engagement.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://visionhouse.be/diagnostic.html">
+<meta property="og:title" content="Diagnostic Digital Gratuit · Vision House">
+<meta property="og:description" content="Combien de clients vous échappent en ligne chaque semaine ? Découvrez-le en 3 minutes.">
+<meta property="og:url" content="https://visionhouse.be/diagnostic.html">
+<meta property="og:image" content="https://visionhouse.be/logo-header.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --violet:#0C0340;
+    --royal:#092969;
+    --ink:#0C0340;
+    --ink-2:#3a3550;
+    --ink-3:#7a7689;
+    --line:rgba(12,3,64,.10);
+    --line-2:rgba(12,3,64,.06);
+    --bg:#ffffff;
+    --bg-soft:#F6F6F9;
+    --display:'Cormorant Garamond', serif;
+    --ui:'DM Sans', sans-serif;
+    --w08:rgba(255,255,255,.08);
+    --w50:rgba(255,255,255,.5);
+    --glass-bg:rgba(9,41,105,.82);
+    --glass-border:rgba(255,255,255,.18);
+    --glass-shadow:0 8px 40px rgba(9,41,105,.22);
+    --glass-text:#ffffff;
+    --glass-text-2:rgba(255,255,255,.78);
+    --glass-text-3:rgba(255,255,255,.52);
+  }
+  *{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  html,body{margin:0;padding:0;background:#ffffff;min-height:100vh;}
+  body{color:var(--ink);font-family:var(--ui);font-weight:300;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:0;background:transparent;color:inherit}
+  input{font-family:inherit;color:inherit}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-2);transition:border-color .3s}
+  .nav.scrolled{border-bottom-color:var(--line)}
+  .logo{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-.005em;color:var(--ink)}
+  .logo .h{color:var(--royal);font-weight:700}
+  .back{font-size:.82rem;color:var(--ink-3);transition:color .25s;letter-spacing:.005em}
+  .back:hover{color:var(--ink)}
+
+  .hero{position:relative;margin:84px 16px 0;border-radius:18px;overflow:visible;min-height:min(100svh - 110px, 880px);height:calc(100svh - 100px);max-height:1000px;isolation:isolate;color:#fff;display:flex;align-items:flex-end;justify-content:center}
+  .hero-clip{position:absolute;inset:0;border-radius:18px;overflow:hidden;z-index:-1}
+  .hero-clip::before{content:"";position:absolute;inset:0;z-index:-3;background:radial-gradient(120% 90% at 88% 8%, #cfdcef 0%, #8fa9d0 14%, #4d72a8 32%, #234a82 48%, #142d5a 60%, #0b1b3e 72%, #050a1c 84%, #02050f 100%)}
+  .hero-clip::after{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(40% 38% at 90% 6%, rgba(255,255,255,.55) 0%, rgba(255,255,255,.18) 22%, transparent 55%),radial-gradient(70% 60% at 80% 30%, rgba(180,205,240,.32) 0%, transparent 60%),radial-gradient(60% 70% at 12% 92%, rgba(0,0,0,.55) 0%, transparent 55%);mix-blend-mode:screen}
+  .hero-clip .grain{position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");opacity:.35;mix-blend-mode:overlay}
+  .hero-clip .grain.b{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");opacity:.28;mix-blend-mode:multiply}
+  .hero-live{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.10);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.20);border-radius:999px;padding:8px 18px 8px 12px;font-size:.74rem;color:rgba(255,255,255,.92);letter-spacing:.03em;box-shadow:0 4px 16px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.18)}
+  .hero-live .dot{width:7px;height:7px;border-radius:999px;background:#4ade80;flex:0 0 7px;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+  .hero-bottom{position:relative;z-index:2;width:100%;max-width:760px;padding:0 28px 64px;text-align:center}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;color:rgba(255,255,255,.78);letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
+  .hero-eyebrow::before,.hero-eyebrow::after{content:"";width:24px;height:1px;background:rgba(255,255,255,.4)}
+  .hero-tag{color:rgba(255,255,255,.92);font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.15rem, 2vw, 1.55rem);line-height:1.5;text-wrap:pretty;letter-spacing:-.005em;max-width:620px;margin:0 auto}
+  .hero-tag em{font-style:italic;color:#fff;font-weight:500;display:inline-block;transform:translateY(1px)}
+  .hero-cta{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:14px 24px;border-radius:999px;background:#fff;color:var(--ink);font-size:.85rem;font-weight:500;transition:transform .2s, background .2s;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+  .hero-cta:hover{background:rgba(255,255,255,.92);transform:translateY(-1px)}
+  .hero-cta .arr{transition:transform .2s}
+  .hero-cta:hover .arr{transform:translateX(3px)}
+  .hero-meta{position:absolute;left:24px;bottom:24px;z-index:2;font-size:.7rem;color:rgba(255,255,255,.55);letter-spacing:.14em;text-transform:uppercase}
+  .hero-meta b{font-weight:500;color:rgba(255,255,255,.85)}
+
+  .section{padding:84px 24px;background:#fff}
+  .section-head{max-width:760px;margin:0 auto 36px;text-align:center}
+  .eyebrow-dark{font-size:.72rem;color:var(--ink-3);letter-spacing:.16em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+  .eyebrow-dark::before,.eyebrow-dark::after{content:"";width:18px;height:1px;background:var(--line)}
+  .section-h{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem, 3.4vw, 2.6rem);line-height:1.1;letter-spacing:-.02em;margin:14px 0 10px;text-wrap:balance}
+  .section-h em{font-style:italic;font-weight:400}
+  .section-sub{font-size:.98rem;color:var(--ink-3);max-width:540px;margin:0 auto;line-height:1.6}
+
+  .form-wrap{display:flex;justify-content:center}
+  .card{width:100%;max-width:580px;background:linear-gradient(160deg, #0C0340 0%, #092969 60%, #12387a 100%);border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 24px 60px rgba(9,41,105,.22), 0 2px 6px rgba(9,41,105,.1), inset 0 1px 0 rgba(255,255,255,.1);overflow:hidden}
+  .progress{position:relative;height:2px;background:var(--line-2)}
+  .progress .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg, var(--royal), var(--ink));transition:width .5s cubic-bezier(.4,0,.2,1)}
+  .progress-meta{display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-size:.65rem;color:rgba(255,255,255,.45);letter-spacing:.08em;text-transform:uppercase}
+  .step{padding:24px 28px 28px;animation:stepIn .42s cubic-bezier(.4,0,.2,1)}
+  @keyframes stepIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes stepOut{to{opacity:0;transform:translateY(-12px)}}
+  .step-title{font-family:var(--display);font-weight:500;font-size:1.7rem;line-height:1.18;letter-spacing:-.015em;margin:14px 0 6px;text-wrap:pretty;color:#fff}
+  .step-title em{font-style:italic;font-weight:400}
+  .step-note{font-size:.86rem;color:rgba(255,255,255,.6);line-height:1.55;margin:0 0 18px;font-weight:300}
+  .step-eyebrow{font-size:.62rem;color:rgba(255,255,255,.5);letter-spacing:.16em;text-transform:uppercase;margin:0;font-weight:500}
+  .sector-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px 4px 8px;font-size:.72rem;color:var(--ink-2);margin-bottom:14px}
+  .options{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .opt{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border:1px solid var(--glass-border);border-radius:12px;background:rgba(255,255,255,.06);text-align:left;width:100%;transition:transform .2s, border-color .2s, background .2s;color:var(--ink)}
+  .opt:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.1)}
+  .opt:active{transform:scale(.99)}
+  .opt.sel{background:rgba(122,170,255,.15);border-color:rgba(122,170,255,.7);animation:tap .35s cubic-bezier(.4,0,.2,1)}
+  @keyframes tap{0%{transform:scale(1)}40%{transform:scale(.98)}70%{transform:scale(1.02)}100%{transform:scale(1)}}
+  .opt .icon{flex:0 0 28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;line-height:1;margin-top:1px}
+  .opt .lbl{font-size:.92rem;font-weight:400;color:#fff;line-height:1.4}
+  .opt .desc{font-size:.74rem;color:rgba(255,255,255,.55);margin-top:3px;font-weight:300;line-height:1.45}
+  .opt.compact .lbl{font-size:.9rem;font-weight:400;line-height:1.5;color:#fff}
+  .opt .check{margin-left:auto;width:18px;height:18px;border-radius:999px;border:1.5px solid var(--line);flex:0 0 18px;margin-top:3px;display:flex;align-items:center;justify-content:center;transition:border-color .2s, background .2s}
+  .opt.sel .check{border-color:#7eaaff;background:#7eaaff}
+  .opt.sel .check::after{content:"";width:6px;height:6px;border-radius:999px;background:#fff}
+  .sub-group{margin-top:18px}
+  .sub-group h4{font-family:var(--ui);font-weight:500;font-size:.82rem;margin:0 0 10px;color:rgba(255,255,255,.85);letter-spacing:.005em}
+  .actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:10px;font-size:.88rem;font-weight:500;transition:transform .2s, background .2s, opacity .2s, color .2s, box-shadow .2s;letter-spacing:.005em}
+  .btn.primary{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:0 8px 18px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.2)}
+  .btn.primary:hover{background:rgba(255,255,255,.22);box-shadow:0 10px 22px rgba(0,0,0,.25)}
+  .btn.primary:active{transform:scale(.99)}
+  .btn.ghost{color:rgba(255,255,255,.5);font-size:.8rem;padding:14px 4px}
+  .btn.ghost:hover{color:#fff}
+  .btn.full{width:100%}
+  .btn.disabled,.btn[disabled]{opacity:.3;pointer-events:none;box-shadow:none}
+  .btn .arr{transition:transform .2s}
+  .btn:hover .arr{transform:translateX(3px)}
+  .legal{font-size:.72rem;color:rgba(255,255,255,.45);text-align:center;margin-top:14px;line-height:1.55}
+  .intro-tag{font-family:var(--display);font-style:italic;font-size:1rem;color:var(--ink-3);margin-bottom:4px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+  .field label{font-size:.72rem;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase}
+  .field input{width:100%;background:rgba(255,255,255,.08);border:1px solid var(--glass-border);border-radius:10px;padding:13px 14px;font-size:.94rem;color:#fff;font-weight:400;transition:border-color .2s, background .2s}
+  .field input::placeholder{color:rgba(255,255,255,.3);font-weight:300}
+  .field input:focus{outline:0;border-color:rgba(122,170,255,.7);background:rgba(255,255,255,.12)}
+  .field.err input{border-color:#E74C3C}
+  .field .err-msg{font-size:.7rem;color:#E74C3C;display:none}
+  .field.err .err-msg{display:block}
+  .score-big{font-family:var(--display);font-weight:700;font-size:5rem;line-height:1;text-align:center;margin:12px 0 6px;letter-spacing:-.03em;color:#fff}
+  .score-small{text-align:center;color:rgba(255,255,255,.5);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+  .score-msg{margin:18px auto 0;font-size:.94rem;line-height:1.6;color:rgba(255,255,255,.75);max-width:440px;text-align:center;font-weight:300;text-wrap:pretty}
+  .dim-bars{display:flex;flex-direction:column;gap:14px;margin:24px 0 4px}
+  .dim{display:flex;flex-direction:column;gap:6px}
+  .dim-head{display:flex;justify-content:space-between;font-size:.78rem;color:rgba(255,255,255,.85)}
+  .dim-head .pct{color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums}
+  .dim-bar{height:4px;background:var(--line-2);border-radius:999px;overflow:hidden}
+  .dim-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg, var(--royal), var(--ink));transition:width 1.1s cubic-bezier(.4,0,.2,1)}
+  .gauge-wrap{display:flex;flex-direction:column;align-items:center;margin:8px 0 0}
+  .gauge{position:relative;width:260px;height:150px}
+  .gauge svg{display:block;width:100%;height:100%}
+  .gauge .ring-bg{fill:none;stroke:var(--line-2);stroke-width:14;stroke-linecap:round}
+  .gauge .ring-fill{fill:none;stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1), stroke 1s}
+  .gauge .num{position:absolute;left:0;right:0;top:58%;text-align:center;font-family:var(--display);font-weight:700;font-size:3.4rem;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:#fff}
+  .gauge .out{position:absolute;left:0;right:0;top:calc(58% + 50px);text-align:center;font-size:.68rem;color:rgba(255,255,255,.5);letter-spacing:.14em;text-transform:uppercase}
+  .verdict{font-family:var(--display);font-weight:500;font-size:1.55rem;line-height:1.2;text-align:center;margin:22px 0 8px;letter-spacing:-.01em;text-wrap:balance;color:#fff}
+  .verdict-desc{text-align:center;color:rgba(255,255,255,.55);font-size:.86rem;line-height:1.6;font-weight:300;max-width:440px;margin:0 auto}
+  .mod-list{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+  .mod{border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 16px;background:rgba(255,255,255,.07)}
+  .mod-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .mod-ic{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;background:rgba(58,107,204,.5);border:1px solid rgba(122,170,255,.3);color:#fff;font-weight:600;font-family:var(--display)}
+  .mod-name{font-size:.86rem;font-weight:500;color:#fff}
+  .mod-badge{margin-left:auto;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7);background:rgba(255,255,255,.08)}
+  .mod-bar{height:3px;background:var(--line-2);border-radius:999px;overflow:hidden;margin-bottom:8px}
+  .mod-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg, var(--royal), var(--ink));transition:width 1s cubic-bezier(.4,0,.2,1)}
+  .mod-txt{font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.55;font-weight:300}
+  .advice-section{margin-top:28px;padding-top:24px;border-top:1px solid var(--line-2)}
+  .advice-h{font-family:var(--display);font-weight:500;font-size:1.45rem;letter-spacing:-.01em;margin:0 0 8px;color:#fff}
+  .advice-intro{font-size:.84rem;color:rgba(255,255,255,.55);line-height:1.6;margin:0 0 16px;font-weight:300}
+  .acc{border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.06);overflow:hidden;margin-bottom:12px}
+  .acc-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;width:100%;text-align:left;color:var(--ink)}
+  .acc-num{width:28px;height:28px;border-radius:999px;background:rgba(58,107,204,.6);border:1px solid rgba(122,170,255,.4);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.82rem;flex:0 0 28px;font-family:var(--display)}
+  .acc-title{font-size:.96rem;font-weight:500;line-height:1.35;flex:1;text-wrap:balance;color:#fff}
+  .acc-chev{color:rgba(255,255,255,.45);transition:transform .35s}
+  .acc.open .acc-chev{transform:rotate(180deg)}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+  .acc-body-inner{padding:0 18px 18px;border-top:1px solid rgba(255,255,255,.1);padding-top:14px;font-size:.86rem;line-height:1.6;color:rgba(255,255,255,.7);font-weight:300}
+  .acc-label{font-size:.62rem;color:rgba(255,255,255,.4);letter-spacing:.14em;text-transform:uppercase;margin:14px 0 6px}
+  .acc-label:first-child{margin-top:0}
+  .acc-obs{font-style:italic;padding-left:12px;border-left:2px solid rgba(122,170,255,.6);color:rgba(255,255,255,.75)}
+  .acc-lock{margin-top:14px;padding:14px 16px;border:1px solid var(--glass-border);border-radius:10px;background:rgba(255,255,255,.05);display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--ink-2);line-height:1.55}
+  .acc-cta{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:11px 16px;background:rgba(58,107,204,.6);backdrop-filter:blur(8px);border:1px solid rgba(122,170,255,.3);color:#fff;border-radius:8px;font-weight:500;font-size:.82rem;box-shadow:0 6px 14px rgba(0,0,0,.2)}
+  .acc-cta:hover{background:rgba(80,130,220,.8)}
+  .final-cta{margin-top:24px;padding:28px 24px;border-radius:16px;background:rgba(58,107,204,.2);backdrop-filter:blur(20px);border:1px solid rgba(122,170,255,.25);color:#fff;text-align:center;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+  .final-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 100% at 100% 0%, rgba(255,255,255,.08), transparent 60%);pointer-events:none}
+  .final-cta h3{font-family:var(--display);font-weight:500;font-size:1.5rem;margin:0 0 10px;letter-spacing:-.01em;text-wrap:balance;color:#fff;position:relative}
+  .final-cta p{font-size:.88rem;color:rgba(255,255,255,.78);margin:0 0 18px;line-height:1.55;font-weight:300;position:relative}
+  .final-cta .btn.primary{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:0 10px 22px rgba(0,0,0,.18);position:relative}
+  .final-cta .btn.primary:hover{background:rgba(255,255,255,.22)}
+  .final-cta .note{font-size:.7rem;color:rgba(255,255,255,.55);margin-top:12px;letter-spacing:.04em;position:relative}
+  .trust-bar-wrap{display:flex;justify-content:center;padding:48px 24px 0;position:relative;z-index:10}
+  .trust-bar{display:inline-flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;background:linear-gradient(135deg, #0C0340 0%, #092969 50%, #1a3d7a 100%);border-radius:20px;padding:14px 8px;box-shadow:0 12px 40px rgba(9,41,105,.25),inset 0 1px 0 rgba(255,255,255,.12)}
+  .trust-item{display:flex;align-items:center;gap:7px;font-size:.72rem;color:rgba(255,255,255,.9);letter-spacing:.02em;padding:6px 20px;white-space:nowrap}
+  .trust-item+.trust-item{border-left:1px solid rgba(255,255,255,.14)}
+  .trust-item svg{opacity:.8;flex:0 0 14px}
+  .social{padding:96px 24px;background:#F6F6F9;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+  .social-inner{max-width:980px;margin:0 auto;text-align:center}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+  .stat .n{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;letter-spacing:-.02em;color:var(--royal)}
+  .stat .l{font-size:.8rem;color:var(--ink-3);margin-top:10px;letter-spacing:.005em;line-height:1.45}
+  .testimonials{margin-top:0}
+  .testi-head{font-family:var(--display);font-weight:500;font-size:1.5rem;letter-spacing:-.01em;margin:0 0 8px;color:var(--ink)}
+  .testi-track{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:820px;margin:0 auto}
+  .testi-card{background:linear-gradient(145deg, #0C0340 0%, #0e2d6b 100%);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px 24px;text-align:left;transition:box-shadow .2s, transform .2s;box-shadow:0 8px 28px rgba(9,41,105,.2), inset 0 1px 0 rgba(255,255,255,.1)}
+  .testi-card:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(9,41,105,.28)}
+  .testi-stars{font-size:.8rem;color:#fbbf24;letter-spacing:.1em;margin-bottom:12px}
+  .testi-text{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.05rem;line-height:1.5;color:#fff;margin:0 0 14px}
+  .testi-who{font-size:.76rem;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:8px}
+  .testi-avatar{width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:.72rem;flex:0 0 36px;letter-spacing:.02em}
+  .faq-section{padding:80px 24px;background:#ffffff}
+  .faq-inner{max-width:640px;margin:0 auto}
+  .faq-head{text-align:center;margin-bottom:36px}
+  .faq-item{border-bottom:1px solid var(--line);padding:18px 0}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font-size:.96rem;font-weight:500;color:var(--ink);background:none;border:none;width:100%;text-align:left;padding:0}
+  .faq-q .chev{color:var(--ink-3);transition:transform .3s;flex:0 0 16px}
+  .faq-item.open .faq-q .chev{transform:rotate(180deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+  .faq-a-inner{padding:12px 16px 16px;font-size:.88rem;color:var(--ink-2);line-height:1.65;font-weight:300;background:linear-gradient(135deg,#0C0340,#092969);color:rgba(255,255,255,.75);border-radius:10px;margin-top:8px}
+  .faq-item.open .faq-a{max-height:300px}
+  .urgency-strip{background:#fff;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:44px 24px;text-align:center;overflow:hidden}
+  .urgency-inner{max-width:760px;margin:0 auto;font-family:var(--display);font-size:clamp(1.15rem, 2.4vw, 1.75rem);font-weight:400;line-height:1.55;color:var(--ink);letter-spacing:-.01em}
+  .tw-wrap{display:inline;position:relative}
+  .tw-text{font-weight:600;font-style:italic;color:var(--royal)}
+  .tw-cursor{display:inline-block;width:2px;height:1.1em;background:var(--royal);vertical-align:middle;margin-left:1px;animation:blink .9s step-end infinite;border-radius:1px}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .hl{position:relative;display:inline;white-space:normal;font-weight:600;font-style:italic;color:var(--ink);z-index:0}
+  .hl::before{content:"";position:absolute;left:-.06em;right:-.06em;bottom:.06em;height:.5em;border-radius:2px;z-index:-1;transform:scaleX(0);transform-origin:left center}
+  .hl.hl-yellow::before{background:rgba(251,191,36,.35)}
+  .hl.hl-visible::before{animation:hlSwipe .55s cubic-bezier(.22,1,.36,1) forwards}
+  @keyframes hlSwipe{0%{transform:scaleX(0);opacity:0}10%{opacity:1}100%{transform:scaleX(1);opacity:1}}
+  footer{padding:48px 24px 60px;text-align:center;background:#fff;border-top:1px solid var(--line-2)}
+  footer .copy{font-size:.76rem;color:var(--ink-3);margin:14px 0 10px;letter-spacing:.02em}
+  footer .back-link{font-size:.8rem;color:var(--ink-2);transition:color .25s}
+  footer .back-link:hover{color:var(--ink)}
+  @media(max-width:580px){
+    .nav{padding:14px 18px}
+    .hero{margin:74px 10px 0;min-height:78svh;height:78svh;border-radius:14px}
+    .hero-bottom{padding:0 20px 40px}
+    .hero-meta,.hero-live{display:none}
+    .section{padding:60px 14px}
+    .step{padding:20px 18px 22px}
+    .progress-meta{padding:12px 18px 0}
+    .card{border-radius:16px}
+    .stats{grid-template-columns:repeat(3,1fr);gap:10px}
+    .social{padding:64px 18px}
+    .gauge{width:230px;height:140px}
+    .gauge .num{font-size:3rem}
+    .testi-track{grid-template-columns:1fr}
+    .trust-bar{gap:16px}
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="logo">Vision<span class="h">House</span></div>
+    <a class="back" href="https://visionhouse.be/">← Retour au site</a>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-clip">
+      <div class="grain"></div>
+      <div class="grain b"></div>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-eyebrow">Diagnostic offert · 3 minutes</div>
+      <p class="hero-tag">Combien de clients vous échappent en ligne chaque semaine ?<br>Répondez à quelques questions simples et découvrez exactement où vous en êtes — et ce qu'il faut changer en priorité.</p>
+      <a class="hero-cta" href="#diag">Démarrer mon diagnostic <span class="arr">→</span></a>
+      <div class="hero-live" id="heroLive" style="display:none;margin-top:20px;justify-content:center">
+        <span class="dot"></span>
+        <span id="liveCount">12</span>&nbsp;diagnostics lancés aujourd'hui
+      </div>
+    </div>
+    <div class="hero-meta"><b>VisionHouse</b> · Diagnostic Digital</div>
+  </section>
+
+  <div class="trust-bar-wrap">
+    <div class="trust-bar">
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Données confidentielles
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Résultat en 3 minutes
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+        100 % gratuit
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Personnalisé à votre secteur
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="diag">
+    <div class="section-head">
+      <span class="eyebrow-dark">Diagnostic interactif</span>
+      <h2 class="section-h">Identifiez ce qui freine <em>votre croissance</em> en ligne</h2>
+      <p class="section-sub">État des lieux en 13 étapes.</p>
+    </div>
+    <div class="form-wrap">
+      <div class="card" id="glass">
+        <div class="progress"><div class="fill" id="pfill" style="width:0%"></div></div>
+        <div class="progress-meta" id="pmeta">
+          <span id="pstep">Étape 1 sur 13</span>
+          <span id="ppct">0%</span>
+        </div>
+        <div id="stepHost"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="urgency-strip" id="urgencyStrip">
+    <div class="urgency-inner">
+      <div id="urgencyLine1" style="margin-bottom:.2em;opacity:0;transition:opacity .4s">
+        En ce moment, <span class="hl hl-yellow" id="hlA">votre concurrent apparaît</span> là où vous devriez être.
+      </div>
+      <div id="urgencyLine2" style="opacity:0;transition:opacity .4s">
+        Découvrez <span class="tw-wrap"><span class="tw-text" id="twText"></span><span class="tw-cursor" id="twCursor"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var strip=document.getElementById('urgencyStrip');
+    if(!strip) return;
+    var phrases=['ce qui vous coûte des clients.','pourquoi ils choisissent un autre.','le levier que vous n\u2019activez pas.','exactement où vous perdez du terrain.'];
+    var line1=document.getElementById('urgencyLine1'),line2=document.getElementById('urgencyLine2'),twEl=document.getElementById('twText'),hlA=document.getElementById('hlA'),started=false;
+    function typePhrase(phrase,idx,cb){if(idx<phrase.length){twEl.textContent=phrase.slice(0,idx+1);setTimeout(function(){typePhrase(phrase,idx+1,cb);},42+Math.random()*28);}else{setTimeout(cb,1800);}}
+    function erasePhrase(phrase,cb){var len=phrase.length;function step(i){if(i<0){twEl.textContent='';cb();return;}twEl.textContent=phrase.slice(0,i);setTimeout(function(){step(i-1);},28);}step(len);}
+    function runCycle(phraseIdx){var p=phrases[phraseIdx%phrases.length];typePhrase(p,0,function(){erasePhrase(p,function(){setTimeout(function(){runCycle(phraseIdx+1);},300);});});}
+    function startAnimation(){if(started)return;started=true;line1.style.opacity='1';setTimeout(function(){hlA.classList.add('hl-visible');},400);setTimeout(function(){line2.style.opacity='1';runCycle(0);},900);}
+    var io=new IntersectionObserver(function(entries){if(entries[0].isIntersecting){startAnimation();io.disconnect();}},{threshold:0.4});
+    io.observe(strip);
+  })();
+  </script>
+
+  <section class="social">
+    <div class="social-inner">
+      <div class="stats">
+        <div class="stat"><div class="n">10</div><div class="l">clients accompagnés depuis le lancement</div></div>
+        <div class="stat"><div class="n">4.7/5</div><div class="l">note moyenne · avis clients vérifiés</div></div>
+        <div class="stat"><div class="n">6</div><div class="l">mois suffisent pour des résultats mesurables et durables</div></div>
+      </div>
+      <div class="testimonials">
+        <div class="testi-head">Ce qu&#8217;ils en disent.</div>
+        <p style="font-size:.94rem;color:var(--ink-3);margin:-16px 0 28px;font-weight:300;line-height:1.55">Des entrepreneurs et dirigeants qui ont vu leur communication changer de dimension.</p>
+        <div class="testi-track">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">&#171;&nbsp;L&#8217;équipe est de très bon conseil. À l&#8217;écoute et disponible.&nbsp;&#187;</p>
+            <div class="testi-who"><div class="testi-avatar">SA</div><div><div style="font-weight:500;color:var(--ink);font-size:.8rem">Sapia Adeline</div><div>Immobilier</div></div></div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">&#171;&nbsp;Franchement, super expérience. J&#8217;ai particulièrement apprécié la qualité des conseils, toujours pertinents et orientés solutions. On sent l&#8217;envie d&#8217;apporter une vraie valeur.&nbsp;&#187;</p>
+            <div class="testi-who"><div class="testi-avatar">NA</div><div><div style="font-weight:500;color:var(--ink);font-size:.8rem">Nizar Anis</div><div>Software</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-head">
+        <span class="eyebrow-dark">Questions fréquentes</span>
+        <h2 class="section-h" style="margin-top:14px">Ce que vous vous <em>demandez</em></h2>
+      </div>
+      <div class="faq-item open">
+        <button class="faq-q">Ce diagnostic est-il vraiment gratuit ?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Oui, totalement gratuit et sans engagement. Aucune carte de crédit demandée. Le diagnostic prend 3 minutes et vous recevez un rapport personnalisé immédiatement.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Qu'est-ce qui se passe après le diagnostic ?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Vous recevez votre score et 2 priorités concrètes. Si vous le souhaitez, vous pouvez réserver un appel stratégique offert de 30 minutes pour approfondir votre plan d'action, sans engagement.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Est-ce adapté à mon secteur d'activité ?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Le diagnostic est personnalisé selon votre secteur : immobilier, indépendant, PME, habitat, formation, artisanat. Les questions et le rapport tiennent compte des réalités spécifiques de votre métier.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Que faites-vous de mes données ?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Vos données sont strictement confidentielles et ne sont jamais revendues. Elles sont uniquement utilisées pour vous envoyer votre rapport et, si vous le souhaitez, vous recontacter dans le cadre de votre diagnostic.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="copy">© 2026 Emkay Partners SRL · BCE 1024.829.348 · Bruxelles</div>
+    <a class="back-link" href="https://visionhouse.be/">← Retour au site principal · visionhouse.be</a>
+  </footer>
+
+<script>
+(function(){
+  'use strict';
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>24);},{passive:true});
+  document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
+  (function(){const DAY_PROFILES=[[0,0,0,0,0,0,0,0,0,3,5,6,7,6,5,5,4,3,3,2,2,1,0,0],[0,0,0,0,0,0,0,0,0,6,9,12,14,13,11,10,9,8,7,5,4,2,0,0],[0,0,0,0,0,0,0,0,0,5,8,11,13,12,10,9,8,7,6,4,3,2,0,0],[0,0,0,0,0,0,0,0,0,7,10,14,16,15,13,12,10,8,7,5,4,2,0,0],[0,0,0,0,0,0,0,0,0,6,9,13,15,14,12,11,9,8,6,4,3,1,0,0],[0,0,0,0,0,0,0,0,0,5,8,11,12,11,9,8,7,6,5,3,2,1,0,0],[0,0,0,0,0,0,0,0,0,4,6,8,9,9,7,6,5,4,3,2,1,0,0,0]];function getCount(){const now=new Date();const h=now.getHours(),m=now.getMinutes(),dow=now.getDay();const profile=DAY_PROFILES[dow];const base=profile[h]||0,next=profile[Math.min(h+1,23)]||0;const interp=Math.round(base+(next-base)*(m/60));if(interp<=0)return 0;const seed=now.getFullYear()*1000000+(now.getMonth()+1)*10000+now.getDate()*100+h;const jitter=((seed*1664525+1013904223)&0xf)%3;return Math.max(1,interp+jitter-1);}function updateLive(){const count=getCount();const badge=document.getElementById('heroLive'),el=document.getElementById('liveCount');if(!badge||!el)return;if(count>0){el.textContent=count;badge.style.display='inline-flex';}else{badge.style.display='none';}}updateLive();const now=new Date();const msToNext=(60-now.getMinutes())*60000-now.getSeconds()*1000;setTimeout(()=>{updateLive();setInterval(updateLive,3600000);},msToNext);})();
+
+  const state={stepIdx:0,answers:{},score:0,dimScores:{visibility:0,google:0,content:0,ads:0}};
+  const sectorOpts=[{id:'immo',icon:'🏠',lbl:'Immobilier',desc:'Agent immobilier, transaction, location'},{id:'promo',icon:'🏗️',lbl:'Promotion immobilière',desc:'Promoteur, constructeur, lotisseur'},{id:'indep',icon:'💼',lbl:'Indépendant & services',desc:'Consultant, coach, freelance, libéral'},{id:'pme',icon:'🏢',lbl:'Entreprise & PME locale',desc:'Commerce, restaurant, entreprise de service'},{id:'habitat',icon:'🔨',lbl:'Habitat & rénovation',desc:'Entrepreneur, architecte, décorateur'},{id:'formation',icon:'🎓',lbl:'Formation & accompagnement',desc:'Formateur, coach professionnel, organisme'},{id:'artisan',icon:'🪚',lbl:'Artisanat',desc:'Artisan, métier de bouche, savoir-faire'},{id:'autre',icon:'⋯',lbl:'Autre',desc:"Mon secteur n'est pas listé ici"}];
+  const immoSub=[{id:'agent_trans',icon:'🏡',lbl:'Agent immobilier (transaction)'},{id:'agent_loc',icon:'📋',lbl:'Agent immobilier (location / gestion)'},{id:'courtier',icon:'🏦',lbl:'Courtier en prêts immobiliers'},{id:'expert',icon:'📐',lbl:'Expert immobilier / Estimateur'},{id:'notaire',icon:'⚖️',lbl:'Notaire'},{id:'autre_immo',icon:'⋯',lbl:'Autre profil immobilier'}];
+  const promoSub=[{id:'promoteur',icon:'🏗️',lbl:'Promoteur immobilier'},{id:'constr',icon:'🏠',lbl:'Constructeur de maisons individuelles'},{id:'lotisseur',icon:'🌿',lbl:'Lotisseur / aménageur foncier'},{id:'autre_promo',icon:'⋯',lbl:'Autre profil promotion'}];
+  const sectorGroup=(s)=>{if(s==='immo'||s==='promo')return'immo';if(s==='pme')return'pme';if(s==='indep')return'indep';if(s==='habitat')return'habitat';if(s==='formation')return'formation';if(s==='artisan')return'artisan';return'autre';};
+  const Q={immo:[{q:"Est-ce que des gens vous contactent parce qu'ils vous ont vu en ligne ?",n:"Pas via une recommandation : quelqu'un qui vous a trouvé tout seul sur internet.",o:["Non, jamais, tous mes clients viennent par le réseau ou le bouche-à-oreille","Très rarement, peut-être 1 ou 2 fois, mais ce n'était pas grâce à ma stratégie","Oui, de temps en temps, mais je ne peux pas vraiment compter dessus","Oui, régulièrement, internet m'apporte des contacts de façon constante"]},{q:"Si quelqu'un tape votre nom sur Google, qu'est-ce qu'il trouve ?",n:"Ce qui ressort réellement, pas ce que vous aimeriez qu'il trouve.",o:["Probablement rien, ou très peu de choses","Mon nom ou mon agence, mais pas grand chose d'exploitable","Mon site ou ma page, avec quelques informations de base","Beaucoup de choses, site, avis, réseaux, articles, fiches"]},{q:"Vos clients vous voient-ils publier régulièrement quelque chose en ligne ?",n:"Posts, photos de biens, vidéos de quartier, conseils, tout contenu que vous partagez.",o:["Non, je ne publie rien ou presque","Je publie quand j'ai un bien exceptionnel ou une actualité","Je publie plusieurs fois par mois, mais sans logique précise","Oui, régulièrement, mes contacts savent qu'ils vont voir du contenu de moi"]},{q:"Faites-vous des vidéos, même courtes, pour parler de vos biens ?",n:"Une vidéo filmée avec le téléphone compte aussi.",o:["Non, jamais, je ne suis pas à l'aise ou je ne sais pas comment","J'ai essayé une ou deux fois, mais ça n'a rien donné","Oui, parfois, pour des biens ou des événements importants","Oui, c'est une vraie habitude, je publie des vidéos régulièrement"]},{q:"Votre présence en ligne vous aide-t-elle à avoir plus de clients aujourd'hui ?",n:"Pas ce qu'elle pourrait faire, ce qu'elle fait concrètement maintenant.",o:["Non, pas du tout, le digital ne change rien à mon activité en ce moment","Un peu peut-être, mais c'est vraiment difficile à mesurer","Oui, elle aide, mais ce n'est pas encore un vrai levier de croissance","Oui, clairement, je le vois dans mes contacts et mes mandats"]}],indep:[{q:"Quand quelqu'un entend parler de vous, peut-il facilement trouver des infos sur vous en ligne ?",n:"Pas juste votre nom : des infos qui donnent vraiment envie de vous contacter.",o:["Non, il ne trouverait presque rien de concret sur moi","Il trouverait mon nom, mais rien qui l'inciterait vraiment à m'appeler","Il trouverait quelque chose, un site ou un LinkedIn, mais c'est assez basique","Il trouverait beaucoup de choses et comprendrait clairement ce que je fais"]},{q:"Partagez-vous votre expertise quelque part en ligne ?",n:"Même un post LinkedIn ou un article de blog compte.",o:["Non, je ne partage rien, je manque de temps ou d'idées","Rarement, quand j'ai une actualité particulière","De temps en temps, mais sans vraiment de régularité ni de plan","Oui, régulièrement, je publie du contenu de façon suivie"]},{q:"Des prospects vous ont-ils déjà dit qu'ils vous avaient vu en ligne avant de vous contacter ?",n:"Quelqu'un qui n'était pas dans votre réseau proche.",o:["Non, jamais, tous mes clients viennent de recommandations directes","1 ou 2 fois, mais vraiment exceptionnel","Oui, ça arrive, mais pas assez souvent pour que j'y compte","Oui, régulièrement, le digital m'amène des missions en continu"]},{q:"Comment est-ce que vos clients potentiels vous découvrent aujourd'hui ?",n:"Soyez honnête, ce qui se passe vraiment, pas ce que vous aimeriez.",o:["Surtout par des gens qui me connaissent déjà et me recommandent","Via des événements, réseaux professionnels, rencontres directes","Un peu par internet, mais le bouche-à-oreille reste largement dominant","De plus en plus par internet, c'est en train de devenir ma première source"]},{q:"Si vous ne travailliez pas 2 semaines, est-ce que des demandes arriveraient quand même ?",n:"On parle d'un système qui tourne sans vous.",o:["Non, si je ne fais rien activement, rien n'arrive","Peut-être une demande, mais ce serait vraiment par chance","Oui, quelques demandes, mais ce n'est pas vraiment structuré","Oui, j'ai un système qui génère des demandes même quand je suis absent"]}],pme:[{q:"Des gens entrent chez vous ou vous appellent après vous avoir trouvé en ligne ?",n:"On parle de quelqu'un qui ne vous connaissait pas avant.",o:["Non, presque personne ne nous trouve via internet","Très rarement, de temps en temps quelqu'un mentionne Google","Oui, parfois, mais ce n'est pas encore notre source principale","Oui, régulièrement, internet nous amène vraiment du monde"]},{q:"Si un client tape votre nom sur Google, qu'est-ce qui ressort ?",n:"Imaginez que vous faites le test maintenant.",o:["Presque rien, ou des informations qui ne sont plus à jour","Notre nom apparaît, mais il n'y a pas grand chose d'intéressant","Notre fiche Google avec quelques avis, mais rien d'extraordinaire","Beaucoup de bonnes choses, avis, photos, site, publications récentes"]},{q:"Publiez-vous régulièrement sur Facebook, Instagram ou d'autres réseaux ?",n:"Même une photo de votre vitrine ou d'un produit compte.",o:["Non, on n'a pas de page active ou on ne l'utilise plus","Rarement, peut-être quelques fois dans l'année","De temps en temps, quand on a une promo ou un événement","Oui, plusieurs fois par semaine, de façon régulière et planifiée"]},{q:"Avez-vous déjà essayé de la publicité payante sur Facebook, Instagram ou Google ?",n:"On parle de payer pour que plus de gens vous voient en ligne.",o:["Non, jamais, on ne sait pas vraiment comment ça marche","Oui, on a essayé mais on n'a pas vu de résultats clairs","Oui, de temps en temps, avec des résultats assez mitigés","Oui, on a des campagnes actives qui nous amènent des clients"]},{q:"Quel est l'impact d'internet sur votre chiffre d'affaires cette année ?",n:"Honnêtement, pas ce que vous aimeriez, mais la réalité.",o:["Quasi nul, internet n'a pas changé grand chose pour nous","Marginal, quelques clients peut-être, mais difficile à dire","Modeste, c'est utile mais pas encore décisif","Important, une part significative de nos clients vient du digital"]}],habitat:[{q:"Des chantiers ou devis vous arrivent-ils parce que des gens vous ont trouvé en ligne ?",n:"On parle de quelqu'un qui ne vous connaissait pas avant.",o:["Non, tout vient du réseau ou des recommandations","Rarement, peut-être un devis par-ci par-là","Oui, parfois, mais le réseau reste dominant","Oui, régulièrement, internet me génère des devis en continu"]},{q:"Avez-vous des photos de vos réalisations visibles en ligne ?",n:"Instagram, site, Google Business, Houzz ou toute autre plateforme.",o:["Non, rien, je n'ai pas de présence visuelle en ligne","Quelques photos sur une page, mais pas vraiment mise en avant","Oui, un portfolio ou des photos, mais peu actualisé","Oui, des réalisations régulièrement publiées sur plusieurs supports"]},{q:"Faites-vous des vidéos de vos chantiers ou de votre travail ?",n:"Même une vidéo filmée avec le téléphone sur un chantier compte.",o:["Non, jamais, je n'y pense pas ou je n'ai pas le temps","J'ai essayé une ou deux fois, sans vraiment de suite","Oui, parfois, quand c'est un chantier vraiment remarquable","Oui, régulièrement, vidéos de chantier, avant/après, conseils"]},{q:"Avez-vous déjà reçu un devis ou un contact grâce à vos réseaux sociaux ?",n:"Quelqu'un qui vous a trouvé via Instagram, Facebook ou TikTok.",o:["Non, jamais, les réseaux ne m'ont rien apporté de concret","1 ou 2 fois, mais c'était vraiment exceptionnel","Oui, quelques fois, mais ce n'est pas régulier","Oui, régulièrement, les réseaux m'apportent du travail"]},{q:"Sur 10, quelle note donnez-vous honnêtement à votre présence en ligne ?",n:"Par rapport à ce que vous voyez chez vos concurrents.",o:["1 ou 2 sur 10, je suis pratiquement inexistant en ligne","3 ou 4 sur 10, j'existe mais c'est vraiment insuffisant","5 ou 6 sur 10, j'ai des bases mais beaucoup à améliorer","7 ou plus sur 10, ma présence est correcte voire bonne"]}],formation:[{q:"Des prospects vous ont-ils déjà contacté parce qu'ils vous avaient vu ou lu en ligne ?",n:"Quelqu'un qui n'était pas dans votre réseau existant.",o:["Non, tous mes clients viennent par bouche-à-oreille ou prescripteurs","1 ou 2 fois, mais vraiment exceptionnel","Oui, ça arrive, mais c'est encore rare","Oui, régulièrement, le digital m'amène des demandes en continu"]},{q:"Partagez-vous du contenu qui démontre votre expertise en ligne ?",n:"Articles, vidéos, posts, webinaires ou même une newsletter.",o:["Non, je ne produis aucun contenu en ligne","Rarement, quand j'ai une formation ou un événement à annoncer","De temps en temps, mais sans stratégie claire","Oui, régulièrement, mon contenu est un vrai levier d'acquisition"]},{q:"Vos apprenants ou prospects vous voient-ils exister en ligne entre deux formations ?",n:"Posts, conseils, témoignages, coulisses, ce qui maintient une présence.",o:["Non, je suis invisible en dehors de mes sessions","Rarement, quand j'ai une nouvelle formation à annoncer","De temps en temps, mais sans vraiment de régularité","Oui, je maintiens une présence active et suivie"]},{q:"Faites-vous de la publicité en ligne pour promouvoir vos formations ?",n:"Facebook Ads, LinkedIn Ads, Google Ads ou même des posts boostés.",o:["Non, jamais, je ne sais pas par où commencer","J'ai essayé, mais sans retours clairs sur l'investissement","Oui, ponctuellement, surtout au lancement d'une nouvelle formation","Oui, de façon continue, c'est un canal d'acquisition actif pour moi"]},{q:"Vos formations affichent-elles complet grâce au digital ?",n:"On parle de la contribution réelle du digital à votre taux de remplissage.",o:["Non, mes formations se remplissent surtout par le réseau et les prescripteurs","Rarement, le digital aide un peu mais ne remplit pas mes sessions","Parfois, certaines formations bénéficient du digital mais pas toutes","Oui, régulièrement, le digital est clé dans le remplissage de mes formations"]}],artisan:[{q:"Recevez-vous des demandes de devis de personnes qui vous ont trouvé en ligne ?",n:"Pas via Pages Jaunes ou un annuaire, directement depuis vos réseaux ou votre site.",o:["Non, tout passe par le bouche-à-oreille ou les recommandations","Rarement, quelques fois dans l'année","Oui, de temps en temps, mais ce n'est pas fiable","Oui, régulièrement, internet est devenu une vraie source de travail"]},{q:"Vos clients peuvent-ils voir votre travail en ligne avant de vous appeler ?",n:"Photos, vidéos de chantier, avant/après, ce qui montre concrètement ce que vous faites.",o:["Non, rien, les gens doivent me contacter pour voir ce que je fais","Quelques photos par-ci par-là, mais pas vraiment organisé","Oui, un peu, Instagram ou un site avec quelques exemples","Oui, un vrai portfolio visuel régulièrement mis à jour"]},{q:"Publiez-vous régulièrement des photos ou vidéos de votre travail en ligne ?",n:"Instagram, Facebook, TikTok ou tout autre réseau.",o:["Non, jamais, ça prend trop de temps et je ne sais pas trop comment faire","Rarement, quand je pense à prendre mon téléphone sur un chantier","De temps en temps, quelques fois par mois","Oui, régulièrement, c'est une vraie habitude de documentation"]},{q:"Avez-vous eu un client qui vous a contacté directement grâce à vos réseaux sociaux ?",n:"Quelqu'un qui ne vous connaissait pas et vous a trouvé via une vidéo ou un post.",o:["Non, jamais, les réseaux ne m'ont pas encore apporté de travail","Une ou deux fois, mais c'était une surprise","Oui, quelques fois, mais ce n'est pas encore fiable","Oui, régulièrement, mes réseaux me génèrent du travail"]},{q:"Pensez-vous que votre présence en ligne vous fait manquer des chantiers ?",n:"Des clients qui ont cherché quelqu'un comme vous en ligne et ont choisi un concurrent.",o:["Oui, j'en suis convaincu, des chantiers m'échappent à cause de ça","Probablement, mais je ne sais pas vraiment quoi faire pour changer ça","Peut-être un peu, mais le bouche-à-oreille compense encore","Non, j'ai assez de travail et ma présence en ligne est correcte"]}],autre:[{q:"Des clients potentiels vous contactent-ils parce qu'ils vous ont trouvé en ligne ?",n:"Pas via une recommandation : via votre présence digitale propre.",o:["Non, jamais, le digital ne joue pas de rôle dans mon acquisition","Très rarement, c'est anecdotique","Oui, parfois, mais ce n'est pas encore fiable","Oui, régulièrement, le digital contribue à mon activité"]},{q:"Si quelqu'un cherche ce que vous faites en ligne, trouve-t-il quelque chose qui donne envie de vous contacter ?",n:"Site, profil, contenu, avis, n'importe quel signal de confiance.",o:["Non, il ne trouverait rien de convaincant","Il trouverait mon nom, mais sans grande valeur ajoutée","Il trouverait quelque chose, mais ce n'est pas encore impactant","Oui, il trouverait une présence solide qui inspire confiance"]},{q:"Publiez-vous du contenu en ligne pour rester visible auprès de vos clients potentiels ?",n:"Posts, photos, vidéos, articles, n'importe quel format de contenu.",o:["Non, je ne publie rien du tout","Rarement, seulement lors de grandes occasions","De temps en temps, mais sans vraiment de plan","Oui, régulièrement et de façon structurée"]},{q:"Avez-vous essayé la publicité en ligne pour développer votre activité ?",n:"Toute forme de publicité payante, même un post boosté.",o:["Non, jamais, je ne sais pas comment ça marche ou ça me fait peur","J'ai essayé, sans résultats convaincants","Oui, ponctuellement, avec des résultats mitigés","Oui, c'est un levier actif dans mon acquisition"]},{q:"Votre présence en ligne contribue-t-elle vraiment à votre activité aujourd'hui ?",n:"Pas ce qu'elle pourrait faire, ce qu'elle fait concrètement.",o:["Non, pas du tout, le digital ne joue aucun rôle en ce moment","Un peu, mais c'est difficile à mesurer","Oui, elle aide, mais ce n'est pas encore décisif","Oui, clairement, le digital est un vrai levier pour mon activité"]}]};
+  const dimLabels={immo:{visibility:'Visibilité en ligne',google:'Présence Google',content:'Contenu & vidéo',ads:'Publicité & acquisition'},indep:{visibility:'Notoriété personnelle',google:'Réputation Google',content:'Expertise visible',ads:'Acquisition active'},pme:{visibility:'Visibilité locale',google:'Présence Google',content:'Réseaux & contenu',ads:'Publicité & acquisition'},habitat:{visibility:'Visibilité chantiers',google:'Présence Google',content:'Portfolio visuel',ads:'Publicité & devis'},formation:{visibility:'Notoriété formateur',google:'Présence Google',content:"Contenu d'expertise",ads:'Acquisition active'},artisan:{visibility:'Visibilité locale',google:'Présence Google',content:'Documentation visuelle',ads:'Acquisition réseaux'},autre:{visibility:'Visibilité générale',google:'Présence Google',content:'Réseaux & contenu',ads:'Publicité & acquisition'}};
+  function buildFlow(){const f=[{key:'intro',kind:'intro'},{key:'sector',kind:'sector'}];const sect=state.answers.sector;if(sect==='immo')f.push({key:'sector_sub',kind:'sub',list:immoSub,q:"Vous êtes plutôt quel type de professionnel ?",n:"Votre quotidien n'est pas le même selon votre rôle, on veut être précis."});if(sect==='promo')f.push({key:'sector_sub',kind:'sub',list:promoSub,q:"Quel est votre profil exact ?",n:"On adapte vos résultats à votre rôle exact dans le secteur."});f.push({key:'q1',kind:'q',idx:0},{key:'q2',kind:'q',idx:1},{key:'q3',kind:'q',idx:2},{key:'q4',kind:'q',idx:3},{key:'q5',kind:'q',idx:4});f.push({key:'mid',kind:'mid'});f.push({key:'google',kind:'google'},{key:'social',kind:'social'},{key:'ads',kind:'ads'},{key:'context',kind:'context'});f.push({key:'capture',kind:'capture'},{key:'report',kind:'report'});return f;}
+  const host=document.getElementById('stepHost');const pfill=document.getElementById('pfill');const pstep=document.getElementById('pstep');const ppct=document.getElementById('ppct');const pmeta=document.getElementById('pmeta');
+  function setProgress(idx,total){if(idx<=0){pfill.style.width='0%';pstep.textContent='Étape 1 sur 13';ppct.textContent='0%';return;}pmeta.style.display='flex';const pct=Math.round((idx/total)*100);pfill.style.width=pct+'%';pstep.textContent=`Étape ${idx} sur ${total}`;ppct.textContent=pct+'%';}
+  function renderStep(){const flow=buildFlow();const node=flow[state.stepIdx];const total=flow.length-1;setProgress(state.stepIdx===0?0:state.stepIdx,total);const existing=host.querySelector('.step');if(existing){existing.style.animation='stepOut .25s cubic-bezier(.4,0,.2,1) forwards';setTimeout(()=>{host.innerHTML='';draw(node);},220);}else{draw(node);}setTimeout(()=>{const glass=document.getElementById('glass');const top=glass.getBoundingClientRect().top+window.scrollY-80;if(window.scrollY<top-40||window.scrollY>top+40)window.scrollTo({top,behavior:'smooth'});},260);}
+  function draw(node){let html='';switch(node.kind){case'intro':html=tplIntro();break;case'sector':html=tplSector();break;case'sub':html=tplSub(node);break;case'q':html=tplQuestion(node.idx);break;case'mid':html=tplMid();break;case'google':html=tplGoogle();break;case'social':html=tplSocial();break;case'ads':html=tplAds();break;case'context':html=tplContext();break;case'capture':html=tplCapture();break;case'report':html=tplReport();break;}host.innerHTML=html;wire(node);}
+  function sectorBadge(){if(!state.answers.sector)return'';const s=sectorOpts.find(o=>o.id===state.answers.sector);if(!s)return'';return`<div class="sector-badge">${s.icon} ${s.lbl}</div>`;}
+  function tplIntro(){return`<div class="step"><div class="intro-tag">VisionHouse</div><h2 class="step-title">Votre diagnostic digital <em>personnalisé</em></h2><p class="step-note">En 3 minutes, identifiez ce qui freine votre croissance en ligne et recevez 2 priorités concrètes pour y remédier.</p><button class="btn primary full" id="start">Démarrer mon diagnostic <span class="arr">→</span></button><div class="legal">Gratuit · Sans engagement · Résultat immédiat</div></div>`;}
+  function tplSector(){const sel=state.answers.sector;return`<div class="step"><p class="step-eyebrow">Étape 1 · Votre métier</p><h2 class="step-title">Vous travaillez dans quel domaine ?</h2><p class="step-note">Vos résultats seront entièrement adaptés à votre réalité métier.</p><div class="options" data-group="sector">${sectorOpts.map(o=>`<button class="opt ${sel===o.id?'sel':''}" data-id="${o.id}" aria-label="${o.lbl}"><span class="icon">${o.icon}</span><span><div class="lbl">${o.lbl}</div><div class="desc">${o.desc}</div></span><span class="check"></span></button>`).join('')}</div>${navBtns({canBack:false,key:'sector'})}</div>`;}
+  function tplSub(node){const sel=state.answers.sector_sub;return`<div class="step"><p class="step-eyebrow">Précisons votre profil</p><h2 class="step-title">${node.q}</h2><p class="step-note">${node.n}</p><div class="options" data-group="sector_sub">${node.list.map(o=>`<button class="opt compact ${sel===o.id?'sel':''}" data-id="${o.id}" aria-label="${o.lbl}"><span class="icon">${o.icon}</span><span class="lbl">${o.lbl}</span><span class="check"></span></button>`).join('')}</div>${navBtns({key:'sector_sub'})}</div>`;}
+  function tplQuestion(qIdx){const grp=sectorGroup(state.answers.sector);const data=Q[grp][qIdx];const key='q'+(qIdx+1);const sel=state.answers[key];return`<div class="step">${sectorBadge()}<p class="step-eyebrow">Question ${qIdx+1} sur 5 · Phase 1 · Visibilité</p><h2 class="step-title">${data.q}</h2><p class="step-note">${data.n}</p><div class="options" data-group="${key}">${data.o.map((t,i)=>`<button class="opt compact ${sel===i?'sel':''}" data-id="${i}" aria-label="${t}"><span class="lbl">${t}</span><span class="check"></span></button>`).join('')}</div>${navBtns({key})}</div>`;}
+  function tplMid(){const score=computeMidScore();const grp=sectorGroup(state.answers.sector);const labels=dimLabels[grp];const dims=computeDims();let msg;if(score<25)msg="Votre présence digitale est encore quasi inexistante. Ce n'est pas une critique, c'est une réalité courante. Et une opportunité énorme pour qui agit en premier.";else if(score<50)msg="Vous avez commencé à exister en ligne, mais ce n'est pas encore suffisant pour générer des contacts réguliers. Quelques blocages précis à lever.";else if(score<75)msg="Vous avez de bonnes bases. Mais quelque chose bloque la conversion. On va identifier quoi dans la phase suivante.";else msg="Votre présence digitale est déjà solide. La phase 2 va identifier les leviers pour aller encore plus loin.";return`<div class="step"><p class="step-eyebrow">Score intermédiaire · Phase 1 terminée</p><div class="score-big" id="midNum">0</div><div class="score-small">/ 100 · Score de visibilité digitale</div><p class="score-msg">${msg}</p><div class="dim-bars">${Object.entries(dims).map(([k,v])=>`<div class="dim"><div class="dim-head"><span>${labels[k]}</span><span class="pct">${Math.round(v)}%</span></div><div class="dim-bar"><i data-w="${v}"></i></div></div>`).join('')}</div><button class="btn primary full" id="goP2" style="margin-top:24px">Continuer · Phase 2 : vos outils <span class="arr">→</span></button><div class="legal">Cette deuxième partie analyse vos outils actuels pour comprendre pourquoi vous obtenez ce score.</div></div>`;}
+  function tplGoogle(){const a=state.answers.google?.a,b=state.answers.google?.b;const aOpts=["Oui, et il apparaît bien dans les résultats Google","Oui, mais je ne sais pas vraiment s'il ressort sur Google","Non, je n'ai pas de site","Honnêtement, je ne sais pas du tout"];const bOpts=["Oui, avec des photos, mes horaires et des avis clients","Oui, mais je ne l'ai jamais vraiment remplie","Non, ou je ne suis pas sûr"];return`<div class="step">${sectorBadge()}<p class="step-eyebrow">Phase 2 · Vos outils</p><h2 class="step-title">Votre présence sur <em>Google</em></h2><p class="step-note">Quand quelqu'un vous cherche sur Google, que se passe-t-il ?</p><div class="sub-group"><h4>Vous avez un site internet ?</h4><div class="options" data-group="google.a">${aOpts.map((t,i)=>`<button class="opt compact ${a===i?'sel':''}" data-id="${i}"><span class="lbl">${t}</span><span class="check"></span></button>`).join('')}</div></div><div class="sub-group"><h4>Vous avez une fiche Google avec vos coordonnées, photos et avis ?</h4><div class="options" data-group="google.b">${bOpts.map((t,i)=>`<button class="opt compact ${b===i?'sel':''}" data-id="${i}"><span class="lbl">${t}</span><span class="check"></span></button>`).join('')}</div></div>${navBtns({key:'google',validate:()=>state.answers.google?.a!=null&&state.answers.google?.b!=null})}</div>`;}
+  function tplSocial(){const a=state.answers.social?.a,b=state.answers.social?.b;const aOpts=["Oui, souvent : plusieurs fois par semaine","De temps en temps, quand j'ai quelque chose à dire","Rarement, quelques fois dans l'année","Pas du tout, je n'ai pas de compte professionnel actif"];const bOpts=["Oui, régulièrement : c'est vraiment une habitude","Quelques fois, ce n'est pas naturel pour moi","Non, je ne me sens pas à l'aise devant la caméra","Non, je n'ai tout simplement pas le temps"];return`<div class="step">${sectorBadge()}<p class="step-eyebrow">Phase 2 · Vos outils</p><h2 class="step-title">Vos réseaux sociaux & votre <em>contenu</em></h2><p class="step-note">Est-ce que vous postez du contenu en ligne ?</p><div class="sub-group"><h4>À quelle fréquence ?</h4><div class="options" data-group="social.a">${aOpts.map((t,i)=>`<button class="opt compact ${a===i?'sel':''}" data-id="${i}"><span class="lbl">${t}</span><span class="check"></span></button>`).join('')}</div></div><div class="sub-group"><h4>Et la vidéo, ça vous parle ?</h4><div class="options" data-group="social.b">${bOpts.map((t,i)=>`<button class="opt compact ${b===i?'sel':''}" data-id="${i}"><span class="lbl">${t}</span><span class="check"></span></button>`).join('')}</div></div>${navBtns({key:'social',validate:()=>state.answers.social?.a!=null&&state.answers.social?.b!=null})}</div>`;}
+  function tplAds(){const a=state.answers.ads?.a,b=state.answers.ads?.b;const aOpts=["Oui, et je sais exactement combien ça me rapporte","Oui, j'ai essayé sans voir de résultats clairs","Non, mais j'aimerais comprendre comment ça marche vraiment","Non, et je ne suis pas encore prêt à franchir ce pas"];const bOpts=["Moins de 300 € par mois, budget raisonnable","Entre 300 et 800 € par mois, si ça rapporte je suis partant","Plus de 800 € par mois, je veux accélérer","Je ne sais pas encore, ça dépend des résultats"];return`<div class="step">${sectorBadge()}<p class="step-eyebrow">Phase 2 · Vos outils</p><h2 class="step-title">La publicité <em>en ligne</em></h2><p class="step-note">Vous avez déjà payé pour être vu en ligne ?</p><div class="sub-group"><h4>Votre expérience avec la pub</h4><div class="options" data-group="ads.a">${aOpts.map((t,i)=>`<button class="opt compact ${a===i?'sel':''}" data-id="${i}"><span class="lbl">${t}</span><span class="check"></span></button>`).join('')}</div></div><div class="sub-group"><h4>Budget que vous envisageriez</h4><div class="options" data-group="ads.b">${bOpts.map((t,i)=>`<button class="opt compact ${b===i?'sel':''}" data-id="${i}"><span class="lbl">${t}</span><span class="check"></span></button>`).join('')}</div></div>${navBtns({key:'ads',validate:()=>state.answers.ads?.a!=null&&state.answers.ads?.b!=null})}</div>`;}
+  function tplContext(){const a=state.answers.context?.a,b=state.answers.context?.b;const aOpts=["Le bouche-à-oreille : mes clients me recommandent à leurs proches","Google : des gens me cherchent et tombent sur moi","Les réseaux sociaux : via mes posts ou ma page","Un peu de tout, aucune source vraiment dominante"];const bOpts=[{id:'temps',t:"Le temps : j'ai trop de choses à gérer en dehors de ça"},{id:'savoir',t:"Le savoir-faire : je ne sais pas par où commencer"},{id:'argent',t:"L'argent : j'ai peur d'investir sans voir de résultats"},{id:'confiance',t:"La confiance : j'ai déjà essayé et ça n'a pas marché"}];return`<div class="step">${sectorBadge()}<p class="step-eyebrow">Phase 2 · Votre contexte</p><h2 class="step-title">Votre situation & vos <em>freins</em></h2><p class="step-note">Dernières précisions pour personnaliser vos priorités.</p><div class="sub-group"><h4>D'où viennent la plupart de vos clients aujourd'hui ?</h4><div class="options" data-group="context.a">${aOpts.map((t,i)=>`<button class="opt compact ${a===i?'sel':''}" data-id="${i}"><span class="lbl">${t}</span><span class="check"></span></button>`).join('')}</div></div><div class="sub-group"><h4>Ce qui vous bloque le plus pour vous développer en ligne</h4><div class="options" data-group="context.b">${bOpts.map(o=>`<button class="opt compact ${b===o.id?'sel':''}" data-id="${o.id}"><span class="lbl">${o.t}</span><span class="check"></span></button>`).join('')}</div></div>${navBtns({key:'context',validate:()=>state.answers.context?.a!=null&&state.answers.context?.b!=null})}</div>`;}
+  function tplCapture(){const score=computeFinalScore();return`<div class="step"><p class="step-eyebrow">Dernière étape</p><h2 class="step-title">Votre rapport complet est <em>prêt</em></h2><p class="step-note">Entrez vos coordonnées pour débloquer votre diagnostic personnalisé et vos 2 priorités concrètes.</p><div style="text-align:center;padding:18px 0 6px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin-bottom:18px"><div style="font-family:var(--display);font-weight:700;font-size:3rem;line-height:1;letter-spacing:-.03em">${score}<span style="font-size:1.3rem;color:var(--ink-3);font-weight:400"> / 100</span></div><div class="score-small" style="margin-top:8px">Aperçu de votre score</div></div><form id="capForm" novalidate><div style="display:grid;grid-template-columns:1fr 1fr;gap:0 12px"><div class="field" id="f_first"><label>Prénom *</label><input name="first" placeholder="Thomas" required /><span class="err-msg">Requis</span></div><div class="field" id="f_last"><label>Nom *</label><input name="last" placeholder="Dubois" required /><span class="err-msg">Requis</span></div></div><div class="field" id="f_email"><label>Email professionnel *</label><input type="email" name="email" placeholder="thomas@monentreprise.be" required /><span class="err-msg">Email invalide</span></div><div class="field" id="f_phone"><label>Téléphone *</label><input type="tel" name="phone" placeholder="+32 4XX XX XX XX" required /><span class="err-msg">Numéro invalide (min 9 chiffres)</span></div><div class="field" id="f_company"><label>Nom de votre entreprise / cabinet / agence *</label><input name="company" placeholder="Agence Dubois Immobilier" required /><span class="err-msg">Requis</span></div><button class="btn primary full" id="capSubmit" type="submit">Recevoir mon rapport complet <span class="arr">→</span></button></form><div class="legal" style="margin-top:14px;line-height:1.55">🔒 Vos données sont confidentielles et ne sont jamais revendues. Pas de spam. Désinscription possible à tout moment.</div><div class="actions" style="margin-top:8px"><button class="btn ghost" id="back">← Retour</button></div></div>`;}
+  function tplReport(){const score=computeFinalScore();const grp=sectorGroup(state.answers.sector);const labels=dimLabels[grp];const mods=computeModules();const verdict=verdictFor(score);const advice=pickAdvice();const intro=adviceIntro(score,grp);const frein=state.answers.context?.b;const finalSub=({temps:"En 30 minutes, on vous montre comment faire tourner votre communication sans que ça repose sur vous.",savoir:"En 30 minutes, on vous explique exactement par où commencer, sans jargon ni engagement.",argent:"En 30 minutes, on vous montre ce qui rapporte vraiment avant d'investir quoi que ce soit.",confiance:"En 30 minutes, on vous montre ce qui a fonctionné pour des profils exactement comme le vôtre."})[frein]||"En 30 minutes, on reprend votre diagnostic ensemble et on vous propose un plan d'action concret pour votre secteur.";const color=scoreColor(score);const half=Math.PI*100;return`<div class="step"><p class="step-eyebrow">Votre rapport · ${state.answers.first||'Bienvenue'}</p><div class="gauge-wrap"><div class="gauge"><svg viewBox="0 0 240 130"><path class="ring-bg" d="M20,120 A100,100 0 0 1 220,120"/><path class="ring-fill" id="ringFill" d="M20,120 A100,100 0 0 1 220,120" stroke="${color}" stroke-dasharray="${half} ${half}" stroke-dashoffset="${half}"/></svg><div class="num" id="gNum">0</div><div class="out">Score de visibilité</div></div></div><h3 class="verdict">${verdict.title}</h3><p class="verdict-desc">${verdict.desc}</p><div class="mod-list">${['visibility','google','content','ads'].map((k,i)=>`<div class="mod"><div class="mod-head"><span class="mod-ic">${modIcon(k)}</span><span class="mod-name">${labels[k]}</span><span class="mod-badge">${mods[k].badge}</span></div><div class="mod-bar"><i data-w="${mods[k].score}" data-d="${i*150}"></i></div><div class="mod-txt">${mods[k].txt}</div></div>`).join('')}</div><div class="advice-section"><h3 class="advice-h">⚡ Vos 2 priorités pour changer la donne</h3><p class="advice-intro">${intro}</p>${advice.map((k,i)=>{const a=adviceData[k];return`<div class="acc ${i===0?'open':''}" data-acc><button class="acc-head"><span class="acc-num">${i+1}</span><span class="acc-title">${a.title}</span><span class="acc-chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="acc-body"><div class="acc-body-inner"><div class="acc-label">Ce qu'on a observé</div><div class="acc-obs">${a.obs}</div><div class="acc-label">Pourquoi c'est urgent</div><div>${a.impact}</div><div class="acc-lock"><span style="font-size:1rem;line-height:1">🔒</span><span>${a.lock}</span></div><a class="acc-cta" href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener">${a.cta}</a></div></div></div>`;}).join('')}</div><div class="final-cta"><h3>La prochaine étape, c'est un appel avec nous</h3><p>${finalSub}</p><a class="btn primary" href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" style="display:inline-flex">Réserver mon appel stratégique offert <span class="arr">→</span></a><div class="note">30 minutes · Gratuit · Sans engagement · Bruxelles & en ligne</div></div></div>`;}
+  function navBtns(opts){const key=opts.key;const valid=opts.validate?opts.validate():(state.answers[key]!=null);const canBack=opts.canBack!==false;return`<div class="actions">${canBack?`<button class="btn ghost" id="back">← Retour</button>`:`<span></span>`}<button class="btn primary ${valid?'':'disabled'}" id="next" ${valid?'':'disabled'}>Continuer <span class="arr">→</span></button></div>`;}
+  function modIcon(k){return({visibility:'◐',google:'G',content:'▤',ads:'◆'})[k];}
+  function wire(node){const start=document.getElementById('start');if(start)start.addEventListener('click',()=>{state.stepIdx++;renderStep();});const next=document.getElementById('next');if(next)next.addEventListener('click',()=>{state.stepIdx++;renderStep();});const back=document.getElementById('back');if(back)back.addEventListener('click',()=>{state.stepIdx=Math.max(0,state.stepIdx-1);renderStep();});const goP2=document.getElementById('goP2');if(goP2)goP2.addEventListener('click',()=>{state.stepIdx++;renderStep();});
+  host.querySelectorAll('.options').forEach(group=>{const gKey=group.getAttribute('data-group');group.querySelectorAll('.opt').forEach(btn=>{btn.addEventListener('click',()=>{const id=btn.getAttribute('data-id');const val=isNaN(parseInt(id,10))?id:parseInt(id,10);if(gKey.includes('.')){const[k,sub]=gKey.split('.');state.answers[k]=state.answers[k]||{};state.answers[k][sub]=val;}else{if(gKey==='sector'&&state.answers.sector!==val)delete state.answers.sector_sub;state.answers[gKey]=val;}group.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));btn.classList.add('sel');const flow=buildFlow();updateNext(flow[state.stepIdx]);});});});
+  if(node&&node.kind==='mid'){const target=computeMidScore();animateNumber(document.getElementById('midNum'),0,target,1400);setTimeout(()=>{host.querySelectorAll('.dim-bar i').forEach((el,i)=>{setTimeout(()=>el.style.width=el.dataset.w+'%',i*120);});},200);}
+  const cap=document.getElementById('capForm');if(cap){cap.addEventListener('submit',e=>{e.preventDefault();const fd=new FormData(cap);let ok=true;const validators={first:v=>!!v.trim(),last:v=>!!v.trim(),email:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),phone:v=>v.replace(/\D/g,'').length>=9,company:v=>!!v.trim()};Object.keys(validators).forEach(k=>{const v=fd.get(k)||'';const field=document.getElementById('f_'+k);if(!validators[k](v)){field.classList.add('err');ok=false;}else field.classList.remove('err');});if(!ok)return;state.answers.first=fd.get('first');state.answers.last=fd.get('last');state.answers.email=fd.get('email');state.answers.phone=fd.get('phone');state.answers.company=fd.get('company');
+  // Send to Formspree
+  fetch('https://formspree.io/f/mrejayba',{method:'POST',body:JSON.stringify({prenom:fd.get('first'),nom:fd.get('last'),email:fd.get('email'),telephone:fd.get('phone'),entreprise:fd.get('company'),secteur:state.answers.sector,score:computeFinalScore(),source:'diagnostic'}),headers:{'Content-Type':'application/json','Accept':'application/json'}}).catch(()=>{});
+  const btn=document.getElementById('capSubmit');btn.innerHTML='<span style="display:inline-block;width:14px;height:14px;border:2px solid rgba(12,3,64,.25);border-top-color:var(--violet);border-radius:50%;animation:spin .8s linear infinite;margin-right:8px"></span>Génération en cours...';setTimeout(()=>{state.stepIdx++;renderStep();},900);});cap.querySelectorAll('input').forEach(inp=>{inp.addEventListener('input',()=>inp.closest('.field').classList.remove('err'));});}
+  if(node&&node.kind==='report'){const score=computeFinalScore();const half=Math.PI*100;const ring=document.getElementById('ringFill');const fill=(score/100)*half;setTimeout(()=>{ring.style.strokeDashoffset=(half-fill);animateNumber(document.getElementById('gNum'),0,score,1600);host.querySelectorAll('.mod-bar i').forEach(el=>{const d=parseInt(el.dataset.d,10)||0;setTimeout(()=>el.style.width=el.dataset.w+'%',400+d);});},100);host.querySelectorAll('[data-acc]').forEach(acc=>{const head=acc.querySelector('.acc-head');head.addEventListener('click',()=>{acc.classList.toggle('open');updateAccordion(acc);});requestAnimationFrame(()=>updateAccordion(acc));});}}
+  function updateNext(node){const next=document.getElementById('next');if(!next)return;let valid=false;if(node.kind==='sector')valid=state.answers.sector!=null;else if(node.kind==='sub')valid=state.answers.sector_sub!=null;else if(node.kind==='q')valid=state.answers['q'+(node.idx+1)]!=null;else if(node.kind==='google')valid=state.answers.google?.a!=null&&state.answers.google?.b!=null;else if(node.kind==='social')valid=state.answers.social?.a!=null&&state.answers.social?.b!=null;else if(node.kind==='ads')valid=state.answers.ads?.a!=null&&state.answers.ads?.b!=null;else if(node.kind==='context')valid=state.answers.context?.a!=null&&state.answers.context?.b!=null;next.classList.toggle('disabled',!valid);if(valid)next.removeAttribute('disabled');else next.setAttribute('disabled','');}
+  function updateAccordion(acc){const body=acc.querySelector('.acc-body');const inner=acc.querySelector('.acc-body-inner');body.style.maxHeight=acc.classList.contains('open')?(inner.offsetHeight+32)+'px':'0px';}
+  function animateNumber(el,from,to,dur){if(!el)return;const start=performance.now();function tick(t){const p=Math.min(1,(t-start)/dur);const e=1-Math.pow(1-p,3);el.textContent=Math.round(from+(to-from)*e);if(p<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
+  function qScore(qIdx){const v=state.answers['q'+(qIdx+1)];if(v==null)return 0;return[0,33,66,100][v]||0;}
+  function computeMidScore(){return Math.round((qScore(0)+qScore(1)+qScore(2)+qScore(3)+qScore(4))/5);}
+  function computeDims(){return{visibility:qScore(0),google:qScore(1),content:Math.round((qScore(2)+qScore(3))/2),ads:qScore(4)};}
+  function computeFinalScore(){const phase1=computeMidScore();const gA=state.answers.google?.a,gB=state.answers.google?.b,sA=state.answers.social?.a,sB=state.answers.social?.b,aA=state.answers.ads?.a;const gMap=[100,55,15,25],gBMap=[100,50,10],sMap=[100,65,30,0],sBMap=[100,60,20,20],aMap=[100,55,35,15];const phase2=((gA!=null?gMap[gA]:0)+(gB!=null?gBMap[gB]:0)+(sA!=null?sMap[sA]:0)+(sB!=null?sBMap[sB]:0)+(aA!=null?aMap[aA]:0))/5;return Math.round(phase1*0.55+phase2*0.45);}
+  function computeModules(){const dims=computeDims();const gA=state.answers.google?.a,gB=state.answers.google?.b,sA=state.answers.social?.a,sB=state.answers.social?.b,aA=state.answers.ads?.a;const googleScore=Math.round((([100,55,15,25][gA||0])+([100,50,10][gB||0]))/2);const contentScore=Math.round((([100,65,30,0][sA||0])+([100,60,20,20][sB||0])+dims.content)/3);const adsScore=Math.round((([100,55,35,15][aA||0])+dims.ads)/2);const visScore=dims.visibility;const tx=n=>n<25?'critique':n<50?'à améliorer':n<75?'correct':'solide';return{visibility:{score:visScore,badge:tx(visScore),txt:visTxt(visScore)},google:{score:googleScore,badge:tx(googleScore),txt:googleTxt(googleScore,gA,gB)},content:{score:contentScore,badge:tx(contentScore),txt:contentTxt(contentScore,sA,sB)},ads:{score:adsScore,badge:tx(adsScore),txt:adsTxt(adsScore,aA)}};}
+  function visTxt(n){if(n<25)return"Votre visibilité est encore quasi nulle pour des gens qui ne vous connaissent pas. Tout votre business repose sur ce que vous connaissez déjà.";if(n<50)return"Vous existez en ligne, mais pas assez pour être trouvé par de nouveaux clients de façon régulière.";if(n<75)return"Vous avez une présence visible, mais elle ne convertit pas encore au niveau de son potentiel.";return"Votre visibilité est forte et travaille pour vous au quotidien.";}
+  function googleTxt(n,a,b){if(a===2)return"Sans site, vous laissez Google envoyer vos prospects ailleurs. Une fiche Google bien remplie est le minimum vital.";if(b===2)return"Pas de fiche Google active = vous êtes invisible pour les recherches locales. C'est le premier levier à activer.";if(n<50)return"Votre présence Google existe mais elle est fragile, peu d'avis, peu d'infos à jour, peu d'autorité.";if(n<75)return"Votre fiche Google est correcte. Quelques ajouts (avis, photos, posts) peuvent doubler son impact.";return"Votre présence Google est un vrai actif, entretenez-la régulièrement pour conserver l'avance.";}
+  function contentTxt(n,a,b){if(a===3)return"Aucun compte actif = aucun moyen de rester dans la mémoire de vos prospects. C'est une opportunité énorme.";if(b===2||b===3)return"Vous ne faites pas de vidéo. C'est précisément le format qui crée la confiance la plus rapide à distance.";if(n<50)return"Du contenu très irrégulier, pas assez pour créer une habitude chez ceux qui pourraient vous suivre.";if(n<75)return"Du contenu régulier, c'est bien. Reste à structurer pour transformer l'audience en contacts.";return"Vous avez un vrai rythme de publication. Optimisez maintenant la conversion de cette audience.";}
+  function adsTxt(n,a){if(a===2||a===3)return"Aucune publicité aujourd'hui. Vos concurrents qui en font captent des contacts qui auraient pu vous revenir.";if(a===1)return"Vous avez essayé sans résultats clairs, souvent un problème de ciblage ou de message, rarement de budget.";if(n<75)return"Une activité publicitaire qui pourrait clairement être plus rentable. Ça se travaille.";return"Vous savez ce qui marche en pub. Mécanique à industrialiser pour scaler.";}
+  function verdictFor(score){if(score<25)return{title:"Votre présence digitale est en sommeil",desc:"Bonne nouvelle : c'est le point de départ qui crée les plus gros sauts. Tout est devant vous."};if(score<50)return{title:"Vous avez commencé, mais quelque chose freine",desc:"Quelques blocages précis empêchent votre présence de générer des contacts. On les a identifiés."};if(score<75)return{title:"Bonnes bases, il manque le déclic conversion",desc:"Vous êtes visible, mais ce qui transforme un visiteur en contact n'est pas encore en place."};return{title:"Votre présence est solide, passons à l'industrialisation",desc:"Vous avez les fondations. Les leviers suivants permettent de multiplier l'impact existant."};}
+  function scoreColor(s){if(s<25)return'#E74C3C';if(s<50)return'#F39C12';if(s<75)return'#5B7CD6';return'#2ECC71';}
+  const adviceData={invisibilite:{title:"Vous êtes invisible là où vos clients vous cherchent",obs:"La majorité de vos futurs clients vous cherchent en ligne avant de décider. En ce moment, quand ils tapent votre activité dans votre zone, ils trouvent vos concurrents, pas vous.",impact:"Chaque semaine sans présence active, c'est des clients qui prennent rendez-vous avec quelqu'un d'autre. Pas parce que ce concurrent est meilleur, juste parce qu'il apparaît avant vous.",lock:"Il existe une façon structurée de corriger ça en moins de 30 jours, sans refaire votre site de zéro. On vous explique exactement comment lors de notre appel.",cta:"Je veux comprendre comment corriger ça →"},contenu:{title:"Vos clients vous voient, mais rien ne les incite à vous choisir",obs:"Vous avez une présence en ligne, un site, peut-être des réseaux, mais il ne se passe pas grand chose. Les gens qui vous trouvent repartent sans vous contacter.",impact:"Une présence sans contenu de confiance, c'est comme une vitrine vide. La vidéo et les témoignages sont les deux éléments qui transforment des visiteurs en contacts.",lock:"On a une méthode précise pour transformer votre présence existante en machine à contacts, sans budget supplémentaire. On vous la détaille lors d'un appel de 30 minutes.",cta:"Je veux voir comment transformer ma présence →"},pub:{title:"Vous laissez vos concurrents prendre les clients que vous pourriez avoir",obs:"Dans votre secteur et votre zone, des concurrents paient pour apparaître devant vos clients potentiels. Vous, non. Résultat : ils captent des demandes qui auraient pu vous revenir.",impact:"La publicité locale bien configurée, c'est 3 à 8 contacts qualifiés par semaine pour un budget raisonnable. Mais mal faite, elle brûle votre budget. La différence, c'est la stratégie.",lock:"On peut vous montrer exactement quel type de campagne fonctionnerait pour votre activité et votre zone. C'est ce qu'on fait lors de notre appel stratégique offert.",cta:"Je veux voir ce qui fonctionnerait pour moi →"},bouche:{title:"Le bouche-à-oreille seul ne suffit plus",obs:"Votre activité repose presque entièrement sur les recommandations. C'est une force et aussi une fragilité. Si le flux ralentit, votre agenda se vide.",impact:"Le bouche-à-oreille est imprévisible. Il ne scale pas. Il ne vous protège pas d'un concurrent qui arrive avec une vraie stratégie digitale.",lock:"Il y a une façon de construire un flux de contacts régulier qui complète vos recommandations, sans remplacer ce qui fonctionne déjà. On vous explique comment lors de notre appel.",cta:"Je veux construire ce flux régulier →"},video:{title:"La vidéo est le seul format qui crée de la confiance à distance, et vous ne l'utilisez pas encore",obs:"Vous ne faites pas ou peu de vidéos. C'est compréhensible, ce n'est pas naturel pour tout le monde. Mais c'est aussi ce qui explique pourquoi votre présence reste limitée malgré vos efforts.",impact:"La vidéo n'est pas qu'un format de plus. C'est le seul outil qui permet à un inconnu de se sentir à l'aise pour vous contacter. Une vidéo de 60 secondes fait plus pour votre crédibilité qu'une page entière de texte.",lock:"Il y a une façon de se lancer dans la vidéo sans être à l'aise devant la caméra, sans matériel professionnel. C'est ce qu'on met en place avec nos clients. On vous explique l'approche lors de notre appel.",cta:"Je veux comprendre comment me lancer →"},confiance:{title:"Les gens vous trouvent, mais quelque chose les fait hésiter",obs:"Votre présence en ligne existe mais elle n'inspire pas encore suffisamment confiance pour déclencher un contact. Dans votre secteur, les gens prennent leur décision avant même de vous appeler.",impact:"Des avis clients, une vidéo de présentation, un contenu qui montre votre expertise, ces éléments multiplient le taux de prise de contact. Sans eux, même une bonne visibilité reste peu efficace.",lock:"On a aidé des profils très similaires au vôtre à passer de « ils me trouvent mais n'appellent pas » à « mon agenda est plein ». On vous montre comment lors de notre appel.",cta:"Je veux que les gens qui me trouvent m'appellent →"}};
+  function pickAdvice(){const dims=computeDims();const ctxA=state.answers.context?.a,sB=state.answers.social?.b,gA=state.answers.google?.a,aA=state.answers.ads?.a;const scores={invisibilite:100-dims.visibility-(gA===2?20:0),contenu:100-dims.content-10,pub:100-dims.ads-(aA===2||aA===3?15:0),bouche:ctxA===0?90:30,video:(sB===2||sB===3)?85:(sB===1?55:25),confiance:dims.visibility>50&&dims.content<60?80:40};return Object.entries(scores).sort((a,b)=>b[1]-a[1]).slice(0,2).map(e=>e[0]);}
+  function adviceIntro(score,grp){const sectorName={immo:"l'immobilier",promo:"la promotion immobilière",indep:"votre activité indépendante",pme:"votre PME",habitat:"l'habitat",formation:"la formation",artisan:"l'artisanat",autre:"votre secteur"}[state.answers.sector]||"votre secteur";if(score<35)return`Sur la base de vos réponses, voici les 2 leviers qui transformeront le plus rapidement votre présence digitale dans ${sectorName}.`;if(score<65)return`Vos réponses révèlent 2 points précis qui freinent votre conversion. Les corriger n'est pas long, encore faut-il savoir comment.`;return`Vous avez de bonnes fondations. Ces 2 leviers sont ceux qui démultiplieront l'impact de ce qui existe déjà.`;}
+  const styleTag=document.createElement('style');styleTag.textContent='@keyframes spin{to{transform:rotate(360deg)}}';document.head.appendChild(styleTag);
+  renderStep();
+})();
+</script>
+</body>
+</html>
