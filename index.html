@@ -1195,6 +1195,34 @@ footer{background:#080720;padding:72px 0 0}
         </div>
       </div>
 
+      <div class="carousel-card">
+        <div class="carousel-video-wrap" id="vwrap-5">
+          <video id="vid-5" src="https://res.cloudinary.com/daodnmdsr/video/upload/v1778548953/N_de_Natacha_Video_2_correction_bande_son_2_st5i9i.mp4" playsinline preload="auto" muted></video>
+          <div class="carousel-play" id="vplay-5" onclick="vcPlay(5)">
+            <svg viewBox="0 0 24 24" fill="none" width="52" height="52"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,.18)"/><polygon points="10,8 18,12 10,16" fill="white"/></svg>
+          </div>
+          <div class="carousel-controls">
+            <button class="ctrl-btn" onclick="vcPlay(5)">
+              <svg id="vicon-5" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <div class="ctrl-progress" onclick="vcSeek(event,5)"><div class="ctrl-progress-fill" id="vprog-5"></div></div>
+            <div class="ctrl-volume">
+              <button class="ctrl-btn" onclick="vcMute(5)">
+                <svg id="vmute-5" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </button>
+              <input class="ctrl-volume-slider" id="vvol-5" type="range" min="0" max="1" step="0.05" value="1" oninput="vcVolume(event,5)">
+            </div>
+          </div>
+        </div>
+        <div class="video-context">
+          <div class="video-context-tags">
+            <span class="video-context-tag">Centre d'affaires</span>
+            <span class="video-context-tag">Belgique</span>
+          </div>
+          <div class="video-context-result"><span class="before">Aftermovie</span><span class="arrow">·</span><span class="after">campagne ads promotionnelle</span></div>
+        </div>
+      </div>
+
       <!-- CARD CTA -->
       <div class="carousel-card carousel-card-cta">
         <div class="carousel-cta-inner">
@@ -1593,6 +1621,7 @@ footer{background:#080720;padding:72px 0 0}
     <div class="footer-bottom container" style="padding-left:0;padding-right:0">
       <span>© 2026 Vision House · Bruxelles</span>
       <span>
+        <a href="/audit-digital-gratuit.html" style="color:rgba(255,255,255,.55);font-weight:500">🎯 Audit digital gratuit</a>&nbsp;·&nbsp;
         <a href="/mentions-legales.html">Mentions légales</a>&nbsp;·&nbsp;
         <a href="/politique-confidentialite.html">Confidentialité</a>&nbsp;·&nbsp;
         <a href="/politique-cookies.html">Cookies</a>
@@ -1682,7 +1711,7 @@ function vcPlay(n){
   const icon=document.getElementById('vicon-'+n);
   if(v.paused){
     // Pause all others
-    [1,2,3,4].forEach(i=>{
+    [1,2,3,4,5].forEach(i=>{
       if(i!==n){
         const ov=document.getElementById('vid-'+i);
         if(ov&&!ov.paused){
@@ -1731,7 +1760,7 @@ function vcSeek(e,n){
 }
 
 // Progress bar update
-[1,2,3,4].forEach(n=>{
+[1,2,3,4,5].forEach(n=>{
   const v=document.getElementById('vid-'+n);
   if(!v) return;
   v.addEventListener('timeupdate',()=>{
