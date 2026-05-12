@@ -256,7 +256,7 @@ nav.scrolled .nav-logo img{height:46px}
 
 /* AVIS */
 #avis{background:var(--off)}
-.avis-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;max-width:980px;margin-left:auto;margin-right:auto}
+.avis-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:60px;max-width:980px;margin-left:auto;margin-right:auto}
 .avis-card{background:var(--white);border-radius:16px;padding:36px 32px;border:1px solid var(--border);position:relative;display:flex;flex-direction:column;gap:18px;transition:box-shadow .25s,transform .25s}
 .avis-card:hover{box-shadow:0 16px 56px rgba(12,3,64,.1);transform:translateY(-4px)}
 .avis-card::before{content:'"';position:absolute;top:12px;right:24px;font-family:'Montserrat',sans-serif;font-size:5rem;line-height:1;color:rgba(12,3,64,.06);font-weight:900}
@@ -1365,11 +1365,17 @@ footer{background:#080720;padding:72px 0 0}
           <div class="avis-meta"><strong>Nizar Anis</strong><span>Software</span></div>
         </div>
       </div>
+      <div class="avis-card reveal d3">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">"J'ai été très agréablement surpris. Un monsieur incroyable, vraiment à l'écoute, naturel dans son approche et très pertinent dans ses conseils. On sent qu'il maîtrise son sujet, que ce soit en community management ou en site web, sans jamais être dans le discours trop technique. Ce que j'ai particulièrement apprécié, c'est la qualité humaine : il prend le temps de comprendre les besoins, donne des conseils concrets et adaptés. On ressort de l'échange avec des idées claires et directement applicables."</p>
+        <div class="avis-author">
+          <div class="avis-avatar">KM</div>
+          <div class="avis-meta"><strong>Kadima Mukendi</strong><span>Transport événementiel</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- EQUIPE -->
 <section id="equipe" aria-label="Équipe Vision House Bruxelles">
   <div class="container">
     <div class="reveal" style="text-align:center">
@@ -1884,8 +1890,8 @@ async function handleSubmit(e){
   e.preventDefault();
   const btn=document.getElementById('form-submit-btn');
   btn.textContent='Un instant…';btn.disabled=true;
-  // Send to Formspree in background (non-blocking)
-  fetch('https://formspree.io/f/mrejayba',{
+  // Send to Formspree — all form fields
+  fetch('https://formspree.io/f/xojrbvqy',{
     method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}
   }).catch(()=>{});
   // Redirect to Crococlick calendar
