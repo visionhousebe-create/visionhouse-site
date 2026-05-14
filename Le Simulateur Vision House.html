@@ -59,18 +59,94 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .sc-title{font-size:15px;font-weight:600;color:var(--vh-violet);line-height:1.3;font-family:var(--fh);letter-spacing:-.01em}
 .sc-hint{font-size:12.5px;color:var(--t2);margin-top:3px;line-height:1.5}
 .sc-hint strong{color:var(--vh-violet);font-weight:600}
-.cat-tabs{display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:8px;margin-bottom:1.1rem;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none}
-.cat-tabs::-webkit-scrollbar{display:none}
-.cat-tab{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--t2);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;white-space:nowrap;flex-shrink:0}
-.cat-tab:hover{border-color:var(--border-2);color:var(--vh-violet)}
-.cat-tab.on{border-color:var(--vh-violet);background:var(--vh-violet);color:#fff;font-weight:600;box-shadow:0 4px 16px -6px rgba(12,3,64,.45)}
-.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
-.sbtn{padding:11px 13px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--surface);color:var(--t2);font-family:var(--fb2);font-size:12px;cursor:pointer;text-align:left;transition:all .15s ease;line-height:1.3}
-.sbtn b{font-weight:600;font-size:12.5px;display:block;margin-bottom:3px;color:var(--vh-violet)}
-.sbtn small{opacity:.6;font-size:10.5px;color:var(--t3)}
-.sbtn.on{border-color:var(--vh-violet);background:var(--vh-violet);box-shadow:0 4px 14px -4px rgba(12,3,64,.4)}
-.sbtn.on b{color:#fff}.sbtn.on small{color:rgba(255,255,255,.7);opacity:1}
-.sbtn:hover:not(.on){border-color:var(--border-2);background:var(--surface-tint)}
+/* ── SECTOR PICKER ── */
+.sector-picker{display:flex;flex-direction:column;gap:4px}
+
+/* Category pill — tag cloud style */
+.cat-row{border-radius:var(--r-lg);overflow:hidden;transition:box-shadow .2s;background:transparent}
+
+/* Pill trigger */
+.cat-header{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:10px 18px 10px 14px;
+  border-radius:100px;
+  border:1.5px solid var(--border);
+  background:var(--surface);
+  cursor:pointer;user-select:none;
+  font-family:inherit;text-align:left;
+  transition:all .18s cubic-bezier(.4,0,.2,1);
+  width:auto;
+}
+.cat-header:hover{border-color:var(--border-2);background:var(--surface-tint);transform:translateY(-1px);box-shadow:0 4px 14px -6px rgba(12,3,64,.12)}
+.cat-row.open .cat-header{
+  border-color:var(--vh-violet);
+  background:var(--vh-violet);
+  box-shadow:0 6px 20px -8px rgba(12,3,64,.4);
+}
+
+.cat-header-ico{font-size:1.05rem;line-height:1;flex-shrink:0}
+.cat-header-label{font-family:var(--fh);font-size:13px;font-weight:600;color:var(--vh-violet);white-space:nowrap;line-height:1}
+.cat-row.open .cat-header-label{color:#fff}
+.cat-header-count{display:none}/* hidden as requested */
+
+.cat-header-selected{
+  font-size:11px;font-weight:600;
+  color:var(--vh-blue);
+  background:rgba(9,41,105,.08);
+  padding:2px 9px;border-radius:100px;
+  white-space:nowrap;flex-shrink:0;display:none;
+  max-width:120px;overflow:hidden;text-overflow:ellipsis;
+}
+.cat-header-selected.show{display:block}
+.cat-row.open .cat-header-selected{background:rgba(255,255,255,.15);color:rgba(255,255,255,.85)}
+
+.cat-chevron{
+  width:18px;height:18px;border-radius:50%;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:transform .22s,background .18s,border-color .18s;
+  color:var(--t3);font-size:9px;line-height:1;
+}
+.cat-row.open .cat-chevron{transform:rotate(180deg);background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:#fff}
+
+/* Pill cloud wrapper — wraps pills */
+.cats-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:.5rem}
+
+/* Sector chips inside accordion */
+.cat-body{display:none;padding:6px 0 8px 2px}
+.cat-row.open .cat-body{display:block}
+
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:7px;padding-top:8px}
+
+.sbtn{padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);background:var(--surface);color:var(--t2);font-family:var(--fb2);font-size:11.5px;cursor:pointer;text-align:left;transition:all .15s ease;line-height:1.3;display:flex;align-items:flex-start;gap:8px}
+.sbtn-ico{font-size:1.1rem;flex-shrink:0;line-height:1;margin-top:1px}
+.sbtn-text{flex:1;min-width:0}
+.sbtn-name{font-weight:600;font-size:12px;display:block;color:var(--vh-violet);line-height:1.25}
+.sbtn-cpm{font-size:10px;color:var(--t3);margin-top:2px;display:block}
+.sbtn.on{border-color:var(--vh-violet);background:var(--vh-violet);box-shadow:0 4px 14px -6px rgba(12,3,64,.45)}
+.sbtn.on .sbtn-name{color:#fff}
+.sbtn.on .sbtn-cpm{color:rgba(255,255,255,.6)}
+.sbtn.on .sbtn-ico{filter:brightness(0) invert(1)}
+.sbtn:hover:not(.on){border-color:var(--vh-blue);background:rgba(9,41,105,.04)}
+
+/* Selected sector display at top of step */
+.selected-sector-bar{display:none;align-items:center;gap:10px;padding:10px 14px;background:var(--vh-violet);border-radius:var(--r-sm);margin-bottom:10px;color:#fff}
+.selected-sector-bar.show{display:flex}
+.selected-sector-bar-ico{font-size:1.2rem}
+.selected-sector-bar-name{font-family:var(--fh);font-size:13px;font-weight:600;flex:1}
+.selected-sector-bar-change{font-size:11px;color:rgba(255,255,255,.55);cursor:pointer;text-decoration:underline;white-space:nowrap}
+.selected-sector-bar-change:hover{color:#fff}
+
+/* Responsive */
+@media(max-width:560px){
+  .sgrid{grid-template-columns:1fr 1fr}
+  .cat-header{padding:10px 14px}
+  .cat-header-label{font-size:13px}
+}
+@media(max-width:380px){
+  .sgrid{grid-template-columns:1fr}
+}
 .sl-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:1rem;flex-wrap:wrap}
 .sl-lbl{font-size:13px;color:var(--t2)}
 .sl-big{font-family:var(--fh);font-size:clamp(1.4rem,4vw,1.8rem);font-weight:700;letter-spacing:-.025em;color:var(--vh-violet)}
@@ -248,8 +324,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .pdf-cancel:hover{border-color:var(--border-2);color:var(--t1)}
 .pdf-modal-close{position:absolute;top:.8rem;right:.8rem;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
 .pdf-modal-close:hover{background:rgba(255,255,255,.22)}
-@media(max-width:640px){.ptabs{grid-template-columns:1fr}.nav{padding:.9rem 1rem}.hero{padding-top:2.5rem}.sgrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:380px){.sgrid{grid-template-columns:1fr}.vi-wrap input{width:100%;text-align:left}.vi-wrap label{flex:1 1 100%}}
+@media(max-width:640px){.ptabs{grid-template-columns:1fr}.nav{padding:.9rem 1rem}.hero{padding-top:2.5rem}}
+@media(max-width:380px){.vi-wrap input{width:100%;text-align:left}.vi-wrap label{flex:1 1 100%}}
 </style>
 </head>
 <body>
@@ -292,8 +368,15 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
   <section class="sc">
     <div class="sc-head"><div class="sc-num">1</div><div><div class="sc-title">Votre secteur d'activité</div><div class="sc-hint">Détermine les coûts réels de votre marché en Belgique</div></div></div>
-    <div class="cat-tabs" id="catTabs" role="tablist"></div>
-    <div class="sgrid" id="sectGrid" role="radiogroup"></div>
+    <!-- Selected sector pill — shows when a sector is chosen -->
+    <div class="selected-sector-bar" id="selectedSectorBar">
+      <span class="selected-sector-bar-ico" id="selectedSectorIco"></span>
+      <span class="selected-sector-bar-name" id="selectedSectorName">Choisissez votre secteur</span>
+      <span class="selected-sector-bar-change" onclick="resetSectorPicker()">Changer ↓</span>
+    </div>
+    <!-- Tag cloud categories + accordion sectors -->
+    <div class="cats-cloud" id="catsCloud"></div>
+    <div class="sector-picker" id="sectorPicker"></div>
   </section>
 
   <section class="sc">
@@ -501,85 +584,184 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()
 
 // ═══ DATA ═══
 var SECTORS={
-  fitness:{label:"Salle de sport / Fitness",fb:{cpm:10.5,ctr:1.8,cv:2.8},gg:{cpc:2.2,cv:4.5},vHint:800},
-  beaute:{label:"Beauté / Esthétique",fb:{cpm:14.5,ctr:1.9,cv:3.0},gg:{cpc:2.8,cv:4.5},vHint:1500},
-  cosmetique:{label:"Cosmétique",fb:{cpm:12.0,ctr:2.0,cv:2.5},gg:{cpc:2.0,cv:3.5},vHint:120},
-  vin:{label:"Vin / Caviste",fb:{cpm:9.0,ctr:1.8,cv:2.8},gg:{cpc:1.2,cv:4.0},vHint:300},
-  enfance:{label:"Enfance / Parentalité",fb:{cpm:10.0,ctr:1.9,cv:3.2},gg:{cpc:1.5,cv:4.5},vHint:400},
-  airbnb:{label:"Airbnb / Location courte durée",fb:{cpm:10.5,ctr:1.6,cv:2.5},gg:{cpc:2.0,cv:3.8},vHint:1200},
-  recrutement:{label:"Recrutement / RH",fb:{cpm:13.0,ctr:1.4,cv:2.2},gg:{cpc:4.0,cv:3.5},vHint:3000},
-  auto:{label:"Automobile",fb:{cpm:9.0,ctr:1.5,cv:2.2},gg:{cpc:2.5,cv:3.5},vHint:1200},
-  artisan:{label:"Artisan / BTP",fb:{cpm:9.5,ctr:1.5,cv:2.5},gg:{cpc:1.6,cv:5.0},vHint:800},
-  menuiserie:{label:"Menuiserie / Cuisine",fb:{cpm:11.0,ctr:1.6,cv:2.8},gg:{cpc:3.5,cv:4.5},vHint:4000},
-  solaire:{label:"Panneaux solaires",fb:{cpm:13.0,ctr:1.5,cv:2.2},gg:{cpc:5.5,cv:3.5},vHint:8000},
-  renovation:{label:"Rénovation énergétique",fb:{cpm:12.0,ctr:1.5,cv:2.5},gg:{cpc:4.8,cv:4.0},vHint:6000},
-  chauffage:{label:"Chauffage / HVAC / Plomberie",fb:{cpm:10.0,ctr:1.6,cv:3.0},gg:{cpc:3.0,cv:5.5},vHint:1500},
-  electricien:{label:"Électricien",fb:{cpm:9.0,ctr:1.6,cv:3.0},gg:{cpc:2.5,cv:5.5},vHint:800},
-  securite:{label:"Sécurité / Alarmes",fb:{cpm:11.0,ctr:1.5,cv:2.5},gg:{cpc:4.5,cv:4.0},vHint:1500},
-  jardinage:{label:"Jardinage / Paysagiste",fb:{cpm:9.0,ctr:1.9,cv:3.2},gg:{cpc:2.3,cv:4.5},vHint:600},
-  nettoyage:{label:"Nettoyage / Titres-services",fb:{cpm:8.5,ctr:1.8,cv:3.5},gg:{cpc:1.8,cv:5.0},vHint:400},
-  juridique:{label:"Juridique / Avocat",fb:{cpm:16.5,ctr:1.1,cv:1.8},gg:{cpc:8.0,cv:3.0},vHint:5000},
-  finance:{label:"Finance / Assurance",fb:{cpm:17.0,ctr:1.1,cv:1.8},gg:{cpc:6.5,cv:2.8},vHint:2000},
-  comptable:{label:"Comptable / Fiduciaire",fb:{cpm:13.0,ctr:1.2,cv:2.0},gg:{cpc:4.5,cv:3.5},vHint:2400},
-  dentiste:{label:"Dentiste / Orthodontiste",fb:{cpm:15.0,ctr:1.5,cv:2.5},gg:{cpc:5.5,cv:4.0},vHint:3000},
-  sante:{label:"Santé / Médical",fb:{cpm:16.0,ctr:1.6,cv:2.8},gg:{cpc:4.5,cv:4.0},vHint:1800},
-  psy:{label:"Psychologue / Thérapeute",fb:{cpm:13.5,ctr:1.5,cv:2.5},gg:{cpc:3.5,cv:3.8},vHint:2000},
-  immo:{label:"Immobilier",fb:{cpm:13.5,ctr:1.3,cv:2.0},gg:{cpc:3.8,cv:3.5},vHint:3000},
-  archi:{label:"Architecture / Intérieur",fb:{cpm:12.0,ctr:1.6,cv:2.2},gg:{cpc:2.8,cv:3.5},vHint:5000},
-  clinique:{label:"Clinique esthétique",fb:{cpm:16.5,ctr:1.7,cv:2.5},gg:{cpc:6.5,cv:3.5},vHint:2500},
-  mobilier:{label:"Mobilier / Décoration",fb:{cpm:10.5,ctr:2.0,cv:2.8},gg:{cpc:2.0,cv:3.5},vHint:1200},
-  coach:{label:"Coach / Consultant",fb:{cpm:13.0,ctr:1.4,cv:2.5},gg:{cpc:3.2,cv:3.8},vHint:2500},
-  formation:{label:"Formation / Éducation",fb:{cpm:12.0,ctr:1.7,cv:3.2},gg:{cpc:3.0,cv:4.0},vHint:2000},
-  saas:{label:"SaaS / Startup",fb:{cpm:15.0,ctr:1.3,cv:2.0},gg:{cpc:6.0,cv:3.5},vHint:5000},
-  ecom:{label:"E-commerce",fb:{cpm:11.5,ctr:1.9,cv:2.0},gg:{cpc:1.5,cv:2.5},vHint:150},
-  video:{label:"Production vidéo",fb:{cpm:11.0,ctr:1.7,cv:2.5},gg:{cpc:2.5,cv:3.5},vHint:3000},
-  resto:{label:"Restaurant / Food",fb:{cpm:8.5,ctr:2.2,cv:3.5},gg:{cpc:1.2,cv:4.0},vHint:300},
-  retail:{label:"Commerce / Retail",fb:{cpm:11.0,ctr:1.8,cv:2.5},gg:{cpc:1.5,cv:3.5},vHint:250},
-  events:{label:"Événementiel",fb:{cpm:9.5,ctr:2.0,cv:3.0},gg:{cpc:1.8,cv:3.5},vHint:500}
+  // ── Commerce & services ──
+  fitness:     {label:"🏋️ Salle de sport / Fitness",    fb:{cpm:10.5,ctr:1.8,cv:2.8},gg:{cpc:2.2,cv:4.5},vHint:800},
+  beaute:      {label:"💆 Beauté / Esthétique",          fb:{cpm:14.5,ctr:1.9,cv:3.0},gg:{cpc:2.8,cv:4.5},vHint:1500},
+  cosmetique:  {label:"🧴 Cosmétique / Soins",           fb:{cpm:12.0,ctr:2.0,cv:2.5},gg:{cpc:2.0,cv:3.5},vHint:120},
+  mode:        {label:"👗 Mode / Textile",               fb:{cpm:11.0,ctr:2.1,cv:2.2},gg:{cpc:1.8,cv:3.0},vHint:180},
+  vin:         {label:"🍷 Vin / Caviste",                fb:{cpm:9.0,ctr:1.8,cv:2.8}, gg:{cpc:1.2,cv:4.0},vHint:300},
+  enfance:     {label:"🍼 Enfance / Parentalité",        fb:{cpm:10.0,ctr:1.9,cv:3.2},gg:{cpc:1.5,cv:4.5},vHint:400},
+  airbnb:      {label:"🛏️ Location courte durée",        fb:{cpm:10.5,ctr:1.6,cv:2.5},gg:{cpc:2.0,cv:3.8},vHint:1200},
+  auto:        {label:"🚗 Automobile",                   fb:{cpm:9.0,ctr:1.5,cv:2.2}, gg:{cpc:2.5,cv:3.5},vHint:1200},
+  recrutement: {label:"🧑‍💻 Recrutement / RH",           fb:{cpm:13.0,ctr:1.4,cv:2.2},gg:{cpc:4.0,cv:3.5},vHint:3000},
+  bien_etre:   {label:"🧘 Bien-être / Yoga / Pilates",   fb:{cpm:11.5,ctr:1.9,cv:2.8},gg:{cpc:2.0,cv:4.0},vHint:600},
+  bijoux:      {label:"💍 Bijouterie / Luxe",            fb:{cpm:13.0,ctr:1.7,cv:2.0},gg:{cpc:2.8,cv:3.2},vHint:500},
+  // ── Bâtiment & techniques ──
+  artisan:     {label:"🔨 Artisan / BTP",                fb:{cpm:9.5,ctr:1.5,cv:2.5}, gg:{cpc:1.6,cv:5.0},vHint:800},
+  menuiserie:  {label:"🪟 Menuiserie / Cuisine",         fb:{cpm:11.0,ctr:1.6,cv:2.8},gg:{cpc:3.5,cv:4.5},vHint:4000},
+  solaire:     {label:"☀️ Panneaux solaires",            fb:{cpm:13.0,ctr:1.5,cv:2.2},gg:{cpc:5.5,cv:3.5},vHint:8000},
+  renovation:  {label:"🛠️ Rénovation énergétique",       fb:{cpm:12.0,ctr:1.5,cv:2.5},gg:{cpc:4.8,cv:4.0},vHint:6000},
+  chauffage:   {label:"🚿 Chauffage / HVAC / Plomberie", fb:{cpm:10.0,ctr:1.6,cv:3.0},gg:{cpc:3.0,cv:5.5},vHint:1500},
+  electricien: {label:"⚡ Électricien",                  fb:{cpm:9.0,ctr:1.6,cv:3.0}, gg:{cpc:2.5,cv:5.5},vHint:800},
+  securite:    {label:"🔒 Sécurité / Alarmes",           fb:{cpm:11.0,ctr:1.5,cv:2.5},gg:{cpc:4.5,cv:4.0},vHint:1500},
+  jardinage:   {label:"🌿 Jardinage / Paysagiste",       fb:{cpm:9.0,ctr:1.9,cv:3.2}, gg:{cpc:2.3,cv:4.5},vHint:600},
+  nettoyage:   {label:"🧹 Nettoyage / Titres-services",  fb:{cpm:8.5,ctr:1.8,cv:3.5}, gg:{cpc:1.8,cv:5.0},vHint:400},
+  demenagement:{label:"📦 Déménagement / Stockage",      fb:{cpm:9.5,ctr:1.6,cv:3.0}, gg:{cpc:2.2,cv:4.8},vHint:1200},
+  // ── Professions réglementées ──
+  juridique:   {label:"⚖️ Juridique / Avocat",           fb:{cpm:16.5,ctr:1.1,cv:1.8},gg:{cpc:8.0,cv:3.0},vHint:5000},
+  finance:     {label:"💼 Finance / Assurance",          fb:{cpm:17.0,ctr:1.1,cv:1.8},gg:{cpc:6.5,cv:2.8},vHint:2000},
+  comptable:   {label:"🧾 Comptable / Fiduciaire",       fb:{cpm:13.0,ctr:1.2,cv:2.0},gg:{cpc:4.5,cv:3.5},vHint:2400},
+  dentiste:    {label:"🦷 Dentiste / Orthodontiste",     fb:{cpm:15.0,ctr:1.5,cv:2.5},gg:{cpc:5.5,cv:4.0},vHint:3000},
+  sante:       {label:"⚕️ Santé / Médical",              fb:{cpm:16.0,ctr:1.6,cv:2.8},gg:{cpc:4.5,cv:4.0},vHint:1800},
+  psy:         {label:"🧠 Psychologue / Thérapeute",     fb:{cpm:13.5,ctr:1.5,cv:2.5},gg:{cpc:3.5,cv:3.8},vHint:2000},
+  clinique:    {label:"🏥 Clinique esthétique",          fb:{cpm:16.5,ctr:1.7,cv:2.5},gg:{cpc:6.5,cv:3.5},vHint:2500},
+  notaire:     {label:"📜 Notaire / Huissier",           fb:{cpm:14.0,ctr:1.0,cv:1.6},gg:{cpc:7.0,cv:2.8},vHint:4000},
+  architecte:  {label:"📐 Architecte / Bureau d'étude", fb:{cpm:12.5,ctr:1.3,cv:1.8},gg:{cpc:4.0,cv:3.0},vHint:8000},
+  // ── Habitat & design ──
+  immo:        {label:"🏠 Immobilier",                   fb:{cpm:13.5,ctr:1.3,cv:2.0},gg:{cpc:3.8,cv:3.5},vHint:3000},
+  archi:       {label:"🏡 Architecture d'intérieur",    fb:{cpm:12.0,ctr:1.6,cv:2.2},gg:{cpc:2.8,cv:3.5},vHint:5000},
+  mobilier:    {label:"🪑 Mobilier / Décoration",        fb:{cpm:10.5,ctr:2.0,cv:2.8},gg:{cpc:2.0,cv:3.5},vHint:1200},
+  piscine:     {label:"🏊 Piscine / Spa / Jacuzzi",      fb:{cpm:11.5,ctr:1.7,cv:2.2},gg:{cpc:3.5,cv:3.8},vHint:8000},
+  domotique:   {label:"🏠 Domotique / Smart Home",       fb:{cpm:12.5,ctr:1.5,cv:2.0},gg:{cpc:4.0,cv:3.5},vHint:3500},
+  // ── Business digitaux ──
+  coach:       {label:"🎯 Coach / Consultant",           fb:{cpm:13.0,ctr:1.4,cv:2.5},gg:{cpc:3.2,cv:3.8},vHint:2500},
+  formation:   {label:"📚 Formation / Éducation",        fb:{cpm:12.0,ctr:1.7,cv:3.2},gg:{cpc:3.0,cv:4.0},vHint:2000},
+  saas:        {label:"📱 SaaS / Startup",               fb:{cpm:15.0,ctr:1.3,cv:2.0},gg:{cpc:6.0,cv:3.5},vHint:5000},
+  ecom:        {label:"📦 E-commerce",                   fb:{cpm:11.5,ctr:1.9,cv:2.0},gg:{cpc:1.5,cv:2.5},vHint:150},
+  video:       {label:"🎥 Production vidéo / Photo",     fb:{cpm:11.0,ctr:1.7,cv:2.5},gg:{cpc:2.5,cv:3.5},vHint:3000},
+  agence_web:  {label:"💻 Agence web / Dev",             fb:{cpm:13.5,ctr:1.4,cv:2.2},gg:{cpc:5.0,cv:3.5},vHint:5000},
+  marketing:   {label:"📣 Agence marketing / Com",       fb:{cpm:14.0,ctr:1.3,cv:2.0},gg:{cpc:5.5,cv:3.2},vHint:4000},
+  // ── Alimentation & événements ──
+  resto:       {label:"🍽️ Restaurant / Food",            fb:{cpm:8.5,ctr:2.2,cv:3.5}, gg:{cpc:1.2,cv:4.0},vHint:300},
+  retail:      {label:"🛍️ Commerce / Retail",            fb:{cpm:11.0,ctr:1.8,cv:2.5},gg:{cpc:1.5,cv:3.5},vHint:250},
+  events:      {label:"🎉 Événementiel",                 fb:{cpm:9.5,ctr:2.0,cv:3.0}, gg:{cpc:1.8,cv:3.5},vHint:500},
+  traiteur:    {label:"🥘 Traiteur / Catering",          fb:{cpm:9.0,ctr:2.0,cv:3.2}, gg:{cpc:1.5,cv:4.0},vHint:800},
+  boulangerie: {label:"🥐 Boulangerie / Pâtisserie",     fb:{cpm:8.0,ctr:2.3,cv:3.8}, gg:{cpc:1.0,cv:4.5},vHint:200},
+  foodtruck:   {label:"🚚 Food Truck / Street Food",     fb:{cpm:8.5,ctr:2.4,cv:3.6}, gg:{cpc:1.1,cv:4.2},vHint:250}
 };
 
 var CATEGORIES=[
-  {key:'commerce',label:'Commerce & services',ico:'🛍️',keys:['fitness','beaute','cosmetique','vin','enfance','airbnb','recrutement','auto']},
-  {key:'batiment',label:'Bâtiment & techniques',ico:'🔨',keys:['artisan','menuiserie','solaire','renovation','chauffage','electricien','securite','jardinage','nettoyage']},
-  {key:'regulated',label:'Professions réglementées',ico:'⚖️',keys:['juridique','finance','comptable','dentiste','sante','psy']},
-  {key:'habitat',label:'Habitat & design',ico:'🏠',keys:['immo','archi','clinique','mobilier']},
-  {key:'digital',label:'Business digitaux',ico:'💻',keys:['coach','formation','saas','ecom','video']},
-  {key:'food',label:'Alimentation & événements',ico:'🍽️',keys:['resto','retail','events']}
+  {key:'commerce',label:'Commerce & services',ico:'🛍️',keys:['fitness','beaute','cosmetique','mode','vin','enfance','airbnb','auto','recrutement','bien_etre','bijoux']},
+  {key:'batiment',label:'Bâtiment & techniques',ico:'🔨',keys:['artisan','menuiserie','solaire','renovation','chauffage','electricien','securite','jardinage','nettoyage','demenagement']},
+  {key:'regulated',label:'Professions réglementées',ico:'⚖️',keys:['juridique','finance','comptable','dentiste','sante','psy','clinique','notaire','architecte']},
+  {key:'habitat',label:'Habitat & design',ico:'🏠',keys:['immo','archi','mobilier','piscine','domotique']},
+  {key:'digital',label:'Business digitaux',ico:'💻',keys:['coach','formation','saas','ecom','video','agence_web','marketing']},
+  {key:'food',label:'Alimentation & événements',ico:'🍽️',keys:['resto','retail','events','traiteur','boulangerie','foodtruck']}
 ];
 
 var S={platform:'fb',sector:'artisan',budget:300,clientValue:800};
 var chartInst=null,gateUnlocked=false,lastRenderData=null,floatShownOnce=false;
 var currentCat='commerce';
 
-function buildCatTabs(){
-  var ct=document.getElementById('catTabs');
-  ct.innerHTML=CATEGORIES.map(function(c){return'<button class="cat-tab'+(c.key===currentCat?' on':'')+'" data-cat="'+c.key+'">'+c.ico+' '+c.label+'</button>';}).join('');
-  ct.querySelectorAll('.cat-tab').forEach(function(btn){
-    btn.addEventListener('click',function(){selectCat(btn,btn.dataset.cat);});
+// ════ SECTOR ACCORDION PICKER ════
+
+function buildSectorPicker(){
+  var cloud=document.getElementById('catsCloud');
+  var picker=document.getElementById('sectorPicker');
+  if(!cloud||!picker)return;
+  cloud.innerHTML='';
+  picker.innerHTML='';
+
+  CATEGORIES.forEach(function(cat){
+    var hasSelected=cat.keys.indexOf(S.sector)>=0;
+    var selectedSec=hasSelected?SECTORS[S.sector]:null;
+    var selLabel=selectedSec?selectedSec.label.replace(/^\S+\s*/,'').trim():'';
+
+    // ── Pill in cloud ──
+    var pill=document.createElement('div');
+    pill.className='cat-row'+(hasSelected?' open':'');
+    pill.dataset.cat=cat.key;
+    pill.innerHTML=
+      '<button class="cat-header" data-cat="'+cat.key+'">'+
+        '<span class="cat-header-ico">'+cat.ico+'</span>'+
+        '<span class="cat-header-label">'+cat.label+'</span>'+
+        '<span class="cat-header-selected'+(hasSelected?' show':'')+'" id="sel-'+cat.key+'">'+(hasSelected?selLabel:'')+'</span>'+
+        '<span class="cat-chevron">&#9660;</span>'+
+      '</button>';
+    cloud.appendChild(pill);
+
+    // ── Sector grid panel (in picker below cloud) ──
+    var panel=document.createElement('div');
+    panel.id='panel-'+cat.key;
+    panel.className='cat-body'+(hasSelected?' open':'');
+    panel.style.cssText='display:'+(hasSelected?'block':'none')+';padding:8px 0 12px';
+    panel.innerHTML='<div class="sgrid" id="grid-'+cat.key+'"></div>';
+    picker.appendChild(panel);
+
+    if(hasSelected){
+      var g=panel.querySelector('#grid-'+cat.key);
+      buildCatGrid(cat,g);
+    }
+
+    pill.querySelector('.cat-header').addEventListener('click',function(){
+      var isOpen=pill.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.cat-row').forEach(function(r){r.classList.remove('open');});
+      document.querySelectorAll('#sectorPicker .cat-body').forEach(function(p){p.style.display='none';});
+      if(!isOpen){
+        pill.classList.add('open');
+        panel.style.display='block';
+        var g=panel.querySelector('#grid-'+cat.key);
+        if(!g.children.length)buildCatGrid(cat,g);
+        // Smooth scroll to panel
+        setTimeout(function(){panel.scrollIntoView({behavior:'smooth',block:'nearest'});},80);
+      }
+    });
   });
 }
-function selectCat(el,k){
-  document.querySelectorAll('.cat-tab').forEach(function(b){b.classList.remove('on');});
-  el.classList.add('on');currentCat=k;buildSectorGrid();
-}
-function buildSectorGrid(){
-  var cat=CATEGORIES.find(function(c){return c.key===currentCat;});
-  var g=document.getElementById('sectGrid');
-  g.innerHTML=cat.keys.map(function(k){
-    var v=SECTORS[k];if(!v)return'';
-    var isOn=k===S.sector&&cat.keys.indexOf(S.sector)>=0;
-    return'<button class="sbtn'+(isOn?' on':'')+'" data-key="'+k+'"><b>'+v.label+'</b><small id="h-'+k+'"></small></button>';
-  }).join('');
-  g.querySelectorAll('.sbtn').forEach(function(btn){
+
+function buildCatGrid(cat,grid){
+  grid.innerHTML='';
+  cat.keys.forEach(function(k){
+    var v=SECTORS[k];if(!v)return;
+    var isOn=k===S.sector;
+    var p=S.platform;
+    var cpmTxt=p==='fb'?'CPM ~'+v.fb.cpm+' €':'CPC ~'+v.gg.cpc+' €';
+    // Extract emoji and text from label
+    var emojiMatch=v.label.match(/^(\S+)/);
+    var ico=emojiMatch?emojiMatch[1]:'';
+    var name=v.label.replace(/^\S+\s*/,'');
+
+    var btn=document.createElement('button');
+    btn.className='sbtn'+(isOn?' on':'');
+    btn.dataset.key=k;
+    btn.innerHTML=
+      '<span class="sbtn-ico">'+ico+'</span>'+
+      '<span class="sbtn-text">'+
+        '<span class="sbtn-name">'+name+'</span>'+
+        '<span class="sbtn-cpm" id="h-'+k+'">'+cpmTxt+'</span>'+
+      '</span>';
     btn.addEventListener('click',function(){setSector(btn);});
+    grid.appendChild(btn);
   });
-  updateHints();
 }
+
 function updateHints(){
   var p=S.platform;
   Object.keys(SECTORS).forEach(function(k){
     var el=document.getElementById('h-'+k);
-    if(el)el.textContent=p==='fb'?' · CPM ~'+SECTORS[k].fb.cpm+'€':' · CPC ~'+SECTORS[k].gg.cpc+'€';
+    if(el)el.textContent=p==='fb'?'CPM ~'+SECTORS[k].fb.cpm+' €':'CPC ~'+SECTORS[k].gg.cpc+' €';
+  });
+}
+
+function resetSectorPicker(){
+  // Hide selected bar
+  document.getElementById('selectedSectorBar').classList.remove('show');
+  // Collapse all, then reopen the cat of current sector
+  document.querySelectorAll('.cat-row').forEach(function(r){r.classList.remove('open');});
+  document.querySelectorAll('#sectorPicker .cat-body').forEach(function(p){p.style.display='none';});
+  CATEGORIES.forEach(function(cat){
+    if(cat.keys.indexOf(S.sector)>=0){
+      var pill=document.querySelector('.cat-row[data-cat="'+cat.key+'"]');
+      var panel=document.getElementById('panel-'+cat.key);
+      if(pill)pill.classList.add('open');
+      if(panel){
+        panel.style.display='block';
+        var g=panel.querySelector('#grid-'+cat.key);
+        if(g&&!g.children.length)buildCatGrid(cat,g);
+        setTimeout(function(){panel.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+      }
+    }
   });
 }
 
@@ -587,7 +769,7 @@ function updateHints(){
 (function(){
   var fk=CATEGORIES[0].keys[0];S.sector=fk;S.clientValue=SECTORS[fk].vHint;
   document.getElementById('clientValue').value=S.clientValue;
-  buildCatTabs();buildSectorGrid();
+  buildSectorPicker();
   var sl=document.getElementById('budgetSlider');sl.style.setProperty('--pct',((300-150)/(3000-150))*100+'%');
   if(typeof Chart!=='undefined')compute();else window.addEventListener('load',compute);
 })();
@@ -596,13 +778,53 @@ function setPlatform(p){
   S.platform=p;
   document.getElementById('ptab-fb').className='ptab'+(p==='fb'?' on-fb':'');
   document.getElementById('ptab-gg').className='ptab'+(p==='gg'?' on-gg':'');
+  // Rebuild open grid to reflect new CPM/CPC
+  document.querySelectorAll('.cat-row.open').forEach(function(row){
+    var catKey=row.dataset.cat;
+    var cat=CATEGORIES.find(function(c){return c.key===catKey;});
+    var g=row.querySelector('#grid-'+catKey);
+    if(cat&&g){buildCatGrid(cat,g);}
+  });
   updateHints();compute();
 }
-function setSector(el){
+
+function setSector(btn){
+  // Unmark all sbtn
   document.querySelectorAll('.sbtn').forEach(function(b){b.classList.remove('on');});
-  el.classList.add('on');S.sector=el.dataset.key;
-  var h=SECTORS[S.sector].vHint;document.getElementById('clientValue').value=h;S.clientValue=h;
-  document.querySelectorAll('.vex').forEach(function(b){b.classList.toggle('active',parseInt(b.textContent.replace(/[^0-9]/g,''))===h);});
+  btn.classList.add('on');
+  S.sector=btn.dataset.key;
+
+  // Update selected bar
+  var sec=SECTORS[S.sector];
+  var ico=sec.label.match(/^(\S+)/)?sec.label.match(/^(\S+)/)[1]:'';
+  var name=sec.label.replace(/^\S+\s*/,'');
+  document.getElementById('selectedSectorIco').textContent=ico;
+  document.getElementById('selectedSectorName').textContent=name;
+  document.getElementById('selectedSectorBar').classList.add('show');
+
+  // Update selected label in cat header
+  CATEGORIES.forEach(function(cat){
+    var badge=document.getElementById('sel-'+cat.key);
+    if(!badge)return;
+    if(cat.keys.indexOf(S.sector)>=0){
+      badge.textContent=name;
+      badge.classList.add('show');
+    } else {
+      badge.classList.remove('show');
+    }
+  });
+
+  // Collapse picker after selection for clean UX
+  setTimeout(function(){
+    document.querySelectorAll('.cat-row').forEach(function(r){r.classList.remove('open');});
+    document.querySelectorAll('#sectorPicker .cat-body').forEach(function(p){p.style.display='none';});
+  },300);
+
+  var h=sec.vHint;
+  document.getElementById('clientValue').value=h;S.clientValue=h;
+  document.querySelectorAll('.vex').forEach(function(b){
+    b.classList.toggle('active',parseInt(b.textContent.replace(/[^0-9]/g,''))===h);
+  });
   compute();
 }
 function onBudget(el){
@@ -628,7 +850,7 @@ function compute(){
   var impressions=0,clicks,leads,cpc;
   if(S.platform==='fb'){impressions=Math.round((S.budget/d.cpm)*1000);clicks=Math.round(impressions*d.ctr/100);leads=Math.round(clicks*d.cv/100*sf);cpc=clicks>0?(S.budget/clicks):0;}
   else{cpc=d.cpc;clicks=Math.round(S.budget/d.cpc);leads=Math.round(clicks*d.cv/100*sf);impressions=0;}
-  var CR_BASE={artisan:.22,beaute:.25,resto:.30,retail:.28,immo:.15,sante:.22,juridique:.18,finance:.15,coach:.20,auto:.18,formation:.22,ecom:.25,events:.24,fitness:.28,cosmetique:.26,vin:.30,enfance:.28,airbnb:.22,recrutement:.18,menuiserie:.20,solaire:.16,renovation:.18,chauffage:.26,electricien:.28,securite:.22,jardinage:.28,nettoyage:.30,comptable:.20,dentiste:.22,psy:.24,archi:.16,clinique:.20,mobilier:.24,saas:.15,video:.18};
+  var CR_BASE={fitness:.28,beaute:.25,cosmetique:.26,mode:.22,vin:.30,enfance:.28,airbnb:.22,auto:.18,recrutement:.18,bien_etre:.28,bijoux:.20,artisan:.22,menuiserie:.20,solaire:.16,renovation:.18,chauffage:.26,electricien:.28,securite:.22,jardinage:.28,nettoyage:.30,demenagement:.22,juridique:.18,finance:.15,comptable:.20,dentiste:.22,sante:.22,psy:.24,clinique:.20,notaire:.14,architecte:.15,immo:.15,archi:.16,mobilier:.24,piscine:.18,domotique:.16,coach:.20,formation:.22,saas:.15,ecom:.25,video:.18,agence_web:.16,marketing:.15,resto:.30,retail:.28,events:.24,traiteur:.26,boulangerie:.32,foodtruck:.30};
   var crBase=CR_BASE[S.sector]||.20;
   var cvFactor=Math.max(0.5,Math.min(1.5,Math.pow(800/Math.max(S.clientValue,50),0.25)));
   var cr=Math.min(0.45,crBase*cvFactor);
@@ -737,19 +959,33 @@ function renderChart(d){
 }
 
 function renderUnlock(){
-  var CC={artisan:35,immo:35,beaute:28,juridique:6,sante:20,finance:15,formation:23,coach:18,ecom:34,resto:29,solaire:8,chauffage:22,fitness:11,retail:32,auto:31};
-  var CP={artisan:"Google Ads",immo:"Meta & Google Ads",beaute:"Meta & Instagram Ads",juridique:"Google Ads",sante:"Google Ads",finance:"Google & Meta Ads",formation:"Meta & Google Ads",coach:"Meta & Instagram Ads",ecom:"Meta & Google Shopping",resto:"Meta & Instagram Ads",solaire:"Google Ads",chauffage:"Google Ads",fitness:"Meta & Instagram Ads",retail:"Meta & Google Shopping",auto:"Google & Meta Ads"};
-  var LR={artisan:44,immo:52,beaute:38,juridique:61,sante:39,finance:58,formation:47,coach:53,ecom:35,resto:43,solaire:55,chauffage:49};
+  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,juridique:6,finance:15,comptable:10,dentiste:8,sante:20,psy:6,clinique:7,notaire:4,architecte:5,immo:35,archi:5,mobilier:8,piscine:6,domotique:5,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9};
+  var CP={fitness:"Meta & Instagram Ads",beaute:"Meta & Instagram Ads",cosmetique:"Meta & Google Shopping",mode:"Meta & Google Shopping",vin:"Meta & Google Ads",enfance:"Meta Ads",airbnb:"Meta & Google Ads",auto:"Google & Meta Ads",recrutement:"Google & LinkedIn Ads",bien_etre:"Meta & Instagram Ads",bijoux:"Meta & Google Shopping",artisan:"Google Ads",menuiserie:"Google & Meta Ads",solaire:"Google Ads",renovation:"Google & Meta Ads",chauffage:"Google Ads",electricien:"Google Ads",securite:"Google & Meta Ads",jardinage:"Meta & Google Ads",nettoyage:"Google & Meta Ads",demenagement:"Google Ads",juridique:"Google Ads",finance:"Google & Meta Ads",comptable:"Google Ads",dentiste:"Google & Meta Ads",sante:"Google Ads",psy:"Google & Meta Ads",clinique:"Meta & Instagram Ads",notaire:"Google Ads",architecte:"Google & Meta Ads",immo:"Meta & Google Ads",archi:"Meta & Google Ads",mobilier:"Meta & Google Shopping",piscine:"Google & Meta Ads",domotique:"Google & Meta Ads",coach:"Meta & Instagram Ads",formation:"Meta & Google Ads",saas:"Google & LinkedIn Ads",ecom:"Meta & Google Shopping",video:"Meta & Google Ads",agence_web:"Google & LinkedIn Ads",marketing:"Meta & LinkedIn Ads",resto:"Meta & Instagram Ads",retail:"Meta & Google Shopping",events:"Meta & Instagram Ads",traiteur:"Meta & Google Ads",boulangerie:"Meta & Instagram Ads",foodtruck:"Meta & Instagram Ads"};
+  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,juridique:61,finance:58,comptable:44,dentiste:42,sante:39,psy:35,clinique:45,notaire:52,architecte:48,immo:52,archi:46,mobilier:38,piscine:44,domotique:47,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35};
   var lr=LR[S.sector]||42;
   var ccNum=CC[S.sector]||12;
   var ccPlat=CP[S.sector]||"Meta & Google Ads";
   document.getElementById('unlockLossRate').textContent=lr+'%';
   document.getElementById('competitorCount').textContent=ccNum;
   document.getElementById('competitorPlatform').textContent=ccPlat;
+  var sec=SECTORS[S.sector]||SECTORS['artisan'];
+  var platLabel=S.platform==='fb'?'Meta':'Google';
+  var cpmVal=S.platform==='fb'?sec.fb.cpm:sec.gg.cpc;
+  var convRate=S.platform==='fb'?sec.fb.cv:sec.gg.cv;
+  var convLabel=convRate>=4?'taux de conv. élevé ('+convRate+'%)':convRate>=2.5?'taux de conv. moyen ('+convRate+'%)':'taux de conv. bas ('+convRate+'%) — chaque euro compte';
+  var mktCtx=ccNum<=6?'niche — opportunité forte':ccNum<=12?'marché intermédiaire':ccNum<=20?'marché concurrentiel':'marché saturé';
+  var d=lastRenderData||{cLo:1,cHi:2,cpl:0,leads:1};
+  var roiCtx=lastRenderData?'ROI estimé '+lastRenderData.roiLo+'×–'+lastRenderData.roiHi+'×':'ROI variable';
   var rows=[
-    {ico:"📉",t:"Votre budget ne travaille pas là où il devrait",hook:"<strong>"+lr+"% de votre budget part sur des audiences non qualifiées</strong>. Pas par manque d\'investissement : par manque de configuration précise.",bar:Math.min(lr*1.5,95)},
-    {ico:"⚔️",t:"Vos concurrents ont des données que vous n\'avez pas",hook:"<strong>"+ccNum+" annonceurs actifs dans votre secteur</strong> sur "+ccPlat+" en Belgique. Ceux qui font de la pub depuis plus de 6 mois ont un avantage structurel.",bar:75},
-    {ico:"⏳",t:"La fenêtre de décision de vos prospects est courte",hook:"<strong>70% des prospects décident en moins de 48h</strong> après leur première recherche. Si vous n\'apparaissez pas pendant cette fenêtre, vous n\'existez pas.",bar:68}
+    {ico:"📉",t:"Votre budget ne travaille pas là où il devrait",
+     hook:"<strong>"+lr+"% de votre budget "+platLabel+" part sur des audiences non qualifiées</strong> dans votre secteur. CPM ~"+cpmVal+"€ · "+convLabel+". Pas par manque d\'investissement : par manque de configuration précise.",
+     bar:Math.min(Math.round(lr*1.4),95)},
+    {ico:"⚔️",t:"Vos concurrents ont des données que vous n\'avez pas",
+     hook:"<strong>"+ccNum+" annonceurs actifs</strong> sur "+ccPlat+" en Belgique — "+mktCtx+". Ceux actifs depuis 6+ mois ont un avantage algorithmique structurel que seul le temps comble.",
+     bar:Math.min(50+Math.round(ccNum*1.5),90)},
+    {ico:"⏳",t:"La fenêtre de décision : "+d.cpl+"€/lead · "+d.cLo+"–"+d.cHi+" clients/mois estimés",
+     hook:"<strong>"+roiCtx+" sur "+fNum(S.budget)+"€/mois</strong>. 70% de vos prospects décident en moins de 48h après leur première recherche. Si vous n\'apparaissez pas pendant cette fenêtre avec une annonce calibrée à "+cpmVal+"€ de CPM, vous n\'existez pas.",
+     bar:Math.min(58+Math.round(convRate*3),88)}
   ];
   document.getElementById('unlockRows').innerHTML=rows.map(function(u){return'<div class="unlock-row"><div class="unlock-row-icon">'+u.ico+'</div><div class="unlock-row-text"><div class="unlock-row-title">'+u.t+'</div><div class="unlock-row-hook">'+u.hook+'</div><div class="unlock-loss-bar"><div class="unlock-loss-fill" style="width:'+u.bar+'%"></div></div></div></div>';}).join('');
 }
@@ -819,7 +1055,9 @@ function showPdfFloat(){
   var sec=SECTORS[S.sector];
   var lbl=sec?sec.label:'votre secteur';
   var d=lastRenderData;
-  document.getElementById('pdfFloatTitle').textContent='Rapport PDF · '+lbl;
+  // Strip leading emoji from label for clean title display
+  var cleanLbl = lbl.replace(/^[\u{1F300}-\u{1FFFF}\u{2600}-\u{27FF}\uFE0F\s]+/u, '').trim();
+  document.getElementById('pdfFloatTitle').textContent='Rapport PDF · '+cleanLbl;
   if(d)document.getElementById('pdfFloatSub').textContent='CA estimé '+fK(d.caLo)+' à '+fK(d.caHi)+' · ROI '+d.roiLo+'×–'+d.roiHi+'×';
   pf.classList.add('visible');
 }
@@ -830,8 +1068,8 @@ function openPdfModal(){
   var lbl=sec?sec.label:'votre secteur';
 
   // Competitor data
-  var CC={artisan:35,immo:35,beaute:28,juridique:6,sante:20,finance:15,formation:23,coach:18,ecom:34,resto:29,solaire:8,chauffage:22,fitness:11,retail:32,auto:31};
-  var LR={artisan:44,immo:52,beaute:38,juridique:61,sante:39,finance:58,formation:47,coach:53,ecom:35,resto:43,solaire:55,chauffage:49};
+  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,juridique:6,finance:15,comptable:10,dentiste:8,sante:20,psy:6,clinique:7,notaire:4,architecte:5,immo:35,archi:5,mobilier:8,piscine:6,domotique:5,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9};
+  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,juridique:61,finance:58,comptable:44,dentiste:42,sante:39,psy:35,clinique:45,notaire:52,architecte:48,immo:52,archi:46,mobilier:38,piscine:44,domotique:47,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35};
   var ccNum=CC[S.sector]||12;
   var lossRate=LR[S.sector]||42;
 
@@ -867,9 +1105,9 @@ function generateAndDownloadPdf(){
   var sec=SECTORS[S.sector];
   var lbl=sec?sec.label:'votre secteur';
   var platLabel=S.platform==='fb'?'Meta Ads (Facebook & Instagram)':'Google Ads';
-  var CC={artisan:35,immo:35,beaute:28,juridique:6,sante:20,finance:15,formation:23,coach:18,ecom:34,resto:29,solaire:8,chauffage:22,fitness:11,retail:32,auto:31};
-  var LR={artisan:44,immo:52,beaute:38,juridique:61,sante:39,finance:58,formation:47,coach:53,ecom:35,resto:43,solaire:55,chauffage:49};
-  var CP={artisan:'Google Ads',immo:'Meta & Google Ads',beaute:'Meta & Instagram Ads',juridique:'Google Ads',sante:'Google Ads',finance:'Google & Meta Ads',formation:'Meta & Google Ads',coach:'Meta & Instagram Ads',ecom:'Meta & Google Shopping',resto:'Meta & Instagram Ads',solaire:'Google Ads',chauffage:'Google Ads',fitness:'Meta & Instagram Ads',retail:'Meta & Google Shopping',auto:'Google & Meta Ads'};
+  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,juridique:6,finance:15,comptable:10,dentiste:8,sante:20,psy:6,clinique:7,notaire:4,architecte:5,immo:35,archi:5,mobilier:8,piscine:6,domotique:5,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9};
+  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,juridique:61,finance:58,comptable:44,dentiste:42,sante:39,psy:35,clinique:45,notaire:52,architecte:48,immo:52,archi:46,mobilier:38,piscine:44,domotique:47,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35};
+  var CP={fitness:'Meta & Instagram Ads',beaute:'Meta & Instagram Ads',cosmetique:'Meta & Google Shopping',mode:'Meta & Google Shopping',vin:'Meta & Google Ads',enfance:'Meta Ads',airbnb:'Meta & Google Ads',auto:'Google & Meta Ads',recrutement:'Google & LinkedIn Ads',bien_etre:'Meta & Instagram Ads',bijoux:'Meta & Google Shopping',artisan:'Google Ads',menuiserie:'Google & Meta Ads',solaire:'Google Ads',renovation:'Google & Meta Ads',chauffage:'Google Ads',electricien:'Google Ads',securite:'Google & Meta Ads',jardinage:'Meta & Google Ads',nettoyage:'Google & Meta Ads',demenagement:'Google Ads',juridique:'Google Ads',finance:'Google & Meta Ads',comptable:'Google Ads',dentiste:'Google & Meta Ads',sante:'Google Ads',psy:'Google & Meta Ads',clinique:'Meta & Instagram Ads',notaire:'Google Ads',architecte:'Google & Meta Ads',immo:'Meta & Google Ads',archi:'Meta & Google Ads',mobilier:'Meta & Google Shopping',piscine:'Google & Meta Ads',domotique:'Google & Meta Ads',coach:'Meta & Instagram Ads',formation:'Meta & Google Ads',saas:'Google & LinkedIn Ads',ecom:'Meta & Google Shopping',video:'Meta & Google Ads',agence_web:'Google & LinkedIn Ads',marketing:'Meta & LinkedIn Ads',resto:'Meta & Instagram Ads',retail:'Meta & Google Shopping',events:'Meta & Instagram Ads',traiteur:'Meta & Google Ads',boulangerie:'Meta & Instagram Ads',foodtruck:'Meta & Instagram Ads'};
   var ccNum=CC[S.sector]||12;
   var lossRate=LR[S.sector]||42;
   var ccPlat=CP[S.sector]||'Meta & Google Ads';
@@ -969,8 +1207,8 @@ function generateAndDownloadPdf(){
     +'.cta-box-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}'
     +'.cta-box-sub{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:12px}'
     +'.cta-box-link{display:inline-block;background:#fff;color:#0C0340;font-weight:700;font-size:12px;padding:10px 24px;border-radius:100px;text-decoration:none}'
-    +'@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'
-    +'</style></head><body><div class="page">'
+    +'@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'    +'.watermark{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:52px;font-weight:900;color:rgba(12,3,64,.04);letter-spacing:.08em;text-transform:uppercase;pointer-events:none;z-index:0;white-space:nowrap;font-family:Arial,sans-serif}'    +'.legal-notice{background:#F5F4FA;border:1px solid rgba(12,3,64,.12);border-left:3px solid #B5311A;border-radius:8px;padding:14px 16px;margin-bottom:20px}'    +'.legal-notice-title{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B5311A;margin-bottom:7px}'    +'.legal-notice-text{font-size:10.5px;color:#5A6A96;line-height:1.7}'    +'.legal-notice-text strong{color:#0C0340}'    +'.data-partial{background:rgba(9,41,105,.04);border:1px dashed rgba(9,41,105,.2);border-radius:6px;padding:10px 14px;margin-top:10px;font-size:10px;color:#5A6A96;font-style:italic;line-height:1.6}'    +'.data-partial::before{content:"⚠ ";font-style:normal}'
+    +'</style></head><body><div class="watermark">VISION HOUSE</div><div class="page">'
 
     // HEADER
     +'<div class="header">'
@@ -1047,6 +1285,8 @@ function generateAndDownloadPdf(){
       +'</div>'
     +'</div>'
 
+    // LEGAL NOTICE — before insights
+    +'<div class="legal-notice">'      +'<div class="legal-notice-title">Avis de confidentialité &amp; propriété intellectuelle</div>'      +'<div class="legal-notice-text">'        +'Ce rapport est généré exclusivement pour l\'usage personnel du destinataire. '        +'<strong>Il est strictement interdit de reproduire, transmettre ou soumettre ce document '        +'— en tout ou en partie — à un système d\'intelligence artificielle '        +'(Claude, ChatGPT, Gemini ou tout autre outil d\'IA) à des fins d\'analyse, '        +'de consultation ou de substitution au conseil professionnel.</strong> '        +'Les données, estimations et analyses contenues dans ce rapport constituent '        +'un savoir-faire propriétaire de Vision House / Emkay Partners SRL (BCE 1024.829.348). '        +'Toute question relative à votre stratégie publicitaire doit être adressée directement à '        +'<strong>hello@visionhouse.be</strong> ou via <strong>visionhouse.be</strong>.'      +'</div>'      +'<div class="data-partial">'        +'Les données sectorielles présentées sont des estimations basées sur les moyennes du marché belge 2025–2026. '        +'Vos chiffres réels, la stratégie précise et les données concurrentielles de votre zone '        +'sont communiqués lors de l\'appel stratégique offert avec un fondateur Vision House.'      +'</div>'    +'</div>'
     // INSIGHTS SECTEUR
     +'<div style="margin-bottom:24px">'
       +'<div class="section-title">Les 3 données critiques de votre secteur</div>'
@@ -1067,7 +1307,7 @@ function generateAndDownloadPdf(){
 
     // FOOTER
     +'<div class="footer-pdf">'
-      +'<div class="footer-pdf-left">Vision House · hello@visionhouse.be · +32 451 09 56 50<br>Emkay Partners SRL · BCE 1024.829.348 · Watermael-Boitsfort, Belgique</div>'
+      +'<div class="footer-pdf-left"><strong style="color:#0C0340">Vision House</strong> · hello@visionhouse.be · +32 451 09 56 50<br>Emkay Partners SRL · BCE 1024.829.348 · © 2026 Tous droits réservés<br><span style="color:#B5311A;font-weight:600">Usage personnel exclusif — Utilisation IA interdite</span></div>'
       +'<div class="footer-pdf-right">visionhouse.be/Le Simulateur Vision House<br>Rapport généré le '+dateStr+'</div>'
     +'</div>'
 
