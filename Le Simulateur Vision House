@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Simulateur Vision House — Calculez votre CA publicitaire | Belgique 2026</title>
+<meta name="description" content="Simulez en 30 secondes votre CA potentiel avec Meta Ads et Google Ads en Belgique. Outil gratuit Vision House, données sectorielles réelles 2026.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://visionhouse.be/simulateur.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Vision House">
+<meta property="og:title" content="Le Simulateur Vision House — Votre CA potentiel, Enfin chiffré.">
+<meta property="og:description" content="Estimez votre CA potentiel avec Meta Ads et Google Ads en Belgique. Données sectorielles 2026.">
+<meta property="og:image" content="https://visionhouse.be/logo-header.png">
+<meta property="og:url" content="https://visionhouse.be/simulateur.html">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js" defer></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--vh-violet:#0C0340;--vh-blue:#092969;--bg:#FFFFFF;--bg-2:#F8F7FB;--surface:#FFFFFF;--surface-tint:#F5F4FA;--border:rgba(12,3,64,.08);--border-2:rgba(12,3,64,.16);--t1:#0C0340;--t2:rgba(12,3,64,.62);--t3:rgba(12,3,64,.42);--t4:rgba(12,3,64,.22);--sky:#3a6dd9;--sky-dim:rgba(9,41,105,.08);--gold:#B6873C;--warn:#B5311A;--warn-dim:rgba(181,49,26,.07);--warn-border:rgba(181,49,26,.18);--r-xl:28px;--r-lg:22px;--r:18px;--r-sm:14px;--shadow-sm:0 1px 2px rgba(12,3,64,.04),0 1px 3px rgba(12,3,64,.05);--shadow:0 4px 14px -2px rgba(12,3,64,.06),0 2px 6px rgba(12,3,64,.04);--fh:'Geist','Inter',sans-serif;--fb2:'Inter','Geist',sans-serif;--fserif:'Instrument Serif',serif}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--fb2);background:var(--bg);background-image:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(9,41,105,.045),transparent 60%);background-attachment:fixed;color:var(--t1);min-height:100vh;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.spb{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,var(--vh-blue),#3a6dd9);z-index:9999;border-radius:0 2px 2px 0;transition:width .1s linear;box-shadow:0 0 8px rgba(9,41,105,.4)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1rem,3vw,2rem);position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:border-color .3s}
+.nav.scrolled{border-bottom-color:var(--border-2)}
+.nav-cta{font-family:var(--fb2);font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;background:var(--vh-violet);color:#fff;border:1px solid var(--vh-violet);transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.nav-cta:hover{background:var(--vh-blue);transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(9,41,105,.4)}
+.nav-cta-mobile{display:none}
+@media(max-width:640px){.nav-cta-full{display:none}.nav-cta-mobile{display:inline-flex}}
+.italic{font-family:var(--fserif);font-style:italic;font-weight:400;color:var(--gold)}
+.italic-sky{font-family:var(--fserif);font-style:italic;font-weight:400;color:var(--vh-blue)}
+.hero{max-width:880px;margin:0 auto;padding:clamp(2.5rem,7vw,5rem) clamp(1rem,4vw,2rem) clamp(1.5rem,4vw,2.5rem);text-align:center}
+.hero h1{font-family:var(--fh);font-size:clamp(2.2rem,7vw,4.5rem);font-weight:700;line-height:1.02;letter-spacing:-.04em;margin-bottom:1.1rem;color:var(--vh-violet)}
+.hero h1 .italic{font-size:1.05em;line-height:.9;display:inline-block;letter-spacing:-.02em}
+.hero-sub{color:var(--t2);font-size:clamp(.95rem,2vw,1.12rem);max-width:580px;margin:0 auto;line-height:1.55}
+.hero-sub strong{color:var(--vh-violet);font-weight:600}
+.scroll-arrow{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;margin-top:2.5rem;background:var(--vh-violet);color:#fff;border:none;cursor:pointer;box-shadow:0 8px 24px -8px rgba(12,3,64,.4);animation:bob 2.2s ease-in-out infinite;transition:transform .2s;text-decoration:none}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.wrap{max-width:880px;margin:0 auto;padding:0 clamp(1rem,4vw,1.5rem) 4rem}
+.sec-head{margin-bottom:1.2rem;text-align:left}
+.sec-head h2{font-family:var(--fh);font-weight:700;font-size:clamp(1.4rem,3vw,1.8rem);letter-spacing:-.025em;line-height:1.15;color:var(--vh-violet)}
+.ptabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.6rem}
+.ptab{padding:1.25rem;border:1px solid var(--border);border-radius:var(--r);cursor:pointer;background:var(--surface);transition:all .25s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:14px;font-family:inherit;color:inherit;width:100%;text-align:left;box-shadow:var(--shadow-sm)}
+.ptab:hover{border-color:var(--border-2);transform:translateY(-1px);box-shadow:var(--shadow)}
+.ptab.on-fb{border-color:rgba(24,119,242,.5);background:linear-gradient(135deg,rgba(24,119,242,.06),#fff);box-shadow:0 0 0 1px rgba(24,119,242,.2),0 12px 28px -12px rgba(24,119,242,.35)}
+.ptab.on-gg{border-color:rgba(66,133,244,.5);background:linear-gradient(135deg,rgba(66,133,244,.06),#fff);box-shadow:0 0 0 1px rgba(66,133,244,.2),0 12px 28px -12px rgba(66,133,244,.35)}
+.ptab-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ptab-ico.fb{background:rgba(24,119,242,.10)}.ptab-ico.gg{background:rgba(66,133,244,.08)}
+.ptab-name{font-weight:600;font-size:14px;color:var(--vh-violet);line-height:1.2}
+.ptab-desc{font-size:12px;color:var(--t2);margin-top:3px;line-height:1.4}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(1.2rem,3vw,1.6rem);margin-bottom:1rem;box-shadow:var(--shadow-sm)}
+.sc-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:1.2rem}
+.sc-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--vh-violet),var(--vh-blue));font-size:13px;font-weight:700;font-family:var(--fh);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.sc-title{font-size:15px;font-weight:600;color:var(--vh-violet);line-height:1.3;font-family:var(--fh);letter-spacing:-.01em}
+.sc-hint{font-size:12.5px;color:var(--t2);margin-top:3px;line-height:1.5}
+.sc-hint strong{color:var(--vh-violet);font-weight:600}
+.cat-tabs{display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:8px;margin-bottom:1.1rem;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none}
+.cat-tabs::-webkit-scrollbar{display:none}
+.cat-tab{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--t2);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;white-space:nowrap;flex-shrink:0}
+.cat-tab:hover{border-color:var(--border-2);color:var(--vh-violet)}
+.cat-tab.on{border-color:var(--vh-violet);background:var(--vh-violet);color:#fff;font-weight:600;box-shadow:0 4px 16px -6px rgba(12,3,64,.45)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.sbtn{padding:11px 13px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--surface);color:var(--t2);font-family:var(--fb2);font-size:12px;cursor:pointer;text-align:left;transition:all .15s ease;line-height:1.3}
+.sbtn b{font-weight:600;font-size:12.5px;display:block;margin-bottom:3px;color:var(--vh-violet)}
+.sbtn small{opacity:.6;font-size:10.5px;color:var(--t3)}
+.sbtn.on{border-color:var(--vh-violet);background:var(--vh-violet);box-shadow:0 4px 14px -4px rgba(12,3,64,.4)}
+.sbtn.on b{color:#fff}.sbtn.on small{color:rgba(255,255,255,.7);opacity:1}
+.sbtn:hover:not(.on){border-color:var(--border-2);background:var(--surface-tint)}
+.sl-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:1rem;flex-wrap:wrap}
+.sl-lbl{font-size:13px;color:var(--t2)}
+.sl-big{font-family:var(--fh);font-size:clamp(1.4rem,4vw,1.8rem);font-weight:700;letter-spacing:-.025em;color:var(--vh-violet)}
+.sl-big sub{font-size:.5em;font-weight:400;color:var(--t2);margin-left:3px;vertical-align:bottom}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:5px;outline:none;cursor:pointer;margin-bottom:10px;background:linear-gradient(to right,var(--vh-violet) 0%,var(--vh-violet) var(--pct,10%),rgba(12,3,64,.08) var(--pct,10%),rgba(12,3,64,.08) 100%)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--vh-violet);cursor:pointer;box-shadow:0 4px 12px rgba(12,3,64,.35),0 0 0 4px #fff;border:none}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--vh-violet);cursor:pointer;border:none;box-shadow:0 4px 12px rgba(12,3,64,.35),0 0 0 4px #fff}
+.sl-hints{display:flex;justify-content:space-between;font-size:11px;color:var(--t3);margin-bottom:.9rem}
+.sl-info{background:var(--surface-tint);border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem 1.1rem;font-size:12.5px;color:var(--t2);line-height:1.5}
+.sl-info strong{color:var(--vh-violet);font-weight:600}
+.vi-wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface-tint);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 18px;margin-top:.5rem;transition:border-color .2s}
+.vi-wrap:focus-within{border-color:var(--vh-blue);background:#fff}
+.vi-wrap label{font-size:13px;color:var(--t2);flex:1;min-width:160px}
+.vi-wrap input{background:transparent;border:none;outline:none;font-family:var(--fh);font-size:clamp(1.3rem,3.5vw,1.5rem);font-weight:700;letter-spacing:-.02em;color:var(--vh-violet);width:130px;text-align:right;min-width:0}
+.vi-wrap span{font-size:14px;color:var(--t2)}
+.vex-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.vex{font-size:12px;padding:5px 13px;border:1px solid var(--border);border-radius:100px;background:transparent;color:var(--t2);font-family:var(--fb2);cursor:pointer;transition:all .15s}
+.vex:hover{border-color:var(--vh-violet);color:var(--vh-violet)}
+.vex.active{border-color:var(--vh-blue);background:rgba(9,41,105,.08);color:var(--vh-blue);font-weight:600}
+.r-hero{border-radius:var(--r-xl);padding:clamp(1.5rem,4vw,2.4rem);margin-bottom:1rem;background:radial-gradient(ellipse 80% 70% at 80% 0%,rgba(58,109,217,.35),transparent 60%),linear-gradient(135deg,var(--vh-violet) 0%,var(--vh-blue) 100%);position:relative;overflow:hidden;box-shadow:0 24px 60px -20px rgba(12,3,64,.35);color:#fff}
+.r-hero::after{content:'';position:absolute;top:-100px;right:-100px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12) 0%,transparent 70%);pointer-events:none}
+.rh-tag{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9DBFFF;display:flex;align-items:center;gap:8px;margin-bottom:.9rem}
+.rh-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:#9DBFFF;box-shadow:0 0 12px #9DBFFF}
+.rh-amount{font-family:var(--fh);font-size:clamp(2.2rem,8vw,4rem);font-weight:700;line-height:1;letter-spacing:-.045em;color:#fff;margin-bottom:.5rem;position:relative;z-index:1}
+.rh-amount .sep{font-family:var(--fserif);font-style:italic;font-weight:400;color:#E8D4A8;font-size:.45em;margin:0 .15em;vertical-align:middle}
+.rh-amount .g{background:linear-gradient(120deg,#9DBFFF 0%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rh-range{font-size:13px;color:rgba(255,255,255,.72);margin-bottom:1.2rem}
+.rh-range strong{color:#fff;font-weight:600}
+.funnel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(1.2rem,3vw,1.6rem);margin-bottom:1rem;box-shadow:var(--shadow-sm)}
+.funnel-head{margin-bottom:1.1rem}
+.funnel-title{font-size:15px;font-weight:600;color:var(--vh-violet);line-height:1.3;font-family:var(--fh);letter-spacing:-.01em}
+.funnel-sub{font-size:12.5px;color:var(--t2);margin-top:5px;line-height:1.5}
+.funnel-sub strong{color:var(--vh-violet);font-weight:600}
+.funnel-flow{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.fnode{background:var(--surface-tint);border:1px solid var(--border);border-radius:var(--r-sm);padding:1rem 1.1rem;position:relative}
+.fnode-lbl{font-size:10.5px;color:var(--t2);letter-spacing:.10em;text-transform:uppercase;margin-bottom:7px;font-weight:600}
+.fnode-val{font-family:var(--fh);font-size:clamp(1.35rem,3vw,1.6rem);font-weight:700;color:var(--vh-violet);line-height:1;letter-spacing:-.025em}
+.fnode-sub{font-size:11px;color:var(--t3);margin-top:6px}
+.fnode-arrow{position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--vh-blue);z-index:2;box-shadow:var(--shadow-sm)}
+@media(max-width:560px){.fnode-arrow{display:none}}
+.inaction{border-radius:var(--r-lg);padding:clamp(1.2rem,3vw,1.6rem);margin-bottom:1rem;border:1px solid var(--warn-border);background:var(--warn-dim)}
+.ina-tag{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin-bottom:.7rem;display:flex;align-items:center;gap:7px}
+.ina-num{font-family:var(--fh);font-size:clamp(1.6rem,4vw,2rem);font-weight:700;color:var(--vh-violet);margin-bottom:.5rem;letter-spacing:-.025em}
+.ina-txt{font-size:13px;color:var(--t2);line-height:1.65}
+.ina-txt strong{color:var(--vh-violet);font-weight:600}
+.cc-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(1.2rem,3vw,1.6rem);margin-bottom:1rem;box-shadow:var(--shadow-sm)}
+.cc-title{font-size:15px;font-weight:600;color:var(--vh-violet);font-family:var(--fh);letter-spacing:-.01em;margin-bottom:.5rem}
+.cc-sub{font-size:12.5px;color:var(--t2);margin-bottom:1rem;line-height:1.5}
+.cc-sub strong{color:var(--vh-violet);font-weight:600}
+.cw{position:relative;height:240px}
+@media(max-width:560px){.cw{height:200px}}
+.cl{display:flex;gap:1.4rem;margin-top:14px;flex-wrap:wrap}
+.cl-i{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--t2)}
+.cl-sq{width:10px;height:10px;border-radius:3px}
+.unlock{border-radius:var(--r-lg);overflow:hidden;margin-bottom:1rem;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.unlock-top{background:var(--surface);border:1px solid var(--border);border-top-left-radius:var(--r-lg);border-top-right-radius:var(--r-lg);padding:clamp(1.2rem,3vw,1.6rem);border-bottom:none}
+.unlock-lbl{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin-bottom:.5rem}
+.unlock-stat-hero{display:flex;align-items:center;gap:14px;padding:1.1rem 1.2rem;margin-bottom:1rem;background:linear-gradient(135deg,rgba(220,38,38,.06),rgba(220,38,38,.02));border:1px solid rgba(220,38,38,.18);border-radius:var(--r-sm)}
+.unlock-stat-num{font-family:var(--fh);font-size:2rem;font-weight:800;color:#dc2626;line-height:1;white-space:nowrap;flex-shrink:0}
+.unlock-stat-label{font-size:12.5px;color:var(--t1);line-height:1.5}
+.unlock-stat-label strong{color:#dc2626;font-weight:700}
+.unlock-rows{display:flex;flex-direction:column;gap:8px}
+.unlock-row{display:flex;align-items:flex-start;gap:13px;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);position:relative;overflow:hidden}
+.unlock-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--vh-violet);border-radius:3px 0 0 3px}
+.unlock-row-icon{font-size:17px;flex-shrink:0;line-height:1;margin-top:1px}
+.unlock-row-text{flex:1;min-width:0}
+.unlock-row-title{font-size:13px;font-weight:700;color:var(--vh-violet);margin-bottom:5px;line-height:1.3}
+.unlock-row-hook{font-size:12.5px;color:var(--t1);line-height:1.55;margin-bottom:4px}
+.unlock-row-hook strong{color:var(--vh-violet)}
+.unlock-loss-bar{height:4px;background:var(--border);border-radius:4px;margin:10px 0 5px;overflow:hidden}
+.unlock-loss-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#f59e0b,#dc2626)}
+.unlock-bottom{background:linear-gradient(135deg,#0c0340 0%,#092969 100%);border-bottom-left-radius:var(--r-lg);border-bottom-right-radius:var(--r-lg);padding:clamp(1.4rem,3.5vw,2rem);text-align:center;position:relative;overflow:hidden;color:#fff}
+.unlock-counter{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem;position:relative}
+.unlock-counter-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:blink 1.8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.unlock-title{font-family:var(--fh);font-size:clamp(1.2rem,3vw,1.6rem);font-weight:800;margin-bottom:.7rem;line-height:1.15;position:relative;color:#fff;letter-spacing:-.03em}
+.unlock-title .italic{font-size:1.05em;color:#E8D4A8}
+.unlock-verdict{font-size:13.5px;color:rgba(255,255,255,.85);max-width:460px;margin:0 auto 1.2rem;line-height:1.65;position:relative}
+.unlock-verdict strong{color:#fff;font-weight:600}
+.unlock-verdict .red{color:#fca5a5;font-weight:600}
+.gate-overlay{position:relative;border-radius:var(--r-lg);overflow:hidden;margin-bottom:1rem}
+.gate-blur{filter:blur(6px);pointer-events:none;user-select:none;opacity:.55;transform:scale(1.01);transition:filter .3s,opacity .3s}
+.gate-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.92) 35%,rgba(255,255,255,.98) 100%);border-radius:var(--r-lg);padding:1.5rem}
+.gate-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem 1.6rem;max-width:440px;width:100%;box-shadow:0 8px 40px -12px rgba(12,3,64,.18);text-align:center}
+.gate-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--vh-blue);margin-bottom:.5rem}
+.gate-card h3{font-family:var(--fh);font-size:1.15rem;font-weight:700;color:var(--vh-violet);margin-bottom:.4rem;letter-spacing:-.02em}
+.gate-card p{font-size:13px;color:var(--t2);line-height:1.55;margin-bottom:1.1rem}
+.gate-form{display:flex;flex-direction:column;gap:9px}
+.gate-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.gate-input{width:100%;padding:10px 13px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--fb2);font-size:13px;color:var(--vh-violet);background:#fafafa;outline:none;transition:border-color .2s}
+.gate-input:focus{border-color:var(--vh-blue);background:#fff}
+.gate-input::placeholder{color:var(--t3)}
+.gate-submit{width:100%;padding:12px;background:var(--vh-violet);color:#fff;border:none;border-radius:var(--r-sm);font-family:var(--fh);font-size:13.5px;font-weight:700;cursor:pointer;transition:background .2s,transform .15s;letter-spacing:-.01em;display:flex;align-items:center;justify-content:center;gap:8px}
+.gate-submit:hover{background:var(--vh-blue);transform:translateY(-1px)}
+.gate-privacy{font-size:11px;color:var(--t3);margin-top:.5rem}
+.gate-overlay.unlocked .gate-blur{filter:none;opacity:1;transform:none;pointer-events:auto;user-select:auto}
+.gate-overlay.unlocked .gate-panel{display:none}
+.cta{border-radius:var(--r-xl);padding:clamp(1.8rem,4vw,2.6rem);text-align:center;background:radial-gradient(ellipse 80% 80% at 80% 0%,rgba(58,109,217,.35),transparent 60%),linear-gradient(135deg,var(--vh-violet) 0%,var(--vh-blue) 100%);position:relative;overflow:hidden;margin-bottom:1rem;color:#fff;box-shadow:0 24px 60px -20px rgba(12,3,64,.35)}
+.cta::before{content:'';position:absolute;bottom:-80px;left:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 70%)}
+.cta h2{font-family:var(--fh);font-size:clamp(1.4rem,4.5vw,2.1rem);font-weight:700;line-height:1.15;margin-bottom:1.2rem;color:#fff;letter-spacing:-.03em;position:relative}
+.cta h2 .italic{font-size:1.08em;color:#E8D4A8}
+.cta-amount{font-family:var(--fh);font-weight:700;background:linear-gradient(120deg,#9DBFFF 0%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta-stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:0 auto 1.6rem;max-width:560px;position:relative}
+.cta-stat{flex:1 1 130px;min-width:120px;padding:.9rem 1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-sm)}
+.cta-stat-lbl{font-size:10.5px;color:rgba(255,255,255,.6);letter-spacing:.10em;text-transform:uppercase;margin-bottom:6px;font-weight:600}
+.cta-stat-val{font-family:var(--fh);font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.1}
+.cta-stat-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:4px}
+.cta-line{font-size:13.5px;color:rgba(255,255,255,.78);max-width:460px;margin:0 auto 1.6rem;line-height:1.6;position:relative}
+.cta-line strong{color:#fff;font-weight:600}
+.btn-book{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;background:#fff;color:var(--vh-violet);border:none;border-radius:100px;font-family:var(--fb2);font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;letter-spacing:-.005em;position:relative;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.btn-book:hover{background:#E8D4A8;transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,212,168,.4)}
+.trust{display:flex;justify-content:center;gap:1rem;margin-top:1.3rem;flex-wrap:wrap;position:relative}
+.trust-i{font-size:11.5px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:5px}
+.trust-i::before{content:'check';font-family:var(--fh);color:#9DBFFF;font-weight:700}
+.faq-sect{margin-top:3rem;padding:2.5rem 0 0;border-top:1px solid var(--border)}
+.faq-head{text-align:center;margin-bottom:1.8rem}
+.faq-head h2{font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:-.03em;color:var(--vh-violet);line-height:1.15}
+.faq-list-s{display:flex;flex-direction:column;gap:8px}
+.faq-item-s{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm)}
+.faq-item-s[open]{border-color:var(--border-2);box-shadow:var(--shadow)}
+.faq-q-s{font-family:var(--fb2);font-size:14px;font-weight:600;color:var(--vh-violet);padding:1.1rem 1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;list-style:none;user-select:none;transition:background .2s}
+.faq-q-s::-webkit-details-marker{display:none}
+.faq-q-s:hover{background:var(--surface-tint)}
+.faq-q-s .chev{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--surface-tint);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--vh-blue);font-size:14px;transition:transform .3s ease,background .2s}
+.faq-item-s[open] .chev{transform:rotate(45deg);background:var(--vh-violet);color:#fff;border-color:var(--vh-violet)}
+.faq-a-s{padding:0 1.3rem 1.2rem;font-size:13.5px;color:var(--t2);line-height:1.7}
+.faq-a-s strong{color:var(--vh-violet);font-weight:600}
+.footer-s{border-top:1px solid var(--border);padding:2rem clamp(1rem,3vw,2rem);text-align:center;font-size:12px;color:var(--t3);margin-top:2rem;background:var(--bg-2)}
+.footer-s a{color:var(--t2);transition:color .15s}
+.footer-s a:hover{color:var(--vh-violet)}
+.footer-links-s{margin-top:.7rem;display:flex;justify-content:center;flex-wrap:wrap;gap:.4rem .9rem}
+.mbg{display:none;position:fixed;inset:0;background:rgba(12,3,64,.94);z-index:200;align-items:flex-start;justify-content:center;padding:1.5rem 1rem;overflow-y:auto;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.mbg.open{display:flex}
+.modal-s{background:linear-gradient(135deg,#150950 0%,#0C0340 100%);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);width:100%;max-width:600px;position:relative;margin:auto}
+.modal-step-s{padding:clamp(1.2rem,3vw,1.8rem)}
+.modal-tag-s{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:.6rem}
+.modal-step-s h3{font-family:var(--fh);font-size:1.3rem;font-weight:700;margin-bottom:.5rem;color:#fff;letter-spacing:-.025em}
+.modal-step-s p{font-size:13.5px;color:var(--t2);line-height:1.6;margin-bottom:1.3rem}
+.modal-close-s{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;z-index:10;transition:all .15s}
+.modal-close-s:hover{background:rgba(255,255,255,.14)}
+/* PDF float button */
+.pdf-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;display:none;flex-direction:column;align-items:flex-end;gap:8px;animation:slideUp .4s cubic-bezier(.16,1,.3,1)}
+.pdf-float.visible{display:flex}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.pdf-float-close{background:rgba(12,3,64,.12);border:none;color:var(--t3);font-size:11px;padding:4px 10px;border-radius:100px;cursor:pointer;align-self:flex-end;font-family:inherit;transition:background .15s}
+.pdf-float-close:hover{background:rgba(12,3,64,.2)}
+.pdf-float-card{background:#fff;border:1px solid var(--border-2);border-radius:14px;padding:.9rem 1.1rem;box-shadow:0 8px 32px -8px rgba(12,3,64,.18);max-width:270px;display:flex;flex-direction:column;gap:10px}
+.pdf-float-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--vh-blue);display:flex;align-items:center;gap:6px}
+.pdf-float-lbl::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e;display:block}
+.pdf-float-title{font-size:13px;font-weight:700;color:var(--vh-violet);line-height:1.35}
+.pdf-float-sub{font-size:11.5px;color:var(--t2);line-height:1.5}
+.pdf-float-btn{width:100%;padding:10px;background:var(--vh-violet);color:#fff;border:none;border-radius:var(--r-sm);font-family:var(--fh);font-size:12.5px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:-.01em}
+.pdf-float-btn:hover{background:var(--vh-blue);transform:translateY(-1px);box-shadow:0 6px 20px -6px rgba(12,3,64,.4)}
+.pdf-float-btn:disabled{opacity:.6;cursor:wait;transform:none}
+/* PDF modal */
+.pdf-modal-bg{display:none;position:fixed;inset:0;background:rgba(12,3,64,.88);z-index:300;align-items:center;justify-content:center;padding:1.5rem 1rem;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pdf-modal-bg.open{display:flex}
+.pdf-modal{background:#fff;border-radius:var(--r-lg);width:100%;max-width:480px;position:relative;overflow:hidden}
+.pdf-modal-top{background:linear-gradient(135deg,var(--vh-violet) 0%,var(--vh-blue) 100%);padding:1.4rem 1.6rem;color:#fff;position:relative;overflow:hidden}
+.pdf-modal-top::after{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%)}
+.pdf-modal-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.pdf-modal-title{font-family:var(--fh);font-size:1.2rem;font-weight:700;line-height:1.25;position:relative}
+.pdf-modal-sub{font-size:12.5px;color:rgba(255,255,255,.65);margin-top:.4rem;line-height:1.5;position:relative}
+.pdf-modal-body{padding:1.4rem 1.6rem}
+.pdf-preview{background:var(--surface-tint);border:1px solid var(--border);border-radius:var(--r-sm);padding:1rem 1.1rem;margin-bottom:1.2rem;display:flex;flex-direction:column;gap:6px}
+.pdf-preview-row{display:flex;align-items:baseline;gap:8px;font-size:12.5px}
+.pdf-preview-label{color:var(--t3);min-width:110px;font-size:11.5px}
+.pdf-preview-val{color:var(--vh-violet);font-weight:700;font-family:var(--fh)}
+.pdf-preview-hr{height:1px;background:var(--border);margin:4px 0}
+.pdf-modal-actions{display:flex;flex-direction:column;gap:8px}
+.pdf-dl-btn{width:100%;padding:13px;background:var(--vh-violet);color:#fff;border:none;border-radius:var(--r-sm);font-family:var(--fh);font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:9px;letter-spacing:-.01em}
+.pdf-dl-btn:hover{background:var(--vh-blue);transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(12,3,64,.4)}
+.pdf-dl-btn:disabled{opacity:.6;cursor:wait;transform:none}
+.pdf-cancel{background:none;border:1px solid var(--border);color:var(--t2);width:100%;padding:11px;border-radius:var(--r-sm);font-family:var(--fb2);font-size:13px;cursor:pointer;transition:all .15s}
+.pdf-cancel:hover{border-color:var(--border-2);color:var(--t1)}
+.pdf-modal-close{position:absolute;top:.8rem;right:.8rem;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.pdf-modal-close:hover{background:rgba(255,255,255,.22)}
+@media(max-width:640px){.ptabs{grid-template-columns:1fr}.nav{padding:.9rem 1rem}.hero{padding-top:2.5rem}.sgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:380px){.sgrid{grid-template-columns:1fr}.vi-wrap input{width:100%;text-align:left}.vi-wrap label{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<div class="spb" id="spb"></div>
+
+<header class="nav" id="navBar" role="banner">
+  <a href="https://visionhouse.be" style="line-height:0;display:block" aria-label="Vision House accueil">
+    <img src="logo-header.png" alt="Vision House" style="height:42px;display:block;mix-blend-mode:multiply">
+  </a>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="https://visionhouse.be" style="font-size:12px;color:var(--t3);text-decoration:none">&#8592; Retour au site</a>
+    <a href="#cta-section" class="nav-cta nav-cta-full" onclick="event.preventDefault();openModal()">Réserver mon appel offert &#8594;</a>
+    <a href="#cta-section" class="nav-cta nav-cta-mobile" onclick="event.preventDefault();openModal()">Appel offert &#8594;</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <h1>Votre CA potentiel.<br><span class="italic">Enfin chiffré.</span></h1>
+  <p class="hero-sub">Le calcul réel de votre CA potentiel sur <strong>Meta Ads &amp; Google Ads</strong> en Belgique, par secteur, en 30 secondes.</p>
+  <a href="#platform-section" class="scroll-arrow">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </a>
+</section>
+
+<div class="wrap">
+  <section id="platform-section">
+    <div class="sec-head"><h2>Où voulez-vous <span class="italic">être vu</span> ?</h2></div>
+    <div class="ptabs">
+      <button class="ptab on-fb" id="ptab-fb" onclick="setPlatform('fb')" aria-pressed="true">
+        <div class="ptab-ico fb"><svg width="22" height="22" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+        <div><div class="ptab-name">Meta, Facebook &amp; Instagram</div><div class="ptab-desc">Créer la demande · notoriété locale</div></div>
+      </button>
+      <button class="ptab" id="ptab-gg" onclick="setPlatform('gg')" aria-pressed="false">
+        <div class="ptab-ico gg"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div>
+        <div><div class="ptab-name">Google Ads</div><div class="ptab-desc">Capter la demande · intention d'achat</div></div>
+      </button>
+    </div>
+  </section>
+
+  <section class="sc">
+    <div class="sc-head"><div class="sc-num">1</div><div><div class="sc-title">Votre secteur d'activité</div><div class="sc-hint">Détermine les coûts réels de votre marché en Belgique</div></div></div>
+    <div class="cat-tabs" id="catTabs" role="tablist"></div>
+    <div class="sgrid" id="sectGrid" role="radiogroup"></div>
+  </section>
+
+  <section class="sc">
+    <div class="sc-head"><div class="sc-num">2</div><div><div class="sc-title">Budget publicitaire mensuel</div><div class="sc-hint">Versé directement à Meta ou Google. <strong>Zéro commission</strong> chez Vision House</div></div></div>
+    <div class="sl-top"><span class="sl-lbl">Budget média / mois</span><div class="sl-big" id="budgetDisplay" aria-live="polite">300&nbsp;&#8364;<sub>/mois</sub></div></div>
+    <input type="range" id="budgetSlider" min="150" max="3000" step="50" value="300" oninput="onBudget(this)">
+    <div class="sl-hints"><span>150 &#8364;</span><span>500 &#8364;</span><span>1 500 &#8364;</span><span>3 000 &#8364;+</span></div>
+    <div class="sl-info">Soit <strong id="dailyBudget">10 &#8364;/jour</strong> · Vision House recommande <strong>200 à 500 &#8364;/mois</strong> pour démarrer efficacement</div>
+  </section>
+
+  <section class="sc">
+    <div class="sc-head"><div class="sc-num">3</div><div><div class="sc-title">Valeur moyenne d'un client</div><div class="sc-hint">Ce qu'un nouveau client vous rapporte en première commande</div></div></div>
+    <div class="vi-wrap">
+      <label for="clientValue">Un client me rapporte en moyenne</label>
+      <input type="number" id="clientValue" value="800" min="50" max="50000" oninput="compute()">
+      <span>&#8364;</span>
+    </div>
+    <div class="vex-row">
+      <button class="vex" onclick="setVal(500)">500 &#8364;</button>
+      <button class="vex" onclick="setVal(1000)">1 000 &#8364;</button>
+      <button class="vex" onclick="setVal(2000)">2 000 &#8364;</button>
+      <button class="vex" onclick="setVal(3500)">3 500 &#8364;</button>
+      <button class="vex" onclick="setVal(5000)">5 000 &#8364;</button>
+      <button class="vex" onclick="setVal(8000)">8 000 &#8364;</button>
+      <button class="vex" onclick="setVal(12000)">12 000 &#8364;</button>
+      <button class="vex" onclick="setVal(20000)">20 000 &#8364;</button>
+    </div>
+  </section>
+
+  <section id="result-section" style="display:none" aria-live="polite">
+    <div class="r-hero">
+      <div class="rh-tag">CA mensuel estimé</div>
+      <div class="rh-amount"><span class="g" id="caLo">&#8212;</span><span class="sep">à</span><span class="g" id="caHi">&#8212;</span></div>
+      <div class="rh-range" id="caRange"></div>
+    </div>
+
+    <div class="funnel">
+      <div class="funnel-head"><div class="funnel-title">Le tunnel <span class="italic-sky">selon votre secteur</span></div><div class="funnel-sub" id="funnelSub">&#8212;</div></div>
+      <div class="funnel-flow" id="funnelFlow"></div>
+    </div>
+
+    <div class="inaction">
+      <div class="ina-tag">Coût de l'inaction</div>
+      <div class="ina-num" id="lossNum">&#8212;</div>
+      <p class="ina-txt" id="lossSub"></p>
+    </div>
+
+    <div class="gate-overlay" id="gateOverlay">
+      <div class="gate-blur" id="gateBlur">
+        <div class="cc-box">
+          <div class="cc-title">CA générable sur 12 mois <span class="italic-sky">, montée en puissance</span></div>
+          <div class="cc-sub" id="chartSub"></div>
+          <div class="cw"><canvas id="mainChart"></canvas></div>
+          <div class="cl"><div class="cl-i"><span class="cl-sq" style="background:#3a6dd9"></span>CA potentiel</div><div class="cl-i"><span class="cl-sq" style="background:rgba(12,3,64,.2)"></span>Budget investi</div></div>
+        </div>
+        <div class="unlock">
+          <div class="unlock-top">
+            <div class="unlock-lbl">Diagnostic · votre marché en Belgique</div>
+            <div class="unlock-stat-hero"><div class="unlock-stat-num" id="unlockLossRate">&#8212;%</div><div class="unlock-stat-label">des budgets pub <strong>de votre secteur partent en fumée</strong>, non pas par manque de budget, mais par manque de ces 3 données précises.</div></div>
+            <div class="unlock-rows" id="unlockRows"></div>
+          </div>
+          <div class="unlock-bottom">
+            <div class="unlock-counter"><span class="unlock-counter-dot"></span><span id="competitorCount">&#8212;</span> annonceurs actifs en Belgique sur <span id="competitorPlatform">Meta &amp; Google Ads</span></div>
+            <div class="unlock-title">Pendant que vous lisez ceci,<br><span class="italic">ils prennent vos clients.</span></div>
+            <p class="unlock-verdict">Ces leviers sont <strong>activés chez vos concurrents directs</strong>. <span class="red">Chaque semaine sans les activer est une semaine de CA offerte.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gate-panel" id="gatePanel">
+        <div class="gate-card">
+          <div class="gate-tag">Accès gratuit &amp; immédiat</div>
+          <h3>Débloquez votre analyse complète</h3>
+          <p>Le graphique 12 mois et la stratégie de vos concurrents. Accessibles en 10 secondes.</p>
+          <div class="gate-form">
+            <div class="gate-row">
+              <input class="gate-input" type="text" id="gate-prenom" placeholder="Prénom *" autocomplete="given-name">
+              <input class="gate-input" type="text" id="gate-nom" placeholder="Nom *" autocomplete="family-name">
+            </div>
+            <input class="gate-input" type="text" id="gate-entreprise" placeholder="Votre entreprise *" autocomplete="organization">
+            <input class="gate-input" type="email" id="gate-email" placeholder="Email professionnel *" autocomplete="email">
+            <input class="gate-input" type="tel" id="gate-tel" placeholder="Téléphone *" autocomplete="tel">
+            <button class="gate-submit" onclick="submitGate()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Débloquer mon analyse &#8594;
+            </button>
+            <p class="gate-privacy">Données confidentielles · Jamais revendues</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta" id="cta-section">
+      <h2>Vous pourriez générer<br><span class="cta-amount" id="ctaAmt">&#8212;</span><br><span class="italic">ce mois-ci.</span></h2>
+      <div class="cta-stats" id="ctaStats"></div>
+      <p class="cta-line">Nos experts construisent votre stratégie publicitaire sur mesure, et la gèrent <strong>pour vous, de A à Z</strong>.</p>
+      <button class="btn-book" onclick="openModal()">Réserver mon appel offert <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <div class="trust">
+        <div class="trust-i">30 min · sans engagement</div>
+        <div class="trust-i">Réponse sous 24h</div>
+        <div class="trust-i">Zéro commission sur votre budget</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-sect">
+    <div class="faq-head"><h2>Ce qu'on nous demande <span class="italic">souvent.</span></h2></div>
+    <div class="faq-list-s">
+      <details class="faq-item-s"><summary class="faq-q-s">Combien coûte la publicité Meta en Belgique en 2026 ?<span class="chev">+</span></summary><div class="faq-a-s">Le <strong>CPM Meta en Belgique</strong> varie de 8,50 &#8364; (restauration) à 17 &#8364; (finance/assurance). Vision House recommande entre <strong>200 et 500 &#8364;/mois</strong> pour démarrer.</div></details>
+      <details class="faq-item-s"><summary class="faq-q-s">Quel ROI espérer avec Google Ads en Belgique ?<span class="chev">+</span></summary><div class="faq-a-s">Le ROI moyen Google Ads varie entre <strong>3&#215; et 35&#215;</strong> selon le secteur. L'immobilier et le juridique affichent les ROI les plus élevés.</div></details>
+      <details class="faq-item-s"><summary class="faq-q-s">Quel budget minimum pour une PME belge ?<span class="chev">+</span></summary><div class="faq-a-s">Le budget minimum viable est de <strong>200 à 500 &#8364;/mois</strong>. En dessous, l'algorithme manque de données pour optimiser.</div></details>
+      <details class="faq-item-s"><summary class="faq-q-s">Meta Ads ou Google Ads : lequel choisir ?<span class="chev">+</span></summary><div class="faq-a-s">Meta <strong>crée la demande</strong>. Google <strong>capte la demande existante</strong>. Pour la plupart des PME belges, une combinaison des deux maximise le ROI.</div></details>
+      <details class="faq-item-s"><summary class="faq-q-s">Vision House prélève-t-elle une commission sur le budget pub ?<span class="chev">+</span></summary><div class="faq-a-s"><strong>Non, jamais.</strong> Votre budget reste entièrement entre vos mains. Vision House gère les campagnes sans commission.</div></details>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="footer-s">
+  <div>&#169; 2026 Vision House · Agence communication Bruxelles · <a href="mailto:hello@visionhouse.be">hello@visionhouse.be</a></div>
+  <div class="footer-links-s">
+    <a href="https://visionhouse.be">&#8592; Retour au site principal</a>
+    <a href="https://visionhouse.be/audit-digital-gratuit.html">Audit digital gratuit</a>
+    <a href="https://visionhouse.be/mentions-legales.html">Mentions légales</a>
+    <a href="https://visionhouse.be/politique-confidentialite.html">Confidentialité</a>
+  </div>
+  <div style="margin-top:.7rem;color:var(--t4);font-size:11px">Vision House · Emkay Partners SRL · BCE 1024.829.348</div>
+</footer>
+
+<!-- PDF Float Button — visible uniquement après déverrouillage -->
+<div class="pdf-float" id="pdfFloat">
+  <button class="pdf-float-close" onclick="document.getElementById('pdfFloat').style.display='none'">Fermer &#215;</button>
+  <div class="pdf-float-card">
+    <div class="pdf-float-lbl">Analyse déverrouillée</div>
+    <div class="pdf-float-title" id="pdfFloatTitle">Téléchargez votre rapport</div>
+    <div class="pdf-float-sub" id="pdfFloatSub">Rapport personnalisé selon votre secteur et vos critères.</div>
+    <button class="pdf-float-btn" onclick="openPdfModal()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Télécharger mon rapport PDF
+    </button>
+  </div>
+</div>
+
+<!-- PDF Modal -->
+<div class="pdf-modal-bg" id="pdfModalBg">
+  <div class="pdf-modal">
+    <button class="pdf-modal-close" onclick="closePdfModal()">&#215;</button>
+    <div class="pdf-modal-top">
+      <div class="pdf-modal-tag">Rapport personnalisé</div>
+      <div class="pdf-modal-title" id="pdfModalTitle">Votre analyse publicitaire</div>
+      <div class="pdf-modal-sub" id="pdfModalSub">Données spécifiques à votre secteur · Belgique 2026</div>
+    </div>
+    <div class="pdf-modal-body">
+      <div class="pdf-preview" id="pdfPreview">
+        <div class="pdf-preview-row"><span class="pdf-preview-label">Secteur</span><span class="pdf-preview-val" id="ppSecteur">—</span></div>
+        <div class="pdf-preview-row"><span class="pdf-preview-label">Plateforme</span><span class="pdf-preview-val" id="ppPlatform">—</span></div>
+        <div class="pdf-preview-row"><span class="pdf-preview-label">Budget mensuel</span><span class="pdf-preview-val" id="ppBudget">—</span></div>
+        <div class="pdf-preview-row"><span class="pdf-preview-label">Valeur client</span><span class="pdf-preview-val" id="ppValeur">—</span></div>
+        <div class="pdf-preview-hr"></div>
+        <div class="pdf-preview-row"><span class="pdf-preview-label">CA mensuel estimé</span><span class="pdf-preview-val" id="ppCA">—</span></div>
+        <div class="pdf-preview-row"><span class="pdf-preview-label">ROI estimé</span><span class="pdf-preview-val" id="ppROI">—</span></div>
+        <div class="pdf-preview-row"><span class="pdf-preview-label">Concurrents actifs</span><span class="pdf-preview-val" id="ppConc">—</span></div>
+        <div class="pdf-preview-row"><span class="pdf-preview-label">Budget gaspillé</span><span class="pdf-preview-val" id="ppWaste">—</span></div>
+      </div>
+      <div class="pdf-modal-actions">
+        <button class="pdf-dl-btn" id="pdfDlBtn" onclick="generateAndDownloadPdf()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Générer et télécharger le PDF
+        </button>
+        <button class="pdf-cancel" onclick="closePdfModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mbg" id="modalBg" role="dialog" aria-modal="true">
+  <div class="modal-s">
+    <button class="modal-close-s" onclick="closeModal()">&#215;</button>
+    <div class="modal-step-s">
+      <div class="modal-tag-s">Appel offert · 30 min</div>
+      <h3>Choisissez votre créneau</h3>
+      <p>Un fondateur prépare votre simulation avant l'appel. Sans engagement.</p>
+      <div style="border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--border);background:#fff">
+        <iframe src="https://link.crococlick.com/widget/bookings/joseph-khan" width="100%" height="540" frameborder="0" loading="lazy" style="display:block;background:#fff;border:none"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// SCROLL PROGRESS
+(function(){var b=document.getElementById('spb');if(!b)return;function u(){var s=window.scrollY||document.documentElement.scrollTop;var d=document.documentElement.scrollHeight-document.documentElement.clientHeight;b.style.width=(d>0?Math.min(100,(s/d)*100):0)+'%';}window.addEventListener('scroll',u,{passive:true});u();})();
+
+// NAV SCROLL
+window.addEventListener('scroll',function(){document.getElementById('navBar').classList.toggle('scrolled',window.scrollY>24);},{passive:true});
+
+// FAQ
+document.querySelectorAll('.faq-item-s').forEach(function(item){item.addEventListener('toggle',function(){if(item.open)document.querySelectorAll('.faq-item-s').forEach(function(o){if(o!==item)o.open=false;});});});
+
+// MODAL
+function openModal(){document.getElementById('modalBg').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('modalBg').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modalBg').addEventListener('click',function(e){if(e.target===document.getElementById('modalBg'))closeModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+// ═══ DATA ═══
+var SECTORS={
+  fitness:{label:"Salle de sport / Fitness",fb:{cpm:10.5,ctr:1.8,cv:2.8},gg:{cpc:2.2,cv:4.5},vHint:800},
+  beaute:{label:"Beauté / Esthétique",fb:{cpm:14.5,ctr:1.9,cv:3.0},gg:{cpc:2.8,cv:4.5},vHint:1500},
+  cosmetique:{label:"Cosmétique",fb:{cpm:12.0,ctr:2.0,cv:2.5},gg:{cpc:2.0,cv:3.5},vHint:120},
+  vin:{label:"Vin / Caviste",fb:{cpm:9.0,ctr:1.8,cv:2.8},gg:{cpc:1.2,cv:4.0},vHint:300},
+  enfance:{label:"Enfance / Parentalité",fb:{cpm:10.0,ctr:1.9,cv:3.2},gg:{cpc:1.5,cv:4.5},vHint:400},
+  airbnb:{label:"Airbnb / Location courte durée",fb:{cpm:10.5,ctr:1.6,cv:2.5},gg:{cpc:2.0,cv:3.8},vHint:1200},
+  recrutement:{label:"Recrutement / RH",fb:{cpm:13.0,ctr:1.4,cv:2.2},gg:{cpc:4.0,cv:3.5},vHint:3000},
+  auto:{label:"Automobile",fb:{cpm:9.0,ctr:1.5,cv:2.2},gg:{cpc:2.5,cv:3.5},vHint:1200},
+  artisan:{label:"Artisan / BTP",fb:{cpm:9.5,ctr:1.5,cv:2.5},gg:{cpc:1.6,cv:5.0},vHint:800},
+  menuiserie:{label:"Menuiserie / Cuisine",fb:{cpm:11.0,ctr:1.6,cv:2.8},gg:{cpc:3.5,cv:4.5},vHint:4000},
+  solaire:{label:"Panneaux solaires",fb:{cpm:13.0,ctr:1.5,cv:2.2},gg:{cpc:5.5,cv:3.5},vHint:8000},
+  renovation:{label:"Rénovation énergétique",fb:{cpm:12.0,ctr:1.5,cv:2.5},gg:{cpc:4.8,cv:4.0},vHint:6000},
+  chauffage:{label:"Chauffage / HVAC / Plomberie",fb:{cpm:10.0,ctr:1.6,cv:3.0},gg:{cpc:3.0,cv:5.5},vHint:1500},
+  electricien:{label:"Électricien",fb:{cpm:9.0,ctr:1.6,cv:3.0},gg:{cpc:2.5,cv:5.5},vHint:800},
+  securite:{label:"Sécurité / Alarmes",fb:{cpm:11.0,ctr:1.5,cv:2.5},gg:{cpc:4.5,cv:4.0},vHint:1500},
+  jardinage:{label:"Jardinage / Paysagiste",fb:{cpm:9.0,ctr:1.9,cv:3.2},gg:{cpc:2.3,cv:4.5},vHint:600},
+  nettoyage:{label:"Nettoyage / Titres-services",fb:{cpm:8.5,ctr:1.8,cv:3.5},gg:{cpc:1.8,cv:5.0},vHint:400},
+  juridique:{label:"Juridique / Avocat",fb:{cpm:16.5,ctr:1.1,cv:1.8},gg:{cpc:8.0,cv:3.0},vHint:5000},
+  finance:{label:"Finance / Assurance",fb:{cpm:17.0,ctr:1.1,cv:1.8},gg:{cpc:6.5,cv:2.8},vHint:2000},
+  comptable:{label:"Comptable / Fiduciaire",fb:{cpm:13.0,ctr:1.2,cv:2.0},gg:{cpc:4.5,cv:3.5},vHint:2400},
+  dentiste:{label:"Dentiste / Orthodontiste",fb:{cpm:15.0,ctr:1.5,cv:2.5},gg:{cpc:5.5,cv:4.0},vHint:3000},
+  sante:{label:"Santé / Médical",fb:{cpm:16.0,ctr:1.6,cv:2.8},gg:{cpc:4.5,cv:4.0},vHint:1800},
+  psy:{label:"Psychologue / Thérapeute",fb:{cpm:13.5,ctr:1.5,cv:2.5},gg:{cpc:3.5,cv:3.8},vHint:2000},
+  immo:{label:"Immobilier",fb:{cpm:13.5,ctr:1.3,cv:2.0},gg:{cpc:3.8,cv:3.5},vHint:3000},
+  archi:{label:"Architecture / Intérieur",fb:{cpm:12.0,ctr:1.6,cv:2.2},gg:{cpc:2.8,cv:3.5},vHint:5000},
+  clinique:{label:"Clinique esthétique",fb:{cpm:16.5,ctr:1.7,cv:2.5},gg:{cpc:6.5,cv:3.5},vHint:2500},
+  mobilier:{label:"Mobilier / Décoration",fb:{cpm:10.5,ctr:2.0,cv:2.8},gg:{cpc:2.0,cv:3.5},vHint:1200},
+  coach:{label:"Coach / Consultant",fb:{cpm:13.0,ctr:1.4,cv:2.5},gg:{cpc:3.2,cv:3.8},vHint:2500},
+  formation:{label:"Formation / Éducation",fb:{cpm:12.0,ctr:1.7,cv:3.2},gg:{cpc:3.0,cv:4.0},vHint:2000},
+  saas:{label:"SaaS / Startup",fb:{cpm:15.0,ctr:1.3,cv:2.0},gg:{cpc:6.0,cv:3.5},vHint:5000},
+  ecom:{label:"E-commerce",fb:{cpm:11.5,ctr:1.9,cv:2.0},gg:{cpc:1.5,cv:2.5},vHint:150},
+  video:{label:"Production vidéo",fb:{cpm:11.0,ctr:1.7,cv:2.5},gg:{cpc:2.5,cv:3.5},vHint:3000},
+  resto:{label:"Restaurant / Food",fb:{cpm:8.5,ctr:2.2,cv:3.5},gg:{cpc:1.2,cv:4.0},vHint:300},
+  retail:{label:"Commerce / Retail",fb:{cpm:11.0,ctr:1.8,cv:2.5},gg:{cpc:1.5,cv:3.5},vHint:250},
+  events:{label:"Événementiel",fb:{cpm:9.5,ctr:2.0,cv:3.0},gg:{cpc:1.8,cv:3.5},vHint:500}
+};
+
+var CATEGORIES=[
+  {key:'commerce',label:'Commerce & services',ico:'🛍️',keys:['fitness','beaute','cosmetique','vin','enfance','airbnb','recrutement','auto']},
+  {key:'batiment',label:'Bâtiment & techniques',ico:'🔨',keys:['artisan','menuiserie','solaire','renovation','chauffage','electricien','securite','jardinage','nettoyage']},
+  {key:'regulated',label:'Professions réglementées',ico:'⚖️',keys:['juridique','finance','comptable','dentiste','sante','psy']},
+  {key:'habitat',label:'Habitat & design',ico:'🏠',keys:['immo','archi','clinique','mobilier']},
+  {key:'digital',label:'Business digitaux',ico:'💻',keys:['coach','formation','saas','ecom','video']},
+  {key:'food',label:'Alimentation & événements',ico:'🍽️',keys:['resto','retail','events']}
+];
+
+var S={platform:'fb',sector:'artisan',budget:300,clientValue:800};
+var chartInst=null,gateUnlocked=false,lastRenderData=null,floatShownOnce=false;
+var currentCat='commerce';
+
+function buildCatTabs(){
+  var ct=document.getElementById('catTabs');
+  ct.innerHTML=CATEGORIES.map(function(c){return'<button class="cat-tab'+(c.key===currentCat?' on':'')+'" data-cat="'+c.key+'">'+c.ico+' '+c.label+'</button>';}).join('');
+  ct.querySelectorAll('.cat-tab').forEach(function(btn){
+    btn.addEventListener('click',function(){selectCat(btn,btn.dataset.cat);});
+  });
+}
+function selectCat(el,k){
+  document.querySelectorAll('.cat-tab').forEach(function(b){b.classList.remove('on');});
+  el.classList.add('on');currentCat=k;buildSectorGrid();
+}
+function buildSectorGrid(){
+  var cat=CATEGORIES.find(function(c){return c.key===currentCat;});
+  var g=document.getElementById('sectGrid');
+  g.innerHTML=cat.keys.map(function(k){
+    var v=SECTORS[k];if(!v)return'';
+    var isOn=k===S.sector&&cat.keys.indexOf(S.sector)>=0;
+    return'<button class="sbtn'+(isOn?' on':'')+'" data-key="'+k+'"><b>'+v.label+'</b><small id="h-'+k+'"></small></button>';
+  }).join('');
+  g.querySelectorAll('.sbtn').forEach(function(btn){
+    btn.addEventListener('click',function(){setSector(btn);});
+  });
+  updateHints();
+}
+function updateHints(){
+  var p=S.platform;
+  Object.keys(SECTORS).forEach(function(k){
+    var el=document.getElementById('h-'+k);
+    if(el)el.textContent=p==='fb'?' · CPM ~'+SECTORS[k].fb.cpm+'€':' · CPC ~'+SECTORS[k].gg.cpc+'€';
+  });
+}
+
+// Init
+(function(){
+  var fk=CATEGORIES[0].keys[0];S.sector=fk;S.clientValue=SECTORS[fk].vHint;
+  document.getElementById('clientValue').value=S.clientValue;
+  buildCatTabs();buildSectorGrid();
+  var sl=document.getElementById('budgetSlider');sl.style.setProperty('--pct',((300-150)/(3000-150))*100+'%');
+  if(typeof Chart!=='undefined')compute();else window.addEventListener('load',compute);
+})();
+
+function setPlatform(p){
+  S.platform=p;
+  document.getElementById('ptab-fb').className='ptab'+(p==='fb'?' on-fb':'');
+  document.getElementById('ptab-gg').className='ptab'+(p==='gg'?' on-gg':'');
+  updateHints();compute();
+}
+function setSector(el){
+  document.querySelectorAll('.sbtn').forEach(function(b){b.classList.remove('on');});
+  el.classList.add('on');S.sector=el.dataset.key;
+  var h=SECTORS[S.sector].vHint;document.getElementById('clientValue').value=h;S.clientValue=h;
+  document.querySelectorAll('.vex').forEach(function(b){b.classList.toggle('active',parseInt(b.textContent.replace(/[^0-9]/g,''))===h);});
+  compute();
+}
+function onBudget(el){
+  S.budget=parseInt(el.value);
+  var pct=((S.budget-150)/(3000-150))*100;
+  el.style.setProperty('--pct',pct+'%');
+  document.getElementById('budgetDisplay').innerHTML=S.budget.toLocaleString('fr-BE')+'&nbsp;&#8364;<sub>/mois</sub>';
+  document.getElementById('dailyBudget').textContent=Math.round(S.budget/30)+' &#8364;/jour';
+  compute();
+}
+function setVal(v){
+  document.getElementById('clientValue').value=v;S.clientValue=v;
+  document.querySelectorAll('.vex').forEach(function(b){b.classList.toggle('active',parseInt(b.textContent.replace(/[^0-9]/g,''))===v);});
+  compute();
+}
+
+function getSeasonFactor(m){if(m===6||m===7)return 0.82;if(m===9||m===10)return 1.08;return 1.0;}
+
+function compute(){
+  S.clientValue=Math.max(50,parseInt(document.getElementById('clientValue').value)||800);
+  var sec=SECTORS[S.sector];var d=S.platform==='fb'?sec.fb:sec.gg;
+  var m=new Date().getMonth();var sf=getSeasonFactor(m);
+  var impressions=0,clicks,leads,cpc;
+  if(S.platform==='fb'){impressions=Math.round((S.budget/d.cpm)*1000);clicks=Math.round(impressions*d.ctr/100);leads=Math.round(clicks*d.cv/100*sf);cpc=clicks>0?(S.budget/clicks):0;}
+  else{cpc=d.cpc;clicks=Math.round(S.budget/d.cpc);leads=Math.round(clicks*d.cv/100*sf);impressions=0;}
+  var CR_BASE={artisan:.22,beaute:.25,resto:.30,retail:.28,immo:.15,sante:.22,juridique:.18,finance:.15,coach:.20,auto:.18,formation:.22,ecom:.25,events:.24,fitness:.28,cosmetique:.26,vin:.30,enfance:.28,airbnb:.22,recrutement:.18,menuiserie:.20,solaire:.16,renovation:.18,chauffage:.26,electricien:.28,securite:.22,jardinage:.28,nettoyage:.30,comptable:.20,dentiste:.22,psy:.24,archi:.16,clinique:.20,mobilier:.24,saas:.15,video:.18};
+  var crBase=CR_BASE[S.sector]||.20;
+  var cvFactor=Math.max(0.5,Math.min(1.5,Math.pow(800/Math.max(S.clientValue,50),0.25)));
+  var cr=Math.min(0.45,crBase*cvFactor);
+  var cLo=Math.max(1,Math.round(leads*cr*0.75));var cHi=Math.max(cLo+1,Math.round(leads*cr*1.25));
+  var caLo=Math.round(cLo*S.clientValue);var caHi=Math.round(cHi*S.clientValue);
+  var caMid=Math.round((caLo+caHi)/2);
+  var annLoss=caMid*12;
+  var roiLo=S.budget>0?(caLo/S.budget).toFixed(1):0;var roiHi=S.budget>0?(caHi/S.budget).toFixed(1):0;
+  var cpl=leads>0?Math.round(S.budget/leads):0;var cpClient=((cLo+cHi)/2)>0?Math.round(S.budget/((cLo+cHi)/2)):0;
+  render({impressions:impressions,clicks:clicks,leads:leads,cpc:cpc,cpl:cpl,cpClient:cpClient,cLo:cLo,cHi:cHi,caLo:caLo,caHi:caHi,caMid:caMid,annLoss:annLoss,roiLo:roiLo,roiHi:roiHi,cr:cr});
+}
+
+function fE(n){return n.toLocaleString('fr-BE')+' €';}
+function fK(n){return n>=1000?(n/1000).toFixed(n%1000===0?0:1)+'k €':fE(n);}
+function fNum(n){return n.toLocaleString('fr-BE');}
+
+function render(d){
+  lastRenderData=d;
+  document.getElementById('result-section').style.display='block';
+  document.getElementById('caLo').textContent=fK(d.caLo);
+  document.getElementById('caHi').textContent=fK(d.caHi);
+  var pl=S.platform==='fb'?'Meta Ads':'Google Ads';
+  document.getElementById('caRange').innerHTML='Estimation conservatrice · <strong style="color:#fff">'+d.cLo+'–'+d.cHi+' nouveaux clients</strong> · '+fE(S.clientValue)+'/client · '+fNum(S.budget)+' €/mois · '+pl;
+  renderFunnel(d);
+  document.getElementById('lossNum').textContent='− '+fK(d.annLoss)+' / an';
+  document.getElementById('lossSub').innerHTML='Soit <strong>'+fK(d.caLo)+' à '+fK(d.caHi)+'</strong> de CA mensuel non généré, '+(d.cLo*12)+'–'+(d.cHi*12)+' clients perdus sur 12 mois.';
+  renderUnlock();
+  if(gateUnlocked&&lastRenderData&&typeof Chart!=='undefined')renderChart(d);
+  document.getElementById('ctaAmt').textContent=fK(d.caLo)+' à '+fK(d.caHi);
+  document.getElementById('ctaStats').innerHTML='<div class="cta-stat"><div class="cta-stat-lbl">Budget</div><div class="cta-stat-val">'+fNum(S.budget)+' €</div><div class="cta-stat-sub">/ mois en pub</div></div><div class="cta-stat"><div class="cta-stat-lbl">Nouveaux clients</div><div class="cta-stat-val">'+d.cLo+'–'+d.cHi+'</div><div class="cta-stat-sub">par mois</div></div><div class="cta-stat"><div class="cta-stat-lbl">ROI estimé</div><div class="cta-stat-val">'+d.roiLo+'×–'+d.roiHi+'×</div><div class="cta-stat-sub">retour sur budget</div></div>';
+}
+
+function renderFunnel(d){
+  var f=document.getElementById('funnelFlow');var sub=document.getElementById('funnelSub');
+  var arrow='<div class="fnode-arrow">→</div>';var html='';
+  if(S.platform==='fb'){
+    html='<div class="fnode"><div class="fnode-lbl">Impressions</div><div class="fnode-val">'+fNum(d.impressions)+'</div><div class="fnode-sub">CPM ~'+SECTORS[S.sector].fb.cpm+' €</div>'+arrow+'</div><div class="fnode"><div class="fnode-lbl">Clics</div><div class="fnode-val">'+fNum(d.clicks)+'</div><div class="fnode-sub">CTR '+SECTORS[S.sector].fb.ctr+'%</div>'+arrow+'</div><div class="fnode"><div class="fnode-lbl">Leads</div><div class="fnode-val">'+fNum(d.leads)+'</div><div class="fnode-sub">~'+d.cpl+' €/lead</div>'+arrow+'</div><div class="fnode"><div class="fnode-lbl">Clients</div><div class="fnode-val">'+d.cLo+'–'+d.cHi+'</div><div class="fnode-sub">~'+d.cpClient+' €/client</div></div>';
+    sub.innerHTML='Avec <strong>'+fNum(S.budget)+' €/mois</strong> sur Meta · CPM '+SECTORS[S.sector].fb.cpm+' € · conversion '+(d.cr*100).toFixed(0)+'% · <strong>CA estimé '+fK(d.caLo)+'&thinsp;à&thinsp;'+fK(d.caHi)+'</strong>';
+  }else{
+    html='<div class="fnode"><div class="fnode-lbl">Clics</div><div class="fnode-val">'+fNum(d.clicks)+'</div><div class="fnode-sub">CPC ~'+SECTORS[S.sector].gg.cpc+' €</div>'+arrow+'</div><div class="fnode"><div class="fnode-lbl">Leads</div><div class="fnode-val">'+fNum(d.leads)+'</div><div class="fnode-sub">~'+d.cpl+' €/lead</div>'+arrow+'</div><div class="fnode"><div class="fnode-lbl">Clients signés</div><div class="fnode-val">'+d.cLo+'–'+d.cHi+'</div><div class="fnode-sub">~'+d.cpClient+' €/client</div></div>';
+    sub.innerHTML='Avec <strong>'+fNum(S.budget)+' €/mois</strong> sur Google · CPC '+SECTORS[S.sector].gg.cpc+' € · conversion '+(d.cr*100).toFixed(0)+'% · <strong>CA estimé '+fK(d.caLo)+'&thinsp;à&thinsp;'+fK(d.caHi)+'</strong>';
+  }
+  f.innerHTML=html;
+}
+
+function renderChart(d){
+  if(typeof Chart==='undefined')return;
+  var ramp=[0.38,0.56,0.70,0.80,0.88,0.94,1.00,1.03,1.05,1.08,1.10,1.12];
+  var months=['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
+  var startMonth=new Date().getMonth();
+  var caData=ramp.map(function(r,i){return Math.round(d.caMid*r*getSeasonFactor((startMonth+i)%12));});
+  var budData=new Array(12).fill(S.budget);
+  var orderedMonths=ramp.map(function(_,i){return months[(startMonth+i)%12];});
+  if(chartInst)chartInst.destroy();
+  var ctx=document.getElementById('mainChart').getContext('2d');
+  var chartConfig={
+    type:'bar',
+    data:{
+      labels:orderedMonths,
+      datasets:[
+        {
+          label:'CA potentiel',data:caData,
+          backgroundColor:function(c){
+            var cx=c.chart.ctx;
+            var g=cx.createLinearGradient(0,0,0,240);
+            g.addColorStop(0,'rgba(12,3,64,.92)');
+            g.addColorStop(1,'rgba(9,41,105,.55)');
+            return g;
+          },
+          borderRadius:6,borderSkipped:false,yAxisID:'y'
+        },
+        {
+          label:'Budget',data:budData,type:'line',
+          borderColor:'rgba(12,3,64,.4)',backgroundColor:'transparent',
+          borderWidth:1.5,pointRadius:2,pointBackgroundColor:'#0C0340',
+          borderDash:[4,4],yAxisID:'y',tension:0
+        }
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'#0C0340',titleColor:'#fff',
+          bodyColor:'rgba(255,255,255,.85)',padding:12,cornerRadius:10,
+          callbacks:{
+            label:function(c){
+              if(c.datasetIndex===0){return ' CA ~'+Math.round(c.parsed.y).toLocaleString('fr-BE')+' €';}
+              return ' Budget : '+c.parsed.y.toLocaleString('fr-BE')+' €';
+            }
+          }
+        }
+      },
+      scales:{
+        x:{grid:{color:'rgba(12,3,64,.06)'},border:{display:false},ticks:{color:'rgba(12,3,64,.5)',font:{size:11}}},
+        y:{
+          grid:{color:'rgba(12,3,64,.06)'},border:{display:false},
+          ticks:{color:'rgba(12,3,64,.6)',font:{size:11},callback:function(v){return v>=1000?Math.round(v/1000)+'k €':v+' €';}}
+        }
+      }
+    }
+  };
+  chartInst=new Chart(ctx,chartConfig);
+  document.getElementById('chartSub').innerHTML='CA cumulé potentiel 12 mois : <strong>~'+fK(caData.reduce(function(a,b){return a+b;},0))+'</strong>';
+}
+
+function renderUnlock(){
+  var CC={artisan:35,immo:35,beaute:28,juridique:6,sante:20,finance:15,formation:23,coach:18,ecom:34,resto:29,solaire:8,chauffage:22,fitness:11,retail:32,auto:31};
+  var CP={artisan:"Google Ads",immo:"Meta & Google Ads",beaute:"Meta & Instagram Ads",juridique:"Google Ads",sante:"Google Ads",finance:"Google & Meta Ads",formation:"Meta & Google Ads",coach:"Meta & Instagram Ads",ecom:"Meta & Google Shopping",resto:"Meta & Instagram Ads",solaire:"Google Ads",chauffage:"Google Ads",fitness:"Meta & Instagram Ads",retail:"Meta & Google Shopping",auto:"Google & Meta Ads"};
+  var LR={artisan:44,immo:52,beaute:38,juridique:61,sante:39,finance:58,formation:47,coach:53,ecom:35,resto:43,solaire:55,chauffage:49};
+  var lr=LR[S.sector]||42;
+  var ccNum=CC[S.sector]||12;
+  var ccPlat=CP[S.sector]||"Meta & Google Ads";
+  document.getElementById('unlockLossRate').textContent=lr+'%';
+  document.getElementById('competitorCount').textContent=ccNum;
+  document.getElementById('competitorPlatform').textContent=ccPlat;
+  var rows=[
+    {ico:"📉",t:"Votre budget ne travaille pas là où il devrait",hook:"<strong>"+lr+"% de votre budget part sur des audiences non qualifiées</strong>. Pas par manque d\'investissement : par manque de configuration précise.",bar:Math.min(lr*1.5,95)},
+    {ico:"⚔️",t:"Vos concurrents ont des données que vous n\'avez pas",hook:"<strong>"+ccNum+" annonceurs actifs dans votre secteur</strong> sur "+ccPlat+" en Belgique. Ceux qui font de la pub depuis plus de 6 mois ont un avantage structurel.",bar:75},
+    {ico:"⏳",t:"La fenêtre de décision de vos prospects est courte",hook:"<strong>70% des prospects décident en moins de 48h</strong> après leur première recherche. Si vous n\'apparaissez pas pendant cette fenêtre, vous n\'existez pas.",bar:68}
+  ];
+  document.getElementById('unlockRows').innerHTML=rows.map(function(u){return'<div class="unlock-row"><div class="unlock-row-icon">'+u.ico+'</div><div class="unlock-row-text"><div class="unlock-row-title">'+u.t+'</div><div class="unlock-row-hook">'+u.hook+'</div><div class="unlock-loss-bar"><div class="unlock-loss-fill" style="width:'+u.bar+'%"></div></div></div></div>';}).join('');
+}
+
+// GATE SUBMIT — sends all data to Formspree mykoaezg
+var gateSubmitting=false;
+function submitGate(){
+  if(gateSubmitting)return;
+  var prenom=document.getElementById('gate-prenom').value.trim();
+  var nom=document.getElementById('gate-nom').value.trim();
+  var entreprise=document.getElementById('gate-entreprise').value.trim();
+  var email=document.getElementById('gate-email').value.trim();
+  var tel=document.getElementById('gate-tel').value.trim();
+  if(!prenom){shakeInput('gate-prenom');return;}
+  if(!nom){shakeInput('gate-nom');return;}
+  if(!entreprise){shakeInput('gate-entreprise');return;}
+  if(!email||email.indexOf('@')<0){shakeInput('gate-email');return;}
+  if(!tel){shakeInput('gate-tel');return;}
+  gateSubmitting=true;
+  var btn=document.querySelector('.gate-submit');
+  if(btn)btn.textContent='Chargement...';
+  var payload={
+    prenom:prenom,nom:nom,entreprise:entreprise,email:email,telephone:tel,
+    secteur:S.sector,plateforme:S.platform,
+    budget_mensuel:S.budget+'€',valeur_client:S.clientValue+'€',
+    ca_potentiel_lo:lastRenderData?Math.round(lastRenderData.caLo):0,
+    ca_potentiel_hi:lastRenderData?Math.round(lastRenderData.caHi):0,
+    roi_lo:lastRenderData?lastRenderData.roiLo:0,
+    roi_hi:lastRenderData?lastRenderData.roiHi:0,
+    source:'simulateur-vision-house'
+  };
+  fetch('https://formspree.io/f/mykoaezg',{
+    method:'POST',body:JSON.stringify(payload),
+    headers:{'Content-Type':'application/json','Accept':'application/json'}
+  }).catch(function(){}).finally(function(){
+    document.getElementById('gateOverlay').classList.add('unlocked');
+    gateUnlocked=true;
+    personalizeWithName(prenom,entreprise);
+    // Float PDF button appears after unlock
+    setTimeout(function(){showPdfFloat();},1800);
+    if(lastRenderData&&typeof Chart!=='undefined')renderChart(lastRenderData);
+    setTimeout(function(){document.getElementById('gateOverlay').scrollIntoView({behavior:'smooth',block:'start'});},300);
+  });
+}
+
+function shakeInput(id){
+  var el=document.getElementById(id);if(!el)return;
+  el.style.borderColor='#dc2626';el.focus();
+  setTimeout(function(){el.style.borderColor='';},1200);
+}
+
+function personalizeWithName(prenom,entreprise){
+  var ctaH2=document.querySelector('#cta-section h2');
+  if(ctaH2){var amt=document.getElementById('ctaAmt').textContent||'';ctaH2.innerHTML=prenom+', vous pourriez générer<br><span class="cta-amount" id="ctaAmt">'+amt+'</span><br><span class="italic">ce mois-ci.</span>';}
+  document.querySelectorAll('.sbtn').forEach(function(b){b.disabled=true;b.style.pointerEvents='none';b.style.opacity='.45';});
+}
+
+// ═══ PDF FLOAT & MODAL ═══
+var pdfFloatShown=false;
+
+function showPdfFloat(){
+  if(pdfFloatShown||!gateUnlocked)return;
+  pdfFloatShown=true;
+  var pf=document.getElementById('pdfFloat');
+  if(!pf)return;
+  // Update float button title dynamically
+  var sec=SECTORS[S.sector];
+  var lbl=sec?sec.label:'votre secteur';
+  var d=lastRenderData;
+  document.getElementById('pdfFloatTitle').textContent='Rapport PDF · '+lbl;
+  if(d)document.getElementById('pdfFloatSub').textContent='CA estimé '+fK(d.caLo)+' à '+fK(d.caHi)+' · ROI '+d.roiLo+'×–'+d.roiHi+'×';
+  pf.classList.add('visible');
+}
+
+function openPdfModal(){
+  var d=lastRenderData;if(!d)return;
+  var sec=SECTORS[S.sector];
+  var lbl=sec?sec.label:'votre secteur';
+
+  // Competitor data
+  var CC={artisan:35,immo:35,beaute:28,juridique:6,sante:20,finance:15,formation:23,coach:18,ecom:34,resto:29,solaire:8,chauffage:22,fitness:11,retail:32,auto:31};
+  var LR={artisan:44,immo:52,beaute:38,juridique:61,sante:39,finance:58,formation:47,coach:53,ecom:35,resto:43,solaire:55,chauffage:49};
+  var ccNum=CC[S.sector]||12;
+  var lossRate=LR[S.sector]||42;
+
+  document.getElementById('pdfModalTitle').textContent='Rapport · '+lbl;
+  document.getElementById('pdfModalSub').textContent='Données spécifiques à votre secteur · Belgique 2026';
+
+  // Fill preview
+  document.getElementById('ppSecteur').textContent=lbl;
+  document.getElementById('ppPlatform').textContent=S.platform==='fb'?'Meta Ads (Facebook & Instagram)':'Google Ads';
+  document.getElementById('ppBudget').textContent=fNum(S.budget)+' €/mois';
+  document.getElementById('ppValeur').textContent=fE(S.clientValue)+'/client';
+  document.getElementById('ppCA').textContent=fK(d.caLo)+' à '+fK(d.caHi)+'/mois';
+  document.getElementById('ppROI').textContent=d.roiLo+'× à '+d.roiHi+'×';
+  document.getElementById('ppConc').textContent=ccNum+' annonceurs actifs (Belgique)';
+  document.getElementById('ppWaste').textContent=lossRate+'% du budget mal ciblé';
+
+  document.getElementById('pdfModalBg').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closePdfModal(){
+  document.getElementById('pdfModalBg').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('pdfModalBg').addEventListener('click',function(e){if(e.target===document.getElementById('pdfModalBg'))closePdfModal();});
+
+function generateAndDownloadPdf(){
+  var d=lastRenderData;if(!d)return;
+  var btn=document.getElementById('pdfDlBtn');
+  btn.disabled=true;
+  btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Génération en cours...';
+
+  var sec=SECTORS[S.sector];
+  var lbl=sec?sec.label:'votre secteur';
+  var platLabel=S.platform==='fb'?'Meta Ads (Facebook & Instagram)':'Google Ads';
+  var CC={artisan:35,immo:35,beaute:28,juridique:6,sante:20,finance:15,formation:23,coach:18,ecom:34,resto:29,solaire:8,chauffage:22,fitness:11,retail:32,auto:31};
+  var LR={artisan:44,immo:52,beaute:38,juridique:61,sante:39,finance:58,formation:47,coach:53,ecom:35,resto:43,solaire:55,chauffage:49};
+  var CP={artisan:'Google Ads',immo:'Meta & Google Ads',beaute:'Meta & Instagram Ads',juridique:'Google Ads',sante:'Google Ads',finance:'Google & Meta Ads',formation:'Meta & Google Ads',coach:'Meta & Instagram Ads',ecom:'Meta & Google Shopping',resto:'Meta & Instagram Ads',solaire:'Google Ads',chauffage:'Google Ads',fitness:'Meta & Instagram Ads',retail:'Meta & Google Shopping',auto:'Google & Meta Ads'};
+  var ccNum=CC[S.sector]||12;
+  var lossRate=LR[S.sector]||42;
+  var ccPlat=CP[S.sector]||'Meta & Google Ads';
+  var annCA=Math.round(((d.caLo+d.caHi)/2)*12);
+  var annBudget=S.budget*12;
+  var cpl=d.leads>0?Math.round(S.budget/d.leads):0;
+
+  // Sector-specific insight texts
+  var INSIGHTS={
+    immo:['52% des leads immobilier ne convertiront jamais — ce sont des curieux, pas des vendeurs. 4 signaux comportementaux Meta permettent de les filtrer avant le clic.','La fenêtre de décision d\'un vendeur est de 11 jours en moyenne. Sans retargeting actif sur cette période, vous n\'existez pas pour lui.','89 agences immobilières en Belgique font de la pub cette semaine. Budget égal, stratégie inégale : la configuration décide tout.'],
+    artisan:['44% des leads artisans ne signent jamais parce que la réponse arrive trop tard. La fenêtre critique est de 47 minutes après la demande.','Le rayon géographique par défaut inclut des zones où vos déplacements rendent chaque chantier déficitaire. Ce calcul se fait à partir de vos marges réelles.','Votre concurrent qui apparaît avant vous sur Google Ads a probablement un score de qualité 3× supérieur — et paie moins cher que vous.'],
+    beaute:['38% de votre budget Meta cible des personnes qui consultent mais n\'achètent jamais. Le signal comportemental qui distingue une acheteuse existe — il n\'est pas visible dans l\'interface standard.','3 instituts de votre zone géographique ont lancé des campagnes cette semaine sur la même audience. Cet avantage se creuse chaque jour.','Une cliente qui revient coûte 7× moins cher à acquérir. 90% des budgets pub en beauté ne mettent pas en place la séquence de retargeting fidélisation.'],
+    juridique:['La majorité des clics sur les annonces juridiques viennent de personnes qui cherchent à comprendre — pas à mandater un avocat. Il existe une liste de mots-clés qui filtre les curieux des prospects réels.','68% des prospects contactent le premier avocat qui répond — pas le meilleur. Les cabinets qui convertissent le mieux ont automatisé leur réponse en moins de 4 minutes.','1 compte pub sur 4 dans la finance/juridique est suspendu dans les 30 premiers jours pour une formulation incorrecte.'],
+    sante:['73% des patients prennent rendez-vous dans les 2 heures suivant leur recherche. La configuration des plages horaires d\'enchères peut doubler votre taux de conversion.','Une personne sur 3 qui clique sur votre annonce habite à plus de 15 km. Le rayon géographique médical a un réglage optimal spécifique.','Un praticien de votre spécialité a un score de qualité 2,8× supérieur au vôtre. Il paie moins cher et apparaît plus haut.'],
+    finance:['1 compte pub sur 4 dans la finance est suspendu dans les 30 premiers jours. La liste des termes interdits Meta varie selon la zone géographique belge.','58% des leads finance sont non-qualifiés. 3 questions de pré-qualification dans le formulaire Lead Ad réduisent le volume de 40% mais multiplient le closing par 2,5.','Le déclencheur psychologique qui surperforme dans le secteur financier belge francophone n\'est ni le rendement, ni les frais, ni la sécurité.'],
+    formation:['60% des inscrits potentiels sont perdus entre le clic publicitaire et l\'inscription. 3 points de friction précis existent — chacun se corrige en moins d\'une heure.','85% des inscriptions se font dans les 72 heures suivant une date butoir. Une campagne d\'urgence lancée 10 jours avant réduit le CAC de 35%.','61 organismes de formation en Belgique font de la pub sur vos mots-clés. Sans stratégie longue traîne, vous payez le prix fort pour une visibilité médiocre.'],
+    coach:['53% des leads coaching viennent de personnes en exploration permanente — pas en achat. Des signaux comportementaux précis permettent de ne diffuser qu\'aux profils en phase de décision.','Les coachs qui convertissent le mieux ne vendent pas du coaching : ils vendent un résultat précis dans 90 jours. Ce positionnement change tout.','Sur Meta, vous avez 1,7 seconde pour empêcher quelqu\'un de scroller. La première phrase de votre annonce suit une structure contre-intuitive que la plupart des coachs ignorent.'],
+    ecom:['35% de votre budget peut alimenter vos concurrents si les exclusions d\'audience ne sont pas configurées. Ce réglage prend 20 minutes.','20% des SKU génèrent 80% des conversions publicitaires — mais ce ne sont jamais les produits que vous pensez. L\'analyse par produit révèle votre vrai moteur.','Le CPM Meta en e-commerce belge a augmenté de 28% en 12 mois. Les marques qui testent 5 visuels par semaine maintiennent un CPL 40% inférieur.'],
+    resto:['43% du budget restauration est diffusé aux mauvaises heures. Les réservations se décident entre 11h–13h et 17h–19h — hors de ces créneaux, vous payez des impressions sans action.','Un restaurant qui cible trop large paie pour des gens qui ne viendront jamais. Le rayon optimal varie selon le type de cuisine et le positionnement prix.','91 restaurants font de la pub en Belgique cette semaine. La stratégie publicitaire, pas le budget, est ce qui décide qui remplit son lundi soir.'],
+    solaire:['Plus de la moitié des leads solaires ne convertiront jamais — ce sont des comparateurs de prix. 2 questions de qualification éliminent ces leads et triplent le closing.','Mentionner les primes régionales dans vos annonces double le CTR — mais une formulation incorrecte déclenche un refus. La formulation exacte varie selon Wallonie, Bruxelles ou Flandre.','Les installateurs actifs depuis 6 mois ont un avantage algorithmique structurel sur un nouveau compte. Chaque semaine d\'attente creuse cet écart.'],
+    chauffage:['En chauffage/plomberie urgence, la prise de décision se fait en 90 minutes. Une enchère sous-calibrée vous coûte le premier rang — et le chantier.','Les premiers froids d\'octobre génèrent 3× plus de recherches. Les entreprises qui préparent leurs campagnes en septembre captent tout avant les autres.','Les artisans avec la meilleure présence en ligne ne sont pas les moins chers — ils sont les plus visibles au bon moment et justifient des tarifs supérieurs.'],
+    fitness:['41% du budget pub fitness part sur des audiences qui ne convertiront jamais. Le segment précis qui génère 80% des inscriptions s\'isole avec des données de test.','Septembre est votre mois en or — mais si vous lancez vos campagnes en septembre, il est déjà trop tard. Vos concurrents sont actifs depuis 3 semaines.','La même salle, le même prix, deux annonces différentes : l\'une convertit à 6%, l\'autre à 1,2%. La différence est une seule phrase psychologique.']
+  };
+
+  var insights=INSIGHTS[S.sector]||[
+    lossRate+'% de votre budget part sur des audiences non qualifiées. Pas par manque d\'investissement : par manque de configuration précise.',
+    ccNum+' annonceurs actifs sur '+ccPlat+' en Belgique dans votre secteur. Ceux actifs depuis 6+ mois ont un avantage algorithmique structurel.',
+    '70% des prospects décident en moins de 48h. Si vous n\'apparaissez pas pendant cette fenêtre, vous n\'existez pas pour eux.'
+  ];
+
+  // Build ramp data for chart
+  var ramp=[0.38,0.56,0.70,0.80,0.88,0.94,1.00,1.03,1.05,1.08,1.10,1.12];
+  var months=['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
+  var startMonth=new Date().getMonth();
+  var caMonths=ramp.map(function(r,i){return Math.round(d.caMid*r*getSeasonFactor((startMonth+i)%12));});
+  var monthLabels=ramp.map(function(_,i){return months[(startMonth+i)%12];});
+
+  // ── Build PDF HTML ──
+  var now=new Date();
+  var dateStr=now.toLocaleDateString('fr-BE',{day:'2-digit',month:'long',year:'numeric'});
+
+  var chartBars=caMonths.map(function(val,i){
+    var maxVal=Math.max.apply(null,caMonths);
+    var pct=maxVal>0?Math.round((val/maxVal)*100):0;
+    var budPct=maxVal>0?Math.round((S.budget/maxVal)*100):0;
+    return '<div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:1">'
+      +'<div style="font-size:8px;color:#5A6A96;margin-bottom:2px">'+fK(val)+'</div>'
+      +'<div style="position:relative;width:100%;height:80px;display:flex;align-items:flex-end;gap:1px">'
+        +'<div style="flex:1;background:linear-gradient(to top,#092969,#0C0340);border-radius:3px 3px 0 0;height:'+pct+'%"></div>'
+        +'<div style="position:absolute;bottom:0;left:0;right:0;border-top:2px dashed rgba(12,3,64,.3);pointer-events:none" style="bottom:'+budPct+'%"></div>'
+      +'</div>'
+      +'<div style="font-size:8px;color:#5A6A96">'+monthLabels[i]+'</div>'
+      +'</div>';
+  }).join('');
+
+  var html='<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">'
+    +'<title>Rapport Vision House · '+lbl+'</title>'
+    +'<style>'
+    +'*{box-sizing:border-box;margin:0;padding:0}'
+    +'body{font-family:Arial,sans-serif;color:#0C0340;background:#fff;font-size:13px;line-height:1.5}'
+    +'.page{max-width:794px;margin:0 auto;padding:40px}'
+    +'.header{background:linear-gradient(135deg,#0C0340 0%,#092969 100%);color:#fff;padding:32px 36px;border-radius:12px;margin-bottom:28px;position:relative;overflow:hidden}'
+    +'.header-tag{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px}'
+    +'.header-title{font-size:22px;font-weight:700;line-height:1.2;margin-bottom:6px}'
+    +'.header-sub{font-size:12px;color:rgba(255,255,255,.55)}'
+    +'.header-badge{position:absolute;top:24px;right:36px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:8px 14px;text-align:center}'
+    +'.header-badge-n{font-size:18px;font-weight:700;color:#fff}'
+    +'.header-badge-l{font-size:9px;color:rgba(255,255,255,.45);letter-spacing:.08em}'
+    +'.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}'
+    +'.card{background:#F5F4FA;border-radius:10px;padding:18px 20px}'
+    +'.card-title{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5A6A96;margin-bottom:10px}'
+    +'.card-big{font-size:24px;font-weight:700;color:#0C0340;line-height:1}'
+    +'.card-sub{font-size:11px;color:#5A6A96;margin-top:5px}'
+    +'.card-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid rgba(12,3,64,.06)}'
+    +'.card-row:last-child{border-bottom:none}'
+    +'.card-row-lbl{font-size:11px;color:#5A6A96}'
+    +'.card-row-val{font-size:12px;font-weight:700;color:#0C0340}'
+    +'.section-title{font-size:14px;font-weight:700;color:#0C0340;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #0C0340}'
+    +'.insight{background:#fff;border:1px solid rgba(12,3,64,.08);border-left:3px solid #0C0340;border-radius:8px;padding:14px 16px;margin-bottom:10px}'
+    +'.insight-icon{font-size:14px;margin-bottom:6px}'
+    +'.insight-title{font-size:11px;font-weight:700;color:#0C0340;margin-bottom:4px}'
+    +'.insight-text{font-size:11px;color:#5A6A96;line-height:1.55}'
+    +'.warn-box{background:rgba(181,49,26,.05);border:1px solid rgba(181,49,26,.2);border-radius:8px;padding:14px 16px;margin-bottom:20px}'
+    +'.warn-num{font-size:28px;font-weight:700;color:#B5311A}'
+    +'.warn-label{font-size:11px;color:#5A6A96;margin-top:3px}'
+    +'.chart-section{margin-bottom:24px}'
+    +'.bars{display:flex;align-items:flex-end;gap:4px;height:100px;padding:8px 0}'
+    +'.funnel{display:flex;gap:8px;margin-bottom:20px}'
+    +'.fstep{flex:1;background:#F5F4FA;border-radius:8px;padding:12px;text-align:center}'
+    +'.fstep-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5A6A96;margin-bottom:5px}'
+    +'.fstep-val{font-size:16px;font-weight:700;color:#0C0340}'
+    +'.fstep-sub{font-size:9px;color:#5A6A96;margin-top:3px}'
+    +'.footer-pdf{border-top:1px solid rgba(12,3,64,.1);margin-top:28px;padding-top:14px;display:flex;justify-content:space-between;align-items:center}'
+    +'.footer-pdf-left{font-size:9px;color:#5A6A96}'
+    +'.footer-pdf-right{font-size:9px;color:#5A6A96;text-align:right}'
+    +'.cta-box{background:linear-gradient(135deg,#0C0340 0%,#092969 100%);border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center}'
+    +'.cta-box-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}'
+    +'.cta-box-sub{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:12px}'
+    +'.cta-box-link{display:inline-block;background:#fff;color:#0C0340;font-weight:700;font-size:12px;padding:10px 24px;border-radius:100px;text-decoration:none}'
+    +'@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'
+    +'</style></head><body><div class="page">'
+
+    // HEADER
+    +'<div class="header">'
+      +'<div class="header-tag">Rapport personnalisé · Vision House · Belgique 2026</div>'
+      +'<div class="header-title">Analyse publicitaire<br>'+lbl+'</div>'
+      +'<div class="header-sub">'+platLabel+' · '+fNum(S.budget)+' €/mois · Valeur client '+fE(S.clientValue)+' · Généré le '+dateStr+'</div>'
+      +'<div class="header-badge"><div class="header-badge-n">'+d.roiLo+'×–'+d.roiHi+'×</div><div class="header-badge-l">ROI ESTIMÉ</div></div>'
+    +'</div>'
+
+    // KEY METRICS
+    +'<div class="grid2">'
+      +'<div class="card">'
+        +'<div class="card-title">CA mensuel estimé</div>'
+        +'<div class="card-big">'+fK(d.caLo)+' – '+fK(d.caHi)+'</div>'
+        +'<div class="card-sub">'+d.cLo+' à '+d.cHi+' nouveaux clients/mois</div>'
+      +'</div>'
+      +'<div class="card">'
+        +'<div class="card-title">Coût de l\'inaction (12 mois)</div>'
+        +'<div class="card-big" style="color:#B5311A">−'+fK(annCA)+'</div>'
+        +'<div class="card-sub">CA potentiel non capté sur 1 an</div>'
+      +'</div>'
+    +'</div>'
+
+    +'<div class="grid2" style="margin-bottom:24px">'
+      +'<div class="card">'
+        +'<div class="card-title">Détail du tunnel</div>'
+        +(S.platform==='fb'?
+          '<div class="card-row"><span class="card-row-lbl">Impressions/mois</span><span class="card-row-val">'+fNum(d.impressions)+'</span></div>'
+          +'<div class="card-row"><span class="card-row-lbl">Clics</span><span class="card-row-val">'+fNum(d.clicks)+'</span></div>'
+        :
+          '<div class="card-row"><span class="card-row-lbl">Clics qualifiés</span><span class="card-row-val">'+fNum(d.clicks)+'</span></div>'
+        )
+        +'<div class="card-row"><span class="card-row-lbl">Leads</span><span class="card-row-val">'+fNum(d.leads)+'</span></div>'
+        +'<div class="card-row"><span class="card-row-lbl">Coût/lead</span><span class="card-row-val">'+d.cpl+' €</span></div>'
+        +'<div class="card-row"><span class="card-row-lbl">Clients signés</span><span class="card-row-val">'+d.cLo+'–'+d.cHi+'</span></div>'
+        +'<div class="card-row"><span class="card-row-lbl">Coût/client</span><span class="card-row-val">'+d.cpClient+' €</span></div>'
+      +'</div>'
+      +'<div class="card">'
+        +'<div class="card-title">Contexte marché Belgique</div>'
+        +'<div class="card-row"><span class="card-row-lbl">Concurrents actifs</span><span class="card-row-val">'+ccNum+' annonceurs</span></div>'
+        +'<div class="card-row"><span class="card-row-lbl">Plateforme principale</span><span class="card-row-val">'+ccPlat+'</span></div>'
+        +'<div class="card-row"><span class="card-row-lbl">Budget gaspillé (moy.)</span><span class="card-row-val" style="color:#B5311A">'+lossRate+'%</span></div>'
+        +'<div class="card-row"><span class="card-row-lbl">Budget mensuel</span><span class="card-row-val">'+fNum(S.budget)+' €</span></div>'
+        +'<div class="card-row"><span class="card-row-lbl">Budget annuel</span><span class="card-row-val">'+fNum(annBudget)+' €</span></div>'
+        +'<div class="card-row"><span class="card-row-lbl">ROI estimé</span><span class="card-row-val">'+d.roiLo+'×–'+d.roiHi+'×</span></div>'
+      +'</div>'
+    +'</div>'
+
+    // CHART
+    +'<div class="chart-section">'
+      +'<div class="section-title">Projection CA sur 12 mois</div>'
+      +'<div style="display:flex;gap:4px;align-items:flex-end;height:120px;margin:12px 0 4px">'
+        +caMonths.map(function(val,i){
+          var mx=Math.max.apply(null,caMonths);
+          var pct=mx>0?Math.round((val/mx)*90):0;
+          return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">'
+            +'<div style="font-size:7px;color:#5A6A96">'+(val>=1000?Math.round(val/1000)+'k':val)+'</div>'
+            +'<div style="width:100%;background:linear-gradient(to top,#092969,#3a6dd9);border-radius:2px 2px 0 0;height:'+pct+'px"></div>'
+            +'<div style="font-size:7px;color:#5A6A96">'+monthLabels[i]+'</div>'
+          +'</div>';
+        }).join('')
+      +'</div>'
+      +'<div style="font-size:10px;color:#5A6A96;text-align:center">CA cumulé 12 mois estimé : <strong style="color:#0C0340">~'+fK(caMonths.reduce(function(a,b){return a+b;},0))+'</strong></div>'
+    +'</div>'
+
+    // BUDGET WASTE WARNING
+    +'<div class="warn-box">'
+      +'<div style="display:flex;align-items:center;gap:16px">'
+        +'<div>'
+          +'<div class="warn-num">'+lossRate+'%</div>'
+          +'<div class="warn-label">de votre budget publicitaire mal ciblé en moyenne dans votre secteur</div>'
+        +'</div>'
+        +'<div style="flex:1;font-size:11px;color:#5A6A96;line-height:1.55">'+insights[0]+'</div>'
+      +'</div>'
+    +'</div>'
+
+    // INSIGHTS SECTEUR
+    +'<div style="margin-bottom:24px">'
+      +'<div class="section-title">Les 3 données critiques de votre secteur</div>'
+      +['📉','⚔️','⏳'].map(function(ico,i){
+        return '<div class="insight">'
+          +'<div class="insight-icon">'+ico+'</div>'
+          +'<div class="insight-text">'+insights[i]+'</div>'
+        +'</div>';
+      }).join('')
+    +'</div>'
+
+    // CTA
+    +'<div class="cta-box">'
+      +'<div class="cta-box-title">Transformez ces données en clients réels</div>'
+      +'<div class="cta-box-sub">Un fondateur Vision House analyse votre situation et construit votre stratégie sur mesure. 30 minutes, sans engagement.</div>'
+      +'<a class="cta-box-link" href="https://visionhouse.be#contact">Réserver mon appel offert →</a>'
+    +'</div>'
+
+    // FOOTER
+    +'<div class="footer-pdf">'
+      +'<div class="footer-pdf-left">Vision House · hello@visionhouse.be · +32 451 09 56 50<br>Emkay Partners SRL · BCE 1024.829.348 · Watermael-Boitsfort, Belgique</div>'
+      +'<div class="footer-pdf-right">visionhouse.be/simulateur<br>Rapport généré le '+dateStr+'</div>'
+    +'</div>'
+
+  +'</div></body></html>';
+
+  // Generate PDF via Blob URL — no popup blocker issues
+  try {
+    var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+    var blobUrl = URL.createObjectURL(blob);
+
+    // Create hidden iframe to trigger print
+    var iframe = document.createElement('iframe');
+    iframe.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:800px;height:600px;border:none;visibility:hidden';
+    iframe.src = blobUrl;
+    document.body.appendChild(iframe);
+
+    iframe.onload = function(){
+      try {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      } catch(e) {
+        // Fallback: direct download as HTML file
+        var a = document.createElement('a');
+        a.href = blobUrl;
+        var sec = SECTORS[S.sector];
+        var lbl = sec ? sec.label.replace(/^\S+\s/,'').replace(/[^a-zA-Z0-9]/g,'-').toLowerCase() : 'rapport';
+        a.download = 'rapport-vision-house-' + lbl + '.html';
+        a.click();
+      }
+      setTimeout(function(){
+        document.body.removeChild(iframe);
+        URL.revokeObjectURL(blobUrl);
+        btn.disabled = false;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Télécharger à nouveau';
+        closePdfModal();
+      }, 1000);
+    };
+
+    iframe.onerror = function(){
+      // Ultimate fallback: download as HTML
+      var a = document.createElement('a');
+      a.href = blobUrl;
+      var sec = SECTORS[S.sector];
+      var lbl = sec ? sec.label.replace(/^\S+\s/,'').replace(/[^a-zA-Z0-9]/g,'-').toLowerCase() : 'rapport';
+      a.download = 'rapport-vision-house-' + lbl + '.html';
+      a.click();
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Télécharger à nouveau';
+      closePdfModal();
+    };
+
+  } catch(err) {
+    console.error('PDF generation error:', err);
+    btn.disabled = false;
+    btn.innerHTML = 'Erreur — réessayez';
+  }
+}
+</script>
+</body>
+</html>
