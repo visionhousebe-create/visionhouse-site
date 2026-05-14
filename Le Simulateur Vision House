@@ -6,12 +6,12 @@
 <title>Le Simulateur Vision House — Calculez votre CA publicitaire | Belgique 2026</title>
 <meta name="description" content="Simulez en 30 secondes votre CA potentiel avec Meta Ads et Google Ads en Belgique. Outil gratuit Vision House, données sectorielles réelles 2026.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://visionhouse.be/simulateur.html">
+<link rel="canonical" href="https://visionhouse.be/Le%20Simulateur%20Vision%20House.html">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Vision House">
 <meta property="og:title" content="Le Simulateur Vision House — Votre CA potentiel, Enfin chiffré.">
 <meta property="og:description" content="Estimez votre CA potentiel avec Meta Ads et Google Ads en Belgique. Données sectorielles 2026.">
 <meta property="og:image" content="https://visionhouse.be/logo-header.png">
-<meta property="og:url" content="https://visionhouse.be/simulateur.html">
+<meta property="og:url" content="https://visionhouse.be/Le%20Simulateur%20Vision%20House.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
@@ -184,7 +184,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .btn-book:hover{background:#E8D4A8;transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,212,168,.4)}
 .trust{display:flex;justify-content:center;gap:1rem;margin-top:1.3rem;flex-wrap:wrap;position:relative}
 .trust-i{font-size:11.5px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:5px}
-.trust-i::before{content:'check';font-family:var(--fh);color:#9DBFFF;font-weight:700}
+.trust-i::before{content:'✓';color:#9DBFFF;font-weight:700;font-size:12px}
 .faq-sect{margin-top:3rem;padding:2.5rem 0 0;border-top:1px solid var(--border)}
 .faq-head{text-align:center;margin-bottom:1.8rem}
 .faq-head h2{font-family:var(--fh);font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:-.03em;color:var(--vh-violet);line-height:1.15}
@@ -1068,7 +1068,7 @@ function generateAndDownloadPdf(){
     // FOOTER
     +'<div class="footer-pdf">'
       +'<div class="footer-pdf-left">Vision House · hello@visionhouse.be · +32 451 09 56 50<br>Emkay Partners SRL · BCE 1024.829.348 · Watermael-Boitsfort, Belgique</div>'
-      +'<div class="footer-pdf-right">visionhouse.be/simulateur<br>Rapport généré le '+dateStr+'</div>'
+      +'<div class="footer-pdf-right">visionhouse.be/Le Simulateur Vision House<br>Rapport généré le '+dateStr+'</div>'
     +'</div>'
 
   +'</div></body></html>';
