@@ -6,12 +6,12 @@
 <title>Le Simulateur Vision House — Calculez votre CA publicitaire | Belgique 2026</title>
 <meta name="description" content="Simulez en 30 secondes votre CA potentiel avec Meta Ads et Google Ads en Belgique. Outil gratuit Vision House, données sectorielles réelles 2026.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://visionhouse.be/Le%20Simulateur%20Vision%20House.html">
+<link rel="canonical" href="https://visionhouse.be/simulateur">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Vision House">
 <meta property="og:title" content="Le Simulateur Vision House — Votre CA potentiel, Enfin chiffré.">
 <meta property="og:description" content="Estimez votre CA potentiel avec Meta Ads et Google Ads en Belgique. Données sectorielles 2026.">
 <meta property="og:image" content="https://visionhouse.be/logo-header.png">
-<meta property="og:url" content="https://visionhouse.be/Le%20Simulateur%20Vision%20House.html">
+<meta property="og:url" content="https://visionhouse.be/simulateur">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
@@ -585,68 +585,139 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()
 // ═══ DATA ═══
 var SECTORS={
   // ── Commerce & services ──
-  fitness:     {label:"🏋️ Salle de sport / Fitness",    fb:{cpm:10.5,ctr:1.8,cv:2.8},gg:{cpc:2.2,cv:4.5},vHint:800},
-  beaute:      {label:"💆 Beauté / Esthétique",          fb:{cpm:14.5,ctr:1.9,cv:3.0},gg:{cpc:2.8,cv:4.5},vHint:1500},
-  cosmetique:  {label:"🧴 Cosmétique / Soins",           fb:{cpm:12.0,ctr:2.0,cv:2.5},gg:{cpc:2.0,cv:3.5},vHint:120},
-  mode:        {label:"👗 Mode / Textile",               fb:{cpm:11.0,ctr:2.1,cv:2.2},gg:{cpc:1.8,cv:3.0},vHint:180},
-  vin:         {label:"🍷 Vin / Caviste",                fb:{cpm:9.0,ctr:1.8,cv:2.8}, gg:{cpc:1.2,cv:4.0},vHint:300},
-  enfance:     {label:"🍼 Enfance / Parentalité",        fb:{cpm:10.0,ctr:1.9,cv:3.2},gg:{cpc:1.5,cv:4.5},vHint:400},
-  airbnb:      {label:"🛏️ Location courte durée",        fb:{cpm:10.5,ctr:1.6,cv:2.5},gg:{cpc:2.0,cv:3.8},vHint:1200},
-  auto:        {label:"🚗 Automobile",                   fb:{cpm:9.0,ctr:1.5,cv:2.2}, gg:{cpc:2.5,cv:3.5},vHint:1200},
-  recrutement: {label:"🧑‍💻 Recrutement / RH",           fb:{cpm:13.0,ctr:1.4,cv:2.2},gg:{cpc:4.0,cv:3.5},vHint:3000},
-  bien_etre:   {label:"🧘 Bien-être / Yoga / Pilates",   fb:{cpm:11.5,ctr:1.9,cv:2.8},gg:{cpc:2.0,cv:4.0},vHint:600},
-  bijoux:      {label:"💍 Bijouterie / Luxe",            fb:{cpm:13.0,ctr:1.7,cv:2.0},gg:{cpc:2.8,cv:3.2},vHint:500},
+  fitness:      {label:"🏋️ Salle de sport / Fitness",     fb:{cpm:10.5,ctr:1.8,cv:2.8},gg:{cpc:2.2,cv:4.5},vHint:800},
+  beaute:       {label:"💆 Institut beauté / Esthétique",  fb:{cpm:14.5,ctr:1.9,cv:3.0},gg:{cpc:2.8,cv:4.5},vHint:1500},
+  cosmetique:   {label:"🧴 Cosmétique / Soins",            fb:{cpm:12.0,ctr:2.0,cv:2.5},gg:{cpc:2.0,cv:3.5},vHint:120},
+  mode:         {label:"👗 Mode / Textile",                fb:{cpm:11.0,ctr:2.1,cv:2.2},gg:{cpc:1.8,cv:3.0},vHint:180},
+  vin:          {label:"🍷 Vin / Caviste",                 fb:{cpm:9.0,ctr:1.8,cv:2.8}, gg:{cpc:1.2,cv:4.0},vHint:300},
+  enfance:      {label:"🍼 Enfance / Parentalité",         fb:{cpm:10.0,ctr:1.9,cv:3.2},gg:{cpc:1.5,cv:4.5},vHint:400},
+  airbnb:       {label:"🛏️ Location courte durée",         fb:{cpm:10.5,ctr:1.6,cv:2.5},gg:{cpc:2.0,cv:3.8},vHint:1200},
+  auto:         {label:"🚗 Automobile / Garage",           fb:{cpm:9.0,ctr:1.5,cv:2.2}, gg:{cpc:2.5,cv:3.5},vHint:1200},
+  recrutement:  {label:"🧑‍💻 Recrutement / RH",            fb:{cpm:13.0,ctr:1.4,cv:2.2},gg:{cpc:4.0,cv:3.5},vHint:3000},
+  bien_etre:    {label:"🧘 Yoga / Pilates / Méditation",   fb:{cpm:11.5,ctr:1.9,cv:2.8},gg:{cpc:2.0,cv:4.0},vHint:600},
+  bijoux:       {label:"💍 Bijouterie / Horlogerie",       fb:{cpm:13.0,ctr:1.7,cv:2.0},gg:{cpc:2.8,cv:3.2},vHint:500},
+  animaux:      {label:"🐾 Animalerie / Vétérinaire",      fb:{cpm:10.0,ctr:2.0,cv:3.0},gg:{cpc:2.2,cv:4.2},vHint:350},
+  photo:        {label:"📸 Photographie / Mariage",        fb:{cpm:11.0,ctr:1.8,cv:2.5},gg:{cpc:2.5,cv:3.8},vHint:2000},
+  voyage:       {label:"✈️ Agence de voyage / Tourisme",   fb:{cpm:12.5,ctr:1.7,cv:2.2},gg:{cpc:2.8,cv:3.5},vHint:1500},
   // ── Bâtiment & techniques ──
-  artisan:     {label:"🔨 Artisan / BTP",                fb:{cpm:9.5,ctr:1.5,cv:2.5}, gg:{cpc:1.6,cv:5.0},vHint:800},
-  menuiserie:  {label:"🪟 Menuiserie / Cuisine",         fb:{cpm:11.0,ctr:1.6,cv:2.8},gg:{cpc:3.5,cv:4.5},vHint:4000},
-  solaire:     {label:"☀️ Panneaux solaires",            fb:{cpm:13.0,ctr:1.5,cv:2.2},gg:{cpc:5.5,cv:3.5},vHint:8000},
-  renovation:  {label:"🛠️ Rénovation énergétique",       fb:{cpm:12.0,ctr:1.5,cv:2.5},gg:{cpc:4.8,cv:4.0},vHint:6000},
-  chauffage:   {label:"🚿 Chauffage / HVAC / Plomberie", fb:{cpm:10.0,ctr:1.6,cv:3.0},gg:{cpc:3.0,cv:5.5},vHint:1500},
-  electricien: {label:"⚡ Électricien",                  fb:{cpm:9.0,ctr:1.6,cv:3.0}, gg:{cpc:2.5,cv:5.5},vHint:800},
-  securite:    {label:"🔒 Sécurité / Alarmes",           fb:{cpm:11.0,ctr:1.5,cv:2.5},gg:{cpc:4.5,cv:4.0},vHint:1500},
-  jardinage:   {label:"🌿 Jardinage / Paysagiste",       fb:{cpm:9.0,ctr:1.9,cv:3.2}, gg:{cpc:2.3,cv:4.5},vHint:600},
-  nettoyage:   {label:"🧹 Nettoyage / Titres-services",  fb:{cpm:8.5,ctr:1.8,cv:3.5}, gg:{cpc:1.8,cv:5.0},vHint:400},
-  demenagement:{label:"📦 Déménagement / Stockage",      fb:{cpm:9.5,ctr:1.6,cv:3.0}, gg:{cpc:2.2,cv:4.8},vHint:1200},
+  artisan:      {label:"🔨 Artisan / Maçonnerie / BTP",    fb:{cpm:9.5,ctr:1.5,cv:2.5}, gg:{cpc:1.6,cv:5.0},vHint:800},
+  menuiserie:   {label:"🪟 Menuiserie / Cuisine",          fb:{cpm:11.0,ctr:1.6,cv:2.8},gg:{cpc:3.5,cv:4.5},vHint:4000},
+  solaire:      {label:"☀️ Panneaux solaires",             fb:{cpm:13.0,ctr:1.5,cv:2.2},gg:{cpc:5.5,cv:3.5},vHint:8000},
+  renovation:   {label:"🛠️ Rénovation énergétique",        fb:{cpm:12.0,ctr:1.5,cv:2.5},gg:{cpc:4.8,cv:4.0},vHint:6000},
+  chauffage:    {label:"🔥 Chauffage / Plomberie / HVAC",  fb:{cpm:10.0,ctr:1.6,cv:3.0},gg:{cpc:3.0,cv:5.5},vHint:1500},
+  electricien:  {label:"⚡ Électricien",                   fb:{cpm:9.0,ctr:1.6,cv:3.0}, gg:{cpc:2.5,cv:5.5},vHint:800},
+  securite:     {label:"🔒 Sécurité / Alarmes / Caméras",  fb:{cpm:11.0,ctr:1.5,cv:2.5},gg:{cpc:4.5,cv:4.0},vHint:1500},
+  jardinage:    {label:"🌿 Jardinage / Paysagiste",        fb:{cpm:9.0,ctr:1.9,cv:3.2}, gg:{cpc:2.3,cv:4.5},vHint:600},
+  nettoyage:    {label:"🧹 Nettoyage / Titres-services",   fb:{cpm:8.5,ctr:1.8,cv:3.5}, gg:{cpc:1.8,cv:5.0},vHint:400},
+  demenagement: {label:"📦 Déménagement / Garde-meubles",  fb:{cpm:9.5,ctr:1.6,cv:3.0}, gg:{cpc:2.2,cv:4.8},vHint:1200},
+  peinture:     {label:"🖌️ Peinture / Revêtements",        fb:{cpm:9.5,ctr:1.6,cv:2.8}, gg:{cpc:2.0,cv:4.8},vHint:1500},
+  toiture:      {label:"🏗️ Toiture / Charpente",           fb:{cpm:10.5,ctr:1.5,cv:2.5},gg:{cpc:3.2,cv:4.5},vHint:5000},
+  // ── Santé & bien-être ──
+  kine:         {label:"💪 Kinésithérapeute",              fb:{cpm:13.0,ctr:1.6,cv:2.8},gg:{cpc:4.0,cv:4.2},vHint:1500},
+  medecin:      {label:"🩺 Médecin / Généraliste",         fb:{cpm:15.0,ctr:1.5,cv:2.5},gg:{cpc:5.0,cv:3.8},vHint:1200},
+  dentiste:     {label:"🦷 Dentiste / Orthodontiste",      fb:{cpm:15.0,ctr:1.5,cv:2.5},gg:{cpc:5.5,cv:4.0},vHint:3000},
+  ophtalmo:     {label:"👁️ Ophtalmologue / Optique",       fb:{cpm:14.5,ctr:1.5,cv:2.5},gg:{cpc:5.0,cv:3.8},vHint:1800},
+  osteo:        {label:"🦴 Ostéopathe / Chiropracteur",    fb:{cpm:12.5,ctr:1.6,cv:2.8},gg:{cpc:3.8,cv:4.0},vHint:1200},
+  psy:          {label:"🧠 Psychologue / Thérapeute",      fb:{cpm:13.5,ctr:1.5,cv:2.5},gg:{cpc:3.5,cv:3.8},vHint:2000},
+  dieteticien:  {label:"🥗 Diététicien / Nutritionniste",  fb:{cpm:12.0,ctr:1.7,cv:2.8},gg:{cpc:3.2,cv:4.0},vHint:1000},
+  infirmier:    {label:"💉 Infirmier / Soins à domicile",  fb:{cpm:12.5,ctr:1.5,cv:2.5},gg:{cpc:3.5,cv:4.0},vHint:1200},
+  maison_repos: {label:"🏡 Maison de repos / Aide senior", fb:{cpm:14.0,ctr:1.4,cv:2.0},gg:{cpc:4.5,cv:3.5},vHint:3500},
+  clinique:     {label:"✨ Clinique esthétique / Laser",   fb:{cpm:16.5,ctr:1.7,cv:2.5},gg:{cpc:6.5,cv:3.5},vHint:2500},
+  pharmacie:    {label:"💊 Pharmacie / Parapharmacie",     fb:{cpm:13.5,ctr:1.6,cv:2.5},gg:{cpc:4.0,cv:3.8},vHint:400},
   // ── Professions réglementées ──
-  juridique:   {label:"⚖️ Juridique / Avocat",           fb:{cpm:16.5,ctr:1.1,cv:1.8},gg:{cpc:8.0,cv:3.0},vHint:5000},
-  finance:     {label:"💼 Finance / Assurance",          fb:{cpm:17.0,ctr:1.1,cv:1.8},gg:{cpc:6.5,cv:2.8},vHint:2000},
-  comptable:   {label:"🧾 Comptable / Fiduciaire",       fb:{cpm:13.0,ctr:1.2,cv:2.0},gg:{cpc:4.5,cv:3.5},vHint:2400},
-  dentiste:    {label:"🦷 Dentiste / Orthodontiste",     fb:{cpm:15.0,ctr:1.5,cv:2.5},gg:{cpc:5.5,cv:4.0},vHint:3000},
-  sante:       {label:"⚕️ Santé / Médical",              fb:{cpm:16.0,ctr:1.6,cv:2.8},gg:{cpc:4.5,cv:4.0},vHint:1800},
-  psy:         {label:"🧠 Psychologue / Thérapeute",     fb:{cpm:13.5,ctr:1.5,cv:2.5},gg:{cpc:3.5,cv:3.8},vHint:2000},
-  clinique:    {label:"🏥 Clinique esthétique",          fb:{cpm:16.5,ctr:1.7,cv:2.5},gg:{cpc:6.5,cv:3.5},vHint:2500},
-  notaire:     {label:"📜 Notaire / Huissier",           fb:{cpm:14.0,ctr:1.0,cv:1.6},gg:{cpc:7.0,cv:2.8},vHint:4000},
-  architecte:  {label:"📐 Architecte / Bureau d'étude", fb:{cpm:12.5,ctr:1.3,cv:1.8},gg:{cpc:4.0,cv:3.0},vHint:8000},
+  juridique:    {label:"⚖️ Avocat / Cabinet juridique",    fb:{cpm:16.5,ctr:1.1,cv:1.8},gg:{cpc:8.0,cv:3.0},vHint:5000},
+  notaire:      {label:"📜 Notaire / Huissier",            fb:{cpm:14.0,ctr:1.0,cv:1.6},gg:{cpc:7.0,cv:2.8},vHint:4000},
+  finance:      {label:"💼 Finance / Assurance / Banque",  fb:{cpm:17.0,ctr:1.1,cv:1.8},gg:{cpc:6.5,cv:2.8},vHint:2000},
+  comptable:    {label:"🧾 Expert-comptable / Fiduciaire", fb:{cpm:13.0,ctr:1.2,cv:2.0},gg:{cpc:4.5,cv:3.5},vHint:2400},
+  architecte:   {label:"📐 Architecte / Bureau d\'étude", fb:{cpm:12.5,ctr:1.3,cv:1.8},gg:{cpc:4.0,cv:3.0},vHint:8000},
+  geometre:     {label:"📏 Géomètre / Topographe",         fb:{cpm:11.5,ctr:1.2,cv:1.8},gg:{cpc:4.5,cv:3.2},vHint:5000},
+  audit:        {label:"📊 Audit / Conseil en gestion",    fb:{cpm:14.5,ctr:1.2,cv:1.8},gg:{cpc:6.0,cv:2.8},vHint:6000},
+  rh_conseil:   {label:"🤝 Cabinet RH / Conseil social",   fb:{cpm:13.5,ctr:1.3,cv:2.0},gg:{cpc:5.0,cv:3.0},vHint:4000},
   // ── Habitat & design ──
-  immo:        {label:"🏠 Immobilier",                   fb:{cpm:13.5,ctr:1.3,cv:2.0},gg:{cpc:3.8,cv:3.5},vHint:3000},
-  archi:       {label:"🏡 Architecture d'intérieur",    fb:{cpm:12.0,ctr:1.6,cv:2.2},gg:{cpc:2.8,cv:3.5},vHint:5000},
-  mobilier:    {label:"🪑 Mobilier / Décoration",        fb:{cpm:10.5,ctr:2.0,cv:2.8},gg:{cpc:2.0,cv:3.5},vHint:1200},
-  piscine:     {label:"🏊 Piscine / Spa / Jacuzzi",      fb:{cpm:11.5,ctr:1.7,cv:2.2},gg:{cpc:3.5,cv:3.8},vHint:8000},
-  domotique:   {label:"🏠 Domotique / Smart Home",       fb:{cpm:12.5,ctr:1.5,cv:2.0},gg:{cpc:4.0,cv:3.5},vHint:3500},
+  immo:         {label:"🏠 Immobilier / Agence",           fb:{cpm:13.5,ctr:1.3,cv:2.0},gg:{cpc:3.8,cv:3.5},vHint:3000},
+  promo_immo:   {label:"🏢 Promotion immobilière",         fb:{cpm:14.5,ctr:1.2,cv:1.8},gg:{cpc:4.5,cv:3.2},vHint:15000},
+  archi:        {label:"🏡 Architecture d\'intérieur",    fb:{cpm:12.0,ctr:1.6,cv:2.2},gg:{cpc:2.8,cv:3.5},vHint:5000},
+  mobilier:     {label:"🪑 Mobilier / Décoration",         fb:{cpm:10.5,ctr:2.0,cv:2.8},gg:{cpc:2.0,cv:3.5},vHint:1200},
+  piscine:      {label:"🏊 Piscine / Spa / Jacuzzi",       fb:{cpm:11.5,ctr:1.7,cv:2.2},gg:{cpc:3.5,cv:3.8},vHint:8000},
+  domotique:    {label:"🏠 Domotique / Smart Home",        fb:{cpm:12.5,ctr:1.5,cv:2.0},gg:{cpc:4.0,cv:3.5},vHint:3500},
+  gestion_loc:  {label:"🔑 Gestion locative / Syndic",     fb:{cpm:12.0,ctr:1.4,cv:2.0},gg:{cpc:3.5,cv:3.5},vHint:2000},
   // ── Business digitaux ──
-  coach:       {label:"🎯 Coach / Consultant",           fb:{cpm:13.0,ctr:1.4,cv:2.5},gg:{cpc:3.2,cv:3.8},vHint:2500},
-  formation:   {label:"📚 Formation / Éducation",        fb:{cpm:12.0,ctr:1.7,cv:3.2},gg:{cpc:3.0,cv:4.0},vHint:2000},
-  saas:        {label:"📱 SaaS / Startup",               fb:{cpm:15.0,ctr:1.3,cv:2.0},gg:{cpc:6.0,cv:3.5},vHint:5000},
-  ecom:        {label:"📦 E-commerce",                   fb:{cpm:11.5,ctr:1.9,cv:2.0},gg:{cpc:1.5,cv:2.5},vHint:150},
-  video:       {label:"🎥 Production vidéo / Photo",     fb:{cpm:11.0,ctr:1.7,cv:2.5},gg:{cpc:2.5,cv:3.5},vHint:3000},
-  agence_web:  {label:"💻 Agence web / Dev",             fb:{cpm:13.5,ctr:1.4,cv:2.2},gg:{cpc:5.0,cv:3.5},vHint:5000},
-  marketing:   {label:"📣 Agence marketing / Com",       fb:{cpm:14.0,ctr:1.3,cv:2.0},gg:{cpc:5.5,cv:3.2},vHint:4000},
+  coach:        {label:"🎯 Coach / Consultant",            fb:{cpm:13.0,ctr:1.4,cv:2.5},gg:{cpc:3.2,cv:3.8},vHint:2500},
+  formation:    {label:"📚 Formation / École / CPF",       fb:{cpm:12.0,ctr:1.7,cv:3.2},gg:{cpc:3.0,cv:4.0},vHint:2000},
+  saas:         {label:"📱 SaaS / Application / Startup",  fb:{cpm:15.0,ctr:1.3,cv:2.0},gg:{cpc:6.0,cv:3.5},vHint:5000},
+  ecom:         {label:"🛒 E-commerce / Boutique en ligne", fb:{cpm:11.5,ctr:1.9,cv:2.0},gg:{cpc:1.5,cv:2.5},vHint:150},
+  video:        {label:"🎥 Production vidéo / Photo",      fb:{cpm:11.0,ctr:1.7,cv:2.5},gg:{cpc:2.5,cv:3.5},vHint:3000},
+  agence_web:   {label:"💻 Agence web / Développement",    fb:{cpm:13.5,ctr:1.4,cv:2.2},gg:{cpc:5.0,cv:3.5},vHint:5000},
+  marketing:    {label:"📣 Agence marketing / Com",        fb:{cpm:14.0,ctr:1.3,cv:2.0},gg:{cpc:5.5,cv:3.2},vHint:4000},
+  podcast:      {label:"🎙️ Podcast / Média en ligne",      fb:{cpm:12.0,ctr:1.5,cv:2.5},gg:{cpc:3.5,cv:3.5},vHint:1500},
   // ── Alimentation & événements ──
-  resto:       {label:"🍽️ Restaurant / Food",            fb:{cpm:8.5,ctr:2.2,cv:3.5}, gg:{cpc:1.2,cv:4.0},vHint:300},
-  retail:      {label:"🛍️ Commerce / Retail",            fb:{cpm:11.0,ctr:1.8,cv:2.5},gg:{cpc:1.5,cv:3.5},vHint:250},
-  events:      {label:"🎉 Événementiel",                 fb:{cpm:9.5,ctr:2.0,cv:3.0}, gg:{cpc:1.8,cv:3.5},vHint:500},
-  traiteur:    {label:"🥘 Traiteur / Catering",          fb:{cpm:9.0,ctr:2.0,cv:3.2}, gg:{cpc:1.5,cv:4.0},vHint:800},
-  boulangerie: {label:"🥐 Boulangerie / Pâtisserie",     fb:{cpm:8.0,ctr:2.3,cv:3.8}, gg:{cpc:1.0,cv:4.5},vHint:200},
-  foodtruck:   {label:"🚚 Food Truck / Street Food",     fb:{cpm:8.5,ctr:2.4,cv:3.6}, gg:{cpc:1.1,cv:4.2},vHint:250}
+  resto:        {label:"🍽️ Restaurant / Brasserie",        fb:{cpm:8.5,ctr:2.2,cv:3.5}, gg:{cpc:1.2,cv:4.0},vHint:300},
+  retail:       {label:"🛍️ Commerce de détail / Retail",   fb:{cpm:11.0,ctr:1.8,cv:2.5},gg:{cpc:1.5,cv:3.5},vHint:250},
+  events:       {label:"🎉 Événementiel / Wedding Planner", fb:{cpm:9.5,ctr:2.0,cv:3.0}, gg:{cpc:1.8,cv:3.5},vHint:500},
+  traiteur:     {label:"🥘 Traiteur / Catering",           fb:{cpm:9.0,ctr:2.0,cv:3.2}, gg:{cpc:1.5,cv:4.0},vHint:800},
+  boulangerie:  {label:"🥐 Boulangerie / Pâtisserie",      fb:{cpm:8.0,ctr:2.3,cv:3.8}, gg:{cpc:1.0,cv:4.5},vHint:200},
+  foodtruck:    {label:"🚚 Food Truck / Street Food",       fb:{cpm:8.5,ctr:2.4,cv:3.6}, gg:{cpc:1.1,cv:4.2},vHint:250},
+  bar_cafe:     {label:"☕ Bar / Café / Salon de thé",      fb:{cpm:8.0,ctr:2.3,cv:3.8}, gg:{cpc:1.0,cv:4.5},vHint:200},
+  epicerie:     {label:"🏪 Épicerie / Alimentation spécialisée", fb:{cpm:8.5,ctr:2.0,cv:3.5},gg:{cpc:1.2,cv:4.0},vHint:300},
+  // ── Commerce & services (nouveaux) ──
+  coiffeur:     {label:"✂️ Coiffeur / Barbier",                  fb:{cpm:11.0,ctr:2.0,cv:3.2},gg:{cpc:1.8,cv:4.5},vHint:500},
+  tatouage:     {label:"🎨 Tatouage / Piercing",                 fb:{cpm:12.0,ctr:2.2,cv:2.8},gg:{cpc:2.2,cv:3.8},vHint:300},
+  opticien:     {label:"👓 Opticien / Optique",                  fb:{cpm:13.5,ctr:1.7,cv:2.5},gg:{cpc:3.5,cv:3.5},vHint:600},
+  librairie:    {label:"📖 Librairie / Papeterie",               fb:{cpm:8.5,ctr:1.8,cv:2.8}, gg:{cpc:1.2,cv:3.8},vHint:200},
+  fleuriste:    {label:"🌸 Fleuriste",                           fb:{cpm:9.5,ctr:2.2,cv:3.5}, gg:{cpc:1.5,cv:4.5},vHint:250},
+  bronzage:     {label:"☀️ Centre de bronzage / UV",             fb:{cpm:10.0,ctr:2.0,cv:3.0},gg:{cpc:1.8,cv:4.0},vHint:400},
+  loc_vehicule: {label:"🚙 Location de véhicules",               fb:{cpm:11.0,ctr:1.6,cv:2.5},gg:{cpc:3.0,cv:3.8},vHint:800},
+  transport:    {label:"🚕 Transport / Taxi / VTC",              fb:{cpm:10.5,ctr:1.7,cv:3.0},gg:{cpc:2.5,cv:4.5},vHint:600},
+  conciergerie: {label:"🎩 Conciergerie / Services premium",     fb:{cpm:14.0,ctr:1.5,cv:2.0},gg:{cpc:4.0,cv:3.0},vHint:3000},
+  coworking:    {label:"🏢 Salle de séminaire / Coworking",      fb:{cpm:12.5,ctr:1.5,cv:2.2},gg:{cpc:4.5,cv:3.5},vHint:2000},
+  telecom:      {label:"📡 Télécommunications / Téléphonie",     fb:{cpm:13.0,ctr:1.4,cv:2.0},gg:{cpc:4.0,cv:3.2},vHint:1500},
+  // ── Bâtiment & techniques (nouveaux) ──
+  carrelage:    {label:"🪵 Carrelage / Parquet / Sol",           fb:{cpm:10.5,ctr:1.6,cv:2.8},gg:{cpc:3.0,cv:4.5},vHint:2500},
+  isolation:    {label:"🧱 Isolation thermique / Acoustique",    fb:{cpm:11.5,ctr:1.5,cv:2.5},gg:{cpc:4.0,cv:4.0},vHint:4000},
+  serrurier:    {label:"🔑 Serrurerie / Dépannage",              fb:{cpm:9.0,ctr:1.7,cv:3.5}, gg:{cpc:2.0,cv:6.0},vHint:500},
+  vitrier:      {label:"🪟 Vitrier / Double vitrage",            fb:{cpm:10.0,ctr:1.6,cv:2.8},gg:{cpc:3.2,cv:4.5},vHint:2000},
+  clim:         {label:"❄️ Climatisation / Ventilation",         fb:{cpm:11.0,ctr:1.5,cv:2.8},gg:{cpc:3.5,cv:4.8},vHint:2500},
+  install_sdb:  {label:"🚿 Installation cuisine / Salle de bain",fb:{cpm:11.5,ctr:1.6,cv:2.8},gg:{cpc:3.8,cv:4.5},vHint:3500},
+  signaletique: {label:"🪧 Peinture en lettres / Signalétique",  fb:{cpm:10.0,ctr:1.4,cv:2.2},gg:{cpc:2.8,cv:3.5},vHint:1500},
+  peb:          {label:"📋 Contrôle PEB / Audit énergétique",    fb:{cpm:11.0,ctr:1.4,cv:2.5},gg:{cpc:3.5,cv:4.0},vHint:800},
+  // ── Santé & bien-être (nouveaux) ──
+  chirurgie_pl: {label:"💉 Chirurgie plastique / Esthétique",    fb:{cpm:17.5,ctr:1.6,cv:2.2},gg:{cpc:7.5,cv:3.2},vHint:4000},
+  audio:        {label:"👂 Audioprothésiste / Audition",         fb:{cpm:13.0,ctr:1.4,cv:2.2},gg:{cpc:5.0,cv:3.5},vHint:1500},
+  // ── Professions réglementées (nouveaux) ──
+  admin_biens:  {label:"🏛️ Administrateur de biens",             fb:{cpm:12.5,ctr:1.2,cv:1.8},gg:{cpc:4.5,cv:3.0},vHint:3000},
+  // ── Habitat & design (nouveaux) ──
+  decoratrice:  {label:"🎨 Décoratrice d'intérieur",            fb:{cpm:12.0,ctr:1.7,cv:2.2},gg:{cpc:2.5,cv:3.5},vHint:2000},
+  store_volet:  {label:"🪟 Store / Volet / Pergola",             fb:{cpm:11.0,ctr:1.6,cv:2.5},gg:{cpc:3.0,cv:4.2},vHint:2500},
+  cuisine_sur:  {label:"🍳 Cuisine sur mesure",                  fb:{cpm:12.0,ctr:1.7,cv:2.8},gg:{cpc:4.0,cv:4.5},vHint:6000},
+  eclairage:    {label:"💡 Éclairage / Luminaires",              fb:{cpm:10.5,ctr:1.8,cv:2.5},gg:{cpc:2.5,cv:3.8},vHint:1500},
+  // ── Business digitaux (nouveaux) ──
+  seo_sea:      {label:"🔍 Consultant SEO / SEA",                fb:{cpm:14.0,ctr:1.4,cv:2.2},gg:{cpc:6.0,cv:3.5},vHint:4000},
+  graphiste:    {label:"🖌️ Graphiste / Illustrateur",            fb:{cpm:12.5,ctr:1.5,cv:2.5},gg:{cpc:4.0,cv:3.8},vHint:2000},
+  traducteur:   {label:"🌐 Traducteur / Interprète",             fb:{cpm:12.0,ctr:1.3,cv:2.0},gg:{cpc:4.5,cv:3.2},vHint:2500},
+  cm_freelance: {label:"📱 Community manager freelance",         fb:{cpm:13.0,ctr:1.5,cv:2.5},gg:{cpc:4.5,cv:3.5},vHint:1500},
+  cyber:        {label:"🛡️ Cybersécurité / IT",                  fb:{cpm:15.0,ctr:1.3,cv:1.8},gg:{cpc:7.0,cv:3.0},vHint:8000},
+  ia_auto:      {label:"🤖 Intelligence artificielle / Automatisation", fb:{cpm:15.5,ctr:1.4,cv:2.0},gg:{cpc:7.5,cv:3.2},vHint:6000},
+  // ── Alimentation & événements (nouveaux) ──
+  brasserie:    {label:"🍺 Cave à bière / Brasserie artisanale", fb:{cpm:9.0,ctr:2.2,cv:3.5}, gg:{cpc:1.4,cv:4.2},vHint:300},
+  chocolat:     {label:"🍫 Chocolaterie / Confiserie",           fb:{cpm:9.5,ctr:2.3,cv:3.8}, gg:{cpc:1.5,cv:4.5},vHint:250},
+  glacier:      {label:"🍦 Glacier",                            fb:{cpm:8.5,ctr:2.5,cv:4.0}, gg:{cpc:1.0,cv:5.0},vHint:200},
+  fromagerie:   {label:"🧀 Fromagerie / Épicerie fine",          fb:{cpm:9.0,ctr:2.0,cv:3.5}, gg:{cpc:1.3,cv:4.2},vHint:350},
+  wedding:      {label:"💒 Organisateur de mariages",            fb:{cpm:12.0,ctr:1.9,cv:2.5},gg:{cpc:3.5,cv:3.8},vHint:5000},
+  dj_animation: {label:"🎧 DJ / Animation sonore",               fb:{cpm:10.0,ctr:2.0,cv:3.0},gg:{cpc:2.0,cv:4.0},vHint:1200},
+  loc_materiel: {label:"🎪 Location matériel événementiel",      fb:{cpm:10.5,ctr:1.8,cv:2.8},gg:{cpc:2.5,cv:4.0},vHint:2000},
+  photo_event:  {label:"📷 Photographe / Vidéaste événementiel", fb:{cpm:11.5,ctr:1.9,cv:2.8},gg:{cpc:3.0,cv:4.0},vHint:2500}
 };
 
 var CATEGORIES=[
-  {key:'commerce',label:'Commerce & services',ico:'🛍️',keys:['fitness','beaute','cosmetique','mode','vin','enfance','airbnb','auto','recrutement','bien_etre','bijoux']},
-  {key:'batiment',label:'Bâtiment & techniques',ico:'🔨',keys:['artisan','menuiserie','solaire','renovation','chauffage','electricien','securite','jardinage','nettoyage','demenagement']},
-  {key:'regulated',label:'Professions réglementées',ico:'⚖️',keys:['juridique','finance','comptable','dentiste','sante','psy','clinique','notaire','architecte']},
-  {key:'habitat',label:'Habitat & design',ico:'🏠',keys:['immo','archi','mobilier','piscine','domotique']},
-  {key:'digital',label:'Business digitaux',ico:'💻',keys:['coach','formation','saas','ecom','video','agence_web','marketing']},
-  {key:'food',label:'Alimentation & événements',ico:'🍽️',keys:['resto','retail','events','traiteur','boulangerie','foodtruck']}
+  {key:'retail',    label:'Commerce & Retail',         ico:'🛒', keys:['fitness','cosmetique','mode','opticien','bijoux','librairie','fleuriste','bronzage','loc_vehicule','vin','ecom','retail']},
+  {key:'beaute',    label:'Beauté & Lifestyle',         ico:'💅', keys:['beaute','coiffeur','tatouage','bien_etre','animaux','photo']},
+  {key:'services',  label:'Services aux particuliers',  ico:'🤝', keys:['enfance','airbnb','auto','recrutement','voyage','transport','conciergerie','coworking','telecom','events','loc_materiel','dj_animation','wedding','photo_event']},
+  {key:'batiment',  label:'Bâtiment & techniques',      ico:'🔨', keys:['artisan','menuiserie','solaire','renovation','chauffage','electricien','securite','jardinage','nettoyage','demenagement','peinture','toiture','carrelage','isolation','serrurier','vitrier','clim','install_sdb','signaletique','peb']},
+  {key:'sante',     label:'Santé & bien-être',           ico:'🏥', keys:['kine','medecin','dentiste','ophtalmo','osteo','psy','dieteticien','infirmier','maison_repos','clinique','pharmacie','chirurgie_pl','audio']},
+  {key:'regulated', label:'Professions réglementées',    ico:'⚖️', keys:['juridique','notaire','finance','comptable','architecte','geometre','audit','rh_conseil','admin_biens']},
+  {key:'habitat',   label:'Habitat & design',            ico:'🏠', keys:['immo','promo_immo','archi','decoratrice','mobilier','piscine','domotique','gestion_loc','store_volet','cuisine_sur','eclairage']},
+  {key:'digital',   label:'Business digitaux',           ico:'💻', keys:['coach','formation','saas','video','agence_web','marketing','podcast','seo_sea','graphiste','traducteur','cm_freelance','cyber','ia_auto']},
+  {key:'food',      label:'Alimentation & événements',   ico:'🍽️', keys:['resto','traiteur','boulangerie','foodtruck','bar_cafe','epicerie','brasserie','chocolat','glacier','fromagerie']}
 ];
 
 var S={platform:'fb',sector:'artisan',budget:300,clientValue:800};
@@ -850,7 +921,7 @@ function compute(){
   var impressions=0,clicks,leads,cpc;
   if(S.platform==='fb'){impressions=Math.round((S.budget/d.cpm)*1000);clicks=Math.round(impressions*d.ctr/100);leads=Math.round(clicks*d.cv/100*sf);cpc=clicks>0?(S.budget/clicks):0;}
   else{cpc=d.cpc;clicks=Math.round(S.budget/d.cpc);leads=Math.round(clicks*d.cv/100*sf);impressions=0;}
-  var CR_BASE={fitness:.28,beaute:.25,cosmetique:.26,mode:.22,vin:.30,enfance:.28,airbnb:.22,auto:.18,recrutement:.18,bien_etre:.28,bijoux:.20,artisan:.22,menuiserie:.20,solaire:.16,renovation:.18,chauffage:.26,electricien:.28,securite:.22,jardinage:.28,nettoyage:.30,demenagement:.22,juridique:.18,finance:.15,comptable:.20,dentiste:.22,sante:.22,psy:.24,clinique:.20,notaire:.14,architecte:.15,immo:.15,archi:.16,mobilier:.24,piscine:.18,domotique:.16,coach:.20,formation:.22,saas:.15,ecom:.25,video:.18,agence_web:.16,marketing:.15,resto:.30,retail:.28,events:.24,traiteur:.26,boulangerie:.32,foodtruck:.30};
+  var CR_BASE={fitness:.28,beaute:.25,cosmetique:.26,mode:.22,coiffeur:.30,tatouage:.28,opticien:.24,vin:.30,enfance:.28,airbnb:.22,auto:.18,recrutement:.18,bien_etre:.28,bijoux:.20,animaux:.26,photo:.22,voyage:.20,fleuriste:.32,librairie:.28,bronzage:.28,loc_vehicule:.20,transport:.26,conciergerie:.18,coworking:.20,telecom:.18,artisan:.22,menuiserie:.20,solaire:.16,renovation:.18,chauffage:.26,electricien:.28,securite:.22,jardinage:.28,nettoyage:.30,demenagement:.22,peinture:.24,toiture:.20,carrelage:.22,isolation:.18,serrurier:.32,vitrier:.24,clim:.24,install_sdb:.22,signaletique:.20,peb:.22,kine:.26,medecin:.22,dentiste:.22,ophtalmo:.22,osteo:.26,psy:.24,dieteticien:.26,infirmier:.22,maison_repos:.18,clinique:.20,pharmacie:.28,chirurgie_pl:.18,audio:.22,juridique:.18,notaire:.14,finance:.15,comptable:.20,architecte:.15,geometre:.14,audit:.16,rh_conseil:.18,admin_biens:.16,immo:.15,promo_immo:.14,archi:.16,decoratrice:.20,mobilier:.24,piscine:.18,domotique:.16,gestion_loc:.20,store_volet:.22,cuisine_sur:.20,eclairage:.24,coach:.20,formation:.22,saas:.15,ecom:.25,video:.18,agence_web:.16,marketing:.15,podcast:.20,seo_sea:.18,graphiste:.22,traducteur:.20,cm_freelance:.22,cyber:.15,ia_auto:.16,resto:.30,retail:.28,events:.24,traiteur:.26,boulangerie:.32,foodtruck:.30,bar_cafe:.32,epicerie:.28,brasserie:.30,chocolat:.30,glacier:.34,fromagerie:.28,wedding:.22,dj_animation:.26,loc_materiel:.24,photo_event:.24};
   var crBase=CR_BASE[S.sector]||.20;
   var cvFactor=Math.max(0.5,Math.min(1.5,Math.pow(800/Math.max(S.clientValue,50),0.25)));
   var cr=Math.min(0.45,crBase*cvFactor);
@@ -959,9 +1030,9 @@ function renderChart(d){
 }
 
 function renderUnlock(){
-  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,juridique:6,finance:15,comptable:10,dentiste:8,sante:20,psy:6,clinique:7,notaire:4,architecte:5,immo:35,archi:5,mobilier:8,piscine:6,domotique:5,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9};
-  var CP={fitness:"Meta & Instagram Ads",beaute:"Meta & Instagram Ads",cosmetique:"Meta & Google Shopping",mode:"Meta & Google Shopping",vin:"Meta & Google Ads",enfance:"Meta Ads",airbnb:"Meta & Google Ads",auto:"Google & Meta Ads",recrutement:"Google & LinkedIn Ads",bien_etre:"Meta & Instagram Ads",bijoux:"Meta & Google Shopping",artisan:"Google Ads",menuiserie:"Google & Meta Ads",solaire:"Google Ads",renovation:"Google & Meta Ads",chauffage:"Google Ads",electricien:"Google Ads",securite:"Google & Meta Ads",jardinage:"Meta & Google Ads",nettoyage:"Google & Meta Ads",demenagement:"Google Ads",juridique:"Google Ads",finance:"Google & Meta Ads",comptable:"Google Ads",dentiste:"Google & Meta Ads",sante:"Google Ads",psy:"Google & Meta Ads",clinique:"Meta & Instagram Ads",notaire:"Google Ads",architecte:"Google & Meta Ads",immo:"Meta & Google Ads",archi:"Meta & Google Ads",mobilier:"Meta & Google Shopping",piscine:"Google & Meta Ads",domotique:"Google & Meta Ads",coach:"Meta & Instagram Ads",formation:"Meta & Google Ads",saas:"Google & LinkedIn Ads",ecom:"Meta & Google Shopping",video:"Meta & Google Ads",agence_web:"Google & LinkedIn Ads",marketing:"Meta & LinkedIn Ads",resto:"Meta & Instagram Ads",retail:"Meta & Google Shopping",events:"Meta & Instagram Ads",traiteur:"Meta & Google Ads",boulangerie:"Meta & Instagram Ads",foodtruck:"Meta & Instagram Ads"};
-  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,juridique:61,finance:58,comptable:44,dentiste:42,sante:39,psy:35,clinique:45,notaire:52,architecte:48,immo:52,archi:46,mobilier:38,piscine:44,domotique:47,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35};
+  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,coiffeur:28,tatouage:12,opticien:9,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,animaux:10,photo:8,voyage:15,fleuriste:16,librairie:7,bronzage:8,loc_vehicule:9,transport:19,conciergerie:5,coworking:7,telecom:12,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,peinture:12,toiture:8,carrelage:11,isolation:9,serrurier:14,vitrier:8,clim:12,install_sdb:10,signaletique:6,peb:5,kine:9,medecin:12,dentiste:8,ophtalmo:6,osteo:7,psy:6,dieteticien:5,infirmier:5,maison_repos:7,clinique:7,pharmacie:14,chirurgie_pl:5,audio:6,juridique:6,notaire:4,finance:15,comptable:10,architecte:5,geometre:4,audit:6,rh_conseil:5,admin_biens:5,immo:35,promo_immo:12,archi:5,decoratrice:6,mobilier:8,piscine:6,domotique:5,gestion_loc:8,store_volet:9,cuisine_sur:8,eclairage:7,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,podcast:4,seo_sea:11,graphiste:8,traducteur:5,cm_freelance:12,cyber:6,ia_auto:5,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9,bar_cafe:18,epicerie:11,brasserie:8,chocolat:7,glacier:10,fromagerie:6,wedding:9,dj_animation:11,loc_materiel:8,photo_event:10};
+  var CP={fitness:"Meta & Instagram Ads",beaute:"Meta & Instagram Ads",cosmetique:"Meta & Google Shopping",mode:"Meta & Google Shopping",coiffeur:"Meta & Instagram Ads",tatouage:"Meta & Instagram Ads",opticien:"Google & Meta Ads",vin:"Meta & Google Ads",enfance:"Meta Ads",airbnb:"Meta & Google Ads",auto:"Google & Meta Ads",recrutement:"Google & LinkedIn Ads",bien_etre:"Meta & Instagram Ads",bijoux:"Meta & Google Shopping",animaux:"Meta & Google Ads",photo:"Meta & Instagram Ads",voyage:"Google & Meta Ads",fleuriste:"Meta & Google Ads",librairie:"Google & Meta Ads",bronzage:"Meta & Instagram Ads",loc_vehicule:"Google Ads",transport:"Google Ads",conciergerie:"Google & Meta Ads",coworking:"Google & LinkedIn Ads",telecom:"Google Ads",artisan:"Google Ads",menuiserie:"Google & Meta Ads",solaire:"Google Ads",renovation:"Google & Meta Ads",chauffage:"Google Ads",electricien:"Google Ads",securite:"Google & Meta Ads",jardinage:"Meta & Google Ads",nettoyage:"Google & Meta Ads",demenagement:"Google Ads",peinture:"Google & Meta Ads",toiture:"Google Ads",carrelage:"Google & Meta Ads",isolation:"Google Ads",serrurier:"Google Ads",vitrier:"Google Ads",clim:"Google Ads",install_sdb:"Google & Meta Ads",signaletique:"Google & Meta Ads",peb:"Google Ads",kine:"Google & Meta Ads",medecin:"Google Ads",dentiste:"Google & Meta Ads",ophtalmo:"Google Ads",osteo:"Google & Meta Ads",psy:"Google & Meta Ads",dieteticien:"Meta & Google Ads",infirmier:"Google Ads",maison_repos:"Google & Meta Ads",clinique:"Meta & Instagram Ads",pharmacie:"Google & Meta Ads",chirurgie_pl:"Meta & Instagram Ads",audio:"Google Ads",juridique:"Google Ads",notaire:"Google Ads",finance:"Google & Meta Ads",comptable:"Google Ads",architecte:"Google & Meta Ads",geometre:"Google Ads",audit:"Google & LinkedIn Ads",rh_conseil:"Google & LinkedIn Ads",admin_biens:"Google & Meta Ads",immo:"Meta & Google Ads",promo_immo:"Meta & Google Ads",archi:"Meta & Google Ads",decoratrice:"Meta & Instagram Ads",mobilier:"Meta & Google Shopping",piscine:"Google & Meta Ads",domotique:"Google & Meta Ads",gestion_loc:"Google & Meta Ads",store_volet:"Google & Meta Ads",cuisine_sur:"Google & Meta Ads",eclairage:"Meta & Google Shopping",coach:"Meta & Instagram Ads",formation:"Meta & Google Ads",saas:"Google & LinkedIn Ads",ecom:"Meta & Google Shopping",video:"Meta & Google Ads",agence_web:"Google & LinkedIn Ads",marketing:"Meta & LinkedIn Ads",podcast:"Meta & Instagram Ads",seo_sea:"Google & LinkedIn Ads",graphiste:"Meta & LinkedIn Ads",traducteur:"Google & LinkedIn Ads",cm_freelance:"Meta & Instagram Ads",cyber:"Google & LinkedIn Ads",ia_auto:"Google & LinkedIn Ads",resto:"Meta & Instagram Ads",retail:"Meta & Google Shopping",events:"Meta & Instagram Ads",traiteur:"Meta & Google Ads",boulangerie:"Meta & Instagram Ads",foodtruck:"Meta & Instagram Ads",bar_cafe:"Meta & Instagram Ads",epicerie:"Meta & Google Ads",brasserie:"Meta & Instagram Ads",chocolat:"Meta & Google Shopping",glacier:"Meta & Instagram Ads",fromagerie:"Meta & Google Ads",wedding:"Meta & Instagram Ads",dj_animation:"Meta & Instagram Ads",loc_materiel:"Google & Meta Ads",photo_event:"Meta & Instagram Ads"};
+  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,coiffeur:32,tatouage:35,opticien:40,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,animaux:32,photo:38,voyage:44,fleuriste:30,librairie:35,bronzage:33,loc_vehicule:40,transport:38,conciergerie:45,coworking:42,telecom:48,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,peinture:38,toiture:42,carrelage:42,isolation:46,serrurier:36,vitrier:40,clim:44,install_sdb:44,signaletique:38,peb:40,kine:36,medecin:42,dentiste:42,ophtalmo:40,osteo:36,psy:35,dieteticien:33,infirmier:38,maison_repos:45,clinique:45,pharmacie:35,chirurgie_pl:50,audio:42,juridique:61,notaire:52,finance:58,comptable:44,architecte:48,geometre:46,audit:52,rh_conseil:48,admin_biens:50,immo:52,promo_immo:55,archi:46,decoratrice:44,mobilier:38,piscine:44,domotique:47,gestion_loc:44,store_volet:40,cuisine_sur:44,eclairage:38,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,podcast:42,seo_sea:50,graphiste:45,traducteur:44,cm_freelance:46,cyber:55,ia_auto:52,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35,bar_cafe:36,epicerie:34,brasserie:34,chocolat:32,glacier:30,fromagerie:35,wedding:44,dj_animation:38,loc_materiel:40,photo_event:42};
   var lr=LR[S.sector]||42;
   var ccNum=CC[S.sector]||12;
   var ccPlat=CP[S.sector]||"Meta & Google Ads";
@@ -1068,8 +1139,8 @@ function openPdfModal(){
   var lbl=sec?sec.label:'votre secteur';
 
   // Competitor data
-  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,juridique:6,finance:15,comptable:10,dentiste:8,sante:20,psy:6,clinique:7,notaire:4,architecte:5,immo:35,archi:5,mobilier:8,piscine:6,domotique:5,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9};
-  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,juridique:61,finance:58,comptable:44,dentiste:42,sante:39,psy:35,clinique:45,notaire:52,architecte:48,immo:52,archi:46,mobilier:38,piscine:44,domotique:47,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35};
+  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,coiffeur:28,tatouage:12,opticien:9,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,animaux:10,photo:8,voyage:15,fleuriste:16,librairie:7,bronzage:8,loc_vehicule:9,transport:19,conciergerie:5,coworking:7,telecom:12,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,peinture:12,toiture:8,carrelage:11,isolation:9,serrurier:14,vitrier:8,clim:12,install_sdb:10,signaletique:6,peb:5,kine:9,medecin:12,dentiste:8,ophtalmo:6,osteo:7,psy:6,dieteticien:5,infirmier:5,maison_repos:7,clinique:7,pharmacie:14,chirurgie_pl:5,audio:6,juridique:6,notaire:4,finance:15,comptable:10,architecte:5,geometre:4,audit:6,rh_conseil:5,admin_biens:5,immo:35,promo_immo:12,archi:5,decoratrice:6,mobilier:8,piscine:6,domotique:5,gestion_loc:8,store_volet:9,cuisine_sur:8,eclairage:7,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,podcast:4,seo_sea:11,graphiste:8,traducteur:5,cm_freelance:12,cyber:6,ia_auto:5,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9,bar_cafe:18,epicerie:11,brasserie:8,chocolat:7,glacier:10,fromagerie:6,wedding:9,dj_animation:11,loc_materiel:8,photo_event:10};
+  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,coiffeur:32,tatouage:35,opticien:40,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,animaux:32,photo:38,voyage:44,fleuriste:30,librairie:35,bronzage:33,loc_vehicule:40,transport:38,conciergerie:45,coworking:42,telecom:48,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,peinture:38,toiture:42,carrelage:42,isolation:46,serrurier:36,vitrier:40,clim:44,install_sdb:44,signaletique:38,peb:40,kine:36,medecin:42,dentiste:42,ophtalmo:40,osteo:36,psy:35,dieteticien:33,infirmier:38,maison_repos:45,clinique:45,pharmacie:35,chirurgie_pl:50,audio:42,juridique:61,notaire:52,finance:58,comptable:44,architecte:48,geometre:46,audit:52,rh_conseil:48,admin_biens:50,immo:52,promo_immo:55,archi:46,decoratrice:44,mobilier:38,piscine:44,domotique:47,gestion_loc:44,store_volet:40,cuisine_sur:44,eclairage:38,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,podcast:42,seo_sea:50,graphiste:45,traducteur:44,cm_freelance:46,cyber:55,ia_auto:52,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35,bar_cafe:36,epicerie:34,brasserie:34,chocolat:32,glacier:30,fromagerie:35,wedding:44,dj_animation:38,loc_materiel:40,photo_event:42};
   var ccNum=CC[S.sector]||12;
   var lossRate=LR[S.sector]||42;
 
@@ -1105,9 +1176,9 @@ function generateAndDownloadPdf(){
   var sec=SECTORS[S.sector];
   var lbl=sec?sec.label:'votre secteur';
   var platLabel=S.platform==='fb'?'Meta Ads (Facebook & Instagram)':'Google Ads';
-  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,juridique:6,finance:15,comptable:10,dentiste:8,sante:20,psy:6,clinique:7,notaire:4,architecte:5,immo:35,archi:5,mobilier:8,piscine:6,domotique:5,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9};
-  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,juridique:61,finance:58,comptable:44,dentiste:42,sante:39,psy:35,clinique:45,notaire:52,architecte:48,immo:52,archi:46,mobilier:38,piscine:44,domotique:47,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35};
-  var CP={fitness:'Meta & Instagram Ads',beaute:'Meta & Instagram Ads',cosmetique:'Meta & Google Shopping',mode:'Meta & Google Shopping',vin:'Meta & Google Ads',enfance:'Meta Ads',airbnb:'Meta & Google Ads',auto:'Google & Meta Ads',recrutement:'Google & LinkedIn Ads',bien_etre:'Meta & Instagram Ads',bijoux:'Meta & Google Shopping',artisan:'Google Ads',menuiserie:'Google & Meta Ads',solaire:'Google Ads',renovation:'Google & Meta Ads',chauffage:'Google Ads',electricien:'Google Ads',securite:'Google & Meta Ads',jardinage:'Meta & Google Ads',nettoyage:'Google & Meta Ads',demenagement:'Google Ads',juridique:'Google Ads',finance:'Google & Meta Ads',comptable:'Google Ads',dentiste:'Google & Meta Ads',sante:'Google Ads',psy:'Google & Meta Ads',clinique:'Meta & Instagram Ads',notaire:'Google Ads',architecte:'Google & Meta Ads',immo:'Meta & Google Ads',archi:'Meta & Google Ads',mobilier:'Meta & Google Shopping',piscine:'Google & Meta Ads',domotique:'Google & Meta Ads',coach:'Meta & Instagram Ads',formation:'Meta & Google Ads',saas:'Google & LinkedIn Ads',ecom:'Meta & Google Shopping',video:'Meta & Google Ads',agence_web:'Google & LinkedIn Ads',marketing:'Meta & LinkedIn Ads',resto:'Meta & Instagram Ads',retail:'Meta & Google Shopping',events:'Meta & Instagram Ads',traiteur:'Meta & Google Ads',boulangerie:'Meta & Instagram Ads',foodtruck:'Meta & Instagram Ads'};
+  var CC={fitness:11,beaute:18,cosmetique:14,mode:22,coiffeur:28,tatouage:12,opticien:9,vin:6,enfance:9,airbnb:12,auto:31,recrutement:13,bien_etre:8,bijoux:7,animaux:10,photo:8,voyage:15,fleuriste:16,librairie:7,bronzage:8,loc_vehicule:9,transport:19,conciergerie:5,coworking:7,telecom:12,artisan:35,menuiserie:10,solaire:8,renovation:14,chauffage:22,electricien:20,securite:9,jardinage:11,nettoyage:9,demenagement:7,peinture:12,toiture:8,carrelage:11,isolation:9,serrurier:14,vitrier:8,clim:12,install_sdb:10,signaletique:6,peb:5,kine:9,medecin:12,dentiste:8,ophtalmo:6,osteo:7,psy:6,dieteticien:5,infirmier:5,maison_repos:7,clinique:7,pharmacie:14,chirurgie_pl:5,audio:6,juridique:6,notaire:4,finance:15,comptable:10,architecte:5,geometre:4,audit:6,rh_conseil:5,admin_biens:5,immo:35,promo_immo:12,archi:5,decoratrice:6,mobilier:8,piscine:6,domotique:5,gestion_loc:8,store_volet:9,cuisine_sur:8,eclairage:7,coach:18,formation:23,saas:7,ecom:34,video:5,agence_web:9,marketing:8,podcast:4,seo_sea:11,graphiste:8,traducteur:5,cm_freelance:12,cyber:6,ia_auto:5,resto:29,retail:32,events:13,traiteur:7,boulangerie:12,foodtruck:9,bar_cafe:18,epicerie:11,brasserie:8,chocolat:7,glacier:10,fromagerie:6,wedding:9,dj_animation:11,loc_materiel:8,photo_event:10};
+  var LR={fitness:41,beaute:38,cosmetique:35,mode:38,coiffeur:32,tatouage:35,opticien:40,vin:32,enfance:30,airbnb:36,auto:42,recrutement:48,bien_etre:33,bijoux:40,animaux:32,photo:38,voyage:44,fleuriste:30,librairie:35,bronzage:33,loc_vehicule:40,transport:38,conciergerie:45,coworking:42,telecom:48,artisan:44,menuiserie:46,solaire:55,renovation:49,chauffage:49,electricien:38,securite:42,jardinage:34,nettoyage:30,demenagement:36,peinture:38,toiture:42,carrelage:42,isolation:46,serrurier:36,vitrier:40,clim:44,install_sdb:44,signaletique:38,peb:40,kine:36,medecin:42,dentiste:42,ophtalmo:40,osteo:36,psy:35,dieteticien:33,infirmier:38,maison_repos:45,clinique:45,pharmacie:35,chirurgie_pl:50,audio:42,juridique:61,notaire:52,finance:58,comptable:44,architecte:48,geometre:46,audit:52,rh_conseil:48,admin_biens:50,immo:52,promo_immo:55,archi:46,decoratrice:44,mobilier:38,piscine:44,domotique:47,gestion_loc:44,store_volet:40,cuisine_sur:44,eclairage:38,coach:53,formation:47,saas:58,ecom:35,video:42,agence_web:50,marketing:48,podcast:42,seo_sea:50,graphiste:45,traducteur:44,cm_freelance:46,cyber:55,ia_auto:52,resto:43,retail:38,events:40,traiteur:36,boulangerie:32,foodtruck:35,bar_cafe:36,epicerie:34,brasserie:34,chocolat:32,glacier:30,fromagerie:35,wedding:44,dj_animation:38,loc_materiel:40,photo_event:42};
+  var CP={fitness:'Meta & Instagram Ads',beaute:'Meta & Instagram Ads',cosmetique:'Meta & Google Shopping',mode:'Meta & Google Shopping',coiffeur:'Meta & Instagram Ads',tatouage:'Meta & Instagram Ads',opticien:'Google & Meta Ads',vin:'Meta & Google Ads',enfance:'Meta Ads',airbnb:'Meta & Google Ads',auto:'Google & Meta Ads',recrutement:'Google & LinkedIn Ads',bien_etre:'Meta & Instagram Ads',bijoux:'Meta & Google Shopping',animaux:'Meta & Google Ads',photo:'Meta & Instagram Ads',voyage:'Google & Meta Ads',fleuriste:'Meta & Google Ads',librairie:'Google & Meta Ads',bronzage:'Meta & Instagram Ads',loc_vehicule:'Google Ads',transport:'Google Ads',conciergerie:'Google & Meta Ads',coworking:'Google & LinkedIn Ads',telecom:'Google Ads',artisan:'Google Ads',menuiserie:'Google & Meta Ads',solaire:'Google Ads',renovation:'Google & Meta Ads',chauffage:'Google Ads',electricien:'Google Ads',securite:'Google & Meta Ads',jardinage:'Meta & Google Ads',nettoyage:'Google & Meta Ads',demenagement:'Google Ads',peinture:'Google & Meta Ads',toiture:'Google Ads',carrelage:'Google & Meta Ads',isolation:'Google Ads',serrurier:'Google Ads',vitrier:'Google Ads',clim:'Google Ads',install_sdb:'Google & Meta Ads',signaletique:'Google & Meta Ads',peb:'Google Ads',kine:'Google & Meta Ads',medecin:'Google Ads',dentiste:'Google & Meta Ads',ophtalmo:'Google Ads',osteo:'Google & Meta Ads',psy:'Google & Meta Ads',dieteticien:'Meta & Google Ads',infirmier:'Google Ads',maison_repos:'Google & Meta Ads',clinique:'Meta & Instagram Ads',pharmacie:'Google & Meta Ads',chirurgie_pl:'Meta & Instagram Ads',audio:'Google Ads',juridique:'Google Ads',notaire:'Google Ads',finance:'Google & Meta Ads',comptable:'Google Ads',architecte:'Google & Meta Ads',geometre:'Google Ads',audit:'Google & LinkedIn Ads',rh_conseil:'Google & LinkedIn Ads',admin_biens:'Google & Meta Ads',immo:'Meta & Google Ads',promo_immo:'Meta & Google Ads',archi:'Meta & Google Ads',decoratrice:'Meta & Instagram Ads',mobilier:'Meta & Google Shopping',piscine:'Google & Meta Ads',domotique:'Google & Meta Ads',gestion_loc:'Google & Meta Ads',store_volet:'Google & Meta Ads',cuisine_sur:'Google & Meta Ads',eclairage:'Meta & Google Shopping',coach:'Meta & Instagram Ads',formation:'Meta & Google Ads',saas:'Google & LinkedIn Ads',ecom:'Meta & Google Shopping',video:'Meta & Google Ads',agence_web:'Google & LinkedIn Ads',marketing:'Meta & LinkedIn Ads',podcast:'Meta & Instagram Ads',seo_sea:'Google & LinkedIn Ads',graphiste:'Meta & LinkedIn Ads',traducteur:'Google & LinkedIn Ads',cm_freelance:'Meta & Instagram Ads',cyber:'Google & LinkedIn Ads',ia_auto:'Google & LinkedIn Ads',resto:'Meta & Instagram Ads',retail:'Meta & Google Shopping',events:'Meta & Instagram Ads',traiteur:'Meta & Google Ads',boulangerie:'Meta & Instagram Ads',foodtruck:'Meta & Instagram Ads',bar_cafe:'Meta & Instagram Ads',epicerie:'Meta & Google Ads',brasserie:'Meta & Instagram Ads',chocolat:'Meta & Google Shopping',glacier:'Meta & Instagram Ads',fromagerie:'Meta & Google Ads',wedding:'Meta & Instagram Ads',dj_animation:'Meta & Instagram Ads',loc_materiel:'Google & Meta Ads',photo_event:'Meta & Instagram Ads'};
   var ccNum=CC[S.sector]||12;
   var lossRate=LR[S.sector]||42;
   var ccPlat=CP[S.sector]||'Meta & Google Ads';
@@ -1308,7 +1379,7 @@ function generateAndDownloadPdf(){
     // FOOTER
     +'<div class="footer-pdf">'
       +'<div class="footer-pdf-left"><strong style="color:#0C0340">Vision House</strong> · hello@visionhouse.be · +32 451 09 56 50<br>Emkay Partners SRL · BCE 1024.829.348 · © 2026 Tous droits réservés<br><span style="color:#B5311A;font-weight:600">Usage personnel exclusif — Utilisation IA interdite</span></div>'
-      +'<div class="footer-pdf-right">visionhouse.be/Le Simulateur Vision House<br>Rapport généré le '+dateStr+'</div>'
+      +'<div class="footer-pdf-right">visionhouse.be/simulateur<br>Rapport généré le '+dateStr+'</div>'
     +'</div>'
 
   +'</div></body></html>';
