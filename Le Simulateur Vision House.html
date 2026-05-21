@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js" defer></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -230,7 +230,35 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .gate-overlay{position:relative;border-radius:var(--r-lg);overflow:hidden;margin-bottom:1rem}
 .gate-blur{filter:blur(6px);pointer-events:none;user-select:none;opacity:.55;transform:scale(1.01);transition:filter .3s,opacity .3s}
 .gate-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.92) 35%,rgba(255,255,255,.98) 100%);border-radius:var(--r-lg);padding:1.5rem}
-.gate-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem 1.6rem;max-width:440px;width:100%;box-shadow:0 8px 40px -12px rgba(12,3,64,.18);text-align:center}
+
+/* ── Gate card with animated border ── */
+.gate-card-wrap{
+  position:relative;
+  max-width:440px;width:100%;
+  border-radius:var(--r-lg);
+  padding:2px; /* border thickness */
+  background:linear-gradient(var(--angle,135deg),#0C0340,#3a6dd9,#9DBFFF,#E8D4A8,#3a6dd9,#0C0340);
+  background-size:300% 300%;
+  animation:borderSpin 3s linear infinite, borderShift 6s ease-in-out infinite;
+  box-shadow:0 0 28px rgba(58,109,217,.25), 0 12px 40px -12px rgba(12,3,64,.3);
+}
+@property --angle{syntax:'<angle>';initial-value:135deg;inherits:false}
+@keyframes borderSpin{
+  0%{--angle:0deg}100%{--angle:360deg}
+}
+@keyframes borderShift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+.gate-card{
+  background:#fff;
+  border:none;
+  border-radius:calc(var(--r-lg) - 2px);
+  padding:1.5rem 1.6rem;
+  width:100%;
+  text-align:center;
+  position:relative;
+}
 .gate-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--vh-blue);margin-bottom:.5rem}
 .gate-card h3{font-family:var(--fh);font-size:1.15rem;font-weight:700;color:var(--vh-violet);margin-bottom:.4rem;letter-spacing:-.02em}
 .gate-card p{font-size:13px;color:var(--t2);line-height:1.55;margin-bottom:1.1rem}
@@ -326,6 +354,265 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .pdf-modal-close:hover{background:rgba(255,255,255,.22)}
 @media(max-width:640px){.ptabs{grid-template-columns:1fr}.nav{padding:.9rem 1rem}.hero{padding-top:2.5rem}}
 @media(max-width:380px){.vi-wrap input{width:100%;text-align:left}.vi-wrap label{flex:1 1 100%}}
+
+/* ═══════════════════════════════════════════════
+   PACK ACTIVATION — section post-déverrouillage
+═══════════════════════════════════════════════ */
+.va-section{display:flex;flex-direction:column;gap:12px;margin-top:1.5rem}
+#va-pack{display:none}
+
+/* Tokens pack */
+.va-section{--vhb:#092969;--gold:#B6873C;--goldl:#C8963D;--goldd:#E8D4A8;--goldp:#F8F1E2;--ok:#0d8b54;--fh:'Bricolage Grotesque','Geist',sans-serif;--fb2:'DM Sans','Inter',sans-serif;--fs2:'DM Serif Display',serif}
+
+/* Hero dark */
+.va-hero{position:relative;overflow:hidden;border-radius:28px;background:radial-gradient(ellipse 80% 60% at 95% 0%,rgba(58,109,217,.28) 0%,transparent 52%),radial-gradient(ellipse 60% 50% at 0% 95%,rgba(182,135,60,.13) 0%,transparent 55%),linear-gradient(155deg,#07011a 0%,#0C0340 42%,#0c2260 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 40px 100px -24px rgba(12,3,64,.6),0 8px 24px rgba(12,3,64,.14)}
+.va-hero::after{content:"";position:absolute;bottom:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(232,212,168,.22) 50%,transparent)}
+.va-hero-glare{position:absolute;top:-160px;right:-160px;width:540px;height:540px;border-radius:50%;background:radial-gradient(circle,rgba(157,191,255,.08) 0%,transparent 62%);pointer-events:none}
+.va-hero-body{position:relative;z-index:2;padding:clamp(2rem,5vw,3rem) clamp(2rem,5vw,3.2rem)}
+.va-hero-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:2rem}
+.va-hero-tag{display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 10px;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);font-family:var(--fh);font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.68)}
+.va-hero-tag-dot{width:5px;height:5px;border-radius:50%;background:#9DBFFF;box-shadow:0 0 7px rgba(157,191,255,.8)}
+.va-hero-cap{font-size:11px;color:rgba(255,255,255,.32);font-style:italic}
+.va-hero-h{font-family:var(--fh);font-size:clamp(1.95rem,5.2vw,3rem);font-weight:700;letter-spacing:-.04em;line-height:1.06;color:#fff;margin-bottom:clamp(1.8rem,4vw,2.6rem);max-width:22ch}
+.va-hero-h em{font-family:var(--fs2);font-style:italic;font-weight:400;color:rgba(232,212,168,.78);font-size:1.02em;display:block;margin-top:.1em}
+.va-price{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-bottom:clamp(1.6rem,4vw,2.2rem);margin-bottom:clamp(1.6rem,4vw,2.2rem);border-bottom:1px solid rgba(255,255,255,.055)}
+.va-price-lhs{display:flex;flex-direction:column;gap:5px}
+.va-price-eyebrow{font-family:var(--fh);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.26);margin-bottom:4px}
+.va-price-num{font-family:var(--fh);font-size:clamp(3.8rem,10vw,5.6rem);font-weight:800;letter-spacing:-.07em;line-height:.88;background:linear-gradient(128deg,#c2d5ff 0%,#fff 50%,#e8d4a8 100%);-webkit-background-clip:text;background-clip:text;color:transparent;display:flex;align-items:flex-start;gap:3px}
+.va-price-num sup{font-size:.28em;font-weight:500;margin-top:.38em;background:none;-webkit-background-clip:unset;background-clip:unset;color:rgba(255,255,255,.42)}
+.va-price-desc{font-size:11px;color:rgba(255,255,255,.26);margin-top:7px;letter-spacing:.01em}
+.va-price-div{width:1px;align-self:stretch;flex-shrink:0;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.1) 30%,rgba(255,255,255,.1) 70%,transparent)}
+.va-price-rhs{display:flex;flex-direction:column;gap:7px;padding-left:2px}
+.va-price-tick{display:flex;align-items:center;gap:7px;font-size:11.5px;color:rgba(255,255,255,.44)}
+.va-price-tick::before{content:"";width:14px;height:14px;flex-shrink:0;border-radius:50%;background:rgba(157,191,255,.09) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239DBFFF' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M5 12l5 5 9-11'/%3E%3C/svg%3E") no-repeat center/9px}
+.va-price-tick b{color:rgba(255,255,255,.78);font-weight:500}
+@media(max-width:480px){.va-price-div{display:none}.va-price-rhs{border-top:1px solid rgba(255,255,255,.07);padding-top:12px;width:100%}}
+.va-date{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;margin-bottom:clamp(1.6rem,4vw,2rem);background:rgba(157,191,255,.07);border:1px solid rgba(157,191,255,.13);font-size:11.5px;color:rgba(255,255,255,.44)}
+.va-date svg{flex-shrink:0;color:rgba(157,191,255,.5)}
+.va-date strong{color:rgba(255,255,255,.8);font-weight:600}
+.va-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:clamp(1.8rem,4vw,2.4rem)}
+@media(max-width:500px){.va-grid{grid-template-columns:1fr}}
+.va-hitem{display:flex;gap:11px;align-items:flex-start;padding:13px 14px;border-radius:13px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);transition:background .2s,border-color .2s}
+.va-hitem:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.09)}
+.va-hitem-ico{width:28px;height:28px;flex-shrink:0;border-radius:50%;margin-top:1px;background:rgba(157,191,255,.08);border:1px solid rgba(157,191,255,.14);display:flex;align-items:center;justify-content:center}
+.va-hitem-ico svg{color:rgba(157,191,255,.65)}
+.va-hitem-t{font-family:var(--fh);font-weight:600;font-size:12.5px;color:rgba(255,255,255,.88);letter-spacing:-.01em;line-height:1.28;margin-bottom:2px}
+.va-hitem-d{font-size:10.5px;color:rgba(255,255,255,.36);line-height:1.5}
+.va-cta{display:flex;align-items:center;justify-content:space-between;padding:15px 15px 15px 26px;border-radius:100px;background:#fff;color:#0C0340;border:none;cursor:pointer;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.8);transition:all .32s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;margin-bottom:11px}
+.va-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(232,212,168,.5) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s ease}
+.va-cta:hover{background:#F8F1E2;transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.22)}
+.va-cta:hover::before{transform:translateX(120%)}
+.va-cta-lhs{display:flex;flex-direction:column;gap:2px;position:relative;z-index:1}
+.va-cta-main{font-family:var(--fh);font-size:15px;font-weight:700;letter-spacing:-.02em;color:#0C0340}
+.va-cta-sub{font-size:10px;color:rgba(12,3,64,.55)}
+.va-cta-circle{width:38px;height:38px;border-radius:50%;flex-shrink:0;background:#0C0340;display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1);position:relative;z-index:1}
+.va-cta:hover .va-cta-circle{transform:translateX(4px)}
+.va-cta-circle svg{color:#fff}
+.va-trust{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.va-htrust{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:rgba(255,255,255,.26)}
+.va-htrust svg{color:rgba(255,255,255,.2);flex-shrink:0}
+
+/* Témoignage */
+.va-testi{background:var(--surface);border:1px solid var(--border);border-radius:28px;padding:clamp(1.6rem,4vw,2.2rem);box-shadow:0 2px 12px rgba(12,3,64,.04);display:grid;grid-template-columns:1fr auto;gap:1.4rem;align-items:start}
+@media(max-width:560px){.va-testi{grid-template-columns:1fr;gap:1rem}}
+.va-testi-lhs{display:flex;flex-direction:column;gap:1rem}
+.va-testi-person{display:flex;align-items:center;gap:11px}
+.va-testi-av{width:42px;height:42px;border-radius:50%;flex-shrink:0;background:linear-gradient(140deg,#0C0340,#3a6dd9);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;font-size:13px;color:#fff;box-shadow:0 4px 12px rgba(12,3,64,.18)}
+.va-testi-name{font-family:var(--fh);font-size:13.5px;font-weight:700;color:var(--t1);letter-spacing:-.01em}
+.va-testi-role{font-size:11.5px;color:var(--t3);margin-top:1px}
+.va-testi-q{font-family:var(--fs2);font-style:italic;font-size:clamp(1rem,2.5vw,1.13rem);color:var(--t1);line-height:1.58;letter-spacing:-.01em;position:relative;padding-left:1.1rem}
+.va-testi-q::before{content:"";position:absolute;left:0;top:.2em;bottom:.2em;width:2.5px;border-radius:2px;background:linear-gradient(to bottom,var(--gold),#E8D4A8)}
+.va-testi-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:100px;width:fit-content;background:rgba(13,139,84,.07);border:1px solid rgba(13,139,84,.13);font-family:var(--fh);font-size:11.5px;font-weight:600;color:#0d8b54}
+.va-testi-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#0d8b54;flex-shrink:0}
+.va-testi-stars{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.va-stars-row{display:flex;gap:2px}
+.va-stars-row svg{color:var(--gold)}
+.va-testi-note{font-size:9.5px;color:var(--t3);white-space:nowrap}
+
+/* Timeline */
+.va-tl{background:var(--surface);border:1px solid var(--border);border-radius:28px;padding:clamp(1.6rem,4vw,2.2rem);box-shadow:0 2px 12px rgba(12,3,64,.04)}
+.va-tl-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:2rem}
+.va-tl-h{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--t1);letter-spacing:-.02em;line-height:1.3}
+.va-tl-h em{font-family:var(--fs2);font-style:italic;font-weight:400;color:var(--gold);font-size:1.05em}
+.va-tl-sub{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);font-family:var(--fh)}
+.va-tl-rail{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-bottom:1.4rem}
+.va-tl-track{position:absolute;top:22px;left:10%;right:10%;height:1.5px;background:var(--border-2);z-index:0;border-radius:2px}
+.va-tl-fill{position:absolute;top:22px;left:10%;height:1.5px;width:0%;max-width:80%;background:linear-gradient(90deg,#0C0340,#3a6dd9);z-index:1;border-radius:2px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.va-tl-col{display:flex;flex-direction:column;align-items:center;gap:7px;position:relative;z-index:2;cursor:pointer;padding:0 4px}
+.va-tl-node{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--border-2);background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;font-size:13px;color:var(--t3);transition:all .4s cubic-bezier(.34,1.56,.64,1)}
+.va-tl-col.on .va-tl-node{background:#0C0340;border-color:#0C0340;color:#fff;transform:scale(1.1);box-shadow:0 0 0 5px rgba(12,3,64,.08),0 6px 18px rgba(12,3,64,.24)}
+.va-tl-col.ok .va-tl-node{background:#0d8b54;border-color:#0d8b54;color:#fff;transform:scale(1)}
+.va-tl-chk{display:none}
+.va-tl-col.ok .va-tl-n{display:none}.va-tl-col.ok .va-tl-chk{display:block}
+.va-tl-day{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);font-family:var(--fh);text-align:center;transition:color .3s}
+.va-tl-col.on .va-tl-day{color:#3a6dd9}.va-tl-col.ok .va-tl-day{color:#0d8b54}
+.va-tl-name{font-family:var(--fh);font-size:11px;font-weight:600;color:var(--t3);text-align:center;letter-spacing:-.01em;line-height:1.2;transition:color .3s}
+.va-tl-col.on .va-tl-name{color:var(--t1)}.va-tl-col.ok .va-tl-name{color:var(--t2)}
+.va-tl-panel{padding:14px 16px;background:var(--surface-tint);border:1px solid var(--border);border-radius:12px;display:flex;align-items:flex-start;gap:11px;min-height:64px}
+.va-tl-pn{width:26px;height:26px;border-radius:8px;flex-shrink:0;background:#0C0340;color:#fff;font-family:var(--fh);font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.va-tl-pn.ok{background:#0d8b54}
+.va-tl-pt{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1);letter-spacing:-.01em;margin-bottom:3px}
+.va-tl-pd{font-size:12px;color:var(--t2);line-height:1.55}
+.va-tl-ptag{flex-shrink:0;align-self:flex-start;padding:3px 10px;border-radius:100px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:var(--fh);background:rgba(58,109,217,.08);color:#3a6dd9}
+.va-tl-ptag.ok{background:rgba(13,139,84,.08);color:#0d8b54}
+.va-tl-st{display:flex;align-items:center;gap:7px;margin-top:9px;font-size:11px;color:var(--t3)}
+.va-tl-dot{width:5px;height:5px;border-radius:50%;background:var(--t4);flex-shrink:0;transition:background .3s}
+.va-tl-st.run .va-tl-dot{background:#3a6dd9;animation:vablink 1.2s ease-in-out infinite}
+.va-tl-st.fin .va-tl-dot{background:#0d8b54}.va-tl-st.fin{color:#0d8b54}
+@keyframes vablink{0%,100%{opacity:1}50%{opacity:.25}}
+.va-tl-rpl{margin-left:auto;display:inline-flex;align-items:center;gap:4px;padding:3px 11px;border-radius:100px;background:transparent;border:1px solid var(--border-2);font-family:var(--fh);font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t2);cursor:pointer;transition:all .2s}
+.va-tl-rpl:hover{background:var(--surface-tint);color:var(--t1)}
+@media(max-width:560px){.va-tl-rail{grid-template-columns:repeat(3,1fr)}.va-tl-track{left:16.66%;right:16.66%}.va-tl-fill{left:16.66%;max-width:66.67%}}
+
+/* FAQ pack */
+.va-faq{background:var(--surface);border:1px solid var(--border);border-radius:28px;overflow:hidden;box-shadow:0 2px 12px rgba(12,3,64,.04)}
+.va-faq-hd{display:flex;align-items:center;justify-content:space-between;padding:clamp(1.3rem,3vw,1.7rem) clamp(1.6rem,4vw,2.2rem);border-bottom:1px solid var(--border)}
+.va-faq-title{font-family:var(--fh);font-size:14.5px;font-weight:700;color:var(--t1);letter-spacing:-.02em}
+.va-faq-count{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);font-family:var(--fh)}
+.va-faq-item{border-bottom:1px solid var(--border)}
+.va-faq-item:last-child{border-bottom:none}
+.va-faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:1rem clamp(1.6rem,4vw,2.2rem);cursor:pointer;font-family:var(--fh);font-size:13.5px;font-weight:600;color:var(--t1);letter-spacing:-.01em;line-height:1.35;transition:color .18s;user-select:none}
+.va-faq-q:hover{color:#092969}
+.va-faq-item.open .va-faq-q{color:#0C0340}
+.va-faq-arrow{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:var(--surface-tint);border:1px solid var(--border-2);display:flex;align-items:center;justify-content:center;color:var(--t3);transition:all .3s cubic-bezier(.4,0,.2,1)}
+.va-faq-item.open .va-faq-arrow{background:#0C0340;border-color:#0C0340;color:#fff;transform:rotate(45deg)}
+.va-faq-a{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1),padding .3s;font-size:13px;color:var(--t2);line-height:1.68;padding:0 clamp(1.6rem,4vw,2.2rem)}
+.va-faq-item.open .va-faq-a{max-height:200px;padding:0 clamp(1.6rem,4vw,2.2rem) 1.2rem}
+
+/* Closing */
+.va-closing{background:var(--surface);border:1px solid var(--border);border-radius:28px;overflow:hidden;box-shadow:0 2px 12px rgba(12,3,64,.04)}
+.va-founder{display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:center;padding:clamp(1.4rem,3.5vw,2rem) clamp(1.6rem,4vw,2.2rem);border-bottom:1px solid var(--border)}
+@media(max-width:500px){.va-founder{grid-template-columns:1fr;gap:.9rem}}
+.va-founder-av{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:linear-gradient(145deg,#0C0340 0%,#3a6dd9 100%);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;font-size:20px;color:#fff;box-shadow:0 6px 20px rgba(12,3,64,.2);letter-spacing:-.02em}
+.va-founder-eyebrow{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--t3);font-family:var(--fh);margin-bottom:4px}
+.va-founder-name{font-family:var(--fh);font-size:16.5px;font-weight:700;color:var(--t1);letter-spacing:-.02em;margin-bottom:3px}
+.va-founder-role{font-size:12px;color:var(--t2);line-height:1.5}
+.va-founder-note{font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;margin-top:.5rem}
+.va-transp{display:flex;align-items:flex-start;gap:10px;padding:clamp(1rem,2.5vw,1.3rem) clamp(1.6rem,4vw,2.2rem);background:#F8F1E2;border-bottom:1px solid rgba(182,135,60,.12)}
+.va-transp svg{flex-shrink:0;color:#C8963D;margin-top:1px}
+.va-transp-txt{font-size:12px;color:rgba(12,3,64,.65);line-height:1.6}
+.va-transp-txt strong{color:#B6873C;font-weight:600}
+.va-closing-cta{padding:clamp(1.4rem,3.5vw,2rem) clamp(1.6rem,4vw,2.2rem);display:flex;flex-direction:column;gap:1rem}
+.va-closing-h{font-family:var(--fh);font-size:clamp(.98rem,2.4vw,1.15rem);font-weight:700;letter-spacing:-.02em;line-height:1.3;color:var(--t1);margin-bottom:.2rem}
+.va-closing-h em{font-family:var(--fs2);font-style:italic;font-weight:400;color:var(--gold);font-size:1.04em}
+.va-closing-checks{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:.4rem}
+.va-cchk{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--t2)}
+.va-cchk::before{content:"";width:14px;height:14px;border-radius:50%;flex-shrink:0;background:rgba(13,139,84,.09) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d8b54' stroke-width='2.8' stroke-linecap='round'%3E%3Cpath d='M5 12l5 5 9-11'/%3E%3C/svg%3E") no-repeat center/9px}
+.va-cchk b{color:var(--t1);font-weight:600}
+.va-closing-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.va-closing-btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:100px;background:#0C0340;color:#fff;border:none;cursor:pointer;text-decoration:none;font-family:var(--fh);font-weight:700;font-size:14px;letter-spacing:-.01em;white-space:nowrap;transition:all .25s;box-shadow:0 8px 22px -6px rgba(12,3,64,.38);position:relative;overflow:hidden;flex-shrink:0}
+.va-closing-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.1) 50%,transparent 65%);transform:translateX(-100%);transition:transform .6s ease}
+.va-closing-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(12,3,64,.45)}
+.va-closing-btn:hover::before{transform:translateX(100%)}
+.va-closing-price{font-size:12px;color:var(--t3)}
+.va-closing-price strong{color:var(--t1);font-weight:600;font-size:13px}
+
+/* Reveal animation */
+#va-pack{animation:vaFadeIn .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes vaFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+
+/* ── Urgency bar ── */
+.urgency-bar{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:linear-gradient(90deg,#0C0340 0%,#0c2260 50%,#0C0340 100%);
+  padding:9px 20px;
+  display:none;
+  align-items:center;justify-content:center;gap:12px;
+  font-family:var(--fh);font-size:12px;color:rgba(255,255,255,.75);
+  border-bottom:1px solid rgba(157,191,255,.15);
+  animation:ubSlide .4s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes ubSlide{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.urgency-bar.show{display:flex}
+.urgency-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:ubBlink 1.5s infinite;flex-shrink:0}
+@keyframes ubBlink{0%,100%{opacity:1}50%{opacity:.3}}
+.urgency-txt b{color:#fff;font-weight:700}
+.urgency-cta{
+  margin-left:8px;padding:5px 16px;border-radius:100px;
+  background:#fff;color:#0C0340;
+  font-family:var(--fh);font-size:11px;font-weight:700;
+  border:none;cursor:pointer;white-space:nowrap;
+  transition:all .18s;flex-shrink:0;
+  text-decoration:none;display:inline-block;
+}
+.urgency-cta:hover{background:#E8D4A8;transform:translateY(-1px)}
+.urgency-close{background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;font-size:16px;padding:0 0 0 8px;line-height:1;flex-shrink:0;transition:color .15s}
+.urgency-close:hover{color:#fff}
+@media(max-width:560px){
+  .urgency-bar{padding:8px 12px;gap:8px;font-size:11px}
+  .urgency-txt{display:none}
+  .urgency-bar .urgency-short{display:block!important}
+}
+.urgency-short{display:none;font-size:11px;color:rgba(255,255,255,.75)}
+.urgency-short b{color:#fff}
+
+/* ── Mini Pack card inline ── */
+.mini-pack{
+  display:none;
+  border-radius:var(--r-lg);overflow:hidden;margin-bottom:1rem;
+  border:1.5px solid rgba(12,3,64,.12);
+  background:linear-gradient(135deg,#07011a 0%,#0C0340 60%,#0c2260 100%);
+  position:relative;
+}
+.mini-pack::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(157,191,255,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.mini-pack.show{display:block;animation:mpFade .5s cubic-bezier(.16,1,.3,1) both}
+@keyframes mpFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.mini-pack-inner{position:relative;z-index:1;padding:1.4rem 1.6rem}
+.mini-pack-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--fh);font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:1rem;
+}
+.mini-pack-tag-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px rgba(34,197,94,.8)}
+.mini-pack-headline{
+  font-family:var(--fh);font-size:clamp(1.15rem,3vw,1.5rem);font-weight:700;
+  color:#fff;letter-spacing:-.03em;line-height:1.2;margin-bottom:.6rem;
+}
+.mini-pack-headline em{font-style:italic;color:#E8D4A8;font-family:'Instrument Serif',serif;font-weight:400}
+.mini-pack-sub{font-size:12px;color:rgba(255,255,255,.5);line-height:1.55;margin-bottom:1.2rem}
+.mini-pack-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:1.2rem}
+.mini-pack-price{font-family:var(--fh);font-size:2.2rem;font-weight:800;letter-spacing:-.05em;color:#fff;line-height:1}
+.mini-pack-price sup{font-size:.4em;font-weight:500;color:rgba(255,255,255,.45);vertical-align:super}
+.mini-pack-price-sub{font-size:11px;color:rgba(255,255,255,.35);margin-top:3px}
+.mini-pack-pills{display:flex;flex-wrap:wrap;gap:6px}
+.mini-pack-pill{
+  font-size:10.5px;color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:100px;padding:4px 11px;
+  display:flex;align-items:center;gap:5px;
+}
+.mini-pack-pill::before{content:'✓';color:#9DBFFF;font-weight:700;font-size:9px}
+.mini-pack-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 14px 14px 22px;border-radius:100px;
+  background:#fff;color:#0C0340;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 8px 28px rgba(0,0,0,.22);
+  transition:all .25s cubic-bezier(.4,0,.2,1);
+  position:relative;overflow:hidden;
+  font-family:inherit;width:100%;
+}
+.mini-pack-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(232,212,168,.45) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s ease}
+.mini-pack-btn:hover{background:#F8F1E2;transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,0,0,.25)}
+.mini-pack-btn:hover::before{transform:translateX(120%)}
+.mini-pack-btn-lhs{display:flex;flex-direction:column;gap:2px;position:relative;z-index:1}
+.mini-pack-btn-main{font-family:var(--fh);font-size:14px;font-weight:700;letter-spacing:-.02em;color:#0C0340}
+.mini-pack-btn-sub{font-size:10px;color:rgba(12,3,64,.5)}
+.mini-pack-btn-circle{width:36px;height:36px;border-radius:50%;background:#0C0340;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.mini-pack-btn:hover .mini-pack-btn-circle{transform:translateX(4px)}
+.mini-pack-btn-circle svg{color:#fff}
+.mini-pack-slots{
+  display:flex;align-items:center;gap:7px;
+  margin-top:.9rem;font-size:11px;color:rgba(255,255,255,.35);
+}
+.mini-pack-slots-dot{width:5px;height:5px;border-radius:50%;background:#f59e0b;flex-shrink:0}
+
 </style>
 </head>
 <body>
@@ -342,10 +629,28 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   </div>
 </header>
 
+<!-- BARRE D'URGENCE — apparaît après déverrouillage -->
+<div class="urgency-bar" id="urgencyBar">
+  <span class="urgency-dot"></span>
+  <span class="urgency-txt"><b>2 créneaux disponibles</b> cette semaine avec un fondateur Vision House</span>
+  <span class="urgency-short"><b>2 créneaux</b> disponibles</span>
+  <a href="https://buy.stripe.com/fZu9AVcmn1xr6DI5ns4sE00" target="_blank" rel="noopener" class="urgency-cta">Réserver maintenant</a>
+  <button class="urgency-close" onclick="document.getElementById('urgencyBar').classList.remove('show')" aria-label="Fermer">&#215;</button>
+</div>
+
 <main>
 <section class="hero">
-  <h1>Votre CA potentiel.<br><span class="italic">Enfin chiffré.</span></h1>
-  <p class="hero-sub">Le calcul réel de votre CA potentiel sur <strong>Meta Ads &amp; Google Ads</strong> en Belgique, par secteur, en 30 secondes.</p>
+  <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;background:rgba(9,41,105,.07);border:1px solid rgba(9,41,105,.15);font-size:11px;font-weight:600;color:var(--vh-blue);letter-spacing:.04em;margin-bottom:1.2rem">
+    <span style="width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px rgba(34,197,94,.7)"></span>
+    Outil gratuit &middot; 30 secondes &middot; Résultat immédiat
+  </div>
+  <h1>Combien vaut<br><span class="italic">votre secteur en pub ?</span></h1>
+  <p class="hero-sub">Choisissez votre secteur, entrez votre budget et la valeur d'un client.<br>On calcule votre <strong>CA mensuel potentiel</strong>, votre ROI et ce que vos concurrents dépensent <strong>en ce moment en Belgique</strong>.</p>
+  <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:1.2rem;margin-bottom:.4rem">
+    <span style="font-size:12px;color:var(--t2);display:flex;align-items:center;gap:6px"><span style="color:var(--vh-blue);font-weight:700">✓</span> Données Belgique 2026</span>
+    <span style="font-size:12px;color:var(--t2);display:flex;align-items:center;gap:6px"><span style="color:var(--vh-blue);font-weight:700">✓</span> 109 secteurs</span>
+    <span style="font-size:12px;color:var(--t2);display:flex;align-items:center;gap:6px"><span style="color:var(--vh-blue);font-weight:700">✓</span> Analyse concurrentielle</span>
+  </div>
   <a href="#platform-section" class="scroll-arrow">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </a>
@@ -424,6 +729,37 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <p class="ina-txt" id="lossSub"></p>
     </div>
 
+    <!-- MINI PACK CARD — apparaît juste après le chiffre du coût de l'inaction -->
+    <div class="mini-pack" id="miniPack">
+      <div class="mini-pack-inner">
+        <div class="mini-pack-tag"><span class="mini-pack-tag-dot"></span>Pack Activation · Disponible maintenant</div>
+        <div class="mini-pack-headline">Arrêtez de perdre ce CA.<br><em>Campagne active en 7 jours.</em></div>
+        <div class="mini-pack-sub" id="miniPackSub">Un fondateur Vision House analyse votre situation, rédige votre stratégie et lance votre campagne avec vous en session live.</div>
+        <div class="mini-pack-row">
+          <div>
+            <div class="mini-pack-price"><sup>€</sup>480</div>
+            <div class="mini-pack-price-sub">480 € TTC · paiement unique · sans abonnement</div>
+          </div>
+          <div class="mini-pack-pills">
+            <span class="mini-pack-pill">Audit J1</span>
+            <span class="mini-pack-pill">Stratégie J2–3</span>
+            <span class="mini-pack-pill">Créas J4–5</span>
+            <span class="mini-pack-pill">Live lancement J6</span>
+          </div>
+        </div>
+        <a href="https://buy.stripe.com/fZu9AVcmn1xr6DI5ns4sE00" target="_blank" rel="noopener" class="mini-pack-btn">
+          <div class="mini-pack-btn-lhs">
+            <span class="mini-pack-btn-main">Démarrer mon pack maintenant</span>
+            <span class="mini-pack-btn-sub">Sélectionnez un créneau · paiement après confirmation</span>
+          </div>
+          <div class="mini-pack-btn-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </a>
+        <div class="mini-pack-slots"><span class="mini-pack-slots-dot"></span>2 créneaux disponibles cette semaine</div>
+      </div>
+    </div>
+
     <div class="gate-overlay" id="gateOverlay">
       <div class="gate-blur" id="gateBlur">
         <div class="cc-box">
@@ -447,10 +783,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       </div>
 
       <div class="gate-panel" id="gatePanel">
+        <div class="gate-card-wrap">
         <div class="gate-card">
-          <div class="gate-tag">Accès gratuit &amp; immédiat</div>
-          <h3>Débloquez votre analyse complète</h3>
-          <p>Le graphique 12 mois et la stratégie de vos concurrents. Accessibles en 10 secondes.</p>
+          <div class="gate-tag" style="color:var(--vh-blue)">&#x1F511; Votre analyse est prête</div>
+          <h3 style="font-size:1.1rem;margin-bottom:.6rem">Entrez vos coordonnées pour débloquer</h3>
+          <p style="font-size:12px;margin-bottom:1rem">Graphique 12 mois, stratégie concurrents et plan d'action personnalisé. <strong style="color:var(--vh-violet)">Gratuit.</strong> En 10 secondes.</p>
           <div class="gate-form">
             <div class="gate-row">
               <input class="gate-input" type="text" id="gate-prenom" placeholder="Prénom *" autocomplete="given-name">
@@ -466,6 +803,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
             <p class="gate-privacy">Données confidentielles · Jamais revendues</p>
           </div>
         </div>
+        </div><!-- /gate-card-wrap -->
       </div>
     </div>
 
@@ -493,6 +831,156 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     </div>
   </section>
 </div>
+
+<!-- ══════════════════════════════════════════════════════════
+  PACK ACTIVATION — visible après déverrouillage du simulateur
+══════════════════════════════════════════════════════════ -->
+<section class="va-section wrap" id="va-pack" aria-label="Pack Activation Vision House">
+
+<!-- § 1 HERO -->
+<div class="va-hero">
+  <div class="va-hero-glare"></div>
+  <div class="va-hero-body">
+    <div class="va-hero-top">
+      <div class="va-hero-tag"><span class="va-hero-tag-dot"></span>Pack Activation Ads</div>
+      <div class="va-hero-cap">Chaque session est préparée sur mesure — pas de template, pas de copier-coller.</div>
+    </div>
+    <h2 class="va-hero-h">7 jours pour être visible<em>là où cherchent vos clients.</em></h2>
+    <div class="va-price">
+      <div class="va-price-lhs">
+        <div class="va-price-eyebrow">Investissement</div>
+        <div class="va-price-num"><sup>€</sup>480</div>
+        <div class="va-price-desc">480 € TTC · paiement unique · 4 livrables · 1 session live</div>
+      </div>
+      <div class="va-price-div"></div>
+      <div class="va-price-rhs">
+        <div class="va-price-tick"><b>Opérationnel en 7 jours</b></div>
+        <div class="va-price-tick">Résultats mesurables dès J+7</div>
+        <div class="va-price-tick">0 % de commission sur votre budget pub</div>
+      </div>
+    </div>
+    <div class="va-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Si vous démarrez aujourd'hui, campagne active le <strong id="va-date"></strong></span>
+    </div>
+    <div class="va-grid">
+      <div class="va-hitem"><div class="va-hitem-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><div><div class="va-hitem-t">Radiographie de votre présence</div><div class="va-hitem-d">3 blocages identifiés avant le premier euro.</div></div></div>
+      <div class="va-hitem"><div class="va-hitem-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div><div class="va-hitem-t">Plan taillé pour votre marché</div><div class="va-hitem-d">Plateforme, audience, budget, angle de message.</div></div></div>
+      <div class="va-hitem"><div class="va-hitem-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><div class="va-hitem-t">3 accroches prêtes à diffuser</div><div class="va-hitem-d">Scripts rédigés pour votre secteur, format Ads.</div></div></div>
+      <div class="va-hitem"><div class="va-hitem-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div><div class="va-hitem-t">Session lancement · 30 min</div><div class="va-hitem-d">Campagne mise en ligne ensemble, en direct.</div></div></div>
+    </div>
+    <a href="https://buy.stripe.com/fZu9AVcmn1xr6DI5ns4sE00" target="_blank" rel="noopener" class="va-cta">
+      <div class="va-cta-lhs"><div class="va-cta-main">Choisir mon créneau de lancement</div><div class="va-cta-sub">Sélectionnez une date · paiement après confirmation</div></div>
+      <div class="va-cta-circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </a>
+    <div class="va-trust">
+      <span class="va-htrust"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Stripe · TLS</span>
+      <span class="va-htrust"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Agenda sous 10 min</span>
+      <span class="va-htrust"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>0 % commission pub</span>
+    </div>
+  </div>
+</div>
+
+<!-- § 2 TÉMOIGNAGE -->
+<div class="va-testi">
+  <div class="va-testi-lhs">
+    <div class="va-testi-person">
+      <div class="va-testi-av">ML</div>
+      <div><div class="va-testi-name">Marc Lejeune</div><div class="va-testi-role">Indépendant · Bruxelles</div></div>
+    </div>
+    <div class="va-testi-q">L'équipe est de très bon conseil. À l'écoute et disponible. J'ai vu une vraie différence dans ma visibilité depuis qu'on travaille ensemble.</div>
+    <div class="va-testi-badge">Visibilité & leads · en continu</div>
+  </div>
+  <div class="va-testi-stars">
+    <div class="va-stars-row">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <div class="va-testi-note">Client vérifié</div>
+  </div>
+</div>
+
+<!-- § 3 TIMELINE -->
+<div class="va-tl" id="va-tl-card">
+  <div class="va-tl-head">
+    <div class="va-tl-h">Ce qui se passe après votre paiement — <em>étape par étape.</em></div>
+    <div class="va-tl-sub" id="va-tl-badge">7 jours</div>
+  </div>
+  <div class="va-tl-rail">
+    <div class="va-tl-track"></div>
+    <div class="va-tl-fill" id="va-tl-fill"></div>
+    <div class="va-tl-col" data-i="0"><div class="va-tl-node"><span class="va-tl-n">1</span><svg class="va-tl-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-11"/></svg></div><div class="va-tl-day">J·1</div><div class="va-tl-name">Audit</div></div>
+    <div class="va-tl-col" data-i="1"><div class="va-tl-node"><span class="va-tl-n">2</span><svg class="va-tl-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-11"/></svg></div><div class="va-tl-day">J·2–3</div><div class="va-tl-name">Stratégie</div></div>
+    <div class="va-tl-col" data-i="2"><div class="va-tl-node"><span class="va-tl-n">3</span><svg class="va-tl-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-11"/></svg></div><div class="va-tl-day">J·4–5</div><div class="va-tl-name">Créas</div></div>
+    <div class="va-tl-col" data-i="3"><div class="va-tl-node"><span class="va-tl-n">4</span><svg class="va-tl-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-11"/></svg></div><div class="va-tl-day">J·6</div><div class="va-tl-name">Lancement</div></div>
+    <div class="va-tl-col" data-i="4"><div class="va-tl-node"><span class="va-tl-n">5</span><svg class="va-tl-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-11"/></svg></div><div class="va-tl-day">J·7+</div><div class="va-tl-name">Résultats</div></div>
+  </div>
+  <div class="va-tl-panel">
+    <div class="va-tl-pn" id="va-tl-pn">·</div>
+    <div style="flex:1"><div class="va-tl-pt" id="va-tl-pt"></div><div class="va-tl-pd" id="va-tl-pd"></div></div>
+    <div class="va-tl-ptag" id="va-tl-tag" style="display:none"></div>
+  </div>
+  <div class="va-tl-st" id="va-tl-st">
+    <div class="va-tl-dot"></div>
+    <span id="va-tl-stxt">Démarrage…</span>
+    <button class="va-tl-rpl" id="va-tl-rpl" style="display:none" onclick="vaTlReplay()">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Rejouer
+    </button>
+  </div>
+</div>
+
+<!-- § 4 FAQ -->
+<div class="va-faq">
+  <div class="va-faq-hd"><div class="va-faq-title">Questions fréquentes</div><div class="va-faq-count">3 réponses</div></div>
+  <div class="va-faq-item">
+    <div class="va-faq-q" onclick="vaFaqToggle(this)">Je n'y connais rien en publicité — est-ce que ça me convient ?<div class="va-faq-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></div>
+    <div class="va-faq-a">C'est même l'idéal. Vous n'avez rien à configurer seul, on s'occupe de tout lors de la session live. Ce que vous apportez : votre connaissance de vos clients. Ce qu'on apporte : la technique.</div>
+  </div>
+  <div class="va-faq-item">
+    <div class="va-faq-q" onclick="vaFaqToggle(this)">J'ai déjà essayé les Ads et ça n'a pas marché.<div class="va-faq-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></div>
+    <div class="va-faq-a">La majorité des campagnes qui échouent ont un problème de ciblage ou d'accroche, pas de budget. C'est précisément ce qu'on diagnostique au Jour 1. Si votre problème est différent, on vous le dira honnêtement avant d'aller plus loin.</div>
+  </div>
+  <div class="va-faq-item">
+    <div class="va-faq-q" onclick="vaFaqToggle(this)">Qu'est-ce qui se passe après les 7 jours ?<div class="va-faq-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></div>
+    <div class="va-faq-a">Vous gérez en autonomie, vous avez tout en main. Si vous souhaitez continuer ensemble, on en parle à ce moment-là. Aucun engagement, aucune relance commerciale automatique.</div>
+  </div>
+</div>
+
+<!-- § 5 CLOSING -->
+<div class="va-closing">
+  <div class="va-founder">
+    <div class="va-founder-av" style="overflow:hidden;padding:0"><img src="team-joseph.png" alt="Joseph Vision House" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+    <div>
+      <div class="va-founder-eyebrow">Votre interlocuteur lors de la session live</div>
+      <div class="va-founder-name">L'équipe Vision House</div>
+      <div class="va-founder-role">Nous accompagnons des indépendants, consultants, commerces et professionnels de services dans leur acquisition digitale.</div>
+      <div class="va-founder-note">Au Jour 6, votre campagne est en ligne. Pas de théorie, on le fait ensemble, en direct.</div>
+    </div>
+  </div>
+  <div class="va-transp">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <div class="va-transp-txt">Les 480 € couvrent 3 jours d'analyse et de rédaction + la session live. <strong>Aucune marge cachée sur votre budget pub</strong> : celui-ci reste 100 % entre vos mains.</div>
+  </div>
+  <div class="va-closing-cta">
+    <div class="va-closing-h">Dans 7 jours, votre campagne tourne <em>pendant que vous travaillez.</em></div>
+    <div class="va-closing-checks">
+      <span class="va-cchk"><b>Aucun abonnement</b></span>
+      <span class="va-cchk"><b>0 % de commission</b> sur votre budget pub</span>
+      <span class="va-cchk">Campagne active en <b>7 jours ouvrés</b></span>
+      <span class="va-cchk">Votre premier client acquis couvre <b>l'intégralité du pack</b></span>
+    </div>
+    <div class="va-closing-row">
+      <a href="https://buy.stripe.com/fZu9AVcmn1xr6DI5ns4sE00" target="_blank" rel="noopener" class="va-closing-btn">Choisir un créneau <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="va-closing-price"><strong>480 € TTC</strong> · paiement unique</div>
+    </div>
+  </div>
+</div>
+
+</section>
+
 </main>
 
 <footer class="footer-s">
@@ -941,6 +1429,17 @@ function fNum(n){return n.toLocaleString('fr-BE');}
 function render(d){
   lastRenderData=d;
   document.getElementById('result-section').style.display='block';
+  // Show mini pack immediately with personalised subtitle
+  var mp=document.getElementById('miniPack');
+  if(mp){
+    mp.classList.add('show');
+    var mps=document.getElementById('miniPackSub');
+    if(mps&&lastRenderData){
+      var sec=SECTORS[S.sector];
+      var lbl=sec?sec.label.replace(/^\S+\s*/,''):'votre secteur';
+      mps.textContent='Votre CA potentiel en '+lbl+' : '+fK(lastRenderData.caLo)+' à '+fK(lastRenderData.caHi)+'/mois. Un fondateur Vision House construit votre stratégie et lance votre campagne avec vous en 7 jours.';
+    }
+  }
   document.getElementById('caLo').textContent=fK(d.caLo);
   document.getElementById('caHi').textContent=fK(d.caHi);
   var pl=S.platform==='fb'?'Meta Ads':'Google Ads';
@@ -1095,6 +1594,16 @@ function submitGate(){
     document.getElementById('gateOverlay').classList.add('unlocked');
     gateUnlocked=true;
     personalizeWithName(prenom,entreprise);
+    // Show Pack Activation section
+    var vaPack=document.getElementById('va-pack');
+    if(vaPack)vaPack.style.display='flex';
+    // Show urgency bar
+    var ub=document.getElementById('urgencyBar');
+    if(ub){ub.classList.add('show');}
+    // Scroll to pack after brief delay
+    setTimeout(function(){
+      if(vaPack)vaPack.scrollIntoView({behavior:'smooth',block:'start'});
+    },800);
     // Float PDF button appears after unlock
     setTimeout(function(){showPdfFloat();},1800);
     if(lastRenderData&&typeof Chart!=='undefined')renderChart(lastRenderData);
@@ -1436,6 +1945,82 @@ function generateAndDownloadPdf(){
     btn.innerHTML = 'Erreur — réessayez';
   }
 }
+
+// ── PACK ACTIVATION ─────────────────────────────────────
+function vaFaqToggle(el){
+  var item=el.parentElement;
+  var was=item.classList.contains('open');
+  document.querySelectorAll('.va-faq-item.open').forEach(function(i){i.classList.remove('open');});
+  if(!was)item.classList.add('open');
+}
+
+(function(){
+  var VA_D=[
+    {t:"Jour 1 — Radiographie de votre business",d:"On examine votre site, tracking, positionnement. Vous recevez 3 blocages nommés et 1 opportunité prioritaire avant de dépenser un euro."},
+    {t:"Jours 2–3 — Votre plan d\'attaque livré",d:"Plateforme recommandée, segmentation audience, budget plancher, objectif de coût par lead. Tout documenté, rien à deviner."},
+    {t:"Jours 4–5 — Vos créas dans votre boîte",d:"3 scripts rédigés pour votre secteur, formatés pour Meta Ads ou Google Ads. Vous uploadez, ça tourne."},
+    {t:"Jour 6 — On met tout en ligne ensemble",d:"30 min en visio. On paramètre, on publie. Votre campagne est active avant la fin de l\'appel."},
+    {t:"Jour 7+ — Les premiers signaux arrivent",d:"Vos prospects qualifiés commencent à se manifester. Vous voyez les chiffres dans votre tableau de bord."}
+  ];
+  var VA_S=["Analyse de votre présence…","Rédaction de votre stratégie…","Écriture des accroches…","Préparation du lancement…","Campagne active."];
+  var vaDelay=1300,vaCur=-1,vaTmr=null,vaGo=false;
+
+  function vaCols(){return document.querySelectorAll('.va-tl-col');}
+  function vaShow(i){
+    vaCols().forEach(function(c,j){c.classList.remove('on','ok');if(j<i)c.classList.add('ok');else if(j===i)c.classList.add('on');});
+    document.getElementById('va-tl-fill').style.width=(i<=0?0:Math.round(i/4*80))+'%';
+    var pn=document.getElementById('va-tl-pn');pn.textContent=i+1;pn.className='va-tl-pn'+(i===4?' ok':'');
+    document.getElementById('va-tl-pt').textContent=VA_D[i].t;
+    document.getElementById('va-tl-pd').textContent=VA_D[i].d;
+    var tg=document.getElementById('va-tl-tag');tg.style.display='inline-block';
+    tg.className='va-tl-ptag'+(i===4?' ok':'');tg.textContent=i===4?'✓ Terminé':'En cours';
+    var st=document.getElementById('va-tl-st');st.className='va-tl-st '+(i===4?'fin':'run');
+    document.getElementById('va-tl-stxt').textContent=VA_S[i];
+    if(i===4)document.getElementById('va-tl-rpl').style.display='inline-flex';
+  }
+  function vaTick(){vaCur++;if(vaCur>=VA_D.length){clearInterval(vaTmr);return;}vaShow(vaCur);if(vaCur===VA_D.length-1)clearInterval(vaTmr);}
+  function vaStart(){if(vaGo)return;vaGo=true;setTimeout(function(){vaTick();vaTmr=setInterval(vaTick,vaDelay);},400);}
+
+  window.vaTlReplay=function(){
+    clearInterval(vaTmr);vaCur=-1;vaGo=false;
+    vaCols().forEach(function(c){c.classList.remove('on','ok');});
+    document.getElementById('va-tl-fill').style.width='0%';
+    document.getElementById('va-tl-rpl').style.display='none';
+    document.getElementById('va-tl-pt').textContent='';
+    document.getElementById('va-tl-pd').textContent='';
+    document.getElementById('va-tl-tag').style.display='none';
+    document.getElementById('va-tl-pn').textContent='·';
+    document.getElementById('va-tl-st').className='va-tl-st';
+    document.getElementById('va-tl-stxt').textContent='Démarrage…';
+    setTimeout(vaStart,200);
+  };
+
+  vaCols().forEach(function(c,i){
+    c.addEventListener('click',function(){clearInterval(vaTmr);vaCur=i;vaShow(i);vaGo=true;});
+  });
+
+  // Date lancement
+  (function(){
+    var J=['dim.','lun.','mar.','mer.','jeu.','ven.','sam.'];
+    var M=['jan.','fév.','mar.','avr.','mai','juin','juil.','août','sep.','oct.','nov.','déc.'];
+    function addWD(d,n){var r=new Date(d);while(n>0){r.setDate(r.getDate()+1);if(r.getDay()!==0&&r.getDay()!==6)n--;}return r;}
+    var l=addWD(new Date(),7);
+    var lbl=J[l.getDay()]+' '+l.getDate()+' '+M[l.getMonth()];
+    var el=document.getElementById('va-date');if(el)el.textContent=lbl;
+    var bd=document.getElementById('va-tl-badge');if(bd)bd.textContent='Live le '+lbl;
+  })();
+
+  // Auto-start via IntersectionObserver quand la section devient visible
+  if('IntersectionObserver' in window){
+    var vaObs=new IntersectionObserver(function(e){
+      if(e[0].isIntersecting){vaStart();vaObs.disconnect();}
+    },{threshold:0.2});
+    // Observer déclenché quand #va-pack est affiché
+    var vaCard=document.getElementById('va-tl-card');
+    if(vaCard)vaObs.observe(vaCard);
+  }
+})();
+
 </script>
 </body>
 </html>
