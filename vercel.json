@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/simulateur",
+      "destination": "/simulateur.html"
+    },
+    {
+      "source": "/audit",
+      "destination": "/audit-digital-gratuit.html"
+    }
+  ]
+}
