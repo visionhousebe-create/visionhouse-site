@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script src="https://t.contentsquare.net/uxa/6ecb77e611cc4.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vision House — Agence Communication Bruxelles | Immobilier & PME</title>
@@ -786,6 +787,29 @@ footer{background:#080720;padding:72px 0 0}
 </head>
 <body>
 
+<!-- BARRE D'URGENCE STICKY -->
+<div id="idx-urgency" style="position:fixed;top:0;left:0;right:0;z-index:200;background:linear-gradient(90deg,#0C0340,#092969 50%,#0C0340);padding:8px 20px;display:flex;align-items:center;justify-content:center;gap:12px;font-family:'Montserrat',sans-serif;font-size:11.5px;color:rgba(255,255,255,.65);border-bottom:1px solid rgba(157,191,255,.12);transform:translateY(-100%);transition:transform .4s cubic-bezier(.16,1,.3,1)">
+  <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:ub-blink 1.5s infinite"></span>
+  <span><strong style="color:#fff">2 créneaux disponibles</strong> cette semaine avec un fondateur Vision House</span>
+  <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" style="padding:5px 16px;border-radius:100px;background:#fff;color:#0C0340;font-weight:700;font-size:11px;text-decoration:none;white-space:nowrap;transition:background .15s;flex-shrink:0" onmouseover="this.style.background='#E8D4A8'" onmouseout="this.style.background='#fff'">Réserver</a>
+  <button onclick="document.getElementById('idx-urgency').style.transform='translateY(-100%)'" style="background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;font-size:18px;padding:0 0 0 4px;line-height:1;flex-shrink:0" aria-label="Fermer">&#215;</button>
+</div>
+<style>
+@keyframes ub-blink{0%,100%{opacity:1}50%{opacity:.25}}
+</style>
+<script>
+// Show urgency bar after 8 seconds or on first scroll past hero
+(function(){
+  var bar=document.getElementById('idx-urgency');
+  if(!bar)return;
+  var shown=false;
+  function showBar(){if(shown)return;shown=true;bar.style.transform='translateY(0)';}
+  setTimeout(showBar,8000);
+  window.addEventListener('scroll',function(){if(window.scrollY>400)showBar();},{passive:true,once:true});
+})();
+</script>
+
+
 <!-- NAV -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo"><img src="logo-header.png" alt="Vision House agence communication Bruxelles"></a>
@@ -818,7 +842,11 @@ footer{background:#080720;padding:72px 0 0}
     </p>
     <div class="hero-actions">
       <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="btn btn-navy btn-arrow" id="hero-cta-btn">Réserver mon appel offert</a>
-      <span class="hero-sub-note">30 minutes · Sans engagement · Bruxelles</span>
+      <a href="/simulateur" class="btn" style="background:transparent;color:var(--navy2);border:1.5px solid var(--border);padding:14px 28px;font-size:.9rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;border-radius:var(--r);transition:all .2s;text-decoration:none" onmouseover="this.style.borderColor='var(--navy2)';this.style.background='var(--lightb)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='transparent'">Calculer mon CA potentiel <span style="font-size:.8rem">→</span></a>
+    </div>
+    <div style="margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:.8rem;color:var(--muted)">
+      <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 6px rgba(34,197,94,.6)"></span>
+      <span>30 minutes · Sans engagement · <strong style="color:var(--navy)">2 créneaux disponibles cette semaine</strong></span>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="hero-stat-n">+20</div><div class="hero-stat-l">Leads qualifiés en 3 mois</div></div>
@@ -1458,93 +1486,23 @@ footer{background:#080720;padding:72px 0 0}
         <div class="form-box">
           <h3>Réserver mon appel offert</h3>
           <p class="form-box-sub">Aucune carte de crédit. Aucune obligation.</p>
+          <!-- Urgency badge -->
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;padding:10px 14px;background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.18);border-radius:8px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 8px rgba(34,197,94,.6)"></span>
+            <span style="font-size:.78rem;color:rgba(255,255,255,.65)"><strong style="color:#fff">2 créneaux disponibles</strong> cette semaine · Réponse sous 24h</span>
+          </div>
           <form id="diag-form" onsubmit="handleSubmit(event)">
-            <!-- NOM + PRÉNOM -->
+            <!-- PRÉNOM + NOM -->
             <div class="frow">
               <div class="fg"><label>Prénom *</label><input type="text" name="prenom" placeholder="Prénom" required autocomplete="given-name"></div>
               <div class="fg"><label>Nom *</label><input type="text" name="nom" placeholder="Nom" required autocomplete="family-name"></div>
             </div>
-            <!-- EMAIL + TÉLÉPHONE -->
-            <div class="frow">
-              <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="vous@entreprise.com" required autocomplete="email"></div>
-              <div class="fg"><label>Téléphone *</label><input type="tel" name="telephone" placeholder="+32 400 00 00 00" required autocomplete="tel"></div>
-            </div>
-            <!-- SECTEUR -->
-            <div class="fg">
-              <label>Secteur *</label>
-              <select name="secteur" id="secteur-select" required onchange="toggleAutreSecteur(this)">
-                <option value="" disabled selected>Sélectionnez votre secteur</option>
-                <option>Immobilier</option>
-                <option>Promotion immobilière</option>
-                <option>HoReCa / Restaurant</option>
-                <option>Commerce de détail</option>
-                <option>Services aux entreprises</option>
-                <option>BTP / Rénovation</option>
-                <option>Artisanat</option>
-                <option>Coaching / Formation</option>
-                <option>Beauté / Bien-être / Santé</option>
-                <option value="autre">Autre</option>
-              </select>
-            </div>
-            <div class="fg" id="autre-secteur-wrap" style="display:none;margin-top:-8px">
-              <label>Précisez votre secteur</label>
-              <input type="text" name="secteur_autre" placeholder="Ex : architecture, événementiel…">
-            </div>
-            <!-- RÉSEAUX SOCIAUX -->
-            <div class="fg">
-              <label>Sur quels canaux êtes-vous présent (ou souhaitez l'être) ?</label>
-              <div class="rs-grid" id="rs-grid">
-                <label class="rs-chip"><input type="checkbox" name="canaux" value="Instagram"> Instagram</label>
-                <label class="rs-chip"><input type="checkbox" name="canaux" value="TikTok"> TikTok</label>
-                <label class="rs-chip"><input type="checkbox" name="canaux" value="Facebook"> Facebook</label>
-                <label class="rs-chip"><input type="checkbox" name="canaux" value="LinkedIn"> LinkedIn</label>
-                <label class="rs-chip"><input type="checkbox" name="canaux" value="Meta Ads"> Meta Ads</label>
-                <label class="rs-chip"><input type="checkbox" name="canaux" value="Google Ads"> Google Ads</label>
-              </div>
-            </div>
-            <!-- LIEN / USERNAME RÉSEAUX -->
-            <div class="fg">
-              <label>Lien ou nom d'utilisateur de votre page (optionnel)</label>
-              <input type="text" name="profil_rs" placeholder="Ex : @monagence ou https://instagram.com/…">
-            </div>
-            <!-- Q1 : PROBLÈME PRINCIPAL -->
-            <div class="fg">
-              <label>Quel est votre principal défi en communication ? *</label>
-              <select name="defi_principal" required>
-                <option value="" disabled selected>Choisissez une réponse</option>
-                <option>Je manque de visibilité — personne ne me trouve en ligne</option>
-                <option>Je publie mais ça ne génère pas de clients</option>
-                <option>Je n'ai pas le temps de gérer ma communication</option>
-                <option>Mon image ne reflète pas la qualité de ce que je fais</option>
-                <option>Je ne sais pas par où commencer</option>
-                <option>Autre</option>
-              </select>
-            </div>
-            <!-- Q2 : BUDGET PUB -->
-            <div class="fg">
-              <label>Avez-vous déjà un budget publicitaire mensuel ? *</label>
-              <select name="budget_pub" required>
-                <option value="" disabled selected>Choisissez une réponse</option>
-                <option>Non, pas encore</option>
-                <option>Moins de 200 €/mois</option>
-                <option>Entre 200 et 500 €/mois</option>
-                <option>Plus de 500 €/mois</option>
-                <option>Je ne sais pas encore</option>
-              </select>
-            </div>
-            <!-- Q3 : URGENCE -->
-            <div class="fg">
-              <label>Dans quel délai souhaitez-vous démarrer ? *</label>
-              <select name="delai" required>
-                <option value="" disabled selected>Choisissez une réponse</option>
-                <option>Dès que possible</option>
-                <option>Dans les 2 à 4 semaines</option>
-                <option>Dans 1 à 2 mois</option>
-                <option>Je suis encore en phase de réflexion</option>
-              </select>
-            </div>
+            <!-- EMAIL -->
+            <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="vous@entreprise.com" required autocomplete="email"></div>
+            <!-- TÉLÉPHONE -->
+            <div class="fg"><label>Téléphone *</label><input type="tel" name="telephone" placeholder="+32 400 00 00 00" required autocomplete="tel"></div>
             <button type="submit" class="form-submit" id="form-submit-btn">Réserver mon appel offert →</button>
-            <p class="form-note">Aucune carte de crédit. Aucune obligation. Premier appel sans vente.</p>
+            <p class="form-note">30 minutes · Aucune obligation · Le reste on en parle pendant l'appel.</p>
           </form>
           <div id="form-success">
             <div style="font-size:2.5rem;color:#fff;margin-bottom:14px">✓</div>
@@ -1627,8 +1585,8 @@ footer{background:#080720;padding:72px 0 0}
     <div class="footer-bottom container" style="padding-left:0;padding-right:0">
       <span>© 2026 Vision House · Bruxelles</span>
       <span>
-        <a href="/Le%20Simulateur%20Vision%20House.html" style="color:rgba(255,255,255,.55);font-weight:500">✦ Le Simulateur Vision House</a>&nbsp;·&nbsp;
-        <a href="/audit-digital-gratuit.html" style="color:rgba(255,255,255,.55);font-weight:500">◈ Audit digital gratuit</a>&nbsp;·&nbsp;
+        <a href="/simulateur" style="color:rgba(255,255,255,.55);font-weight:500">✦ Le Simulateur Vision House</a>&nbsp;·&nbsp;
+        <a href="/audit" style="color:rgba(255,255,255,.55);font-weight:500">◈ Audit digital gratuit</a>&nbsp;·&nbsp;
         <a href="/mentions-legales.html">Mentions légales</a>&nbsp;·&nbsp;
         <a href="/politique-confidentialite.html">Confidentialité</a>&nbsp;·&nbsp;
         <a href="/politique-cookies.html">Cookies</a>
