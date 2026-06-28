@@ -938,7 +938,11 @@ footer{background:var(--navy);padding:48px 28px 32px;text-align:center}
 
 <script>
 // ── CONFIG ──
-const WEBHOOK = 'https://services.leadconnectorhq.com/hooks/j6kB5YgjndmdUDxUhgsF/webhook-trigger/8358c2ca-852f-4d5e-815b-1d060047b685';
+// Formspree : capture TOUTES les données + email (gratuit, aucun webhook payant)
+const FORMSPREE = 'https://formspree.io/f/xdarzqyq';
+// Optionnel — webhook Make → Crococlick. Laisser vide pour l'instant ;
+// coller l'URL du module "Custom webhook" de Make plus tard pour pousser aussi dans le CRM.
+const MAKE_WEBHOOK = '';
 
 // Strip URL hash on load — page always opens at top
 window.addEventListener('DOMContentLoaded', () => {
@@ -1046,7 +1050,7 @@ const SECTORS = [
   {id:'carr',  e:'🚙', n:'Carrosserie',                         c:'auto'},
   {id:'loc',   e:'🚗', n:'Location de véhicules',               c:'auto'},
   {id:'ct',    e:'🛠️', n:'Contrôle technique',                  c:'auto'},
-  {id:'vtc',   e:'🚕', n:'Transport / Taxi / VTC',              c:'auto'},
+  {id:'vtc',   e:'🚕', n:'Transport / Taxi / VTC',               c:'auto'},
   // Immobilier
   {id:'agim',  e:'🏠', n:'Agence immobilière',                  c:'reale'},
   {id:'expim', e:'🔍', n:'Expert immobilier',                   c:'reale'},
@@ -1305,7 +1309,8 @@ function launchConfetti() {
 
 function showResults() {
   const r = calcResults();
-  window._simResult = { ...r, sector: S[1]?.sector?.n, region: S[2]?.regionName };
+  window._simResult = { ...r, sector: S[1]?.sector?.n, region: S[2]?.regionName,
+                        valeurClient: S[3]?.cv, budget: S[4]?.bm };
 
   document.getElementById('sim-loading').style.display = 'none';
   const sec = document.getElementById('results');
@@ -1355,34 +1360,66 @@ async function handleLead(e) {
   e.preventDefault();
   const btn = document.getElementById('lbtn');
   const prenom = document.getElementById('fpr').value.trim();
-  const whatsapp = '+33' + document.getElementById('fwa').value.trim().replace(/^0/, '');
+  const whatsapp = '+33' + document.getElementById('fwa').value.trim().replace(/[^0-9]/g, '').replace(/^0/, '');
   const email = document.getElementById('fem').value.trim();
   const r = window._simResult || {};
 
   btn.textContent = 'Envoi en cours…';
   btn.disabled = true;
 
-  const payload = {
-    prenom, whatsapp, email,
-    secteur: r.sector || 'Non renseigné',
-    region: r.region || 'Non renseignée',
-    potentiel_annuel: r.annualCA || 0,
-    potentiel_mensuel: r.monthly || 0,
-    leads_potentiels: r.annualLeads || 0,
-    clients_potentiels: r.annualClients || 0,
-    cout_inaction: r.inaction || 0,
-    score_visibilite: r.visScore || 0,
-    source: 'simulateur-fr-v4',
+  // Toutes les données de la page : coordonnées + 4 réponses du simulateur + résultats calculés
+  const data = {
+    prenom,
+    whatsapp,
+    email,
+    secteur:            r.sector       || (S[1]?.sector?.n) || 'Non renseigné',
+    region:             r.region       || (S[2]?.regionName) || 'Non renseignée',
+    valeur_client:      (r.valeurClient ?? S[3]?.cv) || '',
+    budget_mensuel:     (r.budget ?? S[4]?.bm) || '',
+    potentiel_annuel:   r.annualCA     || 0,
+    potentiel_mensuel:  r.monthly      || 0,
+    leads_potentiels:   r.annualLeads  || 0,
+    clients_potentiels: r.annualClients|| 0,
+    cout_acquisition:   r.cpl          || 0,
+    cout_inaction:      r.inaction     || 0,
+    score_visibilite:   r.visScore     || 0,
+    moyenne_secteur:    r.sectorAvg    || 0,
+    source: 'Simulateur Visibilité France',
     timestamp: new Date().toISOString()
   };
 
+  // 1) Formspree — capture + email (toujours)
+  let ok = false;
   try {
-    await fetch(WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), mode:'no-cors' });
-  } catch(err) { /* no-cors: toujours resolve */ }
+    const res = await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    ok = res.ok;
+  } catch (err) { ok = false; }
 
-  btn.textContent = '✓ Analyse envoyée — vérifiez votre WhatsApp';
-  btn.style.background = '#166534';
-  document.getElementById('lform').querySelectorAll('input').forEach(i => i.disabled = true);
+  // 2) Make → Crococlick (uniquement si MAKE_WEBHOOK est renseigné)
+  if (MAKE_WEBHOOK) {
+    try {
+      await fetch(MAKE_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        keepalive: true
+      });
+    } catch (err) { /* on n'empêche pas la confirmation */ }
+  }
+
+  if (ok) {
+    btn.textContent = '✓ Analyse envoyée — vérifiez votre WhatsApp';
+    btn.style.background = '#166534';
+    document.getElementById('lform').querySelectorAll('input').forEach(i => i.disabled = true);
+  } else {
+    btn.textContent = 'Réessayer →';
+    btn.disabled = false;
+    alert("L'envoi n'a pas abouti. Merci de réessayer dans un instant.");
+  }
 }
 
 // ── FAQ ──
