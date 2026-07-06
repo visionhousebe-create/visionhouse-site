@@ -955,6 +955,7 @@ var CATEGORIES=[
 // ══ STATE
 var S = {sector: null, platform: 'fb', budget: 300, clientValue: 800};
 var chartInst = null;
+var lastComputedData = null;
 
 // ══ SEARCH
 (function(){
@@ -1133,16 +1134,17 @@ function sendToFormspree(payload){
 
 // ══ Étape 3 — clic sur un CTA de la page succès
 function sendStep3(action){
-  var caLo = document.getElementById('fCaLo').value;
-  var caHi = document.getElementById('fCaHi').value;
   var sec3 = SECTORS[S.sector]||{};
+  var caLo = lastComputedData ? lastComputedData.caLo : 0;
+  var caHi = lastComputedData ? lastComputedData.caHi : 0;
+  var roi  = lastComputedData ? lastComputedData.roiLo+'×–'+lastComputedData.roiHi+'×' : '—';
   sendToFormspree({
     etape: '3 — '+action,
-    secteur_label: sec3.label ? sec3.label.replace(/^\S+\s*/,'') : S.sector,
+    secteur_label: sec3.label ? sec3.label.replace(/^\S+\s*/,'') : (S.sector||'—'),
     plateforme: S.platform==='fb'?'Meta Ads':S.platform==='gg'?'Google Ads':'Meta + Google',
     budget_mensuel: S.budget+' €/mois',
-    ca_potentiel: caLo+' € à '+caHi+' €/mois',
-    roi_estime: document.getElementById('fRoi').value,
+    ca_potentiel: fK(caLo)+' à '+fK(caHi)+'/mois',
+    roi_estime: roi,
     source: 'simulateur-visionhouse'
   });
 }
@@ -1243,6 +1245,7 @@ function compute(){
   document.getElementById('chartSub').textContent = 'CA cumulé 12 mois estimé : ~'+fK(caMid*12)+' · Base : '+fK(caLo)+' à '+fK(caHi)+'/mois';
 
   window._computedData = {leads:leads,cLo:cLo,cHi:cHi,caLo:caLo,caHi:caHi,caMid:caMid,roi:roi,cpl:cpl};
+  lastComputedData = {caLo:caLo,caHi:caHi,roiLo:roiLo,roiHi:roiHi};
 
   if(typeof Chart!=='undefined' && document.getElementById('phase2').classList.contains('visible')){
     renderChart();
@@ -1291,49 +1294,58 @@ function submitForm(e){
   var name = document.getElementById('fName').value.trim();
   var email = document.getElementById('fEmail').value.trim();
   var tel = document.getElementById('fTel').value.trim();
-  if(!name||!email||email.indexOf('@')<0){return;}
+  if(!name||!email||email.indexOf('@')<0){
+    if(!name)document.getElementById('fName').focus();
+    else if(email.indexOf('@')<0)document.getElementById('fEmail').focus();
+    return;
+  }
   btn.disabled = true;
   btn.innerHTML = '<span class="submit-ico">⏳</span><span>Envoi en cours…</span><span></span>';
 
+  // Ensure compute ran
+  compute();
+
   var sec2 = SECTORS[S.sector]||{};
+  var caLo = lastComputedData ? lastComputedData.caLo : 0;
+  var caHi = lastComputedData ? lastComputedData.caHi : 0;
+  var roi  = lastComputedData ? lastComputedData.roiLo+'×–'+lastComputedData.roiHi+'×' : '—';
+
   var payload = {
     etape: '2 — Formulaire soumis',
     prenom: name,
     email: email,
     telephone: tel||'non renseigné',
-    secteur_cle: S.sector,
-    secteur_label: sec2.label ? sec2.label.replace(/^\S+\s*/,'') : S.sector,
+    secteur_cle: S.sector||'non défini',
+    secteur_label: sec2.label ? sec2.label.replace(/^\S+\s*/,'') : (S.sector||'—'),
     plateforme: S.platform==='fb'?'Meta Ads':S.platform==='gg'?'Google Ads':'Meta + Google',
     budget_mensuel: S.budget+' €/mois',
     valeur_client: S.clientValue+' €/client',
-    ca_potentiel: document.getElementById('fCaLo').value+' € à '+document.getElementById('fCaHi').value+' €/mois',
-    roi_estime: document.getElementById('fRoi').value,
+    ca_potentiel: fK(caLo)+' à '+fK(caHi)+'/mois',
+    roi_estime: roi,
     source: 'simulateur-visionhouse'
   };
 
-  fetch('https://formspree.io/f/mjgqljqd',{
-    method:'POST',body:JSON.stringify(payload),
-    headers:{'Content-Type':'application/json','Accept':'application/json'}
-  }).catch(function(){}).finally(function(){
-    // Show phase 3
+  // Show phase 3 immediately — don't wait for fetch
+  function showPhase3(){
     document.getElementById('phase2').classList.remove('visible');
     document.getElementById('phase2').style.display = 'none';
     var p3 = document.getElementById('phase3');
     p3.classList.add('visible');
     p3.style.display = 'block';
     window.scrollTo({top:0,behavior:'smooth'});
-
-    // Personalize
     document.getElementById('p3Name').textContent = name.split(' ')[0];
     document.getElementById('p3Email').textContent = email;
-
-    // Date lancement
     var J=['dim.','lun.','mar.','mer.','jeu.','ven.','sam.'];
     var M=['jan.','fév.','mar.','avr.','mai','juin','juil.','août','sep.','oct.','nov.','déc.'];
     function addWD(d,n){var r=new Date(d);while(n>0){r.setDate(r.getDate()+1);if(r.getDay()!==0&&r.getDay()!==6)n--;}return r;}
     var l=addWD(new Date(),7);
     document.getElementById('tlDate').textContent='Campagne active le '+J[l.getDay()]+' '+l.getDate()+' '+M[l.getMonth()];
-  });
+  }
+
+  showPhase3();
+
+  // Send to Formspree in background
+  sendToFormspree(payload);
 }
 
 // ══ FAQ
