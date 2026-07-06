@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -594,8 +594,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
           </div>
         </div>
         <div class="fg">
-          <label for="fTel">Téléphone *</label>
-          <input type="tel" id="fTel" name="telephone" placeholder="+32 4XX XX XX XX" required autocomplete="tel">
+          <label for="fTel" style="font-size:.8rem;font-weight:600;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em">Téléphone <span style="color:var(--ink4);font-weight:400">(optionnel)</span></label>
+          <div class="fg-wrap">
+            <input type="tel" id="fTel" name="telephone"
+              placeholder="+32 4XX XX XX XX"
+              autocomplete="tel"
+              pattern="[+]?[0-9\s\-\.]{7,20}"
+              oninput="this.value=this.value.replace(/[^+0-9\s\-\.]/g,'')">
+          </div>
         </div>
 
         <!-- Platform pills -->
@@ -1069,7 +1075,7 @@ function goPhase2(){
   onBudget(document.getElementById('slBudget'));
   onValue(document.getElementById('slValue'));
   compute();
-  setTimeout(function(){if(typeof Chart!=='undefined')renderChart();},200);
+  setTimeout(renderChart, 400);
 }
 
 function goPhase1(){
@@ -1254,7 +1260,11 @@ function compute(){
 
 // ══ CHART
 function renderChart(){
-  if(typeof Chart==='undefined'||!window._computedData)return;
+  if(typeof Chart==='undefined'){
+    setTimeout(renderChart, 300);
+    return;
+  }
+  if(!window._computedData)return;
   var d = window._computedData;
   var ramp=[0.38,0.56,0.70,0.80,0.88,0.94,1.00,1.03,1.05,1.08,1.10,1.12];
   var months=['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
@@ -1342,10 +1352,27 @@ function submitForm(e){
     document.getElementById('tlDate').textContent='Campagne active le '+J[l.getDay()]+' '+l.getDate()+' '+M[l.getMonth()];
   }
 
-  showPhase3();
-
-  // Send to Formspree in background
-  sendToFormspree(payload);
+  // Send first, then show phase 3 quickly regardless of result
+  var sent = false;
+  function doShowPhase3(){
+    if(sent) return;
+    sent = true;
+    showPhase3();
+    setTimeout(renderChart, 300);
+  }
+  // Show after max 1.5s even if network is slow
+  var timeout = setTimeout(doShowPhase3, 1500);
+  fetch('https://formspree.io/f/mjgqljqd',{
+    method:'POST',
+    body:JSON.stringify(payload),
+    headers:{'Content-Type':'application/json','Accept':'application/json'}
+  }).then(function(){
+    clearTimeout(timeout);
+    doShowPhase3();
+  }).catch(function(){
+    clearTimeout(timeout);
+    doShowPhase3();
+  });
 }
 
 // ══ FAQ
