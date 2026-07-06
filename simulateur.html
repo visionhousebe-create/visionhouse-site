@@ -672,7 +672,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <div class="success-title">Votre analyse est en route, <span id="p3Name">vous</span> !</div>
       <div class="success-sub">Vous recevrez votre rapport personnalisé et un plan d'action concret pour votre secteur.</div>
       <div class="success-email-note">Votre rapport a été envoyé à <strong id="p3Email" style="color:#fff;margin-left:4px"></strong></div>
-      <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="success-cta">
+      <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="success-cta" onclick="sendStep3('CTA success — Appel fondateur')">
         Vérifier les résultats avec un fondateur
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
@@ -722,7 +722,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
             <div class="pack-price-line">Paiement unique · sans abonnement</div>
           </div>
         </div>
-        <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="pack-btn">
+        <a href="https://link.crococlick.com/widget/bookings/joseph-khan" target="_blank" rel="noopener" class="pack-btn" onclick="sendStep3('CTA Pack — Réserver créneau')">
           <div class="pack-btn-lhs">
             <span class="pack-btn-main">Réserver mon créneau de lancement</span>
             <span class="pack-btn-sub">Sélectionnez une date · confirmation immédiate</span>
@@ -1052,6 +1052,14 @@ function clearSector(){
 // ══ PHASE NAV
 function goPhase2(){
   if(!S.sector) return;
+  // ── Étape 1 : envoyer le secteur choisi
+  var sec = SECTORS[S.sector];
+  sendToFormspree({
+    etape: '1 — Secteur sélectionné',
+    secteur_cle: S.sector,
+    secteur_label: sec ? sec.label.replace(/^\S+\s*/,'') : S.sector,
+    source: 'simulateur-visionhouse'
+  });
   document.getElementById('fSector').value = S.sector;
   document.getElementById('phase1').classList.add('hidden');
   document.getElementById('phase2').classList.add('visible');
@@ -1079,7 +1087,6 @@ function onFieldFill(groupId, inputId){
   var valid = val.length>0 && (!isEmail || val.indexOf('@')>0);
   fg.classList.toggle('filled', valid);
   updateProgress();
-  if(valid) trackFormData(inputId, isEmail?'[email]':val.length+' chars');
 }
 
 // Progress bar
@@ -1115,21 +1122,29 @@ function showLive(id){
   el._t = setTimeout(function(){el.classList.remove('show');}, 1200);
 }
 
-// Silent tracking
-var _trackDebounce = {};
-function trackFormData(field, value){
-  clearTimeout(_trackDebounce[field]);
-  _trackDebounce[field] = setTimeout(function(){
-    var fd = new FormData();
-    fd.append('event','form_step');
-    fd.append('field', field);
-    fd.append('value', value);
-    fd.append('timestamp', new Date().toISOString());
-    fd.append('sector', S.sector||'');
-    fd.append('platform', S.platform);
-    fd.append('budget', S.budget);
-    fetch('https://formspree.io/f/mjgqljqd',{method:'POST',body:fd}).catch(function(){});
-  }, 500);
+// ══ Silent send to Formspree
+function sendToFormspree(payload){
+  fetch('https://formspree.io/f/mjgqljqd',{
+    method:'POST',
+    body:JSON.stringify(payload),
+    headers:{'Content-Type':'application/json','Accept':'application/json'}
+  }).catch(function(){});
+}
+
+// ══ Étape 3 — clic sur un CTA de la page succès
+function sendStep3(action){
+  var caLo = document.getElementById('fCaLo').value;
+  var caHi = document.getElementById('fCaHi').value;
+  var sec3 = SECTORS[S.sector]||{};
+  sendToFormspree({
+    etape: '3 — '+action,
+    secteur_label: sec3.label ? sec3.label.replace(/^\S+\s*/,'') : S.sector,
+    plateforme: S.platform==='fb'?'Meta Ads':S.platform==='gg'?'Google Ads':'Meta + Google',
+    budget_mensuel: S.budget+' €/mois',
+    ca_potentiel: caLo+' € à '+caHi+' €/mois',
+    roi_estime: document.getElementById('fRoi').value,
+    source: 'simulateur-visionhouse'
+  });
 }
 
 function onBudget(el){
@@ -1142,7 +1157,6 @@ function onBudget(el){
   _budgetChanged = true;
   updateProgress();
   compute();
-  trackFormData('budget', S.budget);
 }
 function onValue(el){
   S.clientValue = parseInt(el.value);
@@ -1154,7 +1168,6 @@ function onValue(el){
   _valueChanged = true;
   updateProgress();
   compute();
-  trackFormData('valeur_client', S.clientValue);
 }
 
 // ══ PLATFORM
@@ -1166,7 +1179,6 @@ function setPlatform(p){
   document.getElementById('fPlatform').value = p;
   compute();
   updateProgress();
-  trackFormData('platform', p);
 }
 
 // ══ COMPUTE
@@ -1283,18 +1295,20 @@ function submitForm(e){
   btn.disabled = true;
   btn.innerHTML = '<span class="submit-ico">⏳</span><span>Envoi en cours…</span><span></span>';
 
+  var sec2 = SECTORS[S.sector]||{};
   var payload = {
+    etape: '2 — Formulaire soumis',
     prenom: name,
     email: email,
     telephone: tel||'non renseigné',
-    secteur: S.sector,
-    plateforme: S.platform,
-    budget_mensuel: S.budget+'€',
-    valeur_client: S.clientValue+'€',
-    ca_potentiel_lo: document.getElementById('fCaLo').value,
-    ca_potentiel_hi: document.getElementById('fCaHi').value,
+    secteur_cle: S.sector,
+    secteur_label: sec2.label ? sec2.label.replace(/^\S+\s*/,'') : S.sector,
+    plateforme: S.platform==='fb'?'Meta Ads':S.platform==='gg'?'Google Ads':'Meta + Google',
+    budget_mensuel: S.budget+' €/mois',
+    valeur_client: S.clientValue+' €/client',
+    ca_potentiel: document.getElementById('fCaLo').value+' € à '+document.getElementById('fCaHi').value+' €/mois',
     roi_estime: document.getElementById('fRoi').value,
-    source: 'simulateur-vision-house-v2'
+    source: 'simulateur-visionhouse'
   };
 
   fetch('https://formspree.io/f/mjgqljqd',{
