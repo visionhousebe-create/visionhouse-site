@@ -594,13 +594,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
           </div>
         </div>
         <div class="fg">
-          <label for="fTel" style="font-size:.8rem;font-weight:600;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em">Téléphone <span style="color:var(--ink4);font-weight:400">(optionnel)</span></label>
-          <div class="fg-wrap">
+          <label for="fTel" style="font-size:.8rem;font-weight:600;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em">Téléphone belge *</label>
+          <div class="fg-wrap" id="fgTelWrap">
             <input type="tel" id="fTel" name="telephone"
               placeholder="+32 4XX XX XX XX"
               autocomplete="tel"
-              pattern="[+]?[0-9\s\-\.]{7,20}"
-              oninput="this.value=this.value.replace(/[^+0-9\s\-\.]/g,'')">
+              required
+              oninput="validateTel(this)">
+            <div id="fTelError" style="display:none;font-size:.75rem;color:#dc2626;margin-top:.3rem">Numéro belge requis : +32 4XX ou 04XX XX XX XX</div>
           </div>
         </div>
 
@@ -1297,6 +1298,34 @@ function renderChart(){
   });
 }
 
+// ══ TEL VALIDATION — Belgian mobile only (+324XX or 04XX)
+function validateTel(input){
+  var raw = input.value.replace(/[\s\-\.]/g,'');
+  // Allow typing: only strip forbidden chars
+  input.value = input.value.replace(/[^+0-9\s\-\.]/g,'');
+  // Check validity for visual feedback
+  var isValid = /^(\+324[\d]{7,8}|04[\d]{8})$/.test(raw);
+  var err = document.getElementById('fTelError');
+  var wrap = document.getElementById('fgTelWrap');
+  if(input.value.length > 4){
+    if(isValid){
+      err.style.display='none';
+      input.style.borderColor='rgba(34,197,94,.45)';
+    } else {
+      err.style.display='block';
+      input.style.borderColor='rgba(220,38,38,.4)';
+    }
+  } else {
+    err.style.display='none';
+    input.style.borderColor='';
+  }
+}
+
+function isTelValid(){
+  var raw = document.getElementById('fTel').value.replace(/[\s\-\.]/g,'');
+  return /^(\+324[\d]{7,8}|04[\d]{8})$/.test(raw);
+}
+
 // ══ FORM SUBMIT
 function submitForm(e){
   e.preventDefault();
@@ -1304,10 +1333,10 @@ function submitForm(e){
   var name = document.getElementById('fName').value.trim();
   var email = document.getElementById('fEmail').value.trim();
   var tel = document.getElementById('fTel').value.trim();
-  if(!name||!email||email.indexOf('@')<0){
-    if(!name)document.getElementById('fName').focus();
-    else if(email.indexOf('@')<0)document.getElementById('fEmail').focus();
-    return;
+  if(!name||!email||email.indexOf('@')<0||!isTelValid()){
+    if(!name){document.getElementById('fName').focus();return;}
+    if(email.indexOf('@')<0){document.getElementById('fEmail').focus();return;}
+    if(!isTelValid()){document.getElementById('fTel').focus();document.getElementById('fTelError').style.display='block';return;}
   }
   btn.disabled = true;
   btn.innerHTML = '<span class="submit-ico">⏳</span><span>Envoi en cours…</span><span></span>';
