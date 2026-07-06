@@ -1279,8 +1279,7 @@ function submitForm(e){
   var name = document.getElementById('fName').value.trim();
   var email = document.getElementById('fEmail').value.trim();
   var tel = document.getElementById('fTel').value.trim();
-  var tel = document.getElementById('fTel').value.trim();
-  if(!name||!email||email.indexOf('@')<0||!tel){return;}
+  if(!name||!email||email.indexOf('@')<0){return;}
   btn.disabled = true;
   btn.innerHTML = '<span class="submit-ico">⏳</span><span>Envoi en cours…</span><span></span>';
 
