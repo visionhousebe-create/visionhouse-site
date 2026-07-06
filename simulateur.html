@@ -1143,7 +1143,7 @@ function sendStep3(action){
   var sec3 = SECTORS[S.sector]||{};
   var caLo = lastComputedData ? lastComputedData.caLo : 0;
   var caHi = lastComputedData ? lastComputedData.caHi : 0;
-  var roi  = lastComputedData ? lastComputedData.roiLo+'×–'+lastComputedData.roiHi+'×' : '—';
+  var roi  = lastComputedData ? lastComputedData.roi : '—';
   sendToFormspree({
     etape: '3 — '+action,
     secteur_label: sec3.label ? sec3.label.replace(/^\S+\s*/,'') : (S.sector||'—'),
@@ -1251,7 +1251,7 @@ function compute(){
   document.getElementById('chartSub').textContent = 'CA cumulé 12 mois estimé : ~'+fK(caMid*12)+' · Base : '+fK(caLo)+' à '+fK(caHi)+'/mois';
 
   window._computedData = {leads:leads,cLo:cLo,cHi:cHi,caLo:caLo,caHi:caHi,caMid:caMid,roi:roi,cpl:cpl};
-  lastComputedData = {caLo:caLo,caHi:caHi,roiLo:roiLo,roiHi:roiHi};
+  lastComputedData = {caLo:caLo,caHi:caHi,caMid:caMid,roi:roi};
 
   if(typeof Chart!=='undefined' && document.getElementById('phase2').classList.contains('visible')){
     renderChart();
@@ -1318,7 +1318,7 @@ function submitForm(e){
   var sec2 = SECTORS[S.sector]||{};
   var caLo = lastComputedData ? lastComputedData.caLo : 0;
   var caHi = lastComputedData ? lastComputedData.caHi : 0;
-  var roi  = lastComputedData ? lastComputedData.roiLo+'×–'+lastComputedData.roiHi+'×' : '—';
+  var roi  = lastComputedData ? lastComputedData.roi : '—';
 
   var payload = {
     etape: '2 — Formulaire soumis',
