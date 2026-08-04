@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -260,6 +261,15 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .success-cta svg{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
 .success-cta:hover svg{transform:translateX(4px)}
 .success-note{font-size:11px;color:rgba(255,255,255,.3);margin-top:.8rem}
+.pdf-dl-btn{
+  display:inline-flex;align-items:center;gap:8px;margin-top:1rem;
+  padding:11px 22px;border-radius:100px;
+  background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.2);
+  color:#fff;font-family:var(--fh);font-size:12.5px;font-weight:600;
+  transition:all .22s;cursor:pointer;
+}
+.pdf-dl-btn:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.35);transform:translateY(-1px)}
+.pdf-dl-btn:disabled{opacity:.5;cursor:wait}
 
 /* Timeline 7 jours */
 .timeline-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r-xl);padding:clamp(1.5rem,4vw,2.2rem);margin-bottom:1.5rem;box-shadow:var(--shadow)}
@@ -684,6 +694,12 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <div class="success-note">30 minutes · Sans engagement · Un fondateur Vision House</div>
+      <div>
+        <button type="button" class="pdf-dl-btn" id="pdfDlBtn" onclick="downloadReportPDF()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          Télécharger mon rapport complet (PDF)
+        </button>
+      </div>
     </div>
 
     <!-- Timeline 7 jours -->
@@ -1410,6 +1426,118 @@ function faqToggle(btn){
   var was=item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
   if(!was)item.classList.add('open');
+}
+
+// ══ PDF REPORT
+function downloadReportPDF(){
+  var btn = document.getElementById('pdfDlBtn');
+  if(typeof window.jspdf==='undefined'){
+    alert('Le générateur PDF se charge encore, réessayez dans un instant.');
+    return;
+  }
+  if(btn){btn.disabled=true;}
+
+  var jsPDF = window.jspdf.jsPDF;
+  var doc = new jsPDF({unit:'mm',format:'a4'});
+  var d = window._computedData || {};
+  var sec = SECTORS[S.sector] || {};
+  var secName = sec.label ? sec.label.replace(/^\S+\s*/,'') : (S.sector||'—');
+  var platLabel = S.platform==='fb' ? 'Meta Ads (Facebook & Instagram)' : S.platform==='gg' ? 'Google Ads' : 'Meta Ads + Google Ads';
+  var name = (document.getElementById('fName').value || 'Vous').trim();
+  var pageW = doc.internal.pageSize.getWidth();
+  var margin = 18, y;
+
+  // Header
+  doc.setFillColor(12,3,64);
+  doc.rect(0,0,pageW,38,'F');
+  doc.setTextColor(255,255,255);
+  doc.setFont('helvetica','bold');doc.setFontSize(18);
+  doc.text('Vision House', margin, 18);
+  doc.setFont('helvetica','normal');doc.setFontSize(10);
+  doc.text('Rapport personnalisé — Simulation publicitaire', margin, 26);
+  doc.setFontSize(8);
+  doc.text('Édité le '+new Date().toLocaleDateString('fr-BE'), margin, 32);
+
+  y = 50;
+  doc.setTextColor(12,3,64);doc.setFont('helvetica','bold');doc.setFontSize(13);
+  doc.text('Bonjour '+name.split(' ')[0]+',', margin, y);
+  y += 8;
+  doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(60,60,80);
+  var introLines = doc.splitTextToSize('Voici votre analyse personnalisée pour le secteur "'+secName+'", basée sur les données du marché belge 2026.', pageW-2*margin);
+  doc.text(introLines, margin, y);
+  y += introLines.length*5 + 8;
+
+  // Paramètres
+  doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(12,3,64);
+  doc.text('Vos paramètres', margin, y);
+  y += 6; doc.setDrawColor(220,220,230); doc.line(margin,y,pageW-margin,y); y += 6;
+  doc.setFontSize(10);
+  [['Secteur',secName],['Plateforme',platLabel],['Budget mensuel',fNum(S.budget)+' €'],['Valeur client',fNum(S.clientValue)+' €']].forEach(function(r){
+    doc.setFont('helvetica','bold');doc.setTextColor(40,40,60);doc.text(r[0]+' :', margin, y);
+    doc.setFont('helvetica','normal');doc.text(r[1], margin+45, y);
+    y += 6;
+  });
+  y += 4;
+
+  // Résultats
+  doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(12,3,64);
+  doc.text('Votre potentiel estimé', margin, y);
+  y += 6; doc.line(margin,y,pageW-margin,y); y += 10;
+
+  doc.setFillColor(248,247,251);
+  doc.roundedRect(margin, y-6, pageW-2*margin, 26, 3, 3, 'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(16);doc.setTextColor(9,41,105);
+  doc.text('CA potentiel : '+fK(d.caLo||0)+' à '+fK(d.caHi||0)+' / mois', margin+5, y+4);
+  doc.setFont('helvetica','normal');doc.setFontSize(9.5);doc.setTextColor(80,80,100);
+  doc.text((d.cLo||0)+' à '+(d.cHi||0)+' nouveaux clients estimés par mois', margin+5, y+11);
+  doc.text('ROI estimé : '+(d.roi||'—')+'   ·   Coût par lead estimé : '+(d.cpl||0)+' €', margin+5, y+17);
+  y += 30;
+
+  doc.setFontSize(8);doc.setTextColor(140,140,150);
+  var noteLines = doc.splitTextToSize('Estimation conservatrice basée sur les moyennes du marché belge 2026. Les résultats réels varient selon votre offre, votre zone et votre exécution.', pageW-2*margin);
+  doc.text(noteLines, margin, y);
+  y += noteLines.length*4 + 8;
+
+  // Plan 7 jours
+  doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(12,3,64);
+  doc.text("Votre plan d'action en 7 jours", margin, y);
+  y += 6; doc.line(margin,y,pageW-margin,y); y += 8;
+
+  var steps = [
+    ['J+1','Radiographie de votre présence','3 blocages identifiés, 1 opportunité prioritaire, avant de dépenser un euro.'],
+    ['J+2-3',"Votre plan d'attaque livré",'Plateforme, audience, budget, angle de message. Tout documenté.'],
+    ['J+4-5','3 accroches prêtes à diffuser','Scripts rédigés pour votre secteur, formatés Meta ou Google.'],
+    ['J+6','Session de lancement (30 min)','On paramètre et on publie ensemble, en direct.'],
+    ['J+7+','Les premiers signaux arrivent','Vos chiffres apparaissent dans votre tableau de bord.']
+  ];
+  steps.forEach(function(s){
+    if(y>265){doc.addPage();y=20;}
+    doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(9,41,105);
+    doc.text(s[0]+' — '+s[1], margin, y);
+    y += 5;
+    doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(70,70,90);
+    var dLines = doc.splitTextToSize(s[2], pageW-2*margin-4);
+    doc.text(dLines, margin+2, y);
+    y += dLines.length*4.5 + 4;
+  });
+
+  // CTA finale
+  if(y>250){doc.addPage();y=20;}
+  y += 6; doc.setDrawColor(220,220,230); doc.line(margin,y,pageW-margin,y); y += 8;
+  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(12,3,64);
+  doc.text('Prochaine étape', margin, y);
+  y += 6;
+  doc.setFont('helvetica','normal');doc.setFontSize(9.5);doc.setTextColor(60,60,80);
+  var ctaLines = doc.splitTextToSize('Réservez un appel de 30 minutes, sans engagement, avec un fondateur Vision House pour valider ces résultats et démarrer votre campagne : https://link.crococlick.com/widget/bookings/joseph-khan', pageW-2*margin);
+  doc.text(ctaLines, margin, y);
+
+  doc.setFontSize(8);doc.setTextColor(140,140,150);
+  doc.text('Vision House · Emkay Partners SRL · BCE 1024.829.348 · hello@visionhouse.be', margin, 285);
+
+  doc.save('rapport-vision-house-'+(S.sector||'secteur')+'.pdf');
+  sendStep3('Téléchargement rapport PDF');
+
+  if(btn){btn.disabled=false;}
 }
 
 // ══ UTILS
